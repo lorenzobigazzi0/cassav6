@@ -1,0 +1,32 @@
+{
+    "schemaVersion":  2,
+    "product":  "CASSA_V6",
+    "checkpoint":  "P2B_AUTH_SESSION_STATUS_SCOPED",
+    "createdAt":  "2026-09-01T13:54:46.8570057+02:00",
+    "sourceRoot":  "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818",
+    "targetReleaseVersion":  "6.0.0.7",
+    "roadmapStatus":  "P2b identity IN_PROGRESS: 4/7 route scoped, 3 readDb e 7 writeDb diretti residui; P3 blocked",
+    "developmentStorage":  "microSD; SSD not required for development",
+    "destructiveRetentionEnabled":  false,
+    "raspberryVerification":  "VERIFIED_DEV_ONLY_192.168.0.67_HEALTH_200_200",
+    "migrationStatusSha256":  "3c9af437b67a2e4f88f3f7af210e51483844d506286d5786272a33f3e1c10402",
+    "mig006EvidenceSha256":  "91838c7cf3b84ad4d7c34f9b9464182f8ed0d7e0be85ead162b6d3f785f54096",
+    "migration006Checksum":  "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad",
+    "goldenDatasetSha256":  "ac184311c9c96bb8b2d02ff23f71f284afaebfca94437e6435fd501b24edfa01",
+    "baselineEvidenceSha256":  "db7cf302940941403d00e0c3d023f7a4568fcb4831fa9d4bfdcf12033ad6147f",
+    "identityPilotSha256":  "87ef8bf4b7b285a6618fe2180059f80ab79e18df4c9833f6c4150709a13acf17",
+    "authSessionStatusModelSha256":  "823b614800db8c0526828c31aa9a674b7be97a983ac42b75e07f35d962f691e5",
+    "authHandlersSha256":  "72ef6197c0ffaf9a1f3cdf6f2594f50e4e8ce43e34655a4f26d64a83500d7ada",
+    "serverSha256":  "e3b6904a6ffc90d29037b5bc8a03149aa0ef4b06d4216eb5b904bb4512df4700",
+    "handoverSha256":  "e2b8b34b2468eada24da3b55af06f75a481525a65e1fa24ac979733cf3b61802",
+    "rollbackClone":  "cassav6_rollback_mig006_20260901h",
+    "productionCertified":  false,
+    "exclusions":  [
+                       "node_modules",
+                       "build outputs including WEBAPP_COMPILATA/dist/build",
+                       "APK/AAB",
+                       "cache",
+                       "runtime state",
+                       "credentials and private logs"
+                   ]
+}

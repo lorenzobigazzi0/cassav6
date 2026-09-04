@@ -1,0 +1,1707 @@
+{
+  "configSurface": {
+    "envVars": [
+      {
+        "name": "ALLOW_AUTH_QUERY_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ALLOW_SERVICE_TOKEN_QUERY_PARAM",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "APP_ENV",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "AUDIT_MAX_EVENTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTO_PRINT_ENQUEUE_DELAY_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_BASE_URL",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_ENABLED",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_PASSWORD",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_TIMEOUT_MS",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_USERNAME",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_SIMULATOR_CONFIG_PATH",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_SIMULATOR_SEED",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_EMPTY_DB_INIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_MYSQL_IMPORT_JSON",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_SQLITE_IMPORT_JSON",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_AUDIT_EVENTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_DB_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_DEVICE_STATUS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_ORDERS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_PAYMENTS_FISCAL",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_PRINT_SPOOL_JOBS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_TABLE_LOCKS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_TABLE_STATES",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_IMPORT_JSON_PATH",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_MODE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_PATH",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_HOST",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_DOMAINS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_DOMAINS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_TABLE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_AUDIT_EVENTS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_CONNECTION_LIMIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_DATABASE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_HOST",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_IMPORT_JSON_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_PASSWORD",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_PORT",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SESSIONS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_APP_STATE_DOMAINS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_AUDIT_EVENTS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_SESSIONS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS_VERBOSE_AUDIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_URL",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_USER",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ORIGIN",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "BACKEND_PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "BACKEND_TOKEN_SECRET",
+        "category": "auth-session",
+        "count": 4,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/db/relational/sessions.repo.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_ORIGIN",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "BATTERY_PROXY_CACHE_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_PROXY_EVENT_POLL_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_SERVICE_TIMEOUT_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_SERVICE_URL",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BELL_CASSA_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BELL_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "CARD_PAYMENT_MOCK_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "CARD_PAYMENT_PROVIDER",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "CITY_SEARCH_API_BASE_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "COMPANY_API_BASE_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "COMPANY_API_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "CORS_ALLOWED_ORIGINS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "DATABASE_URL",
+        "category": "network",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "DB_MUTATION_SLOW_RUN_MS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "DB_MUTATION_SLOW_WAIT_MS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ENABLE_DEBUG_ENDPOINTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_DEMO_PRODUCTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_MAINTENANCE_ENDPOINTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_MOCK_MENU",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "EXTERNAL_FETCH_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "FISCAL_PROVIDER",
+        "category": "fiscal",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "FRONTEND_HOST",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS_CERT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS_KEY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_LAN_HTTPS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_LAN_IP",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_ROOT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "INTEGRATION_HOT_GET_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_LAYOUT_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MAX_ORDER_FULFILLMENT_HISTORY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MAX_STATION_STATES",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MENU_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_NOTIFICATION_PULL_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_RECENT_BELL_CLAIM_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_SERVICE_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_DONE_HISTORY_LIMIT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_STALE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_WAITER_ACTIVE_WINDOW_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "IP_COORDS_FALLBACK_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "IP_COORDS_PRIMARY_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "LOGIN_RATE_LIMIT_MAX_ATTEMPTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "LOGIN_RATE_LIMIT_WINDOW_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MENU_PRICE_SCHEDULE_TIME_ZONE",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_HOST",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_PORT",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_URL",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_USER",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "NODE_ENV",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/modules/price-lists/price-lists.domain.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_COMPACT_MYSQL",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_LINE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_ROUTE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_TICKET_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_SUMMARY_LINE_SAMPLE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_READY_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_BLOCKING_PRIORITY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_BURST",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_CONCURRENCY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_BASE_URL",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_JOB_MAX_ATTEMPTS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_JOB_RETRY_DELAY_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_RECOVERY_RETRY_DELAY_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_REPRINT_ENDPOINT",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_TIMEOUT_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_RETRY_CUTOFF_HOUR",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_RESERVATION_LOCK_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_ROOM_CHANGE_MAX_AGE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_TABLE_ROOM_MOVE_APPROVAL_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POSTAZIONE_STATION_SESSION_RECOVERY_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_CUPS_PRINTER",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_CUPS_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_MAX_JOBS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_PRINTER_PROBE_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_RETRY_DELAY_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_RETRY_MAX_ATTEMPTS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_TCP_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_WINDOWS_DEFAULT_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINTING_ENABLED",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "PROJECT_IMG_DIR",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "SESSION_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SESSION_IDLE_TIMEOUT_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "SESSION_TTL_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "SHOW_DEMO_STATIONS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_ALLOW_MOCK_FALLBACK",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_AUTO_DETECT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_DEVICE_HINT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_PUSH_ALLOW_PRIVATE_NETWORK",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_PUSH_TOKEN",
+        "category": "auth-session",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_READ_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_READER_MODE",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_SERIAL_BAUD",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_SERIAL_PATH",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SQLITE_DB_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "STATION_STATE_FAST_PATH_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "TABLE_LOCK_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "TABLE_LOCK_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      }
+    ],
+    "envByCategory": {
+      "network": 11,
+      "other": 64,
+      "auth-session": 10,
+      "printing": 11,
+      "fiscal": 9,
+      "db": 35,
+      "battery": 5,
+      "automatic-cash": 7
+    },
+    "hardcodedIps": [
+      {
+        "ip": "127.0.0.1",
+        "count": 12,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 38,
+            "text": "\"http://127.0.0.1:5280\","
+          },
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 41,
+            "text": "\"http://127.0.0.1:5182\","
+          },
+          {
+            "file": "cassa-frontend/backend/core/security.js",
+            "line": 12,
+            "text": "return normalized === \"127.0.0.1\" || normalized === \"::1\" || normalized === \"::ffff:127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/core/security.js",
+            "line": 12,
+            "text": "return normalized === \"127.0.0.1\" || normalized === \"::1\" || normalized === \"::ffff:127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+            "line": 36,
+            "text": "\"127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 479,
+            "text": "process.env.BATTERY_SERVICE_URL ?? \"http://127.0.0.1:8765/battery\","
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 657,
+            "text": "process.env.BACKEND_MYSQL_HOST ?? process.env.MYSQL_HOST ?? \"127.0.0.1\","
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 658,
+            "text": ").trim() || \"127.0.0.1\";"
+          },
+          {
+            "file": "mobile-frontend/src/radio/radioWsClient.ts",
+            "line": 30,
+            "text": "return \"http://127.0.0.1\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 10,
+            "text": "const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN ?? \"http://127.0.0.1:5281\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 11,
+            "text": "const BATTERY_ORIGIN = process.env.BATTERY_ORIGIN ?? \"http://127.0.0.1:8765\";"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 3966,
+            "text": "state.settings.printers.push({ id: normalizeId(\"printer\"), name: \"Nuova stampante\", host: \"127.0.0.1\", port: 9100, purpose: \"generic\", model: \"generic_tcp\", active: true });"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.200",
+        "count": 6,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 438,
+            "text": "process.env.POS_FISCAL_API_BASE_URL ?? \"http://192.168.1.200:8765\","
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 873,
+            "text": "apiBaseUrl: String(device.apiBaseUrl || device.fiscalApiBaseUrl || \"http://192.168.1.200:8765\").replace(/\\/+$/, \"\"),"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2831,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2858,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4088,
+            "text": "if (type === \"rt\") source = index == null ? { id: normalizeId(\"rt\"), name: \"Nuovo RT\", type: \"api\", active: true, description: \"\", fiscalProvider: \"pos-fiscal-api\", apiBaseUrl: \"ht"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4144,
+            "text": "draft.apiBaseUrl = String(draft.apiBaseUrl || \"http://192.168.1.200:8765\").trim().replace(/\\/+$/, \"\");"
+          }
+        ]
+      },
+      {
+        "ip": "0.0.0.0",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 15,
+            "text": "export const HOST = process.env.BACKEND_HOST ?? \"0.0.0.0\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 8,
+            "text": "const HOST = process.env.FRONTEND_HOST ?? \"0.0.0.0\";"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.36",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 598,
+            "text": "const PIZZA_IN_RIVA_PRECONTO_PRINTER_HOST = \"192.168.1.36\";"
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 2814,
+            "text": "name: \"Stampante Pizza in Riva 192.168.1.36\","
+          }
+        ]
+      },
+      {
+        "ip": "192.168.0.28",
+        "count": 1,
+        "refs": [
+          {
+            "file": "serve-frontends.mjs",
+            "line": 14,
+            "text": "const FRONTEND_LAN_IP = process.env.FRONTEND_LAN_IP ?? \"192.168.0.28\";"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.166",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 39,
+            "text": "\"http://192.168.1.166:5280\","
+          }
+        ]
+      }
+    ],
+    "hardcodedUrls": [
+      {
+        "url": "http://192.168.1.200:8765",
+        "count": 6,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 438,
+            "text": "process.env.POS_FISCAL_API_BASE_URL ?? \"http://192.168.1.200:8765\","
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 873,
+            "text": "apiBaseUrl: String(device.apiBaseUrl || device.fiscalApiBaseUrl || \"http://192.168.1.200:8765\").replace(/\\/+$/, \"\"),"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2831,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2858,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4088,
+            "text": "if (type === \"rt\") source = index == null ? { id: normalizeId(\"rt\"), name: \"Nuovo RT\", type: \"api\", active: true, description: \"\", fiscalProvider: \"pos-fiscal-api\", apiBaseUrl: \"ht"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4144,
+            "text": "draft.apiBaseUrl = String(draft.apiBaseUrl || \"http://192.168.1.200:8765\").trim().replace(/\\/+$/, \"\");"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:8765",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 479,
+            "text": "process.env.BATTERY_SERVICE_URL ?? \"http://127.0.0.1:8765/battery\","
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 11,
+            "text": "const BATTERY_ORIGIN = process.env.BATTERY_ORIGIN ?? \"http://127.0.0.1:8765\";"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/radio/radioWsClient.ts",
+            "line": 30,
+            "text": "return \"http://127.0.0.1\";"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5182",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 41,
+            "text": "\"http://127.0.0.1:5182\","
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 38,
+            "text": "\"http://127.0.0.1:5280\","
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5281",
+        "count": 1,
+        "refs": [
+          {
+            "file": "serve-frontends.mjs",
+            "line": 10,
+            "text": "const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN ?? \"http://127.0.0.1:5281\";"
+          }
+        ]
+      },
+      {
+        "url": "http://192.168.1.166:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 39,
+            "text": "\"http://192.168.1.166:5280\","
+          }
+        ]
+      },
+      {
+        "url": "http://localhost:5182",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 40,
+            "text": "\"http://localhost:5182\","
+          }
+        ]
+      },
+      {
+        "url": "http://localhost:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 37,
+            "text": "\"http://localhost:5280\","
+          }
+        ]
+      },
+      {
+        "url": "https://api.sunrise-sunset.org",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/pages/home/hooks/useThemeMode.ts",
+            "line": 85,
+            "text": "const res = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`, {"
+          }
+        ]
+      },
+      {
+        "url": "https://api.vatcomply.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/api/invoice.ts",
+            "line": 22,
+            "text": "const response = await fetch(`https://api.vatcomply.com/vat?vat_number=IT${vatNumber}`, {"
+          }
+        ]
+      },
+      {
+        "url": "https://company.openapi.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 426,
+            "text": "process.env.COMPANY_API_BASE_URL ?? \"https://company.openapi.com\","
+          }
+        ]
+      },
+      {
+        "url": "https://geocoding-api.open-meteo.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 474,
+            "text": "\"https://geocoding-api.open-meteo.com/v1\","
+          }
+        ]
+      },
+      {
+        "url": "https://ipapi.co",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 470,
+            "text": "process.env.IP_COORDS_FALLBACK_URL ?? \"https://ipapi.co/json/\","
+          }
+        ]
+      },
+      {
+        "url": "https://ipwho.is",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 467,
+            "text": "process.env.IP_COORDS_PRIMARY_URL ?? \"https://ipwho.is/\","
+          }
+        ]
+      }
+    ]
+  },
+  "historicalDeviceSnapshot": {
+    "source": "cassa-frontend/backend/app-state.before-sync-possettings-20260628234340.json",
+    "note": "Snapshot storico, non prova di stato live corrente.",
+    "printers": [
+      {
+        "id": "printer_bar_1921681195_9100",
+        "name": "Stampante preconti e comande Bar 192.168.1.195",
+        "host": "192.168.1.195",
+        "port": 9100,
+        "purpose": "generic",
+        "active": true
+      },
+      {
+        "id": "printer_pizza_in_riva_192168136_9100",
+        "name": "Stampante Pizza in Riva 192.168.1.36",
+        "host": "192.168.1.36",
+        "port": 9100,
+        "purpose": "generic",
+        "active": true
+      }
+    ],
+    "fiscalDevices": [
+      {
+        "id": "rt_bar_api",
+        "name": "RT Bar API",
+        "provider": "pos-fiscal-api",
+        "apiBaseUrl": "http://192.168.1.200:8765",
+        "active": true
+      }
+    ],
+    "mobileDevicesCount": 3,
+    "mobileDeviceSamples": [
+      {
+        "id": "dev_1778865853378_2cjmc5cgyke",
+        "name": "Palmare condiviso",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      },
+      {
+        "id": "dev_1780309110686_ojgwswx72sg",
+        "name": "Palmare Giada",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      },
+      {
+        "id": "u_1778319633697_252626525",
+        "name": "Postazione Roberto",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      }
+    ],
+    "workstationsCount": 6,
+    "workstationSamples": [
+      {
+        "id": "workstation_bar_1",
+        "name": "BAR-1",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_pizza_in_riva",
+        "name": "Postazione Pizza in Riva",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_bar_2",
+        "name": "BAR-2",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_chiringuito_1",
+        "name": "CHIRINGUITO-1",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_chiringuito_2",
+        "name": "CHIRINGUITO-2",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_mobile",
+        "name": "MOBILE",
+        "active": true,
+        "type": null
+      }
+    ],
+    "automaticCash": {
+      "enabled": true,
+      "gatewayBaseUrl": null,
+      "mode": "random_file",
+      "hasConfigSet": true
+    }
+  }
+}

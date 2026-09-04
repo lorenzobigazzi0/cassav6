@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-08-24T14:20:29.744Z",
+  "database": "cassa_v5bt",
+  "domainsTable": "app_state_domain_records",
+  "action": "waiter-pause-enable",
+  "row": {
+    "record_id": "u_lorenzo",
+    "row_hash": "fd75eab16c59b80771e438ef536700336a9474202c7f43f4317bd66515e5f8cb",
+    "raw_json": "{\"id\":\"u_lorenzo\",\"username\":\"lorenzo\",\"fullName\":\"Lorenzo Bigazzi\",\"role\":\"admin\",\"roleLabel\":\"Amministratore\",\"permissions\":[\"collect_payments\",\"approve_room_change\",\"manage_tables\",\"manage_menu\",\"override_order_price\",\"view_analytics\",\"manage_sale_sessions\",\"automatic_cash_admin\",\"counter_mode\",\"print_orders\",\"open_drawer\",\"fiscal_operations\",\"manage_settings\",\"manage_reservations\",\"manage_smart_customers\",\"create_bar_replacement\",\"manage_users\"],\"extraPermissionIds\":[\"collect_payments\",\"approve_room_change\",\"manage_tables\",\"manage_menu\",\"override_order_price\",\"view_analytics\",\"manage_sale_sessions\",\"automatic_cash_admin\",\"counter_mode\",\"print_orders\",\"open_drawer\",\"fiscal_operations\",\"manage_settings\",\"manage_reservations\",\"manage_smart_customers\",\"create_bar_replacement\",\"manage_users\"],\"groupIds\":[],\"workstationIds\":[],\"allowedPaymentMethodIds\":[\"pay_card\",\"pay_cash\",\"pay_chip\",\"pay_smart\"],\"waiterPauseSettings\":{\"enabled\":false,\"durationMinutes\":15,\"renewalMinutes\":120},\"enabledRoomIds\":[\"room_attesa_virtuale\",\"room_gazebo\",\"room_pedana\",\"room_pizza_in_riva\"],\"authorizedRoomIds\":[\"room_attesa_virtuale\",\"room_gazebo\",\"room_pedana\",\"room_pizza_in_riva\"],\"defaultRoomId\":null,\"lastSelectedRoomId\":null,\"lastSelectedRoomName\":null,\"lastSelectedRoomAt\":null,\"lastSelectedRoomDeviceUuid\":null,\"pinHash\":\"scrypt$32768$8$1$cd5636c9aa67df140a9d13ac79b4873e$244123ddf61966b98e554fa3ab01c193d3a7caee4e3d8115469bb3748c2876674c1ad1e750c9bf2a5543b7e013c132016f7d4a6edecac16e577422ff2f3d38e6\",\"createdAt\":\"2026-07-12T16:39:03.985Z\",\"updatedAt\":\"2026-07-12T16:39:03.985Z\"}"
+  }
+}

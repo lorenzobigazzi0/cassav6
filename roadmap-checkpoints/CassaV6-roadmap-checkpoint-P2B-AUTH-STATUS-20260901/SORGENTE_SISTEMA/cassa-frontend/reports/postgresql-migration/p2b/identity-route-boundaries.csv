@@ -1,0 +1,8 @@
+"route","domain","app_state_reads","app_state_writes","cross_domain_dependencies","handler","source_file","direct_readDb","direct_writeDb"
+"POST /api/auth/login","identity","users|sessions|posSettings|meta","users|sessions|auditEvents|meta","audit|pos-settings/workstations|redis/session-cache|notifications","handleLogin","backend/auth/auth.handlers.js","1","3"
+"POST /api/auth/logout","identity","users|sessions|integration.stationStates","sessions|integration|auditEvents|meta","audit|integration/station-presence|notifications|redis/session-cache","handleLogout","backend/auth/auth.handlers.js","1","3"
+"POST /api/auth/session/status","identity","users|sessions|integration.stationStates","sessions|integration.stationStates|meta","integration/station-presence|redis/session-cache","handleAuthSessionStatus","backend/auth/auth.handlers.js","0","0"
+"POST /api/auth/workstation/select","identity","users|sessions|posSettings","sessions|auditEvents|meta","audit|pos-settings/workstations|redis/session-cache","handleSelectWorkstation","backend/auth/auth.handlers.js","0","0"
+"POST /api/auth/change-pin","identity","users|sessions","users|auditEvents|meta","audit","handleChangePin","backend/auth/auth.handlers.js","0","0"
+"POST /api/settings/pos/users","identity","users|sessions|userGroups|posSettings|meta","","pos-settings|permissions","handlePosSettingsUsers","backend/users/users.handlers.js","0","0"
+"POST /api/settings/pos/users/save","identity","users|sessions|userGroups|posSettings|meta","users|sessions|userGroups|auditEvents|meta","audit|pos-settings|permissions|redis/session-cache","handleSavePosSettingsUsers","backend/users/users.handlers.js","1","1"

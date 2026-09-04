@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b5-campaign-authorization-v1.schema.json",
+  "title": "V6 B5 Campaign Authorization V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "product",
+    "phase",
+    "mode",
+    "issuedAt",
+    "campaignIdCommitmentSha256",
+    "certificationMatrixSha256",
+    "prerequisiteEvidenceBundleSha256",
+    "operatorCommitmentSha256",
+    "prerequisites",
+    "constraints",
+    "gate",
+    "privacy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "product": { "const": "V6" },
+    "phase": { "const": "B5" },
+    "mode": { "const": "CAMPAIGN_AUTHORIZATION" },
+    "issuedAt": { "type": "string", "format": "date-time" },
+    "campaignIdCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "certificationMatrixSha256": { "$ref": "#/$defs/sha256" },
+    "prerequisiteEvidenceBundleSha256": { "$ref": "#/$defs/sha256" },
+    "operatorCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "prerequisites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b0", "b1", "b2", "b3", "b4"],
+      "properties": {
+        "b0": { "const": "PASS" },
+        "b1": { "const": "PASS" },
+        "b2": { "const": "PASS" },
+        "b3": { "const": "PASS" },
+        "b4": { "const": "PASS" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sameHandheld",
+        "sameBuild",
+        "sameAccount",
+        "continuousAndroidMonitor",
+        "continuousRaspberryMonitor",
+        "productionServiceMustRemainContinuous",
+        "independentReviewRequired"
+      ],
+      "properties": {
+        "sameHandheld": { "const": true },
+        "sameBuild": { "const": true },
+        "sameAccount": { "const": true },
+        "continuousAndroidMonitor": { "const": true },
+        "continuousRaspberryMonitor": { "const": true },
+        "productionServiceMustRemainContinuous": { "const": true },
+        "independentReviewRequired": { "const": true }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b5CampaignAuthorized", "b5HundredSessionGate", "b6"],
+      "properties": {
+        "b5CampaignAuthorized": { "const": "PASS" },
+        "b5HundredSessionGate": { "const": "PENDING" },
+        "b6": { "const": "PENDING" }
+      }
+    },
+    "privacy": { "$ref": "#/$defs/privacy" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiersIncluded",
+        "addressesIncluded",
+        "localLocationsIncluded",
+        "cryptographicMaterialIncluded"
+      ],
+      "properties": {
+        "identifiersIncluded": { "const": false },
+        "addressesIncluded": { "const": false },
+        "localLocationsIncluded": { "const": false },
+        "cryptographicMaterialIncluded": { "const": false }
+      }
+    }
+  }
+}

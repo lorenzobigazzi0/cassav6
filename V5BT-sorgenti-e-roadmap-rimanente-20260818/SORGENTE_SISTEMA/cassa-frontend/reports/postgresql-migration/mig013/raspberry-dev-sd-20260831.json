@@ -1,0 +1,25 @@
+{
+  "task": "MIG-013",
+  "scope": "DEV_ONLY",
+  "created_at_utc": "20260831T112347Z",
+  "host": "raspberrypi",
+  "architecture": "aarch64",
+  "kernel": "6.18.37-rt+",
+  "storage": "/dev/mmcblk0p2 ext4 /",
+  "postgresql_version": "17.11 (Debian 17.11-0+deb13u1)",
+  "dataset": "temporary_mig013_probe",
+  "durability": {
+    "fsync": "on",
+    "full_page_writes": "on",
+    "synchronous_commit": "on",
+    "archive_mode": "on"
+  },
+  "logical_backup_duration_ms": 177,
+  "logical_restore_duration_ms": 21,
+  "base_backup_duration_ms": 4977,
+  "pitr_restore_duration_ms": 6065,
+  "recovery_target": "named_restore_point",
+  "restored_stages": ["base_seed", "before_target"],
+  "excluded_after_target": true,
+  "production_certified": false
+}

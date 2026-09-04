@@ -1,0 +1,7 @@
+{
+  "repeat": 20,
+  "expect": [
+    "android_rediscovery",
+    "session_reopen"
+  ]
+}

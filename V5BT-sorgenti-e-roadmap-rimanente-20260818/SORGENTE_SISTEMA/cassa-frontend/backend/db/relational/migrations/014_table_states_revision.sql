@@ -1,0 +1,1 @@
+ALTER TABLE table_states ADD COLUMN revision INTEGER NOT NULL DEFAULT 1;

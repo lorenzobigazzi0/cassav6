@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 3,
+  "roles": {
+    "handheld": {
+      "packageId": "com.sentrapa.palmare.advanced",
+      "versionName": "1.0.39",
+      "versionCode": 40,
+      "sha256": "d0af2fd9341d5e50b49a4cd68fe4e2a0f70f6d28ef7c0acc1361191b5afffa65",
+      "signingCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+      "artifactRelativePath": "artifacts/Palmare-Advanced-v1.0.39-V6-B0-B2-Cooldown-Lab-20260805-debug.apk"
+    },
+    "station": {
+      "packageId": "com.sentrapa.postazione.advanced",
+      "versionName": "2.0.23",
+      "versionCode": 25,
+      "sha256": "3d55fa75e40e33134c8824b8c36a60d00622ea62528c67db3b74208fbcf868a5",
+      "signingCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+      "artifactRelativePath": "artifacts/Postazione-Advanced-v2.0.23-V6-B0-B2-Cooldown-Lab-20260805-debug.apk"
+    }
+  }
+}

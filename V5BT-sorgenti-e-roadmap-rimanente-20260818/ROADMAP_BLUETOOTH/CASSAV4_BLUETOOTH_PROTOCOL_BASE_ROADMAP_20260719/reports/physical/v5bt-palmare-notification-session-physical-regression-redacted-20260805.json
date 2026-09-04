@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "source": "V5BT_PALMARE_NOTIFICATION_SESSION_PHYSICAL_REGRESSION",
+  "classification": "PUBLIC_REDACTED",
+  "evidenceType": "PHYSICAL_APPLICATION_REGRESSION",
+  "gateEligibility": "NON_GATE_EVIDENCE",
+  "verdict": "PASS",
+  "date": "2026-08-05",
+  "target": {
+    "role": "handheld",
+    "application": "Palmare Advanced",
+    "packageId": "com.sentrapa.palmare.advanced",
+    "versionName": "1.0.38",
+    "versionCode": 39,
+    "artifact": "artifacts/Palmare-Advanced-v1.0.38-V5BT-B5.7-Lab-Logout-Transport-20260805-debug.apk",
+    "sha256": "c410cae24d5f6663edb9016346842721ea94b944640df49d79ce836a861d1323",
+    "signatureUnchanged": true,
+    "deviceCount": 2,
+    "updateMode": "IN_PLACE",
+    "dataPreserved": true,
+    "enrollmentPreserved": true,
+    "identityPreserved": true
+  },
+  "verification": {
+    "androidTests": {
+      "passed": 210,
+      "total": 210
+    },
+    "lintErrors": 0,
+    "lintWarnings": 23
+  },
+  "scenarios": {
+    "newLogin": {
+      "status": "PASS",
+      "deviceCount": 2,
+      "httpStatus": 200,
+      "epochRotated": true,
+      "previousTokenHttpStatus": 401
+    },
+    "backgroundAuthenticated": {
+      "status": "PASS",
+      "deviceCount": 2,
+      "errors": 0
+    },
+    "logout": {
+      "status": "PASS",
+      "deviceCount": 2,
+      "authPreferencesPresent": 0,
+      "runningServices": 0,
+      "deliveredNotifications": 0,
+      "revokedTokenHttpStatus": 401
+    },
+    "postLogoutObservation": {
+      "status": "PASS",
+      "durationSeconds": 135,
+      "referenceTickSeconds": 120,
+      "scope": "TARGET_PACKAGE_UID",
+      "pollerEvents": 0,
+      "transportEvents": 0,
+      "batteryEvents": 0,
+      "audioEvents": 0,
+      "fatalEvents": 0,
+      "anrEvents": 0
+    },
+    "relaunchLoggedOut": {
+      "status": "PASS",
+      "screen": "LOGIN",
+      "authPreferencesPresent": 0,
+      "runningServices": 0,
+      "deliveredNotifications": 0,
+      "pollerEvents": 0,
+      "transportEvents": 0,
+      "batteryEvents": 0,
+      "audioEvents": 0,
+      "fatalEvents": 0,
+      "anrEvents": 0
+    },
+    "notificationEventCreation": {
+      "status": "NOT_RUN"
+    },
+    "notificationRouting": {
+      "status": "NOT_RUN"
+    }
+  },
+  "privacy": {
+    "packageUidScoped": true,
+    "containsDeviceSerial": false,
+    "containsIpAddress": false,
+    "containsUserIdentifier": false,
+    "containsToken": false,
+    "containsUuid": false,
+    "containsPid": false,
+    "containsPrivatePath": false
+  },
+  "roadmap": {
+    "b0": "PENDING",
+    "b1": "PENDING",
+    "b2": "PENDING",
+    "b3": "PENDING",
+    "b4": "PENDING",
+    "b5": "PENDING",
+    "overallPercent": 49
+  }
+}

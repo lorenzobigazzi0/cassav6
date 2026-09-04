@@ -1,0 +1,208 @@
+/*
+  Restyle della schermata di login (2026-08-24).
+
+  Tutte le regole sono limitate a `.login-page`: nessun altro schermo
+  dell'applicazione viene toccato.
+
+  Rollback: rimuovere l'import di questo file da `src/main.tsx`. I backup dei
+  sorgenti precedenti sono stati rimossi su richiesta.
+*/
+
+.login-page {
+  --login-field-bg: rgba(255, 255, 255, 0.055);
+  --login-field-bg-focus: rgba(255, 255, 255, 0.085);
+  --login-field-border: rgba(255, 255, 255, 0.17);
+  --login-field-border-focus: rgba(200, 160, 255, 0.7);
+  --login-ring: rgba(160, 120, 255, 0.22);
+  --login-subtle: rgba(190, 198, 220, 0.66);
+  --login-mark-bg: linear-gradient(150deg, rgba(200, 140, 255, 0.9), rgba(120, 130, 255, 0.85));
+  --login-mark-border: rgba(255, 255, 255, 0.2);
+  --login-mark-color: rgba(255, 255, 255, 0.96);
+  --login-btn-shadow: 0 12px 28px rgba(130, 100, 255, 0.3);
+  --login-card-border: rgba(255, 255, 255, 0.5);
+}
+
+/* Il blocco logo + card sale del 15% dell'altezza schermo rispetto alla
+   posizione ereditata da legacy-mobile-assets/assets/mobile-home-dashboard-
+   overrides.css (-10vh, -8vh sotto i 720px di larghezza). Quel foglio e'
+   iniettato dopo il bundle: serve una specificita' maggiore per vincere. */
+.login-page .login-shell .login-layout {
+  transform: translateY(calc(-10vh - var(--login-rise, 15vh)));
+}
+
+@media (max-width: 720px) {
+  .login-page .login-shell .login-layout {
+    transform: translateY(calc(-8vh - var(--login-rise, 15vh)));
+  }
+}
+
+/* Schermi bassi o tastiera aperta: risalita ridotta, altrimenti il logo
+   finisce sotto la riga di sistema. */
+@media (max-height: 800px) {
+  .login-page .login-shell .login-layout {
+    --login-rise: 7vh;
+  }
+}
+
+/* Marchio: tile piatto al posto della sfera lucida. */
+.login-page .login-logo {
+  width: 58px;
+  height: 58px;
+  /* `margin-top: auto` regge la centratura verticale definita in glass.css. */
+  margin: auto 0 20px;
+  border-radius: 19px;
+  background: var(--login-mark-bg);
+  border: 1px solid var(--login-mark-border);
+  box-shadow: none;
+  color: var(--login-mark-color);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-indent: 2px;
+  text-shadow: none;
+  transform: translateY(-12px);
+}
+
+.login-page .login-logo::after {
+  display: none;
+}
+
+.login-page .card-body {
+  padding: 30px 26px 26px;
+}
+
+.login-page .h1 {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  /* Senza sottotitolo il titolo si stacca da solo dai campi. */
+  margin: 0 0 22px;
+  text-shadow: none;
+}
+
+.login-page .form {
+  gap: 12px;
+}
+
+.login-page .input {
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 15px;
+  background: var(--login-field-bg);
+  border-color: var(--login-field-border);
+  box-shadow: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.login-page .input:focus {
+  background: var(--login-field-bg-focus);
+  border-color: var(--login-field-border-focus);
+  box-shadow: 0 0 0 3px var(--login-ring);
+}
+
+.login-page .input::placeholder {
+  color: var(--login-subtle);
+  letter-spacing: normal;
+}
+
+/* Il PIN mascherato respira come un campo codice. */
+.login-page .input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.login-page .btn {
+  height: 52px;
+  padding: 0 16px;
+  margin-top: 4px;
+  border-radius: 14px;
+  border-color: transparent;
+  font-size: 15px;
+  background: linear-gradient(135deg, var(--accent0) 0%, var(--accent1) 100%);
+  box-shadow: var(--login-btn-shadow);
+}
+
+.login-page .btn::after {
+  display: none;
+}
+
+.login-page .btn[disabled] {
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .login-page .btn:hover:not([disabled]) {
+    filter: brightness(1.04);
+    box-shadow: var(--login-btn-shadow);
+  }
+}
+
+.login-page .error {
+  border-radius: 12px;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+.login-page .login-layout > .glass-card {
+  animation: login-card-rise 420ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  /* Bordo piu' marcato: la card si stacca dallo sfondo senza ombre. */
+  border-width: 1.5px;
+  border-color: var(--login-card-border);
+}
+
+@keyframes login-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-page .login-layout > .glass-card {
+    animation: none;
+  }
+}
+
+:root[data-theme="light"] .login-page {
+  --login-field-bg: rgba(16, 24, 44, 0.04);
+  --login-field-bg-focus: rgba(16, 24, 44, 0.06);
+  --login-field-border: rgba(16, 28, 56, 0.14);
+  --login-field-border-focus: rgba(90, 120, 230, 0.6);
+  --login-ring: rgba(90, 140, 240, 0.18);
+  --login-subtle: rgba(20, 24, 32, 0.55);
+  --login-mark-border: rgba(255, 255, 255, 0.5);
+  --login-btn-shadow: 0 10px 22px rgba(60, 110, 220, 0.22);
+  --login-card-border: rgba(16, 28, 56, 0.24);
+}
+
+:root[data-theme="light"] .login-page .input {
+  background: var(--login-field-bg);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .login-page {
+    --login-field-bg: rgba(16, 24, 44, 0.04);
+    --login-field-bg-focus: rgba(16, 24, 44, 0.06);
+    --login-field-border: rgba(16, 28, 56, 0.14);
+    --login-field-border-focus: rgba(90, 120, 230, 0.6);
+    --login-ring: rgba(90, 140, 240, 0.18);
+    --login-subtle: rgba(20, 24, 32, 0.55);
+    --login-mark-border: rgba(255, 255, 255, 0.5);
+    --login-btn-shadow: 0 10px 22px rgba(60, 110, 220, 0.22);
+    --login-card-border: rgba(16, 28, 56, 0.24);
+  }
+
+  :root:not([data-theme]) .login-page .input {
+    background: var(--login-field-bg);
+    box-shadow: none;
+  }
+}

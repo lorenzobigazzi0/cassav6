@@ -1,0 +1,199 @@
+{
+  "relationalDomains": [
+    "auditEvents",
+    "users",
+    "sessions",
+    "saleSessions",
+    "payments",
+    "menuSettings",
+    "orders",
+    "tablesBills"
+  ],
+  "relationalReadPrimaryDomains": [
+    "users",
+    "sessions",
+    "menuSettings",
+    "saleSessions"
+  ],
+  "relationalMigrations": [
+    {
+      "version": "001",
+      "name": "core",
+      "fileName": "001_core.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/001_core.sql",
+      "tables": [
+        "relational_sync_state",
+        "schema_migrations"
+      ]
+    },
+    {
+      "version": "002",
+      "name": "audit_events",
+      "fileName": "002_audit_events.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/002_audit_events.sql",
+      "tables": [
+        "audit_events"
+      ]
+    },
+    {
+      "version": "003",
+      "name": "users",
+      "fileName": "003_users.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/003_users.sql",
+      "tables": [
+        "user_authorized_rooms",
+        "user_enabled_rooms",
+        "user_payment_methods",
+        "user_permissions",
+        "users"
+      ]
+    },
+    {
+      "version": "004",
+      "name": "sessions",
+      "fileName": "004_sessions.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/004_sessions.sql",
+      "tables": [
+        "sessions"
+      ]
+    },
+    {
+      "version": "005",
+      "name": "sale_sessions",
+      "fileName": "005_sale_sessions.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/005_sale_sessions.sql",
+      "tables": [
+        "sale_sessions",
+        "solar_closures"
+      ]
+    },
+    {
+      "version": "006",
+      "name": "payments",
+      "fileName": "006_payments.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/006_payments.sql",
+      "tables": [
+        "fiscal_receipts",
+        "payment_containers",
+        "payment_parts",
+        "payment_transactions"
+      ]
+    },
+    {
+      "version": "007",
+      "name": "menu_settings",
+      "fileName": "007_menu_settings.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/007_menu_settings.sql",
+      "tables": [
+        "menu_categories",
+        "menu_item_variants",
+        "menu_items",
+        "payment_methods",
+        "pos_rooms",
+        "pos_tables"
+      ]
+    },
+    {
+      "version": "008",
+      "name": "orders",
+      "fileName": "008_orders.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/008_orders.sql",
+      "tables": [
+        "order_events",
+        "order_line_variants",
+        "order_lines",
+        "orders"
+      ]
+    },
+    {
+      "version": "009",
+      "name": "tables_bills",
+      "fileName": "009_tables_bills.sql",
+      "file": "cassa-frontend/backend/db/relational/migrations/009_tables_bills.sql",
+      "tables": [
+        "table_bills",
+        "table_locks",
+        "table_states"
+      ]
+    }
+  ],
+  "relationalRepos": [
+    "cassa-frontend/backend/db/relational/audit-events.repo.js",
+    "cassa-frontend/backend/db/relational/menu-settings.repo.js",
+    "cassa-frontend/backend/db/relational/orders.repo.js",
+    "cassa-frontend/backend/db/relational/payments.repo.js",
+    "cassa-frontend/backend/db/relational/sale-sessions.repo.js",
+    "cassa-frontend/backend/db/relational/sessions.repo.js",
+    "cassa-frontend/backend/db/relational/tables-bills.repo.js",
+    "cassa-frontend/backend/db/relational/users.repo.js"
+  ],
+  "splitRepos": [
+    "cassa-frontend/backend/db/app-state/app-state-json.repository.js",
+    "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+    "cassa-frontend/backend/db/app-state/app-state-sqlite.repository.js",
+    "cassa-frontend/backend/db/app-state/app-state.repository.js",
+    "cassa-frontend/backend/db/app-state/audit-events-split.repository.js",
+    "cassa-frontend/backend/db/app-state/device-status-split.repository.js",
+    "cassa-frontend/backend/db/app-state/mysql-audit-events-split.repository.js",
+    "cassa-frontend/backend/db/app-state/mysql-domains-split.repository.js",
+    "cassa-frontend/backend/db/app-state/mysql-sessions-split.repository.js",
+    "cassa-frontend/backend/db/app-state/mysql-table-locks.repository.js",
+    "cassa-frontend/backend/db/app-state/orders-split.repository.js",
+    "cassa-frontend/backend/db/app-state/payments-fiscal-split.repository.js",
+    "cassa-frontend/backend/db/app-state/print-spool-jobs-split.repository.js",
+    "cassa-frontend/backend/db/app-state/table-locks-split.repository.js",
+    "cassa-frontend/backend/db/app-state/table-state-split.repository.js"
+  ],
+  "mysqlAppStateDomainDefaults": [
+    "cashTxDenoms",
+    "commercialBenefitApplications",
+    "commercialBenefitCampaigns",
+    "commercialBenefitCoupons",
+    "commercialBenefitRedemptions",
+    "fiscalEvents",
+    "fiscalReceipts",
+    "handheldCashSessions",
+    "integration",
+    "maintenance",
+    "menuItems",
+    "paymentContainers",
+    "paymentParts",
+    "paymentProviderTransactions",
+    "payments",
+    "paymentTransactions",
+    "posReservationLocks",
+    "posReservations",
+    "posReservationStates",
+    "posRoomChangeRequests",
+    "posSettings",
+    "posTableRoomMoveRequests",
+    "printSpoolJobs",
+    "saleSessions",
+    "saleSessionTemplates",
+    "smartCustomers",
+    "smartNonFiscal",
+    "solarClosures",
+    "tableLocks",
+    "userGroups",
+    "users"
+  ],
+  "splitModeEnvVars": [
+    "BACKEND_APP_STATE_SPLIT_AUDIT_EVENTS",
+    "BACKEND_APP_STATE_SPLIT_DB_PATH",
+    "BACKEND_APP_STATE_SPLIT_DEVICE_STATUS",
+    "BACKEND_APP_STATE_SPLIT_ORDERS",
+    "BACKEND_APP_STATE_SPLIT_PAYMENTS_FISCAL",
+    "BACKEND_APP_STATE_SPLIT_PRINT_SPOOL_JOBS",
+    "BACKEND_APP_STATE_SPLIT_TABLE_LOCKS",
+    "BACKEND_APP_STATE_SPLIT_TABLE_STATES",
+    "BACKEND_MYSQL_APP_STATE_DOMAINS",
+    "BACKEND_MYSQL_APP_STATE_DOMAINS_TABLE",
+    "BACKEND_MYSQL_APP_STATE_TABLE",
+    "BACKEND_MYSQL_SPLIT_APP_STATE_DOMAINS",
+    "BACKEND_MYSQL_SPLIT_AUDIT_EVENTS",
+    "BACKEND_MYSQL_SPLIT_SESSIONS",
+    "BACKEND_MYSQL_TABLE_LOCKS",
+    "BACKEND_MYSQL_TABLE_LOCKS_TABLE",
+    "BACKEND_MYSQL_TABLE_LOCKS_VERBOSE_AUDIT"
+  ]
+}

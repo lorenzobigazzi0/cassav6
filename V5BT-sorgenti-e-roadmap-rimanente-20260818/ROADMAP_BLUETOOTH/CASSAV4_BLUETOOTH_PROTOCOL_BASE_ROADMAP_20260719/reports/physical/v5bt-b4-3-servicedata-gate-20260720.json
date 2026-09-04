@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B4.3",
+  "generatedAt": "2026-07-20T11:25:36.866Z",
+  "mode": "PHYSICAL_SINGLE_ADVERTISER",
+  "verdict": "PASS",
+  "scope": "Physical Android ServiceData callback on Raspberry; the 10-node B4 gate remains separate",
+  "sourceLogSha256": "961e775900a5671dd2f351e6b886ac4de6865a671fcf799e31369f1a1f922f14",
+  "lifecycle": {
+    "snapshots": 2,
+    "durationMs": 90000.94265299999,
+    "startupState": "DISCOVERING",
+    "shutdownState": "STOPPED",
+    "shutdownSignal": "SIGTERM"
+  },
+  "serviceData": {
+    "observationsTotal": 259,
+    "observationsAccepted": 259,
+    "observationsRejected": 0,
+    "bluezDeviceUpdates": 5272,
+    "peerStreamHighWatermark": 2,
+    "insertedAnonymousStreams": 2,
+    "currentAnonymousStreams": 1,
+    "nodeKinds": [
+      "handheld"
+    ],
+    "rssiDbm": {
+      "minimum": -58,
+      "maximum": -58,
+      "samples": 1
+    },
+    "maintenanceRuns": 89,
+    "prunePasses": 90,
+    "expiredStreamsRemoved": 1,
+    "peersPruned": 1
+  },
+  "cleanup": {
+    "discovering": false,
+    "busConnected": false,
+    "discoverySessionAcquired": false,
+    "activeMatchRules": 0,
+    "trackedDevices": 0,
+    "retryScheduled": false,
+    "stopDiscoveryCalls": 1
+  },
+  "errors": {
+    "adapter": 0,
+    "scanner": 0,
+    "maintenance": 0,
+    "dbus": 0,
+    "observationHandler": 0,
+    "invalidPayload": 0,
+    "sequenceConflict": 0
+  },
+  "checks": [
+    {
+      "id": "bluez.servicedata_callback",
+      "status": "PASS",
+      "detail": "259 valid observations accepted"
+    },
+    {
+      "id": "peer.android_kind",
+      "status": "PASS",
+      "detail": "handheld"
+    },
+    {
+      "id": "peer.rssi",
+      "status": "PASS",
+      "detail": "-58..-58 dBm"
+    },
+    {
+      "id": "peer.maintenance",
+      "status": "PASS",
+      "detail": "90 prune passes, 1 expired streams removed"
+    },
+    {
+      "id": "bluez.cleanup",
+      "status": "PASS",
+      "detail": "scanner, D-Bus session, match rules and retry timer released"
+    }
+  ],
+  "gate": {
+    "serviceDataLive": "PASS",
+    "controlledPhysicalAdvertisers": 1,
+    "requiredDistinctPhysicalNodes": 10,
+    "b4TenNodeGate": "PENDING",
+    "reason": "One controlled physical Android advertiser is validated; aliases are not counted as distinct devices"
+  },
+  "privacy": {
+    "bluetoothAddressesIncluded": false,
+    "rotatingAliasesIncluded": false,
+    "stableNodeIdsIncluded": false,
+    "rawPayloadsIncluded": false
+  },
+  "activeV4Changes": false,
+  "measurement": {
+    "requiredDurationSeconds": 90,
+    "wallClockDurationMs": 90141
+  }
+}

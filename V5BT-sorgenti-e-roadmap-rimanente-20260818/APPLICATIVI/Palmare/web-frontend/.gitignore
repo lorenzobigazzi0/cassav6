@@ -1,0 +1,13 @@
+# Certificati HTTPS locali generati da mkcert
+certs/*.pem
+certs/*.p12
+certs/*.crt
+certs/*.key
+!certs/.gitkeep
+
+# Non committare mai CA/private key locali
+rootCA-key.pem
+rootCA.pem
+.env
+.env.local
+.env.*.local

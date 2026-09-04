@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "state",
+    "transport"
+  ],
+  "properties": {
+    "state": {
+      "type": "string"
+    },
+    "transport": {
+      "type": "string"
+    },
+    "peerNodeId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serverReachable": {
+      "type": "boolean"
+    }
+  }
+}

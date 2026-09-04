@@ -1,0 +1,126 @@
+/*
+  Rettifica di pagamento visibile nel carrello (2026-08-26).
+
+  Due elementi: i prezzi alterati dalla rettifica, in ambra, e le righe che
+  dichiarano la riduzione con importo in negativo. L'ambra riusa gli stessi
+  valori gia' adottati per "quasi esaurito" nel menu, cosi' "modificato" ha una
+  sola lingua in tutta l'app.
+
+  Rollback: rimuovere l'import da `src/main.tsx` (dettagli in
+  `.rollback/cart-adjustment-20260826/LEGGIMI_ROLLBACK.md`).
+*/
+
+.table-order-cart,
+.table-history-lines {
+  --adjusted-price-color: rgba(255, 214, 110, 1);
+  --reduction-border: rgba(255, 200, 80, 0.4);
+  --reduction-bg: linear-gradient(
+    160deg,
+    rgba(255, 190, 60, 0.14),
+    rgba(255, 190, 60, 0.04) 70%
+  );
+}
+
+/* ---------- Prezzi alterati ---------- */
+
+.table-order-item-total.is-adjusted,
+.table-history-line-price.is-adjusted {
+  color: var(--adjusted-price-color);
+}
+
+/* ---------- Righe di riduzione ---------- */
+
+.table-order-item.is-reduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  border-color: var(--reduction-border);
+  background: var(--reduction-bg);
+}
+
+/* Riduzione di un singolo articolo: rientrata sotto la riga che la genera. */
+.table-order-item.is-reduction-line {
+  margin-left: 16px;
+}
+
+.table-order-item.is-reduction .table-order-item-info strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.table-order-item.is-reduction .table-order-item-info span {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-order-item.is-reduction .table-order-item-total {
+  align-self: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.table-order-reduction-remove {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid var(--reduction-border);
+  background: transparent;
+  color: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.table-order-reduction-remove:active {
+  transform: scale(0.94);
+}
+
+/* Storico comande del tavolo: sola lettura, nessuna eliminazione. */
+.table-history-line-reduction {
+  display: block;
+  width: 100%;
+  margin-top: 2px;
+  padding-left: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--adjusted-price-color);
+}
+
+.table-history-line-reduction strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tema chiaro ---------- */
+
+:root[data-theme="light"] .table-order-cart,
+:root[data-theme="light"] .table-history-lines {
+  --adjusted-price-color: rgba(126, 82, 0, 1);
+  --reduction-border: rgba(196, 136, 12, 0.42);
+  --reduction-bg: linear-gradient(
+    160deg,
+    rgba(240, 170, 20, 0.16),
+    rgba(240, 170, 20, 0.05) 70%
+  );
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .table-order-cart,
+  :root:not([data-theme]) .table-history-lines {
+    --adjusted-price-color: rgba(126, 82, 0, 1);
+    --reduction-border: rgba(196, 136, 12, 0.42);
+    --reduction-bg: linear-gradient(
+      160deg,
+      rgba(240, 170, 20, 0.16),
+      rgba(240, 170, 20, 0.05) 70%
+    );
+  }
+}

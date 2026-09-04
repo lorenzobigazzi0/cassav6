@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-01T00:00:00.000Z",
+  "policy": "Exact-set baseline: no new failure, no missing known failure, no total-count drift.",
+  "suites": {
+    "cassa-frontend": {
+      "expected": {
+        "total": 92,
+        "passed": 72,
+        "failed": 20
+      },
+      "knownFailures": [
+        {
+          "file": "frontend-tests/cash-bridges.test.mjs",
+          "name": "[FE][AUTH] guard Cassa e cache-buster sono allineati nelle copie runtime",
+          "reason": "Artefatto WEBAPP_COMPILATA/cassa non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/listino-time-pricing.test.mjs",
+          "name": "[FE][LISTINO-07] ricerca ordine continua a includere sottocategoria, ingredienti e reparto",
+          "reason": "Asserzione statica obsoleta dopo estrazione della policy di ricerca ordine."
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] statistiche pagamenti ricostruiscono pagamenti, storni, sostituzioni e ristampa",
+          "reason": "Asserzione statica obsoleta dopo estrazione dei tipi movimento analytics."
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] varianti obbligatorie drink premium e dropdown custom non dipendono piu dal bridge",
+          "reason": "Asserzione statica obsoleta dopo estrazione della policy varianti."
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] pulsante Libera e protezione anti flash sono nel codice nativo",
+          "reason": "Asserzione statica obsoleta dopo estrazione della policy prenotazioni/tavoli."
+        },
+        {
+          "file": "frontend-tests/mobile-frontendv2-static.test.mjs",
+          "name": "[FE][FRONTENDV2][P0] invio comanda preserva bozza finche il backend conferma",
+          "reason": "Asserzione statica obsoleta dopo estrazione del flusso di invio bozza."
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] amministrazione fondo cassa resta solo in /impostazioni",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] pagina Pagamenti mostra statistiche realmente POS",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] artefatti /impostazioni espongono il cache-buster statistiche POS",
+          "reason": "Artefatto WEBAPP_COMPILATA/impostazioni non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-handhelds-native.test.mjs",
+          "name": "[FE][V3] impostazioni palmari sono native nel frontend impostazioni",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-handhelds-native.test.mjs",
+          "name": "[FE][V3] palmari rilevati partono con fiscalita disattivata",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] impostazioni radio sono native nel frontend impostazioni",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] default canali radio propone Bar, Generale e Cassa",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] canali radio non usano autosave generico delle impostazioni",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] stile canali radio presente nel frontend impostazioni",
+          "reason": "Foglio stile settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] copia pacchetto e copia runtime restano identiche",
+          "reason": "Artefatto WEBAPP_COMPILATA/impostazioni non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] enabledAppIds usa la allowlist canonica delle tre app",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] dati legacy senza enabledAppIds restano abilitati su tutte le app",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] tabella e modale utente espongono le applicazioni abilitate",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] nuovi utenti e salvataggio modale normalizzano enabledAppIds",
+          "reason": "Bundle settings-frontend/dist non presente nel sorgente di sviluppo."
+        }
+      ]
+    },
+    "mobile-frontend": {
+      "expected": {
+        "total": 642,
+        "passed": 639,
+        "failed": 3
+      },
+      "knownFailures": [
+        {
+          "file": "tests/static/architectureRules.test.ts",
+          "name": "static architecture rules keeps large files within their monotonically-decreasing LOC budgets",
+          "reason": "Debito LOC preesistente su cinque componenti, da ridurre durante P2b senza aumentarlo."
+        },
+        {
+          "file": "tests/static/paymentsAutomaticCashUi.test.ts",
+          "name": "payments automatic-cash UI phase keeps automatic-cash administration and POS statistics in central settings",
+          "reason": "Bundle settings-frontend/dist richiesto dal test statico non presente nel sorgente di sviluppo."
+        },
+        {
+          "file": "tests/static/tableDetailReservationManager.test.ts",
+          "name": "table detail reservation manager mostra prenota con badge e gestione prenotazioni del giorno",
+          "reason": "Asserzione statica obsoleta dopo estrazione della policy del reservation manager."
+        }
+      ]
+    }
+  }
+}

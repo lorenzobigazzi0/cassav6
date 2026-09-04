@@ -1,0 +1,4 @@
+{"type":"http_request","route":"POST /api/integration/orders/create","method":"POST","path":"/api/integration/orders/create","status":200,"responseMs":120,"queueWaitMs":10,"readDbCount":1,"readDbMs":12,"writeDbCount":1,"writeDbMs":30,"serializedBytes":32000}
+{"type":"http_request","route":"POST /api/integration/orders/create","method":"POST","path":"/api/integration/orders/create","status":200,"responseMs":280,"queueWaitMs":40,"readDbCount":2,"readDbMs":25,"writeDbCount":1,"writeDbMs":55,"serializedBytes":64000}
+{"type":"http_request","route":"POST /api/payments/table","method":"POST","path":"/api/payments/table","status":200,"responseMs":410,"queueWaitMs":90,"readDbCount":2,"readDbMs":30,"writeDbCount":2,"writeDbMs":120,"fullStateFallbackUsed":true}
+{"type":"http_request","route":"GET /api/integration/layout","method":"GET","path":"/api/integration/layout","status":200,"responseMs":70,"readDbCount":1,"readDbMs":18,"writeDbCount":0}

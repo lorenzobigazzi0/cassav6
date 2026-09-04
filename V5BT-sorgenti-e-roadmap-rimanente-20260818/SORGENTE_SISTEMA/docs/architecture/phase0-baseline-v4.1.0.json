@@ -1,0 +1,5295 @@
+{
+  "version": "v4.1.0",
+  "generatedAt": "2026-06-29T21:53:12.328Z",
+  "paths": {
+    "sourceRoot": "/home/sentrapa/Desktop/sistemacassav4/estratto/v4.0.2-20260629-181421/sistema-cassa-v4.0.2-source",
+    "cassaRoot": "/home/sentrapa/Desktop/sistemacassav4/estratto/v4.0.2-20260629-181421/sistema-cassa-v4.0.2-source/cassa-frontend",
+    "backendRoot": "/home/sentrapa/Desktop/sistemacassav4/estratto/v4.0.2-20260629-181421/sistema-cassa-v4.0.2-source/cassa-frontend/backend"
+  },
+  "git": {
+    "available": false,
+    "error": "git command not found"
+  },
+  "sourceMetrics": {
+    "sourceFilesWithoutRuntime": 827,
+    "packageFiles": [
+      "battery-dashboard/package.json",
+      "cassa-frontend/package.json",
+      "mobile-frontend/package.json",
+      "postazione/package.json"
+    ],
+    "backend": {
+      "serverLines": 38359,
+      "serverNamedFunctionDeclarations": 708,
+      "serverArrowFunctionDeclarationsApprox": 39,
+      "serverFunctionHintsApprox": 708,
+      "backendTestFiles": 100
+    }
+  },
+  "modules": {
+    "count": 27,
+    "modules": [
+      {
+        "name": "app-state",
+        "fileCount": 5,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/app-state/app-state.handlers.js",
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js",
+          "cassa-frontend/backend/modules/app-state/index.js",
+          "cassa-frontend/backend/modules/app-state/initial-state.js",
+          "cassa-frontend/backend/modules/app-state/security-migration.js"
+        ]
+      },
+      {
+        "name": "audit",
+        "fileCount": 2,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": true,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/audit/audit.mapper.js",
+          "cassa-frontend/backend/modules/audit/audit.service.js"
+        ]
+      },
+      {
+        "name": "auth",
+        "fileCount": 1,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": true,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/auth/auth.repository.js"
+        ]
+      },
+      {
+        "name": "automatic-cash",
+        "fileCount": 5,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": true,
+        "files": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.domain.js",
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.gateway.js",
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.handlers.js",
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js",
+          "cassa-frontend/backend/modules/automatic-cash/index.js"
+        ]
+      },
+      {
+        "name": "commercial-benefits",
+        "fileCount": 4,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.domain.js",
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js",
+          "cassa-frontend/backend/modules/commercial-benefits/index.js"
+        ]
+      },
+      {
+        "name": "configuration",
+        "fileCount": 7,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/configuration/activity-config.domain.js",
+          "cassa-frontend/backend/modules/configuration/area-config.domain.js",
+          "cassa-frontend/backend/modules/configuration/configuration-snapshot.js",
+          "cassa-frontend/backend/modules/configuration/index.js",
+          "cassa-frontend/backend/modules/configuration/locale-config.domain.js",
+          "cassa-frontend/backend/modules/configuration/mobile-device-config.domain.js",
+          "cassa-frontend/backend/modules/configuration/operational-context.js"
+        ]
+      },
+      {
+        "name": "counter",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/counter/counter.handlers.js",
+          "cassa-frontend/backend/modules/counter/counter.routes.js",
+          "cassa-frontend/backend/modules/counter/index.js"
+        ]
+      },
+      {
+        "name": "external-lookups",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/external-lookups/external-lookups.handlers.js",
+          "cassa-frontend/backend/modules/external-lookups/external-lookups.routes.js",
+          "cassa-frontend/backend/modules/external-lookups/index.js"
+        ]
+      },
+      {
+        "name": "integration",
+        "fileCount": 9,
+        "hasRoutes": true,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/integration/index.js",
+          "cassa-frontend/backend/modules/integration/integration.routes.js",
+          "cassa-frontend/backend/modules/integration/order-line-variants.domain.js",
+          "cassa-frontend/backend/modules/integration/order-lookup.domain.js",
+          "cassa-frontend/backend/modules/integration/rooms.domain.js",
+          "cassa-frontend/backend/modules/integration/station-pause-transfer.js",
+          "cassa-frontend/backend/modules/integration/station-states.domain.js",
+          "cassa-frontend/backend/modules/integration/stations.domain.js",
+          "cassa-frontend/backend/modules/integration/table-groups.domain.js"
+        ]
+      },
+      {
+        "name": "menu",
+        "fileCount": 6,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/menu/index.js",
+          "cassa-frontend/backend/modules/menu/menu-configuration.js",
+          "cassa-frontend/backend/modules/menu/menu-routing.domain.js",
+          "cassa-frontend/backend/modules/menu/menu.domain.js",
+          "cassa-frontend/backend/modules/menu/menu.handlers.js",
+          "cassa-frontend/backend/modules/menu/menu.routes.js"
+        ]
+      },
+      {
+        "name": "menu-settings",
+        "fileCount": 2,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": true,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/menu-settings/index.js",
+          "cassa-frontend/backend/modules/menu-settings/menu-settings.repository.js"
+        ]
+      },
+      {
+        "name": "mobile-battery",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/mobile-battery/index.js",
+          "cassa-frontend/backend/modules/mobile-battery/mobile-battery.handlers.js",
+          "cassa-frontend/backend/modules/mobile-battery/mobile-battery.routes.js"
+        ]
+      },
+      {
+        "name": "notifications",
+        "fileCount": 6,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/notifications/notification-ack-policy.js",
+          "cassa-frontend/backend/modules/notifications/notification-priority.js",
+          "cassa-frontend/backend/modules/notifications/notification-records.js",
+          "cassa-frontend/backend/modules/notifications/notification-targeting.js",
+          "cassa-frontend/backend/modules/notifications/waiter-pauses.js",
+          "cassa-frontend/backend/modules/notifications/waiter-routing.js"
+        ]
+      },
+      {
+        "name": "orders",
+        "fileCount": 8,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": true,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/orders/order-correction-print.js",
+          "cassa-frontend/backend/modules/orders/order-line-snapshots.js",
+          "cassa-frontend/backend/modules/orders/order-lines.js",
+          "cassa-frontend/backend/modules/orders/order-preparation-queue.js",
+          "cassa-frontend/backend/modules/orders/order-print-labels.js",
+          "cassa-frontend/backend/modules/orders/order-progress.js",
+          "cassa-frontend/backend/modules/orders/order-state-machine.js",
+          "cassa-frontend/backend/modules/orders/order-timestamps.js"
+        ]
+      },
+      {
+        "name": "payments",
+        "fileCount": 5,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/payments/fiscal-receipts.domain.js",
+          "cassa-frontend/backend/modules/payments/payment-money.domain.js",
+          "cassa-frontend/backend/modules/payments/payment-order-refs.domain.js",
+          "cassa-frontend/backend/modules/payments/payment-print-format.domain.js",
+          "cassa-frontend/backend/modules/payments/payment-splits.js"
+        ]
+      },
+      {
+        "name": "payments-provider",
+        "fileCount": 3,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": true,
+        "hasStateMachine": true,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/payments-provider/index.js",
+          "cassa-frontend/backend/modules/payments-provider/payment-provider-state-machine.js",
+          "cassa-frontend/backend/modules/payments-provider/payment-provider-transactions.repository.js"
+        ]
+      },
+      {
+        "name": "pos-rooms",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/pos-rooms/index.js",
+          "cassa-frontend/backend/modules/pos-rooms/pos-rooms.handlers.js",
+          "cassa-frontend/backend/modules/pos-rooms/pos-rooms.routes.js"
+        ]
+      },
+      {
+        "name": "postazione-actions",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/postazione-actions/index.js",
+          "cassa-frontend/backend/modules/postazione-actions/postazione-actions.handlers.js",
+          "cassa-frontend/backend/modules/postazione-actions/postazione-actions.routes.js"
+        ]
+      },
+      {
+        "name": "price-lists",
+        "fileCount": 3,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/price-lists/index.js",
+          "cassa-frontend/backend/modules/price-lists/price-lists.domain.js",
+          "cassa-frontend/backend/modules/price-lists/README.md"
+        ]
+      },
+      {
+        "name": "radio",
+        "fileCount": 6,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/radio/index.js",
+          "cassa-frontend/backend/modules/radio/radio-hub.js",
+          "cassa-frontend/backend/modules/radio/radio-protocol.js",
+          "cassa-frontend/backend/modules/radio/radio.domain.js",
+          "cassa-frontend/backend/modules/radio/radio.handlers.js",
+          "cassa-frontend/backend/modules/radio/radio.routes.js"
+        ]
+      },
+      {
+        "name": "reports",
+        "fileCount": 5,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/reports/handheld-session-report.js",
+          "cassa-frontend/backend/modules/reports/index.js",
+          "cassa-frontend/backend/modules/reports/reports.handlers.js",
+          "cassa-frontend/backend/modules/reports/reports.routes.js",
+          "cassa-frontend/backend/modules/reports/settlement-ledger.js"
+        ]
+      },
+      {
+        "name": "reservations",
+        "fileCount": 4,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/reservations/index.js",
+          "cassa-frontend/backend/modules/reservations/reservations.domain.js",
+          "cassa-frontend/backend/modules/reservations/reservations.handlers.js",
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ]
+      },
+      {
+        "name": "sales-sessions",
+        "fileCount": 6,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": true,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/sales-sessions/index.js",
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.domain.js",
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.handlers.js",
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.lifecycle.js",
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.repository.js",
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.routes.js"
+        ]
+      },
+      {
+        "name": "settings",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/settings/index.js",
+          "cassa-frontend/backend/modules/settings/settings.handlers.js",
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ]
+      },
+      {
+        "name": "status",
+        "fileCount": 3,
+        "hasRoutes": true,
+        "hasHandlers": true,
+        "hasDomain": false,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/status/index.js",
+          "cassa-frontend/backend/modules/status/status.handlers.js",
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ]
+      },
+      {
+        "name": "table-room-move",
+        "fileCount": 2,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/table-room-move/index.js",
+          "cassa-frontend/backend/modules/table-room-move/table-room-move.domain.js"
+        ]
+      },
+      {
+        "name": "tables",
+        "fileCount": 2,
+        "hasRoutes": false,
+        "hasHandlers": false,
+        "hasDomain": true,
+        "hasService": false,
+        "hasRepository": false,
+        "hasStateMachine": false,
+        "hasGateway": false,
+        "files": [
+          "cassa-frontend/backend/modules/tables/index.js",
+          "cassa-frontend/backend/modules/tables/table-work-lock.domain.js"
+        ]
+      }
+    ]
+  },
+  "routes": {
+    "summary": {
+      "totalRoutes": 173,
+      "handlerKeys": 168,
+      "byMethod": {
+        "GET": 33,
+        "POST": 139,
+        "PUT": 1
+      },
+      "byPolicy": {
+        "public": 24,
+        "admin": 3,
+        "authenticated": 90,
+        "permission:manage_menu": 4,
+        "permission:manage_users": 3,
+        "debug:manage_users": 4,
+        "permission:open_drawer": 1,
+        "permission:print_orders": 1,
+        "permission:manage_tables": 2,
+        "permission:approve_room_change": 7,
+        "permission:override_order_price": 1,
+        "permission:create_bar_replacement": 2,
+        "permission:manage_reservations": 6,
+        "permission:manage_settings": 11,
+        "permission:collect_payments": 5,
+        "permission:fiscal_operations": 1,
+        "permission:manage_smart_customers": 5,
+        "service:smart-card": 1,
+        "permission:manage_sale_sessions": 2
+      },
+      "byMutation": {
+        "mutative": 125,
+        "readOnly": 48
+      },
+      "publicMutations": 6,
+      "nonGetReadOnly": 15,
+      "directRootRegistryRoutes": 27
+    },
+    "routes": [
+      {
+        "method": "GET",
+        "path": "/api/health",
+        "handlerKey": "health",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/settings/order-workflow",
+        "handlerKey": "settings.orderWorkflow",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/settings/payment-methods",
+        "handlerKey": "settings.paymentMethods",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/settings/payment-terminals",
+        "handlerKey": "settings.paymentTerminals",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/monitor/overview",
+        "handlerKey": "monitor.overview",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/monitor/control",
+        "handlerKey": "monitor.control",
+        "mutation": true,
+        "policy": "admin",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/status/status.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "handlerKey": "auth.login",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 8192
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/logout",
+        "handlerKey": "auth.logout",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/session/status",
+        "handlerKey": "auth.sessionStatus",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/change-pin",
+        "handlerKey": "auth.changePin",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/verifica",
+        "handlerKey": "vat.verify",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/external-lookups/external-lookups.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/ip-coords",
+        "handlerKey": "ip.coords",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/external-lookups/external-lookups.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/city-search",
+        "handlerKey": "city.search",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/external-lookups/external-lookups.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/mobile/battery",
+        "handlerKey": "mobile.battery",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/mobile-battery/mobile-battery.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/mobile/battery/events",
+        "handlerKey": "mobile.batteryEvents",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/mobile-battery/mobile-battery.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/mobile-devices/status",
+        "handlerKey": "mobile.batteryDevices",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/mobile-battery/mobile-battery.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/menu/catalog",
+        "handlerKey": "menu.catalog",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/menu/menu.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/menu",
+        "handlerKey": "settings.menu",
+        "mutation": true,
+        "policy": "permission:manage_menu",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/menu/menu.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/menu/suggestions",
+        "handlerKey": "settings.menuSuggestions",
+        "mutation": false,
+        "policy": "permission:manage_menu",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/menu/menu.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/flags",
+        "handlerKey": "postazione.flags",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/postazione-actions/postazione-actions.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/actions",
+        "handlerKey": "postazione.actions",
+        "mutation": true,
+        "policy": "permission:manage_menu",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/postazione-actions/postazione-actions.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/users",
+        "handlerKey": "users.list",
+        "mutation": true,
+        "policy": "permission:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/users/save",
+        "handlerKey": "users.save",
+        "mutation": true,
+        "policy": "permission:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/app-state",
+        "handlerKey": "appState.get",
+        "mutation": false,
+        "policy": "admin",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/app-state/sync",
+        "handlerKey": "appState.sync",
+        "mutation": true,
+        "policy": "admin",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/maintenance/app-state/reset",
+        "handlerKey": "appState.reset",
+        "mutation": true,
+        "policy": "debug:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/app-state/reset",
+        "handlerKey": "appState.reset",
+        "mutation": true,
+        "policy": "debug:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/mock-db",
+        "handlerKey": "appState.get",
+        "mutation": false,
+        "policy": "debug:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mock-db/reset",
+        "handlerKey": "appState.reset",
+        "mutation": true,
+        "policy": "debug:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/app-state/app-state.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/menu",
+        "handlerKey": "integration.menu",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/menu/top-sold",
+        "handlerKey": "integration.menuTopSold",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/menu",
+        "handlerKey": "integration.menu",
+        "mutation": true,
+        "policy": "permission:manage_menu",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/drawer/open",
+        "handlerKey": "integration.drawerOpen",
+        "mutation": true,
+        "policy": "permission:open_drawer",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/print",
+        "handlerKey": "integration.print",
+        "mutation": true,
+        "policy": "permission:print_orders",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/waiters",
+        "handlerKey": "integration.waiters",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mobile/waiter-pause/status",
+        "handlerKey": "mobile.waiterPauseStatus",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mobile/waiter-pause/start",
+        "handlerKey": "mobile.waiterPauseStart",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mobile/waiter-pause/stop",
+        "handlerKey": "mobile.waiterPauseStop",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/waiter-pause/defer-call",
+        "handlerKey": "integration.waiterPauseDeferCall",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/layout",
+        "handlerKey": "integration.layout",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/table-groups",
+        "handlerKey": "integration.tableGroups",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/table-groups/save",
+        "handlerKey": "integration.tableGroupsSave",
+        "mutation": true,
+        "policy": "permission:manage_tables",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/stations/active",
+        "handlerKey": "integration.stationsActive",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/stations/state",
+        "handlerKey": "integration.stationsState",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/stations/state",
+        "handlerKey": "integration.stationsStateUpsert",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/sync",
+        "handlerKey": "integration.tableSync",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/move",
+        "handlerKey": "integration.tableMove",
+        "mutation": true,
+        "policy": "permission:manage_tables",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/room-move/request",
+        "handlerKey": "integration.tableRoomMoveRequest",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/room-move/status",
+        "handlerKey": "integration.tableRoomMoveStatus",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/room-move/pending",
+        "handlerKey": "integration.tableRoomMovePending",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/layout/table/room-move/resolve",
+        "handlerKey": "integration.tableRoomMoveResolve",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/create",
+        "handlerKey": "integration.orderCreate",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/orders",
+        "handlerKey": "integration.orders",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/sync",
+        "handlerKey": "integration.orderSync",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/line/split",
+        "handlerKey": "integration.orderLineSplit",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/line/price-override",
+        "handlerKey": "integration.orderLinePriceOverride",
+        "mutation": true,
+        "policy": "permission:override_order_price",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/correct",
+        "handlerKey": "integration.orderCorrect",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/cancel",
+        "handlerKey": "integration.orderCancel",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/orders/correct/pending",
+        "handlerKey": "integration.orderCorrectPending",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/correct/resolve",
+        "handlerKey": "integration.orderCorrectResolve",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/comp",
+        "handlerKey": "integration.orderComp",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/storno",
+        "handlerKey": "integration.orderStorno",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/orders/replacement/bar-charge",
+        "handlerKey": "integration.barChargeReplacement",
+        "mutation": true,
+        "policy": "permission:create_bar_replacement",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/replacement/bar-charge",
+        "handlerKey": "integration.barChargeReplacement",
+        "mutation": true,
+        "policy": "permission:create_bar_replacement",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/transfer/request",
+        "handlerKey": "integration.orderTransferRequest",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/transfer/resolve",
+        "handlerKey": "integration.orderTransferResolve",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/orders/transfer/force",
+        "handlerKey": "integration.orderTransferForce",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/notifications/publish",
+        "handlerKey": "integration.notificationPublish",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/notifications/pull",
+        "handlerKey": "integration.notificationsPull",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/integration/notifications/stream",
+        "handlerKey": "integration.notificationsStream",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/integration/notifications/ack",
+        "handlerKey": "integration.notificationAck",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/integration/integration.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/rooms",
+        "handlerKey": "pos.rooms",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/pos-rooms/pos-rooms.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/request",
+        "handlerKey": "pos.roomChangeRequest",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/approve",
+        "handlerKey": "pos.roomChangeApprove",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/cancel",
+        "handlerKey": "pos.roomChangeCancel",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/public/reservations/list",
+        "handlerKey": "pos.publicReservationsList",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": 8192
+      },
+      {
+        "method": "POST",
+        "path": "/api/public/reservations/availability",
+        "handlerKey": "pos.publicReservationsAvailability",
+        "mutation": false,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/public/reservations/create",
+        "handlerKey": "pos.publicReservationsCreate",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/list",
+        "handlerKey": "pos.reservationsList",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/create",
+        "handlerKey": "pos.reservationsCreate",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/lock/acquire",
+        "handlerKey": "pos.reservationsLockAcquire",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/lock/release",
+        "handlerKey": "pos.reservationsLockRelease",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/update",
+        "handlerKey": "pos.reservationsUpdate",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/status",
+        "handlerKey": "pos.reservationsStatus",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/delete",
+        "handlerKey": "pos.reservationsDelete",
+        "mutation": true,
+        "policy": "permission:manage_reservations",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/availability",
+        "handlerKey": "pos.reservationsAvailability",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/reservations/lock/state",
+        "handlerKey": "pos.reservationsLockState",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reservations/reservations.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/configuration/snapshot",
+        "handlerKey": "settings.configurationSnapshot",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos",
+        "handlerKey": "settings.pos",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/areas",
+        "handlerKey": "settings.posAreas",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/areas/save",
+        "handlerKey": "settings.savePosAreas",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/print-preferences/save",
+        "handlerKey": "settings.savePrintPreferences",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/general/save",
+        "handlerKey": "settings.saveGeneral",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/payment-methods",
+        "handlerKey": "settings.savePaymentMethods",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/user/payment-preferences",
+        "handlerKey": "settings.userPaymentPreferences",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/user/payment-preferences/save",
+        "handlerKey": "settings.saveUserPaymentPreferences",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/mobile-devices/save",
+        "handlerKey": "settings.saveMobileDevices",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/mobile-devices/ring",
+        "handlerKey": "settings.ringMobileDevice",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/settings/settings.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/settings",
+        "handlerKey": "automaticCash.settings",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "PUT",
+        "path": "/api/automatic-cash/settings",
+        "handlerKey": "automaticCash.saveSettings",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/config-sets",
+        "handlerKey": "automaticCash.uploadConfigSet",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 524288
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/config-sets/default-100",
+        "handlerKey": "automaticCash.uploadDefaultConfigSet",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/reserve-configs",
+        "handlerKey": "automaticCash.uploadReserveConfig",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 524288
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/status",
+        "handlerKey": "automaticCash.status",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/gateway/state",
+        "handlerKey": "automaticCash.gatewayState",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/gateway/restart",
+        "handlerKey": "automaticCash.gatewayRestart",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/gateway/reset",
+        "handlerKey": "automaticCash.gatewayReset",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/cash-float/preflight",
+        "handlerKey": "automaticCash.cashFloatPreflight",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/cash-float/active",
+        "handlerKey": "automaticCash.activeCashFloatWorkflow",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/cash-float/generate",
+        "handlerKey": "automaticCash.generateCashFloat",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/cash-float/confirm-removed",
+        "handlerKey": "automaticCash.confirmCashFloatRemoved",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/cash-float/ticket/printed",
+        "handlerKey": "automaticCash.cashFloatTicketPrinted",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/cash-float/confirm-ticket-in-pouch",
+        "handlerKey": "automaticCash.confirmCashFloatTicketInPouch",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/cash-float/load-from-qr",
+        "handlerKey": "automaticCash.loadCashFloatFromQr",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/settlements",
+        "handlerKey": "automaticCash.listSettlementRecords",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/settlements/latest",
+        "handlerKey": "automaticCash.latestSettlementRecord",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/settlements",
+        "handlerKey": "automaticCash.saveSettlementRecord",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 98304
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/deposit/start",
+        "handlerKey": "automaticCash.startDeposit",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/deposit/close",
+        "handlerKey": "automaticCash.closeDeposit",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/deposit/cancel",
+        "handlerKey": "automaticCash.cancelDeposit",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/exchange/active",
+        "handlerKey": "automaticCash.activeCashExchange",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/payment/start",
+        "handlerKey": "automaticCash.startCashPayment",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/payment/:operationId/state",
+        "handlerKey": "automaticCash.cashPaymentState",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/payment/:operationId/complete",
+        "handlerKey": "automaticCash.completeCashPayment",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/payment/:operationId/cancel",
+        "handlerKey": "automaticCash.cancelCashPayment",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/exchange/start",
+        "handlerKey": "automaticCash.startCashExchange",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "GET",
+        "path": "/api/automatic-cash/exchange/:exchangeId/state",
+        "handlerKey": "automaticCash.cashExchangeState",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/exchange/:exchangeId/cancel",
+        "handlerKey": "automaticCash.cancelCashExchange",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/exchange/:exchangeId/confirm-deposit",
+        "handlerKey": "automaticCash.confirmCashExchangeDeposit",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/exchange/:exchangeId/execute",
+        "handlerKey": "automaticCash.executeCashExchange",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/automatic-cash/exchange/:exchangeId/confirm-removed",
+        "handlerKey": "automaticCash.confirmCashExchangeRemoved",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/automatic-cash/automatic-cash.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/campaigns/list",
+        "handlerKey": "commercialBenefits.listCampaigns",
+        "mutation": false,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/campaigns",
+        "handlerKey": "commercialBenefits.createCampaign",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 131072
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/campaigns/update",
+        "handlerKey": "commercialBenefits.updateCampaign",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 131072
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/coupons/update",
+        "handlerKey": "commercialBenefits.updateCoupon",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/print",
+        "handlerKey": "commercialBenefits.printCoupon",
+        "mutation": true,
+        "policy": "permission:manage_settings",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/validate",
+        "handlerKey": "commercialBenefits.validate",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 65536
+      },
+      {
+        "method": "POST",
+        "path": "/api/commercial-benefits/release",
+        "handlerKey": "commercialBenefits.release",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/commercial-benefits/commercial-benefits.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 16384
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/radio",
+        "handlerKey": "settings.radio",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/radio/radio.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/radio/save",
+        "handlerKey": "settings.saveRadio",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/radio/radio.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mobile/radio/config",
+        "handlerKey": "mobile.radioConfig",
+        "mutation": false,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/radio/radio.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": true,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/mobile/radio/config/save",
+        "handlerKey": "mobile.saveRadioConfig",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/radio/radio.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/order-workflow",
+        "handlerKey": "settings.saveOrderWorkflow",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/assign-bill",
+        "handlerKey": "settings.assignBill",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/acquire",
+        "handlerKey": "tables.lockAcquire",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/heartbeat",
+        "handlerKey": "tables.lockHeartbeat",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/release",
+        "handlerKey": "tables.lockRelease",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/force-release",
+        "handlerKey": "tables.lockForceRelease",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/table",
+        "handlerKey": "payments.table",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/ticket",
+        "handlerKey": "payments.ticket",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/free-split",
+        "handlerKey": "payments.freeSplit",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/counter/orders/collect",
+        "handlerKey": "payments.counterCollect",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/counter/counter.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": 98304
+      },
+      {
+        "method": "POST",
+        "path": "/api/fiscal/command",
+        "handlerKey": "fiscal.command",
+        "mutation": true,
+        "policy": "permission:fiscal_operations",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers",
+        "handlerKey": "smart.customers",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/upsert",
+        "handlerKey": "smart.customerUpsert",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/delete",
+        "handlerKey": "smart.customerDelete",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/card/read",
+        "handlerKey": "smart.cardRead",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/cash/beach-entry",
+        "handlerKey": "smart.beachEntry",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/card/detected",
+        "handlerKey": "smart.cardDetected",
+        "mutation": true,
+        "policy": "service:smart-card",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/recharge",
+        "handlerKey": "smart.customerRecharge",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/non-fiscal",
+        "handlerKey": "smart.nonFiscal",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/audit/events",
+        "handlerKey": "audit.events",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/audit/events/delete",
+        "handlerKey": "audit.eventDelete",
+        "mutation": true,
+        "policy": "permission:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/sales",
+        "handlerKey": "reports.sales",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/handheld-session",
+        "handlerKey": "reports.handheldSession",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/handheld-session/cash/open",
+        "handlerKey": "reports.handheldCashSessionOpen",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/handheld-session/cash/close",
+        "handlerKey": "reports.handheldCashSessionClose",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/handheld-session/print",
+        "handlerKey": "reports.handheldSessionPrint",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/payment-movement/reprint",
+        "handlerKey": "reports.paymentMovementReprint",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/reports/non-fiscalized",
+        "handlerKey": "reports.nonFiscalized",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/reports/reports.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/sales/sessions/status",
+        "handlerKey": "sales.sessionStatus",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/sales/sessions/open",
+        "handlerKey": "sales.sessionOpen",
+        "mutation": true,
+        "policy": "permission:manage_sale_sessions",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/sales/sessions/close",
+        "handlerKey": "sales.sessionClose",
+        "mutation": true,
+        "policy": "permission:manage_sale_sessions",
+        "sourceFiles": [
+          "cassa-frontend/backend/modules/sales-sessions/sales-sessions.routes.js"
+        ],
+        "directRootRegistry": false,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      }
+    ],
+    "directRootRegistryRoutes": [
+      {
+        "method": "POST",
+        "path": "/api/auth/login",
+        "handlerKey": "auth.login",
+        "mutation": true,
+        "policy": "public",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": true,
+        "nonGetReadOnly": false,
+        "maxBodySize": 8192
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/logout",
+        "handlerKey": "auth.logout",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/session/status",
+        "handlerKey": "auth.sessionStatus",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/auth/change-pin",
+        "handlerKey": "auth.changePin",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/users",
+        "handlerKey": "users.list",
+        "mutation": true,
+        "policy": "permission:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/users/save",
+        "handlerKey": "users.save",
+        "mutation": true,
+        "policy": "permission:manage_users",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/request",
+        "handlerKey": "pos.roomChangeRequest",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/approve",
+        "handlerKey": "pos.roomChangeApprove",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/pos/room-change/cancel",
+        "handlerKey": "pos.roomChangeCancel",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/order-workflow",
+        "handlerKey": "settings.saveOrderWorkflow",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/settings/pos/assign-bill",
+        "handlerKey": "settings.assignBill",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/acquire",
+        "handlerKey": "tables.lockAcquire",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/heartbeat",
+        "handlerKey": "tables.lockHeartbeat",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/release",
+        "handlerKey": "tables.lockRelease",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/tables/lock/force-release",
+        "handlerKey": "tables.lockForceRelease",
+        "mutation": true,
+        "policy": "permission:approve_room_change",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/table",
+        "handlerKey": "payments.table",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/ticket",
+        "handlerKey": "payments.ticket",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/payments/free-split",
+        "handlerKey": "payments.freeSplit",
+        "mutation": true,
+        "policy": "permission:collect_payments",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/fiscal/command",
+        "handlerKey": "fiscal.command",
+        "mutation": true,
+        "policy": "permission:fiscal_operations",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers",
+        "handlerKey": "smart.customers",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/upsert",
+        "handlerKey": "smart.customerUpsert",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/delete",
+        "handlerKey": "smart.customerDelete",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/card/read",
+        "handlerKey": "smart.cardRead",
+        "mutation": true,
+        "policy": "authenticated",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/cash/beach-entry",
+        "handlerKey": "smart.beachEntry",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/card/detected",
+        "handlerKey": "smart.cardDetected",
+        "mutation": true,
+        "policy": "service:smart-card",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/customers/recharge",
+        "handlerKey": "smart.customerRecharge",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/smart/non-fiscal",
+        "handlerKey": "smart.nonFiscal",
+        "mutation": true,
+        "policy": "permission:manage_smart_customers",
+        "sourceFiles": [
+          "cassa-frontend/backend/routes/index.js"
+        ],
+        "directRootRegistry": true,
+        "publicMutation": false,
+        "nonGetReadOnly": false,
+        "maxBodySize": null
+      }
+    ]
+  },
+  "db": {
+    "relationalDomains": [
+      "auditEvents",
+      "users",
+      "sessions",
+      "saleSessions",
+      "payments",
+      "menuSettings",
+      "orders",
+      "tablesBills"
+    ],
+    "relationalReadPrimaryDomains": [
+      "users",
+      "sessions",
+      "menuSettings",
+      "saleSessions"
+    ],
+    "relationalMigrations": [
+      {
+        "version": "001",
+        "name": "core",
+        "fileName": "001_core.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/001_core.sql",
+        "tables": [
+          "relational_sync_state",
+          "schema_migrations"
+        ]
+      },
+      {
+        "version": "002",
+        "name": "audit_events",
+        "fileName": "002_audit_events.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/002_audit_events.sql",
+        "tables": [
+          "audit_events"
+        ]
+      },
+      {
+        "version": "003",
+        "name": "users",
+        "fileName": "003_users.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/003_users.sql",
+        "tables": [
+          "user_authorized_rooms",
+          "user_enabled_rooms",
+          "user_payment_methods",
+          "user_permissions",
+          "users"
+        ]
+      },
+      {
+        "version": "004",
+        "name": "sessions",
+        "fileName": "004_sessions.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/004_sessions.sql",
+        "tables": [
+          "sessions"
+        ]
+      },
+      {
+        "version": "005",
+        "name": "sale_sessions",
+        "fileName": "005_sale_sessions.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/005_sale_sessions.sql",
+        "tables": [
+          "sale_sessions",
+          "solar_closures"
+        ]
+      },
+      {
+        "version": "006",
+        "name": "payments",
+        "fileName": "006_payments.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/006_payments.sql",
+        "tables": [
+          "fiscal_receipts",
+          "payment_containers",
+          "payment_parts",
+          "payment_transactions"
+        ]
+      },
+      {
+        "version": "007",
+        "name": "menu_settings",
+        "fileName": "007_menu_settings.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/007_menu_settings.sql",
+        "tables": [
+          "menu_categories",
+          "menu_item_variants",
+          "menu_items",
+          "payment_methods",
+          "pos_rooms",
+          "pos_tables"
+        ]
+      },
+      {
+        "version": "008",
+        "name": "orders",
+        "fileName": "008_orders.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/008_orders.sql",
+        "tables": [
+          "order_events",
+          "order_line_variants",
+          "order_lines",
+          "orders"
+        ]
+      },
+      {
+        "version": "009",
+        "name": "tables_bills",
+        "fileName": "009_tables_bills.sql",
+        "file": "cassa-frontend/backend/db/relational/migrations/009_tables_bills.sql",
+        "tables": [
+          "table_bills",
+          "table_locks",
+          "table_states"
+        ]
+      }
+    ],
+    "relationalRepos": [
+      "cassa-frontend/backend/db/relational/audit-events.repo.js",
+      "cassa-frontend/backend/db/relational/menu-settings.repo.js",
+      "cassa-frontend/backend/db/relational/orders.repo.js",
+      "cassa-frontend/backend/db/relational/payments.repo.js",
+      "cassa-frontend/backend/db/relational/sale-sessions.repo.js",
+      "cassa-frontend/backend/db/relational/sessions.repo.js",
+      "cassa-frontend/backend/db/relational/tables-bills.repo.js",
+      "cassa-frontend/backend/db/relational/users.repo.js"
+    ],
+    "splitRepos": [
+      "cassa-frontend/backend/db/app-state/app-state-json.repository.js",
+      "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+      "cassa-frontend/backend/db/app-state/app-state-sqlite.repository.js",
+      "cassa-frontend/backend/db/app-state/app-state.repository.js",
+      "cassa-frontend/backend/db/app-state/audit-events-split.repository.js",
+      "cassa-frontend/backend/db/app-state/device-status-split.repository.js",
+      "cassa-frontend/backend/db/app-state/mysql-audit-events-split.repository.js",
+      "cassa-frontend/backend/db/app-state/mysql-domains-split.repository.js",
+      "cassa-frontend/backend/db/app-state/mysql-sessions-split.repository.js",
+      "cassa-frontend/backend/db/app-state/mysql-table-locks.repository.js",
+      "cassa-frontend/backend/db/app-state/orders-split.repository.js",
+      "cassa-frontend/backend/db/app-state/payments-fiscal-split.repository.js",
+      "cassa-frontend/backend/db/app-state/print-spool-jobs-split.repository.js",
+      "cassa-frontend/backend/db/app-state/table-locks-split.repository.js",
+      "cassa-frontend/backend/db/app-state/table-state-split.repository.js"
+    ],
+    "mysqlAppStateDomainDefaults": [
+      "cashTxDenoms",
+      "commercialBenefitApplications",
+      "commercialBenefitCampaigns",
+      "commercialBenefitCoupons",
+      "commercialBenefitRedemptions",
+      "fiscalEvents",
+      "fiscalReceipts",
+      "handheldCashSessions",
+      "integration",
+      "maintenance",
+      "menuItems",
+      "paymentContainers",
+      "paymentParts",
+      "paymentProviderTransactions",
+      "payments",
+      "paymentTransactions",
+      "posReservationLocks",
+      "posReservations",
+      "posReservationStates",
+      "posRoomChangeRequests",
+      "posSettings",
+      "posTableRoomMoveRequests",
+      "printSpoolJobs",
+      "saleSessions",
+      "saleSessionTemplates",
+      "smartCustomers",
+      "smartNonFiscal",
+      "solarClosures",
+      "tableLocks",
+      "userGroups",
+      "users"
+    ],
+    "splitModeEnvVars": [
+      "BACKEND_APP_STATE_SPLIT_AUDIT_EVENTS",
+      "BACKEND_APP_STATE_SPLIT_DB_PATH",
+      "BACKEND_APP_STATE_SPLIT_DEVICE_STATUS",
+      "BACKEND_APP_STATE_SPLIT_ORDERS",
+      "BACKEND_APP_STATE_SPLIT_PAYMENTS_FISCAL",
+      "BACKEND_APP_STATE_SPLIT_PRINT_SPOOL_JOBS",
+      "BACKEND_APP_STATE_SPLIT_TABLE_LOCKS",
+      "BACKEND_APP_STATE_SPLIT_TABLE_STATES",
+      "BACKEND_MYSQL_APP_STATE_DOMAINS",
+      "BACKEND_MYSQL_APP_STATE_DOMAINS_TABLE",
+      "BACKEND_MYSQL_APP_STATE_TABLE",
+      "BACKEND_MYSQL_SPLIT_APP_STATE_DOMAINS",
+      "BACKEND_MYSQL_SPLIT_AUDIT_EVENTS",
+      "BACKEND_MYSQL_SPLIT_SESSIONS",
+      "BACKEND_MYSQL_TABLE_LOCKS",
+      "BACKEND_MYSQL_TABLE_LOCKS_TABLE",
+      "BACKEND_MYSQL_TABLE_LOCKS_VERBOSE_AUDIT"
+    ]
+  },
+  "configSurface": {
+    "envVars": [
+      {
+        "name": "ALLOW_AUTH_QUERY_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ALLOW_SERVICE_TOKEN_QUERY_PARAM",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "APP_ENV",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "AUDIT_MAX_EVENTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTO_PRINT_ENQUEUE_DELAY_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_BASE_URL",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_ENABLED",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_PASSWORD",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_TIMEOUT_MS",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_GATEWAY_USERNAME",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_SIMULATOR_CONFIG_PATH",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "AUTOMATIC_CASH_SIMULATOR_SEED",
+        "category": "automatic-cash",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_EMPTY_DB_INIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_MYSQL_IMPORT_JSON",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ALLOW_SQLITE_IMPORT_JSON",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_AUDIT_EVENTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_DB_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_DEVICE_STATUS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_ORDERS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_PAYMENTS_FISCAL",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_PRINT_SPOOL_JOBS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_TABLE_LOCKS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_APP_STATE_SPLIT_TABLE_STATES",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_IMPORT_JSON_PATH",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_MODE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_DB_PATH",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_HOST",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_DOMAINS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_DOMAINS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_APP_STATE_TABLE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_AUDIT_EVENTS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_CONNECTION_LIMIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_DATABASE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_HOST",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_IMPORT_JSON_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_PASSWORD",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_PORT",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SESSIONS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_APP_STATE_DOMAINS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_AUDIT_EVENTS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_SPLIT_SESSIONS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS_TABLE",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_TABLE_LOCKS_VERBOSE_AUDIT",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_URL",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_MYSQL_USER",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BACKEND_ORIGIN",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "BACKEND_PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "BACKEND_TOKEN_SECRET",
+        "category": "auth-session",
+        "count": 4,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/db/relational/sessions.repo.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_ORIGIN",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "BATTERY_PROXY_CACHE_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_PROXY_EVENT_POLL_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_SERVICE_TIMEOUT_MS",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BATTERY_SERVICE_URL",
+        "category": "battery",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BELL_CASSA_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "BELL_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "CARD_PAYMENT_MOCK_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "CARD_PAYMENT_PROVIDER",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "CITY_SEARCH_API_BASE_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "COMPANY_API_BASE_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "COMPANY_API_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "CORS_ALLOWED_ORIGINS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "DATABASE_URL",
+        "category": "network",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "DB_MUTATION_SLOW_RUN_MS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "DB_MUTATION_SLOW_WAIT_MS",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ENABLE_DEBUG_ENDPOINTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_DEMO_PRODUCTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_MAINTENANCE_ENDPOINTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "ENABLE_MOCK_MENU",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "EXTERNAL_FETCH_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "FISCAL_PROVIDER",
+        "category": "fiscal",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "FRONTEND_HOST",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS_CERT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_HTTPS_KEY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_LAN_HTTPS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_LAN_IP",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "FRONTEND_ROOT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "INTEGRATION_HOT_GET_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_LAYOUT_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MAX_ORDER_FULFILLMENT_HISTORY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MAX_STATION_STATES",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_MENU_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_NOTIFICATION_PULL_FAST_CACHE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_RECENT_BELL_CLAIM_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_SERVICE_TOKEN",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_DONE_HISTORY_LIMIT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_STATION_STALE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "INTEGRATION_WAITER_ACTIVE_WINDOW_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "IP_COORDS_FALLBACK_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "IP_COORDS_PRIMARY_URL",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "LOGIN_RATE_LIMIT_MAX_ATTEMPTS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "LOGIN_RATE_LIMIT_WINDOW_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MENU_PRICE_SCHEDULE_TIME_ZONE",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_HOST",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_PORT",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_URL",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "MYSQL_USER",
+        "category": "db",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "NODE_ENV",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/modules/price-lists/price-lists.domain.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_COMPACT_MYSQL",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_LINE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_ROUTE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_DETAILED_TICKET_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_AUDIT_SUMMARY_LINE_SAMPLE_MAX",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_READY_TARGET_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_BLOCKING_PRIORITY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_BURST",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_CONCURRENCY",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "ORDER_SYNC_FAST_LANE_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PORT",
+        "category": "network",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_BASE_URL",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_JOB_MAX_ATTEMPTS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_JOB_RETRY_DELAY_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_RECOVERY_RETRY_DELAY_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_REPRINT_ENDPOINT",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_API_TIMEOUT_MS",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_FISCAL_RETRY_CUTOFF_HOUR",
+        "category": "fiscal",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_RESERVATION_LOCK_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_ROOM_CHANGE_MAX_AGE_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POS_TABLE_ROOM_MOVE_APPROVAL_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "POSTAZIONE_STATION_SESSION_RECOVERY_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_CUPS_PRINTER",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_CUPS_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_MAX_JOBS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_PRINTER_PROBE_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_RETRY_DELAY_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_SPOOL_RETRY_MAX_ATTEMPTS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_TCP_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINT_WINDOWS_DEFAULT_TIMEOUT_MS",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "PRINTING_ENABLED",
+        "category": "printing",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "PROJECT_IMG_DIR",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "serve-frontends.mjs"
+        ]
+      },
+      {
+        "name": "SESSION_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SESSION_IDLE_TIMEOUT_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "SESSION_TTL_MS",
+        "category": "auth-session",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/core/config.js"
+        ]
+      },
+      {
+        "name": "SHOW_DEMO_STATIONS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_ALLOW_MOCK_FALLBACK",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_AUTO_DETECT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_DEVICE_HINT",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_PUSH_ALLOW_PRIVATE_NETWORK",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_PUSH_TOKEN",
+        "category": "auth-session",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_READ_TIMEOUT_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_READER_MODE",
+        "category": "other",
+        "count": 2,
+        "files": [
+          "cassa-frontend/backend/core/config.js",
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_SERIAL_BAUD",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SMART_CARD_SERIAL_PATH",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "SQLITE_DB_PATH",
+        "category": "db",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "STATION_STATE_FAST_PATH_ENABLED",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "TABLE_LOCK_HEARTBEAT_WRITE_MIN_INTERVAL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      },
+      {
+        "name": "TABLE_LOCK_TTL_MS",
+        "category": "other",
+        "count": 1,
+        "files": [
+          "cassa-frontend/backend/server.js"
+        ]
+      }
+    ],
+    "envByCategory": {
+      "network": 11,
+      "other": 64,
+      "auth-session": 10,
+      "printing": 11,
+      "fiscal": 9,
+      "db": 35,
+      "battery": 5,
+      "automatic-cash": 7
+    },
+    "hardcodedIps": [
+      {
+        "ip": "127.0.0.1",
+        "count": 12,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 38,
+            "text": "\"http://127.0.0.1:5280\","
+          },
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 41,
+            "text": "\"http://127.0.0.1:5182\","
+          },
+          {
+            "file": "cassa-frontend/backend/core/security.js",
+            "line": 12,
+            "text": "return normalized === \"127.0.0.1\" || normalized === \"::1\" || normalized === \"::ffff:127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/core/security.js",
+            "line": 12,
+            "text": "return normalized === \"127.0.0.1\" || normalized === \"::1\" || normalized === \"::ffff:127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/db/app-state/app-state-mysql.repository.js",
+            "line": 36,
+            "text": "\"127.0.0.1\";"
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 479,
+            "text": "process.env.BATTERY_SERVICE_URL ?? \"http://127.0.0.1:8765/battery\","
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 657,
+            "text": "process.env.BACKEND_MYSQL_HOST ?? process.env.MYSQL_HOST ?? \"127.0.0.1\","
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 658,
+            "text": ").trim() || \"127.0.0.1\";"
+          },
+          {
+            "file": "mobile-frontend/src/radio/radioWsClient.ts",
+            "line": 30,
+            "text": "return \"http://127.0.0.1\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 10,
+            "text": "const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN ?? \"http://127.0.0.1:5281\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 11,
+            "text": "const BATTERY_ORIGIN = process.env.BATTERY_ORIGIN ?? \"http://127.0.0.1:8765\";"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 3966,
+            "text": "state.settings.printers.push({ id: normalizeId(\"printer\"), name: \"Nuova stampante\", host: \"127.0.0.1\", port: 9100, purpose: \"generic\", model: \"generic_tcp\", active: true });"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.200",
+        "count": 6,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 438,
+            "text": "process.env.POS_FISCAL_API_BASE_URL ?? \"http://192.168.1.200:8765\","
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 873,
+            "text": "apiBaseUrl: String(device.apiBaseUrl || device.fiscalApiBaseUrl || \"http://192.168.1.200:8765\").replace(/\\/+$/, \"\"),"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2831,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2858,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4088,
+            "text": "if (type === \"rt\") source = index == null ? { id: normalizeId(\"rt\"), name: \"Nuovo RT\", type: \"api\", active: true, description: \"\", fiscalProvider: \"pos-fiscal-api\", apiBaseUrl: \"ht"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4144,
+            "text": "draft.apiBaseUrl = String(draft.apiBaseUrl || \"http://192.168.1.200:8765\").trim().replace(/\\/+$/, \"\");"
+          }
+        ]
+      },
+      {
+        "ip": "0.0.0.0",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 15,
+            "text": "export const HOST = process.env.BACKEND_HOST ?? \"0.0.0.0\";"
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 8,
+            "text": "const HOST = process.env.FRONTEND_HOST ?? \"0.0.0.0\";"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.36",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 598,
+            "text": "const PIZZA_IN_RIVA_PRECONTO_PRINTER_HOST = \"192.168.1.36\";"
+          },
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 2814,
+            "text": "name: \"Stampante Pizza in Riva 192.168.1.36\","
+          }
+        ]
+      },
+      {
+        "ip": "192.168.0.28",
+        "count": 1,
+        "refs": [
+          {
+            "file": "serve-frontends.mjs",
+            "line": 14,
+            "text": "const FRONTEND_LAN_IP = process.env.FRONTEND_LAN_IP ?? \"192.168.0.28\";"
+          }
+        ]
+      },
+      {
+        "ip": "192.168.1.166",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 39,
+            "text": "\"http://192.168.1.166:5280\","
+          }
+        ]
+      }
+    ],
+    "hardcodedUrls": [
+      {
+        "url": "http://192.168.1.200:8765",
+        "count": 6,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 438,
+            "text": "process.env.POS_FISCAL_API_BASE_URL ?? \"http://192.168.1.200:8765\","
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 873,
+            "text": "apiBaseUrl: String(device.apiBaseUrl || device.fiscalApiBaseUrl || \"http://192.168.1.200:8765\").replace(/\\/+$/, \"\"),"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2831,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 2858,
+            "text": "${modalField(\"apiBaseUrl\", draft.apiBaseUrl || \"http://192.168.1.200:8765\", \"Base URL API\")}"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4088,
+            "text": "if (type === \"rt\") source = index == null ? { id: normalizeId(\"rt\"), name: \"Nuovo RT\", type: \"api\", active: true, description: \"\", fiscalProvider: \"pos-fiscal-api\", apiBaseUrl: \"ht"
+          },
+          {
+            "file": "settings-frontend/dist/assets/settings-app.js",
+            "line": 4144,
+            "text": "draft.apiBaseUrl = String(draft.apiBaseUrl || \"http://192.168.1.200:8765\").trim().replace(/\\/+$/, \"\");"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:8765",
+        "count": 2,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 479,
+            "text": "process.env.BATTERY_SERVICE_URL ?? \"http://127.0.0.1:8765/battery\","
+          },
+          {
+            "file": "serve-frontends.mjs",
+            "line": 11,
+            "text": "const BATTERY_ORIGIN = process.env.BATTERY_ORIGIN ?? \"http://127.0.0.1:8765\";"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/radio/radioWsClient.ts",
+            "line": 30,
+            "text": "return \"http://127.0.0.1\";"
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5182",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 41,
+            "text": "\"http://127.0.0.1:5182\","
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 38,
+            "text": "\"http://127.0.0.1:5280\","
+          }
+        ]
+      },
+      {
+        "url": "http://127.0.0.1:5281",
+        "count": 1,
+        "refs": [
+          {
+            "file": "serve-frontends.mjs",
+            "line": 10,
+            "text": "const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN ?? \"http://127.0.0.1:5281\";"
+          }
+        ]
+      },
+      {
+        "url": "http://192.168.1.166:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 39,
+            "text": "\"http://192.168.1.166:5280\","
+          }
+        ]
+      },
+      {
+        "url": "http://localhost:5182",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 40,
+            "text": "\"http://localhost:5182\","
+          }
+        ]
+      },
+      {
+        "url": "http://localhost:5280",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/core/config.js",
+            "line": 37,
+            "text": "\"http://localhost:5280\","
+          }
+        ]
+      },
+      {
+        "url": "https://api.sunrise-sunset.org",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/pages/home/hooks/useThemeMode.ts",
+            "line": 85,
+            "text": "const res = await fetch(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&formatted=0`, {"
+          }
+        ]
+      },
+      {
+        "url": "https://api.vatcomply.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "mobile-frontend/src/api/invoice.ts",
+            "line": 22,
+            "text": "const response = await fetch(`https://api.vatcomply.com/vat?vat_number=IT${vatNumber}`, {"
+          }
+        ]
+      },
+      {
+        "url": "https://company.openapi.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 426,
+            "text": "process.env.COMPANY_API_BASE_URL ?? \"https://company.openapi.com\","
+          }
+        ]
+      },
+      {
+        "url": "https://geocoding-api.open-meteo.com",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 474,
+            "text": "\"https://geocoding-api.open-meteo.com/v1\","
+          }
+        ]
+      },
+      {
+        "url": "https://ipapi.co",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 470,
+            "text": "process.env.IP_COORDS_FALLBACK_URL ?? \"https://ipapi.co/json/\","
+          }
+        ]
+      },
+      {
+        "url": "https://ipwho.is",
+        "count": 1,
+        "refs": [
+          {
+            "file": "cassa-frontend/backend/server.js",
+            "line": 467,
+            "text": "process.env.IP_COORDS_PRIMARY_URL ?? \"https://ipwho.is/\","
+          }
+        ]
+      }
+    ]
+  },
+  "historicalDeviceSnapshot": {
+    "source": "cassa-frontend/backend/app-state.before-sync-possettings-20260628234340.json",
+    "note": "Snapshot storico, non prova di stato live corrente.",
+    "printers": [
+      {
+        "id": "printer_bar_1921681195_9100",
+        "name": "Stampante preconti e comande Bar 192.168.1.195",
+        "host": "192.168.1.195",
+        "port": 9100,
+        "purpose": "generic",
+        "active": true
+      },
+      {
+        "id": "printer_pizza_in_riva_192168136_9100",
+        "name": "Stampante Pizza in Riva 192.168.1.36",
+        "host": "192.168.1.36",
+        "port": 9100,
+        "purpose": "generic",
+        "active": true
+      }
+    ],
+    "fiscalDevices": [
+      {
+        "id": "rt_bar_api",
+        "name": "RT Bar API",
+        "provider": "pos-fiscal-api",
+        "apiBaseUrl": "http://192.168.1.200:8765",
+        "active": true
+      }
+    ],
+    "mobileDevicesCount": 3,
+    "mobileDeviceSamples": [
+      {
+        "id": "dev_1778865853378_2cjmc5cgyke",
+        "name": "Palmare condiviso",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      },
+      {
+        "id": "dev_1780309110686_ojgwswx72sg",
+        "name": "Palmare Giada",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      },
+      {
+        "id": "u_1778319633697_252626525",
+        "name": "Postazione Roberto",
+        "fiscalEnabled": true,
+        "electronicPaymentEnabled": true,
+        "cashPaymentEnabled": false
+      }
+    ],
+    "workstationsCount": 6,
+    "workstationSamples": [
+      {
+        "id": "workstation_bar_1",
+        "name": "BAR-1",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_pizza_in_riva",
+        "name": "Postazione Pizza in Riva",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_bar_2",
+        "name": "BAR-2",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_chiringuito_1",
+        "name": "CHIRINGUITO-1",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_chiringuito_2",
+        "name": "CHIRINGUITO-2",
+        "active": true,
+        "type": null
+      },
+      {
+        "id": "workstation_mobile",
+        "name": "MOBILE",
+        "active": true,
+        "type": null
+      }
+    ],
+    "automaticCash": {
+      "enabled": true,
+      "gatewayBaseUrl": null,
+      "mode": "random_file",
+      "hasConfigSet": true
+    }
+  },
+  "architectureDebt": [
+    {
+      "severity": "P1",
+      "area": "backend-monolith",
+      "title": "server.js ancora troppo grande",
+      "evidence": "38359 righe in cassa-frontend/backend/server.js.",
+      "recommendation": "Continuare estrazione domain/service/handler per pagamenti, ordini, fiscalita', stampa e integration."
+    },
+    {
+      "severity": "P1",
+      "area": "route-handlers",
+      "title": "Route critiche ancora dichiarate nel registry root",
+      "evidence": "19 route critiche dirette: pos.roomChangeRequest, pos.roomChangeApprove, pos.roomChangeCancel, tables.lockAcquire, tables.lockHeartbeat, tables.lockRelease, tables.lockForceRelease, payments.table, payments.ticket, payments.freeSplit, fiscal.command, smart.customers, ....",
+      "recommendation": "Spostare prima funzioni pure e service, poi handler e route modulari con contratti invariati."
+    },
+    {
+      "severity": "P1",
+      "area": "module-boundaries",
+      "title": "Moduli architetturali target mancanti",
+      "evidence": "Mancano ancora: print-spool, fiscal-pos, stations, realtime, observability, adapters.",
+      "recommendation": "Creare prima print-spool/fiscal-pos/realtime come moduli incrementali senza cambiare API."
+    },
+    {
+      "severity": "P1",
+      "area": "db-realtime",
+      "title": "event_outbox non presente nelle migrazioni relazionali",
+      "evidence": "Le migrazioni 001-009 non dichiarano una tabella event_outbox.",
+      "recommendation": "Introdurre outbox transazionale per notifiche, radio, battery, stampa e side effect asincroni."
+    },
+    {
+      "severity": "P1",
+      "area": "idempotency",
+      "title": "idempotency_keys non presente nelle migrazioni relazionali",
+      "evidence": "Le migrazioni 001-009 non dichiarano una tabella idempotency_keys.",
+      "recommendation": "Centralizzare idempotenza per pagamenti, ordini, fiscalita', cassa automatica e stampa."
+    },
+    {
+      "severity": "P2",
+      "area": "configuration",
+      "title": "IP operativi ancora presenti nel sorgente",
+      "evidence": "192.168.1.200 (6), 192.168.1.36 (2), 192.168.0.28 (1), 192.168.1.166 (1)",
+      "recommendation": "Spostare gli IP in DB/config effettiva e lasciare nel codice solo fallback di sviluppo dichiarati."
+    }
+  ],
+  "artifacts": {
+    "reportMarkdown": "docs/architecture/PHASE0_BASELINE_v4.1.0.md",
+    "fullJson": "docs/architecture/phase0-baseline-v4.1.0.json",
+    "routeMap": "docs/architecture/route-map-v4.1.0.json",
+    "dbMap": "docs/architecture/db-domain-map-v4.1.0.json",
+    "configSurface": "docs/architecture/config-surface-v4.1.0.json"
+  }
+}

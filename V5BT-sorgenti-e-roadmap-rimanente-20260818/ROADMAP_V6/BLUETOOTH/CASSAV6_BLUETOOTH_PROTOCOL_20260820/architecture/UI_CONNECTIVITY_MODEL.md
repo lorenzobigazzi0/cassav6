@@ -1,0 +1,14 @@
+# UI connectivity model
+
+Stati iniziali:
+
+```text
+PRIMARY_WIFI
+BLUETOOTH_DISCOVERING
+BLUETOOTH_DIRECT_SERVER
+BLUETOOTH_PEER_CONNECTED
+BLUETOOTH_DEGRADED
+BLUETOOTH_PERMISSION_REQUIRED
+```
+
+In B0-B11 il badge è solo diagnostico e feature-flagged.

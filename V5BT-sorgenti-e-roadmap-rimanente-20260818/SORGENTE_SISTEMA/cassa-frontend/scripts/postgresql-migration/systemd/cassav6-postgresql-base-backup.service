@@ -1,0 +1,23 @@
+[Unit]
+Description=CassaV6 PostgreSQL physical base backup
+Requires=postgresql@17-main.service
+After=postgresql@17-main.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/cassav6-postgresql/backup-postgresql-base.sh
+Environment=CASSAV6_BASE_RETENTION=2
+UMask=0077
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/backups/cassav6-postgresql
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+TimeoutStartSec=4h

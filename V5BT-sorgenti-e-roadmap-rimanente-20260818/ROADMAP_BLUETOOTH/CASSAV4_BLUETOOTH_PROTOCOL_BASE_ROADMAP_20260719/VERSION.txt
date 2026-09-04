@@ -1,0 +1,3 @@
+CASSAV4_BLUETOOTH_PROTOCOL_BASE_ROADMAP_20260719
+version=1.0.0
+scope=BLE discovery and direct links only

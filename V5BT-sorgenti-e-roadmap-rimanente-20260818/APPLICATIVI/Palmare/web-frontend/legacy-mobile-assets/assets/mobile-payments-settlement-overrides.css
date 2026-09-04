@@ -1,0 +1,376 @@
+.mobile-payments-settlement-section {
+  gap: 10px;
+}
+
+.mobile-payments-settlement-copy {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.mobile-payments-settlement-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mobile-payments-settlement-preview-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(10, 16, 30, 0.46);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-payments-settlement-preview-card span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.mobile-payments-settlement-preview-card strong {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.mobile-payments-settlement-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.mobile-payments-settlement-section-actions {
+  margin-top: 2px;
+}
+
+.mobile-payments-settlement-launch {
+  min-height: 40px;
+  border-color: rgba(104, 173, 255, 0.5);
+  background: linear-gradient(180deg, rgba(86, 144, 245, 0.44), rgba(62, 108, 180, 0.42));
+  color: rgba(236, 244, 255, 0.98);
+  font-weight: 800;
+}
+
+.mobile-payments-settlement-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 8, 16, 0.66);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-payments-settlement-dialog {
+  width: min(440px, 100%);
+  max-height: min(82vh, 720px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(180deg, rgba(12, 18, 34, 0.98), rgba(9, 13, 24, 0.98));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mobile-payments-settlement-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 14px 0;
+}
+
+.mobile-payments-settlement-head strong {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.mobile-payments-settlement-close {
+  min-height: 34px;
+  padding: 0 12px;
+}
+
+.mobile-payments-settlement-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-payments-settlement-body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.mobile-payments-settlement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mobile-payments-settlement-summary {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  background: rgba(10, 16, 30, 0.52);
+  overflow: hidden;
+}
+
+.mobile-payments-settlement-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-payments-settlement-row:first-child {
+  border-top: 0;
+}
+
+.mobile-payments-settlement-row span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.mobile-payments-settlement-row strong {
+  color: var(--text);
+  font-size: 14px;
+  text-align: right;
+}
+
+.mobile-payments-settlement-row.is-highlight {
+  background: rgba(63, 122, 222, 0.16);
+}
+
+.mobile-payments-settlement-row.is-highlight span,
+.mobile-payments-settlement-row.is-highlight strong {
+  color: rgba(239, 245, 255, 0.98);
+  font-weight: 800;
+}
+
+.mobile-payments-settlement-note {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(10, 16, 30, 0.46);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 10px 12px;
+}
+
+.mobile-payments-settlement-note.is-success {
+  border-color: rgba(72, 194, 118, 0.42);
+  background: rgba(33, 114, 69, 0.28);
+  color: rgba(227, 255, 237, 0.98);
+}
+
+.mobile-payments-settlement-note.is-warning {
+  border-color: rgba(230, 178, 76, 0.4);
+  background: rgba(126, 92, 24, 0.24);
+  color: rgba(255, 241, 209, 0.98);
+}
+
+.mobile-payments-settlement-note.is-error {
+  border-color: rgba(220, 90, 90, 0.44);
+  background: rgba(180, 56, 64, 0.24);
+  color: rgba(255, 225, 225, 0.98);
+}
+
+.mobile-payments-settlement-auth-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.mobile-payments-settlement-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-payments-settlement-field span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mobile-payments-settlement-field input {
+  min-height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 16, 30, 0.58);
+  color: var(--text);
+  padding: 0 12px;
+  font: inherit;
+}
+
+.mobile-payments-settlement-field input::placeholder {
+  color: rgba(190, 204, 230, 0.52);
+}
+
+.mobile-payments-settlement-field input:focus {
+  outline: none;
+  border-color: rgba(104, 173, 255, 0.62);
+  box-shadow: 0 0 0 2px rgba(104, 173, 255, 0.18);
+}
+
+.mobile-payments-settlement-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+
+.mobile-payments-settlement-btn {
+  min-height: 42px;
+  font-weight: 800;
+}
+
+.mobile-payments-settlement-btn.is-primary {
+  border-color: rgba(104, 173, 255, 0.5);
+  background: linear-gradient(180deg, rgba(86, 144, 245, 0.44), rgba(62, 108, 180, 0.42));
+  color: rgba(236, 244, 255, 0.98);
+}
+
+.mobile-payments-settlement-btn.is-secondary {
+  background: rgba(18, 24, 40, 0.66);
+}
+
+.mobile-payments-settlement-btn:disabled,
+.mobile-payments-settlement-launch:disabled {
+  opacity: 0.56;
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .mobile-payments-settlement-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-payments-settlement-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-preview-card,
+:root[data-theme="light"] .mobile-payments-settlement-summary,
+:root[data-theme="light"] .mobile-payments-settlement-note,
+:root:not([data-theme]) .mobile-payments-settlement-preview-card,
+:root:not([data-theme]) .mobile-payments-settlement-summary,
+:root:not([data-theme]) .mobile-payments-settlement-note {
+  border-color: rgba(20, 40, 80, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-preview-card span,
+:root[data-theme="light"] .mobile-payments-settlement-meta,
+:root[data-theme="light"] .mobile-payments-settlement-row span,
+:root[data-theme="light"] .mobile-payments-settlement-copy,
+:root[data-theme="light"] .mobile-payments-settlement-meta-line,
+:root[data-theme="light"] .mobile-payments-settlement-note,
+:root:not([data-theme]) .mobile-payments-settlement-preview-card span,
+:root:not([data-theme]) .mobile-payments-settlement-meta,
+:root:not([data-theme]) .mobile-payments-settlement-row span,
+:root:not([data-theme]) .mobile-payments-settlement-copy,
+:root:not([data-theme]) .mobile-payments-settlement-meta-line,
+:root:not([data-theme]) .mobile-payments-settlement-note {
+  color: rgba(20, 30, 45, 0.72);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-preview-card strong,
+:root[data-theme="light"] .mobile-payments-settlement-row strong,
+:root[data-theme="light"] .mobile-payments-settlement-head strong,
+:root:not([data-theme]) .mobile-payments-settlement-preview-card strong,
+:root:not([data-theme]) .mobile-payments-settlement-row strong,
+:root:not([data-theme]) .mobile-payments-settlement-head strong {
+  color: rgba(20, 30, 45, 0.95);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-row,
+:root:not([data-theme]) .mobile-payments-settlement-row {
+  border-top-color: rgba(20, 40, 80, 0.08);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-row.is-highlight,
+:root:not([data-theme]) .mobile-payments-settlement-row.is-highlight {
+  background: rgba(76, 133, 221, 0.12);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-row.is-highlight span,
+:root[data-theme="light"] .mobile-payments-settlement-row.is-highlight strong,
+:root:not([data-theme]) .mobile-payments-settlement-row.is-highlight span,
+:root:not([data-theme]) .mobile-payments-settlement-row.is-highlight strong {
+  color: rgba(16, 54, 112, 0.95);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-dialog,
+:root:not([data-theme]) .mobile-payments-settlement-dialog {
+  border-color: rgba(20, 40, 80, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(242, 247, 255, 0.98));
+  box-shadow: 0 28px 70px rgba(42, 72, 120, 0.18);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-backdrop,
+:root:not([data-theme]) .mobile-payments-settlement-backdrop {
+  background: rgba(220, 232, 248, 0.72);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-note.is-success,
+:root:not([data-theme]) .mobile-payments-settlement-note.is-success {
+  border-color: rgba(54, 170, 106, 0.36);
+  background: rgba(211, 245, 223, 0.92);
+  color: rgba(16, 94, 52, 0.95);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-note.is-warning,
+:root:not([data-theme]) .mobile-payments-settlement-note.is-warning {
+  border-color: rgba(196, 150, 44, 0.34);
+  background: rgba(255, 242, 211, 0.96);
+  color: rgba(104, 73, 8, 0.98);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-note.is-error,
+:root:not([data-theme]) .mobile-payments-settlement-note.is-error {
+  border-color: rgba(198, 58, 58, 0.38);
+  background: rgba(255, 232, 232, 0.96);
+  color: rgba(124, 20, 20, 0.95);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-field input,
+:root:not([data-theme]) .mobile-payments-settlement-field input {
+  border-color: rgba(144, 158, 180, 0.28);
+  background: rgba(247, 249, 252, 0.96);
+  color: rgba(31, 43, 58, 0.98);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-field input::placeholder,
+:root:not([data-theme]) .mobile-payments-settlement-field input::placeholder {
+  color: rgba(116, 132, 151, 0.72);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-btn.is-secondary,
+:root:not([data-theme]) .mobile-payments-settlement-btn.is-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(20, 30, 45, 0.92);
+}
+
+:root[data-theme="light"] .mobile-payments-settlement-btn.is-primary,
+:root[data-theme="light"] .mobile-payments-settlement-launch,
+:root:not([data-theme]) .mobile-payments-settlement-btn.is-primary,
+:root:not([data-theme]) .mobile-payments-settlement-launch {
+  border-color: rgba(42, 122, 214, 0.45);
+  background: linear-gradient(180deg, rgba(202, 224, 255, 0.94), rgba(168, 204, 252, 0.88));
+  color: rgba(16, 54, 112, 0.96);
+}

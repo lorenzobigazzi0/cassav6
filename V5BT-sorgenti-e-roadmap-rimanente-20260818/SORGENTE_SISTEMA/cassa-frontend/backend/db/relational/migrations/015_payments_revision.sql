@@ -1,0 +1,2 @@
+ALTER TABLE payment_containers ADD COLUMN revision INTEGER NOT NULL DEFAULT 1;
+ALTER TABLE payment_transactions ADD COLUMN revision INTEGER NOT NULL DEFAULT 1;

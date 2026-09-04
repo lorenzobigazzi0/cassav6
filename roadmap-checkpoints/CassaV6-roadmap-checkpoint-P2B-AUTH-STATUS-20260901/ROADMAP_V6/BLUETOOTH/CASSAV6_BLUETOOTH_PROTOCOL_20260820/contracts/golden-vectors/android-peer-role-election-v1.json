@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "fullNodeCapabilities": 15,
+  "roleCases": [
+    {
+      "name": "lower-alias-is-server",
+      "localAliasEpoch": 20,
+      "remoteAliasEpoch": 20,
+      "localAlias": "00000000000f",
+      "remoteAlias": "000000000010",
+      "localCapabilities": 15,
+      "remoteCapabilities": 15,
+      "expectedLocalRole": "SERVER",
+      "expectedError": null
+    },
+    {
+      "name": "higher-alias-is-client",
+      "localAliasEpoch": 20,
+      "remoteAliasEpoch": 20,
+      "localAlias": "000000000010",
+      "remoteAlias": "00000000000f",
+      "localCapabilities": 15,
+      "remoteCapabilities": 15,
+      "expectedLocalRole": "CLIENT",
+      "expectedError": null
+    },
+    {
+      "name": "client-only-is-ineligible",
+      "localAliasEpoch": 20,
+      "remoteAliasEpoch": 20,
+      "localAlias": "00000000000f",
+      "remoteAlias": "000000000010",
+      "localCapabilities": 5,
+      "remoteCapabilities": 15,
+      "expectedLocalRole": null,
+      "expectedError": "CLIENT_ONLY_NOT_ELIGIBLE"
+    },
+    {
+      "name": "epoch-mismatch-is-rejected",
+      "localAliasEpoch": 20,
+      "remoteAliasEpoch": 21,
+      "localAlias": "00000000000f",
+      "remoteAlias": "000000000010",
+      "localCapabilities": 15,
+      "remoteCapabilities": 15,
+      "expectedLocalRole": null,
+      "expectedError": "EPOCH_MISMATCH"
+    },
+    {
+      "name": "alias-collision-is-rejected",
+      "localAliasEpoch": 20,
+      "remoteAliasEpoch": 20,
+      "localAlias": "00000000000f",
+      "remoteAlias": "00000000000f",
+      "localCapabilities": 15,
+      "remoteCapabilities": 15,
+      "expectedLocalRole": null,
+      "expectedError": "ALIAS_COLLISION"
+    }
+  ],
+  "arbitrationCases": [
+    {
+      "name": "candidate-lower-id-replaces-existing",
+      "firstNodeId": "123e4567-e89b-12d3-a456-426614174000",
+      "secondNodeId": "550e8400-e29b-41d4-a716-446655440000",
+      "existingConnectionIdHex": "02020202020202020202020202020202",
+      "candidateConnectionIdHex": "01010101010101010101010101010101",
+      "expectedKeepConnectionIdHex": "01010101010101010101010101010101",
+      "expectedKotlinAction": "REPLACE_EXISTING",
+      "expectedKotlinReason": "LOWER_SESSION_ID"
+    },
+    {
+      "name": "existing-lower-id-is-retained",
+      "firstNodeId": "123e4567-e89b-12d3-a456-426614174000",
+      "secondNodeId": "550e8400-e29b-41d4-a716-446655440000",
+      "existingConnectionIdHex": "01010101010101010101010101010101",
+      "candidateConnectionIdHex": "02020202020202020202020202020202",
+      "expectedKeepConnectionIdHex": "01010101010101010101010101010101",
+      "expectedKotlinAction": "KEEP_EXISTING",
+      "expectedKotlinReason": "LOWER_SESSION_ID"
+    },
+    {
+      "name": "identical-id-is-idempotent",
+      "firstNodeId": "123e4567-e89b-12d3-a456-426614174000",
+      "secondNodeId": "550e8400-e29b-41d4-a716-446655440000",
+      "existingConnectionIdHex": "01010101010101010101010101010101",
+      "candidateConnectionIdHex": "01010101010101010101010101010101",
+      "expectedKeepConnectionIdHex": "01010101010101010101010101010101",
+      "expectedKotlinAction": "KEEP_EXISTING",
+      "expectedKotlinReason": "SAME_SESSION"
+    }
+  ]
+}

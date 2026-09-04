@@ -1,0 +1,15 @@
+# Node roles
+
+```text
+RASPBERRY_SERVER
+ANDROID_HANDHELD
+ANDROID_STATION
+```
+
+Capability classes:
+
+```text
+FULL_NODE
+CLIENT_ONLY
+UNSUPPORTED
+```

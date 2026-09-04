@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "required": [
+    "protocolVersion",
+    "sessionId",
+    "messageId",
+    "sequence",
+    "fragmentIndex",
+    "fragmentCount",
+    "messageType",
+    "payload"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$"
+    },
+    "messageId": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer"
+    },
+    "fragmentIndex": {
+      "type": "integer"
+    },
+    "fragmentCount": {
+      "type": "integer"
+    },
+    "messageType": {
+      "type": "string"
+    },
+    "payload": {}
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "mode": "CURRENT_ROADMAP_STATUS",
+  "statusAsOf": "2026-08-10",
+  "officialProgressPercent": 49,
+  "certificationMatrix": {
+    "schemaVersion": 1,
+    "canonicalization": "V5BT_ADVANCED_CERTIFICATION_TARGETS_CANONICAL_JSON_V1",
+    "digestAlgorithm": "SHA-256",
+    "matrixSha256": "45712f686dd521fc739929a985d7a56ccc44ef6264023db3014cf8dce2da66e7"
+  },
+  "b4": {
+    "gateStatus": "PENDING",
+    "evidenceClass": "NON_GATE_EVIDENCE",
+    "requiredPhysicalDevices": 10,
+    "recordedPhysicalDevices": 2,
+    "remainingPhysicalDevices": 8,
+    "simulatedDevices": 8,
+    "simulatedDevicesCountedTowardGate": 0
+  },
+  "b5": {
+    "gateStatus": "PENDING",
+    "diagnosticPilotAuthorized": false,
+    "officialCampaignAuthorized": false,
+    "requiredOfficialSessions": 100,
+    "recordedOfficialSessions": 0
+  },
+  "b6": {
+    "gateStatus": "PENDING",
+    "startAuthorization": "BLOCKED"
+  },
+  "applicationLoad": {
+    "micro": "PASS",
+    "smoke": "FAIL",
+    "full": "NOT_RUN"
+  },
+  "promotion": {
+    "physicalGatePromotionAllowed": false,
+    "officialProgressIncreaseAllowed": false
+  }
+}

@@ -1,0 +1,51 @@
+CASSAV4 V4.6 - SORGENTE COMPLETO + ANDROID
+Generated: 2026-07-16
+Package: CASSAV4_V4.6_SOURCE_ANDROID_20260716-094842
+
+ORIGINE
+- Archivio di partenza: v4.5.zip
+- SHA-256 archivio di partenza: b2648bfc2d2c78594ae0c1a1df8d5ba6e12656393312d26b4dee3bfbd5a4707e
+- Working source: sistema-cassa-p4.3-realtime-notifications-fix-20260714-source
+
+SORGENTE V4.6
+- Directory: sistema-cassa-v4.6-source
+- Content tree SHA-256: b65eebeb7e9c90414b86909214512d2e55c86f3bd6ca9839be755147f6f12e4c
+- Include manifest e checksum per file rigenerati sul codice attuale.
+- Include i moduli runtime backend/modules/reports richiesti dal preflight.
+- Include l'harness P5 da 20 palmari, 5 postazioni e massimo 3 azioni/s.
+- Il metadato handover non dichiara automaticamente completata alcuna fase.
+
+CORREZIONE COMPLETEZZA PACCHETTO
+- Ripristinato settings-frontend/dist, obbligatorio per il runtime.
+- Provenienza: estrazione locale della stessa build CASSAV4_CURRENT_COMPLETE_ANDROID_REALTIME_FIX_20260714-202257.
+- Tree SHA-256 dei tre asset: 2564567935bc8b64f277c0dc63315f21735bfcd0cc7caf04d2477c382fa193d6.
+
+ANDROID
+- Inclusi sorgenti, asset e gli 8 APK presenti nel pacchetto di partenza.
+- Palmare: versioni debug 1.0.5, 1.0.6 e 1.0.7, piu rollback/backup.
+- Postazione: versioni debug 2.0.10, 2.0.11 e 2.0.12.
+- Cache Gradle, build locali e node_modules esclusi.
+
+TEST P5 PARZIALE
+- Report: TEST_REPORT_P5_PARTIAL_20260716.pdf
+- Stato: interrotto su richiesta all'80,54%.
+- Azioni all'ultimo checkpoint: 20.135 / 25.000.
+- Durata: 3h 15m 33s.
+- Esito prestazionale: non conforme; drift primi/ultimi 10 minuti -70,36%.
+- Database persistiti del test esclusi dal pacchetto.
+- Stampante, fiscale e cassa automatica reali non utilizzati.
+
+ESCLUSIONI
+- node_modules, .git, cache Gradle e directory build.
+- log, database runtime, spool, PID e file temporanei.
+- certificati, chiavi private e signing store.
+- test-results, playwright-report e coverage.
+
+VERIFICA DOPO ESTRAZIONE
+1. Verificare PACKAGE_SHA256SUMS dalla root del pacchetto.
+2. Entrare in sistema-cassa-v4.6-source/cassa-frontend.
+3. Eseguire npm ci --no-audit --no-fund.
+4. Eseguire npm run check:backend.
+5. Eseguire node scripts/package-preflight.mjs --package --root ..
+6. Eseguire npm run smoke:package-runtime.
+

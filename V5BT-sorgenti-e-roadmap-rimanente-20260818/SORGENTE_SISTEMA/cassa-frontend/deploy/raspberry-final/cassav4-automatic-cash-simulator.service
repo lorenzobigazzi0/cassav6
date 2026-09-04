@@ -1,0 +1,24 @@
+[Unit]
+Description=CASSAv4 local automatic cash simulator
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=cassav4
+Group=cassav4
+WorkingDirectory=/opt/cassav4/current/cassa-frontend
+Environment=FAKE_AUTOMATIC_CASH_HOST=127.0.0.1
+Environment=FAKE_AUTOMATIC_CASH_PORT=9190
+Environment=FAKE_AUTOMATIC_CASH_DEPOSIT_TOTAL_CENTS=2000
+Environment=FAKE_AUTOMATIC_CASH_STOCK_PER_DENOMINATION=120
+ExecStart=/usr/local/bin/node ../tools/fake-automatic-cash-gateway.mjs
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=10
+CPUAffinity=0 1 2 3
+MemoryMax=128M
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

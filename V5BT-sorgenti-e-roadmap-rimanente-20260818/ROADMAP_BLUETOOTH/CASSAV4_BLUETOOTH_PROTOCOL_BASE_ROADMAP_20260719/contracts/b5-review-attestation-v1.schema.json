@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b5-review-attestation-v1.schema.json",
+  "title": "V5BT B5 Independent Review Attestation V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "product",
+    "phase",
+    "mode",
+    "reviewedAt",
+    "technicalAggregateSha256",
+    "prerequisiteEvidenceBundleSha256",
+    "operatorCommitmentSha256",
+    "reviewerCommitmentSha256",
+    "decision",
+    "checks",
+    "gate",
+    "privacy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "product": { "const": "V5BT" },
+    "phase": { "const": "B5" },
+    "mode": { "const": "INDEPENDENT_REVIEW" },
+    "reviewedAt": { "type": "string", "format": "date-time" },
+    "technicalAggregateSha256": { "$ref": "#/$defs/sha256" },
+    "prerequisiteEvidenceBundleSha256": { "$ref": "#/$defs/sha256" },
+    "operatorCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "reviewerCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "decision": { "const": "PASS" },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceIntegrity",
+        "b0B4Authorization",
+        "attemptPolicy",
+        "androidContinuity",
+        "raspberryContinuity",
+        "cleanupAndRestorePlan",
+        "privacyReview"
+      ],
+      "properties": {
+        "evidenceIntegrity": { "const": "PASS" },
+        "b0B4Authorization": { "const": "PASS" },
+        "attemptPolicy": { "const": "PASS" },
+        "androidContinuity": { "const": "PASS" },
+        "raspberryContinuity": { "const": "PASS" },
+        "cleanupAndRestorePlan": { "const": "PASS" },
+        "privacyReview": { "const": "PASS" }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b5HundredSessionGate", "b6"],
+      "properties": {
+        "b5HundredSessionGate": { "const": "PASS" },
+        "b6": { "const": "PENDING" }
+      }
+    },
+    "privacy": { "$ref": "#/$defs/privacy" }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiersIncluded",
+        "addressesIncluded",
+        "localLocationsIncluded",
+        "cryptographicMaterialIncluded"
+      ],
+      "properties": {
+        "identifiersIncluded": { "const": false },
+        "addressesIncluded": { "const": false },
+        "localLocationsIncluded": { "const": false },
+        "cryptographicMaterialIncluded": { "const": false }
+      }
+    }
+  }
+}

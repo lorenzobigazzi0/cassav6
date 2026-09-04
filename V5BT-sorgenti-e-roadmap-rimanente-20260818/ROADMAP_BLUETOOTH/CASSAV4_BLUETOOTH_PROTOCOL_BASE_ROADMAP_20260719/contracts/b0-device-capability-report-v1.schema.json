@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/v5bt/contracts/b0-device-capability-report-v1.schema.json",
+  "title": "V5BT B0 redacted capability report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "source",
+    "evidenceDate",
+    "redaction",
+    "gate",
+    "minimumFullNodesRequired",
+    "requiredFormalRoles",
+    "requiredChecks",
+    "counts",
+    "formalRoleCoverage",
+    "devices"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "source": {
+      "const": "V5BT_B0_DEVICE_CAPABILITY_GATE"
+    },
+    "evidenceDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "redaction": {
+      "const": {
+        "status": "REDACTED",
+        "policy": "PUBLIC_ALLOWLIST_V1"
+      }
+    },
+    "gate": {
+      "enum": ["PASS", "PENDING"]
+    },
+    "minimumFullNodesRequired": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 100
+    },
+    "requiredFormalRoles": {
+      "const": ["handheld", "station"]
+    },
+    "requiredChecks": {
+      "const": [
+        "scan",
+        "advertise",
+        "gattClient",
+        "gattServer",
+        "scanAdvertiseConcurrent",
+        "wifiBleCoexistence",
+        "backgroundForeground"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "formal",
+        "passingFormalFullNodes",
+        "supplemental",
+        "nonGate"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passingFormalFullNodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supplemental": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nonGate": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "formalRoleCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handheld", "station"],
+      "properties": {
+        "handheld": {
+          "type": "boolean"
+        },
+        "station": {
+          "type": "boolean"
+        }
+      }
+    },
+    "devices": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/redactedDevice"
+      }
+    }
+  },
+  "$defs": {
+    "reportedStatus": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN",
+        "NOT_TESTED",
+        "NOT_APPLICABLE",
+        "MISSING",
+        "INVALID"
+      ]
+    },
+    "redactedDevice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record",
+        "role",
+        "vendor",
+        "model",
+        "androidApi",
+        "connectionStatus",
+        "evidenceClass",
+        "classification",
+        "checks",
+        "evidenceResult",
+        "blockers"
+      ],
+      "properties": {
+        "record": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "role": {
+          "enum": ["handheld", "station"]
+        },
+        "vendor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "androidApi": {
+          "type": ["integer", "null"],
+          "minimum": 21
+        },
+        "connectionStatus": {
+          "enum": ["CONNECTED", "NOT_CONNECTED", "UNKNOWN"]
+        },
+        "evidenceClass": {
+          "enum": ["FORMAL", "SUPPLEMENTAL", "NON_GATE_EVIDENCE"]
+        },
+        "classification": {
+          "enum": ["FULL_NODE", "CLIENT_ONLY", "UNSUPPORTED", "UNKNOWN"]
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scan",
+            "advertise",
+            "gattClient",
+            "gattServer",
+            "scanAdvertiseConcurrent",
+            "wifiBleCoexistence",
+            "backgroundForeground"
+          ],
+          "properties": {
+            "scan": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "advertise": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "gattClient": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "gattServer": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "scanAdvertiseConcurrent": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "wifiBleCoexistence": {
+              "$ref": "#/$defs/reportedStatus"
+            },
+            "backgroundForeground": {
+              "$ref": "#/$defs/reportedStatus"
+            }
+          }
+        },
+        "evidenceResult": {
+          "enum": ["PASS", "PENDING"]
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

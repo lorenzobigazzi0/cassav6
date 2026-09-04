@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b5-technical-receipt-v1.schema.json",
+  "title": "V5BT B5 Private Technical Receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptVersion",
+    "product",
+    "phase",
+    "mode",
+    "issuedAt",
+    "technicalAggregateSha256",
+    "collectorStateSha256",
+    "campaignAuthorizationSha256",
+    "certificationMatrixSha256",
+    "campaignIdCommitmentSha256",
+    "accountDeviceCommitmentSha256",
+    "collectionCommitmentSha256",
+    "attemptLedgerHeadSha256",
+    "prerequisiteEvidenceBundleSha256",
+    "operatorCommitmentSha256",
+    "androidAttestationSha256",
+    "raspberryAttestationSha256",
+    "gate",
+    "privacy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "receiptVersion": { "const": "1.1.0" },
+    "product": { "const": "V5BT" },
+    "phase": { "const": "B5" },
+    "mode": { "const": "PRIVATE_TECHNICAL_RECEIPT" },
+    "issuedAt": { "type": "string", "format": "date-time" },
+    "technicalAggregateSha256": { "$ref": "#/$defs/sha256" },
+    "collectorStateSha256": { "$ref": "#/$defs/sha256" },
+    "campaignAuthorizationSha256": { "$ref": "#/$defs/sha256" },
+    "certificationMatrixSha256": { "$ref": "#/$defs/sha256" },
+    "campaignIdCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "accountDeviceCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "collectionCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "attemptLedgerHeadSha256": { "$ref": "#/$defs/sha256" },
+    "prerequisiteEvidenceBundleSha256": { "$ref": "#/$defs/sha256" },
+    "operatorCommitmentSha256": { "$ref": "#/$defs/sha256" },
+    "androidAttestationSha256": { "$ref": "#/$defs/sha256" },
+    "raspberryAttestationSha256": { "$ref": "#/$defs/sha256" },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["b5TechnicalGate", "b5HundredSessionGate", "b6"],
+      "properties": {
+        "b5TechnicalGate": { "const": "PASS" },
+        "b5HundredSessionGate": { "const": "PENDING_REVIEW" },
+        "b6": { "const": "PENDING" }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifiersIncluded",
+        "addressesIncluded",
+        "localLocationsIncluded",
+        "cryptographicMaterialIncluded",
+        "rawCampaignIdIncluded",
+        "commitmentsIncluded"
+      ],
+      "properties": {
+        "identifiersIncluded": { "const": false },
+        "addressesIncluded": { "const": false },
+        "localLocationsIncluded": { "const": false },
+        "cryptographicMaterialIncluded": { "const": false },
+        "rawCampaignIdIncluded": { "const": false },
+        "commitmentsIncluded": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^(?!0{64}$)[0-9a-f]{64}$"
+    }
+  }
+}

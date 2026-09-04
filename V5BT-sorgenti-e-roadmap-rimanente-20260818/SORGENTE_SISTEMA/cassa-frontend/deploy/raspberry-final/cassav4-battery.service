@@ -1,0 +1,25 @@
+[Unit]
+Description=CASSAv4 mobile battery service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=cassav4
+Group=cassav4
+WorkingDirectory=/opt/cassav4/current/battery-dashboard
+Environment=HOST=127.0.0.1
+Environment=PORT=8765
+Environment=OFFLINE_AFTER_SECONDS=180
+Environment=REMOVE_AFTER_SECONDS=300
+ExecStart=/usr/local/bin/node server/index.js
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=10
+CPUAffinity=0 1 2 3
+LimitNOFILE=16384
+MemoryMax=512M
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

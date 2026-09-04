@@ -1,0 +1,620 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b11-mixed-physical-attestation-v1.schema.json",
+  "title": "V5BT B11 Mixed Physical Live Attestation V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "harnessVersion", "product", "phase", "mode",
+    "captureMode", "fixtureUsed", "generatedAt", "readinessStatus",
+    "stationSigningPolicy", "stationSigningVerified", "gateEligible",
+    "configuredPhysicalActors", "observedPhysicalActors",
+    "physicalPresenceComplete", "functionalReadinessComplete", "captureScope",
+    "hardwareAccess", "adbExecuted", "sshExecuted", "readOnly",
+    "inventoryEncoding", "inventorySha256", "inventory", "radioWorkload",
+    "physicalBusiness", "continuityMonitoring", "physicalSoak",
+    "campaignEvidenceCommitment", "attestationDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "harnessVersion": { "const": "1.0.0" },
+    "product": { "const": "V5BT" },
+    "phase": { "const": "B11" },
+    "mode": { "const": "B11_MIXED_PHYSICAL_ATTESTATION" },
+    "captureMode": { "const": "LIVE" },
+    "fixtureUsed": { "const": false },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "readinessStatus": {
+      "enum": [
+        "MIXED_READY_CERTIFIED",
+        "MIXED_READY_WITH_NON_GATE_STATION_WAIVER",
+        "MIXED_PHYSICAL_INCOMPLETE"
+      ]
+    },
+    "stationSigningPolicy": {
+      "enum": ["CERTIFIED_REQUIRED", "WAIVED_NON_GATE"]
+    },
+    "stationSigningVerified": { "type": "boolean" },
+    "gateEligible": { "const": false },
+    "configuredPhysicalActors": { "const": 4 },
+    "observedPhysicalActors": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "physicalPresenceComplete": { "type": "boolean" },
+    "functionalReadinessComplete": { "type": "boolean" },
+    "captureScope": { "const": "INVENTORY_ONLY" },
+    "hardwareAccess": { "const": true },
+    "adbExecuted": { "const": true },
+    "sshExecuted": { "const": true },
+    "readOnly": { "const": true },
+    "inventoryEncoding": { "const": "JSON_UTF8_COMPACT" },
+    "inventorySha256": { "$ref": "#/$defs/sha256" },
+    "inventory": { "$ref": "#/$defs/inventory" },
+    "radioWorkload": { "$ref": "#/$defs/radioNotRun" },
+    "physicalBusiness": { "$ref": "#/$defs/businessNotRun" },
+    "continuityMonitoring": { "$ref": "#/$defs/continuityNotRun" },
+    "physicalSoak": { "$ref": "#/$defs/soakNotRun" },
+    "campaignEvidenceCommitment": { "type": "null" },
+    "attestationDigest": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "physicalPresenceComplete": { "const": true } },
+        "required": ["physicalPresenceComplete"]
+      },
+      "then": { "properties": { "observedPhysicalActors": { "const": 4 } } },
+      "else": { "properties": { "observedPhysicalActors": { "maximum": 3 } } }
+    },
+    {
+      "if": {
+        "properties": { "readinessStatus": { "const": "MIXED_READY_CERTIFIED" } },
+        "required": ["readinessStatus"]
+      },
+      "then": { "properties": {
+        "stationSigningVerified": { "const": true },
+        "functionalReadinessComplete": { "const": true }
+      } }
+    },
+    {
+      "if": {
+        "properties": {
+          "readinessStatus": {
+            "const": "MIXED_READY_WITH_NON_GATE_STATION_WAIVER"
+          }
+        },
+        "required": ["readinessStatus"]
+      },
+      "then": { "properties": {
+        "stationSigningPolicy": { "const": "WAIVED_NON_GATE" },
+        "stationSigningVerified": { "const": false },
+        "functionalReadinessComplete": { "const": true }
+      } }
+    },
+    {
+      "if": {
+        "properties": { "readinessStatus": { "const": "MIXED_PHYSICAL_INCOMPLETE" } },
+        "required": ["readinessStatus"]
+      },
+      "then": {
+        "properties": { "functionalReadinessComplete": { "const": false } }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion", "product", "certificationMatrixSha256", "mode",
+        "generatedAt", "status", "readOnly", "commandPolicy", "limitations",
+        "redaction", "roleCoverage", "adb", "android", "raspberry", "errors"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "product": { "const": "V5BT" },
+        "certificationMatrixSha256": {
+          "const": "45712f686dd521fc739929a985d7a56ccc44ef6264023db3014cf8dce2da66e7"
+        },
+        "mode": { "const": "REDACTED_READ_ONLY_BENCH_INVENTORY" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "status": { "enum": ["COMPLETE", "INCOMPLETE"] },
+        "readOnly": { "const": true },
+        "commandPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "shell", "mutationAllowed", "upsMode", "fixedAllowlist",
+            "sshAuthentication", "sudoReadOnly", "passwordRecorded"
+          ],
+          "properties": {
+            "shell": { "const": false },
+            "mutationAllowed": { "const": false },
+            "upsMode": { "const": "DISCOVERY_ONLY" },
+            "fixedAllowlist": { "const": true },
+            "sshAuthentication": { "enum": ["PUBLIC_KEY", "PASSWORD"] },
+            "sudoReadOnly": { "type": "boolean" },
+            "passwordRecorded": { "const": false }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code"],
+            "properties": {
+              "code": {
+                "enum": [
+                  "UPS_DISCOVERY_UNAVAILABLE",
+                  "UPS_NO_DEVICES_DISCOVERED",
+                  "UPS_SERVICE_DISCOVERY_UNAVAILABLE"
+                ]
+              }
+            }
+          }
+        },
+        "redaction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "serialsExcluded", "networkIdentifiersExcluded",
+            "registryIdentifiersExcluded", "rawCommandOutputExcluded"
+          ],
+          "properties": {
+            "serialsExcluded": { "const": true },
+            "networkIdentifiersExcluded": { "const": true },
+            "registryIdentifiersExcluded": { "const": true },
+            "rawCommandOutputExcluded": { "const": true }
+          }
+        },
+        "roleCoverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "requiredRoles", "configuredRoles", "missingRequiredRoles", "complete"
+          ],
+          "properties": {
+            "requiredRoles": {
+              "type": "array",
+              "prefixItems": [{ "const": "handheld" }, { "const": "station" }],
+              "items": false
+            },
+            "configuredRoles": {
+              "type": "array",
+              "prefixItems": [{ "const": "handheld" }, { "const": "station" }],
+              "items": false
+            },
+            "missingRequiredRoles": { "type": "array", "maxItems": 0 },
+            "complete": { "const": true }
+          }
+        },
+        "adb": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "probeAvailable", "expectedTargets", "connectedDevices",
+            "unavailableDevices", "unexpectedConnectedDevices"
+          ],
+          "properties": {
+            "probeAvailable": { "type": "boolean" },
+            "expectedTargets": { "const": 3 },
+            "connectedDevices": { "type": "integer", "minimum": 0, "maximum": 32 },
+            "unavailableDevices": { "type": "integer", "minimum": 0, "maximum": 32 },
+            "unexpectedConnectedDevices": { "type": "integer", "minimum": 0, "maximum": 32 }
+          }
+        },
+        "android": {
+          "type": "array",
+          "prefixItems": [
+            { "$ref": "#/$defs/handheldTarget" },
+            { "$ref": "#/$defs/handheldTarget" },
+            { "$ref": "#/$defs/stationTarget" }
+          ],
+          "items": false
+        },
+        "raspberry": { "$ref": "#/$defs/raspberry" },
+        "errors": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["probe", "code"],
+            "properties": {
+              "probe": {
+                "type": "string",
+                "pattern": "^(?:adb\\.devices|android\\.roleCoverage|android\\.[0-2]\\.(?:user|api|package|apkPath|apkSha256|session|identity|enrollmentStatus)|raspberry\\.(?:identity|bluez\\.(?:show|version)|ntp|ups\\.(?:discovery|services)|state\\.stat|registry\\.(?:stat|read)|transactions\\.(?:stat|list)|tlsKey\\.stat|tlsCert\\.stat|environment\\.stat))$"
+              },
+              "code": { "enum": ["TIMEOUT", "UNAVAILABLE", "REQUIRED_ROLE_MISSING"] }
+            }
+          }
+        }
+      }
+    },
+    "androidTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role", "connected", "androidUserMatches", "androidApi",
+        "packageInstalled", "packageStopped", "versionName", "versionCode",
+        "versionNameMatches", "versionCodeMatches", "apkSha256Matches",
+        "expectedSigningCertificateSha256",
+        "signingCertificatePinCoveredByCertifiedApk", "permissionsGranted",
+        "authenticatedSession", "sessionIdentityDistinct", "enrollmentReady",
+        "enrollmentIdentityDistinct", "registryBindingMatches", "enrollmentAttempt"
+      ],
+      "properties": {
+        "role": { "enum": ["handheld", "station"] },
+        "connected": { "type": "boolean" },
+        "androidUserMatches": { "type": "boolean" },
+        "androidApi": { "type": ["integer", "null"], "minimum": 24, "maximum": 99 },
+        "packageInstalled": { "type": "boolean" },
+        "packageStopped": { "type": ["boolean", "null"] },
+        "versionName": {
+          "type": ["string", "null"],
+          "maxLength": 100,
+          "pattern": "^[0-9]+(?:\\.[0-9]+){2}$"
+        },
+        "versionCode": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "versionNameMatches": { "type": "boolean" },
+        "versionCodeMatches": { "type": "boolean" },
+        "apkSha256Matches": { "type": "boolean" },
+        "expectedSigningCertificateSha256": { "$ref": "#/$defs/sha256" },
+        "signingCertificatePinCoveredByCertifiedApk": { "type": "boolean" },
+        "permissionsGranted": { "type": "boolean" },
+        "authenticatedSession": { "type": "boolean" },
+        "sessionIdentityDistinct": { "type": "boolean" },
+        "enrollmentReady": { "type": "boolean" },
+        "enrollmentIdentityDistinct": { "type": "boolean" },
+        "registryBindingMatches": { "type": "boolean" },
+        "enrollmentAttempt": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "enum": [
+                "IDLE", "BUSY", "INPUT_INVALID", "ENDPOINT_MISMATCH",
+                "IDENTITY_FAILED", "CLIENT_FAILED", "IMPORT_FAILED", "READY",
+                "ALREADY_PROVISIONED", "STORAGE_FAILED", "INTERRUPTED", "CLOSED"
+              ]
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "versionName": { "type": "null" } },
+            "required": ["versionName"]
+          },
+          "then": { "properties": { "versionNameMatches": { "const": false } } },
+          "else": { "properties": { "versionNameMatches": { "const": true } } }
+        },
+        {
+          "if": {
+            "properties": { "versionCode": { "type": "null" } },
+            "required": ["versionCode"]
+          },
+          "then": { "properties": { "versionCodeMatches": { "const": false } } },
+          "else": { "properties": { "versionCodeMatches": { "const": true } } }
+        },
+        {
+          "if": {
+            "properties": { "packageInstalled": { "const": false } },
+            "required": ["packageInstalled"]
+          },
+          "then": { "properties": {
+            "packageStopped": { "type": "null" },
+            "versionName": { "type": "null" },
+            "versionCode": { "type": "null" },
+            "apkSha256Matches": { "const": false }
+          } }
+        }
+      ]
+    },
+    "handheldTarget": {
+      "allOf": [
+        { "$ref": "#/$defs/androidTarget" },
+        {
+          "properties": {
+            "role": { "const": "handheld" },
+            "versionName": {
+              "oneOf": [{ "type": "null" }, { "const": "1.0.39" }]
+            },
+            "versionCode": {
+              "oneOf": [{ "type": "null" }, { "const": 40 }]
+            },
+            "expectedSigningCertificateSha256": {
+              "const": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca"
+            }
+          }
+        }
+      ]
+    },
+    "stationTarget": {
+      "allOf": [
+        { "$ref": "#/$defs/androidTarget" },
+        {
+          "properties": {
+            "role": { "const": "station" },
+            "versionName": {
+              "oneOf": [{ "type": "null" }, { "const": "2.0.23" }]
+            },
+            "versionCode": {
+              "oneOf": [{ "type": "null" }, { "const": 25 }]
+            },
+            "expectedSigningCertificateSha256": {
+              "const": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca"
+            }
+          }
+        }
+      ]
+    },
+    "serviceObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service", "requirement", "expectedState", "observed",
+        "expectationMet", "loaded", "active", "subState", "enabled"
+      ],
+      "properties": {
+        "service": { "type": "string", "maxLength": 64 },
+        "requirement": { "enum": ["OPERATIONAL_REQUIRED", "OBSERVE_ONLY"] },
+        "expectedState": { "enum": ["LOADED_ACTIVE_ENABLED", "ANY_OBSERVED_STATE"] },
+        "observed": { "type": "boolean" },
+        "expectationMet": { "type": "boolean" },
+        "loaded": { "type": ["boolean", "null"] },
+        "active": { "type": ["boolean", "null"] },
+        "subState": {
+          "type": ["string", "null"],
+          "maxLength": 32,
+          "pattern": "^[a-z][a-z-]{0,31}$"
+        },
+        "enabled": { "type": ["boolean", "null"] }
+      }
+    },
+    "cassav5btService": {
+      "allOf": [
+        { "$ref": "#/$defs/serviceObservation" },
+        { "properties": {
+          "service": { "const": "cassav5bt.service" },
+          "requirement": { "const": "OPERATIONAL_REQUIRED" },
+          "expectedState": { "const": "LOADED_ACTIVE_ENABLED" }
+        } }
+      ]
+    },
+    "bluetoothService": {
+      "allOf": [
+        { "$ref": "#/$defs/serviceObservation" },
+        { "properties": {
+          "service": { "const": "bluetooth.service" },
+          "requirement": { "const": "OPERATIONAL_REQUIRED" },
+          "expectedState": { "const": "LOADED_ACTIVE_ENABLED" }
+        } }
+      ]
+    },
+    "bluetoothNodeService": {
+      "allOf": [
+        { "$ref": "#/$defs/serviceObservation" },
+        { "properties": {
+          "service": { "const": "cassav5bt-bluetooth-node.service" },
+          "requirement": { "const": "OBSERVE_ONLY" },
+          "expectedState": { "const": "ANY_OBSERVED_STATE" }
+        } }
+      ]
+    },
+    "bluetoothEnrollmentService": {
+      "allOf": [
+        { "$ref": "#/$defs/serviceObservation" },
+        { "properties": {
+          "service": { "const": "cassav5bt-bluetooth-enrollment.service" },
+          "requirement": { "const": "OBSERVE_ONLY" },
+          "expectedState": { "const": "ANY_OBSERVED_STATE" }
+        } }
+      ]
+    },
+    "raspberry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reachable", "architecture", "bluez", "ntpSynchronized", "ups",
+        "services", "registry", "enrollmentTransactions", "permissionsSecure"
+      ],
+      "properties": {
+        "reachable": { "type": "boolean" },
+        "architecture": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["aarch64", "armv7l", "armv8l", "x86_64"] }
+          ]
+        },
+        "bluez": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["available", "version", "powered", "discovering"],
+          "properties": {
+            "available": { "type": "boolean" },
+            "version": {
+              "oneOf": [
+                { "type": "null" },
+                {
+                  "type": "string",
+                  "maxLength": 11,
+                  "pattern": "^[0-9]{1,3}\\.[0-9]{1,3}(?:\\.[0-9]{1,3})?$"
+                }
+              ]
+            },
+            "powered": { "type": "boolean" },
+            "discovering": { "type": "boolean" }
+          }
+        },
+        "ntpSynchronized": { "type": "boolean" },
+        "ups": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "discoveryOnly", "probeAvailable", "discoveredDevices",
+            "serviceProbeAvailable", "serviceUnitsObserved"
+          ],
+          "properties": {
+            "discoveryOnly": { "const": true },
+            "probeAvailable": { "type": "boolean" },
+            "discoveredDevices": { "type": "integer", "minimum": 0, "maximum": 128 },
+            "serviceProbeAvailable": { "type": "boolean" },
+            "serviceUnitsObserved": { "type": "integer", "minimum": 0, "maximum": 128 }
+          }
+        },
+        "services": {
+          "type": "array",
+          "prefixItems": [
+            { "$ref": "#/$defs/cassav5btService" },
+            { "$ref": "#/$defs/bluetoothService" },
+            { "$ref": "#/$defs/bluetoothNodeService" },
+            { "$ref": "#/$defs/bluetoothEnrollmentService" }
+          ],
+          "items": false
+        },
+        "registry": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "devices", "activeDevices", "revokedDevices", "enrollmentTokens",
+                "pendingTokens"
+              ],
+              "properties": {
+                "devices": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+                "activeDevices": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+                "revokedDevices": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+                "enrollmentTokens": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+                "pendingTokens": { "type": "integer", "minimum": 0, "maximum": 1000000 }
+              }
+            }
+          ]
+        },
+        "enrollmentTransactions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["files", "allPrivate"],
+          "properties": {
+            "files": { "type": "integer", "minimum": 0, "maximum": 1000000 },
+            "allPrivate": { "type": "boolean" }
+          }
+        },
+        "permissionsSecure": { "type": "boolean" }
+      }
+    },
+    "radioWorkload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "evidenceSha256", "realRealLinkCount", "cyclesPerLink",
+        "expectedCycles", "completedCycles", "helloCycles", "authenticatedCycles",
+        "bidirectionalDataCycles", "cleanupCycles"
+      ],
+      "properties": {
+        "status": { "const": "NOT_RUN" },
+        "evidenceSha256": { "type": "null" },
+        "realRealLinkCount": { "const": 6 },
+        "cyclesPerLink": { "const": 100 },
+        "expectedCycles": { "const": 600 },
+        "completedCycles": { "const": 0 },
+        "helloCycles": { "const": 0 },
+        "authenticatedCycles": { "const": 0 },
+        "bidirectionalDataCycles": { "const": 0 },
+        "cleanupCycles": { "const": 0 }
+      }
+    },
+    "physicalBusiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "evidenceSha256", "expectedActions", "completedActions",
+        "expectedHandheldCommands", "completedHandheldCommands"
+      ],
+      "properties": {
+        "status": { "const": "NOT_RUN" },
+        "evidenceSha256": { "type": "null" },
+        "expectedActions": { "const": 600 },
+        "completedActions": { "const": 0 },
+        "expectedHandheldCommands": { "const": 160 },
+        "completedHandheldCommands": { "const": 0 }
+      }
+    },
+    "continuityMonitoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "evidenceSha256", "expectedActors", "monitoredActors", "continuous"
+      ],
+      "properties": {
+        "status": { "const": "NOT_RUN" },
+        "evidenceSha256": { "type": "null" },
+        "expectedActors": { "const": 4 },
+        "monitoredActors": { "const": 0 },
+        "continuous": { "const": false }
+      }
+    },
+    "physicalSoak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "evidenceSha256", "requiredDurationMs", "observedDurationMs",
+        "wallClock"
+      ],
+      "properties": {
+        "status": { "const": "NOT_RUN" },
+        "evidenceSha256": { "type": "null" },
+        "requiredDurationMs": { "const": 7200000 },
+        "observedDurationMs": { "const": 0 },
+        "wallClock": { "const": false }
+      }
+    },
+    "radioNotRun": {
+      "allOf": [
+        { "$ref": "#/$defs/radioWorkload" },
+        {
+          "properties": {
+            "status": { "const": "NOT_RUN" }, "evidenceSha256": { "type": "null" },
+            "completedCycles": { "const": 0 }, "helloCycles": { "const": 0 },
+            "authenticatedCycles": { "const": 0 },
+            "bidirectionalDataCycles": { "const": 0 }, "cleanupCycles": { "const": 0 }
+          }
+        }
+      ]
+    },
+    "businessNotRun": {
+      "allOf": [
+        { "$ref": "#/$defs/physicalBusiness" },
+        { "properties": { "status": { "const": "NOT_RUN" }, "evidenceSha256": { "type": "null" }, "completedActions": { "const": 0 }, "completedHandheldCommands": { "const": 0 } } }
+      ]
+    },
+    "continuityNotRun": {
+      "allOf": [
+        { "$ref": "#/$defs/continuityMonitoring" },
+        { "properties": { "status": { "const": "NOT_RUN" }, "evidenceSha256": { "type": "null" }, "monitoredActors": { "const": 0 }, "continuous": { "const": false } } }
+      ]
+    },
+    "soakNotRun": {
+      "allOf": [
+        { "$ref": "#/$defs/physicalSoak" },
+        { "properties": { "status": { "const": "NOT_RUN" }, "evidenceSha256": { "type": "null" }, "observedDurationMs": { "const": 0 }, "wallClock": { "const": false } } }
+      ]
+    }
+  }
+}

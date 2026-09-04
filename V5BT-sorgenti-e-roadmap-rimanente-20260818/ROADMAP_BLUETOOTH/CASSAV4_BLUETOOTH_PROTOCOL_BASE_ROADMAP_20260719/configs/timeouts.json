@@ -1,0 +1,9 @@
+{
+  "gattConnectMs": 10000,
+  "serviceDiscoveryMs": 10000,
+  "authHandshakeMs": 8000,
+  "heartbeatMissesBeforeClose": 3,
+  "retryBaseMs": 300,
+  "retryMaxMs": 10000,
+  "sessionIdleCloseMs": 120000
+}

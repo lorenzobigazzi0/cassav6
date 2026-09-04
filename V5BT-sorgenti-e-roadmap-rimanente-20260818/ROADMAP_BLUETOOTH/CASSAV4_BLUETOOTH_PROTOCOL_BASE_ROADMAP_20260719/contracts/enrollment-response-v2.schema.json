@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav5bt.local/contracts/enrollment-response-v2.schema.json",
+  "title": "CASSA V5BT Bluetooth Initial Enrollment Response v2",
+  "description": "Sensitive one-time response for the Android P-256 compatibility identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "nodeId",
+    "certificateId",
+    "publicKeyAlgorithm",
+    "publicKeySpkiDerBase64",
+    "aliasKeyAlgorithm",
+    "aliasKeyEncoding",
+    "aliasKeyBase64url",
+    "enrolledAt"
+  ],
+  "properties": {
+    "protocolVersion": { "const": 2 },
+    "nodeId": { "$ref": "#/$defs/uuid" },
+    "certificateId": { "$ref": "#/$defs/uuid" },
+    "publicKeyAlgorithm": { "const": "EC-P256" },
+    "publicKeySpkiDerBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{121}[AQgw]==$"
+    },
+    "aliasKeyAlgorithm": { "const": "HMAC-SHA256" },
+    "aliasKeyEncoding": { "const": "base64url-unpadded" },
+    "aliasKeyBase64url": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    },
+    "enrolledAt": { "$ref": "#/$defs/date" }
+  },
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  }
+}

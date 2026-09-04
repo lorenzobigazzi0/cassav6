@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav5bt.local/contracts/auth-server-proof-v1.schema.json",
+  "title": "CASSA V5BT Raspberry server proof v1",
+  "description": "Logical JSON representation of the fixed 66-byte server-proof GATT frame.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "sessionId",
+    "deviceCertificateId",
+    "proofAlgorithm",
+    "proof"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$"
+    },
+    "deviceCertificateId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "proofAlgorithm": {
+      "const": "HMAC-SHA256"
+    },
+    "proof": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{43}=$"
+    }
+  }
+}

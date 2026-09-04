@@ -1,0 +1,12 @@
+{
+  "nodes": [
+    "raspberry",
+    "phone1",
+    "phone2",
+    "tablet1"
+  ],
+  "expect": [
+    "raspberry_peer_count_3",
+    "all_authorized"
+  ]
+}

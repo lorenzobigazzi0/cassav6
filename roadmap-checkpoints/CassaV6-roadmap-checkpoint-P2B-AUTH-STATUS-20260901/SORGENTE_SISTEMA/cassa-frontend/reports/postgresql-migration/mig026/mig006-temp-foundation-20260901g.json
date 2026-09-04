@@ -1,0 +1,230 @@
+{
+  "ok": true,
+  "mode": "apply-and-exercise",
+  "durationMs": 214.3,
+  "first": {
+    "applied": [
+      {
+        "version": "001",
+        "name": "foundation",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7",
+        "durationMs": 14.12
+      },
+      {
+        "version": "002",
+        "name": "event_outbox_lease_contract",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d",
+        "durationMs": 4.41
+      },
+      {
+        "version": "003",
+        "name": "audit_events_append_only",
+        "checksum": "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673",
+        "durationMs": 7.27
+      },
+      {
+        "version": "004",
+        "name": "idempotency_store_contract",
+        "checksum": "c66c1804dff7ecd3abcbeed01845194688f386f93ce4e6bb9a0e12c7978ef2de",
+        "durationMs": 6.62
+      },
+      {
+        "version": "005",
+        "name": "retention_control_plane",
+        "checksum": "cfca4fecc4556d33d78404b18e025c2681fe71520bcab74c33aef7e5864963d2",
+        "durationMs": 15.24
+      },
+      {
+        "version": "006",
+        "name": "audit_events_partitioned_retention",
+        "checksum": "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad",
+        "durationMs": 77.18
+      }
+    ],
+    "skipped": [],
+    "total": 6
+  },
+  "second": {
+    "applied": [],
+    "skipped": [
+      {
+        "version": "001",
+        "name": "foundation",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+      },
+      {
+        "version": "002",
+        "name": "event_outbox_lease_contract",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+      },
+      {
+        "version": "003",
+        "name": "audit_events_append_only",
+        "checksum": "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673"
+      },
+      {
+        "version": "004",
+        "name": "idempotency_store_contract",
+        "checksum": "c66c1804dff7ecd3abcbeed01845194688f386f93ce4e6bb9a0e12c7978ef2de"
+      },
+      {
+        "version": "005",
+        "name": "retention_control_plane",
+        "checksum": "cfca4fecc4556d33d78404b18e025c2681fe71520bcab74c33aef7e5864963d2"
+      },
+      {
+        "version": "006",
+        "name": "audit_events_partitioned_retention",
+        "checksum": "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad"
+      }
+    ],
+    "total": 6
+  },
+  "inspection": {
+    "schemas": [
+      "app_meta",
+      "audit",
+      "messaging"
+    ],
+    "tables": [
+      "app_meta.schema_migrations",
+      "audit.event_ids",
+      "audit.events",
+      "messaging.command_inbox",
+      "messaging.event_outbox",
+      "messaging.idempotency_keys"
+    ],
+    "indexes": [
+      "audit_events_aggregate_time_idx",
+      "audit_events_id_lookup_idx",
+      "audit_events_occurred_at_idx",
+      "audit_events_pkey",
+      "command_inbox_pkey",
+      "event_ids_pkey",
+      "event_outbox_claimable_idx",
+      "event_outbox_lease_idx",
+      "event_outbox_pkey",
+      "events_2026_08_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2026_08_id_occurred_at_idx",
+      "events_2026_08_occurred_at_idx",
+      "events_2026_08_pkey",
+      "events_2026_09_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2026_09_id_occurred_at_idx",
+      "events_2026_09_occurred_at_idx",
+      "events_2026_09_pkey",
+      "events_2026_10_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2026_10_id_occurred_at_idx",
+      "events_2026_10_occurred_at_idx",
+      "events_2026_10_pkey",
+      "events_2026_11_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2026_11_id_occurred_at_idx",
+      "events_2026_11_occurred_at_idx",
+      "events_2026_11_pkey",
+      "events_2026_12_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2026_12_id_occurred_at_idx",
+      "events_2026_12_occurred_at_idx",
+      "events_2026_12_pkey",
+      "events_2027_01_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_01_id_occurred_at_idx",
+      "events_2027_01_occurred_at_idx",
+      "events_2027_01_pkey",
+      "events_2027_02_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_02_id_occurred_at_idx",
+      "events_2027_02_occurred_at_idx",
+      "events_2027_02_pkey",
+      "events_2027_03_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_03_id_occurred_at_idx",
+      "events_2027_03_occurred_at_idx",
+      "events_2027_03_pkey",
+      "events_2027_04_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_04_id_occurred_at_idx",
+      "events_2027_04_occurred_at_idx",
+      "events_2027_04_pkey",
+      "events_2027_05_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_05_id_occurred_at_idx",
+      "events_2027_05_occurred_at_idx",
+      "events_2027_05_pkey",
+      "events_2027_06_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_06_id_occurred_at_idx",
+      "events_2027_06_occurred_at_idx",
+      "events_2027_06_pkey",
+      "events_2027_07_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_07_id_occurred_at_idx",
+      "events_2027_07_occurred_at_idx",
+      "events_2027_07_pkey",
+      "events_2027_08_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_08_id_occurred_at_idx",
+      "events_2027_08_occurred_at_idx",
+      "events_2027_08_pkey",
+      "events_2027_09_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_09_id_occurred_at_idx",
+      "events_2027_09_occurred_at_idx",
+      "events_2027_09_pkey",
+      "events_2027_10_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_2027_10_id_occurred_at_idx",
+      "events_2027_10_occurred_at_idx",
+      "events_2027_10_pkey",
+      "events_default_aggregate_type_aggregate_id_occurred_at_idx",
+      "events_default_id_occurred_at_idx",
+      "events_default_occurred_at_idx",
+      "events_default_pkey",
+      "idempotency_expiry_idx",
+      "idempotency_keys_pkey"
+    ],
+    "auditPartitioning": {
+      "parent_kind": "p",
+      "leaf_partitions": 16,
+      "has_default": true
+    },
+    "privileges": {
+      "app_is_runtime_member": true,
+      "app_meta_usage": true,
+      "audit_usage": true,
+      "audit_create": false,
+      "messaging_usage": true,
+      "messaging_create": false,
+      "audit_select": true,
+      "audit_insert": true,
+      "audit_update": false,
+      "audit_delete": false,
+      "audit_id_select": true,
+      "audit_id_insert": false,
+      "audit_partition_execute": false,
+      "outbox_select": true,
+      "outbox_insert": true,
+      "outbox_update": true,
+      "outbox_delete": false
+    },
+    "registry": [
+      {
+        "version": "001",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+      },
+      {
+        "version": "002",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+      },
+      {
+        "version": "003",
+        "checksum": "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673"
+      },
+      {
+        "version": "004",
+        "checksum": "c66c1804dff7ecd3abcbeed01845194688f386f93ce4e6bb9a0e12c7978ef2de"
+      },
+      {
+        "version": "005",
+        "checksum": "cfca4fecc4556d33d78404b18e025c2681fe71520bcab74c33aef7e5864963d2"
+      },
+      {
+        "version": "006",
+        "checksum": "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad"
+      }
+    ]
+  },
+  "runtimeExercise": {
+    "audit_count": 1,
+    "idempotency_status": "completed",
+    "outbox_attempts": 1
+  }
+}

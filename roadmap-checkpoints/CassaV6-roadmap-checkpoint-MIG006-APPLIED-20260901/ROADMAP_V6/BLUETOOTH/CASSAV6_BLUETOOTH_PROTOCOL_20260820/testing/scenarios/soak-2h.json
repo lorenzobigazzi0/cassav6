@@ -1,0 +1,9 @@
+{
+  "durationMinutes": 120,
+  "nodes": 4,
+  "expect": [
+    "zero_crash",
+    "stable_memory",
+    "no_session_leak"
+  ]
+}

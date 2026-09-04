@@ -1,0 +1,73 @@
+id,title,phase,dependencies,owner_hint,risk,delegabile,effort_days_min,effort_days_max,definition_of_done
+MIG-000,Congelare baseline funzionale e performance,P0,-,architecture,medio,si,3,5,baseline test e metriche archiviate con hardware dichiarato
+MIG-001,Inventario automatico readDb/writeDb e storage legacy,P0,MIG-000,backend,basso,si,1,2,report rigenerabile via script
+MIG-002,Golden dataset con ordini/pagamenti/menu/prenotazioni/benefit,P0,MIG-000,qa,alto,si,3,6,fixture versionata con checksum
+MIG-003,Baseline risorse sul dispositivo reale (RSS Node/MariaDB/SQLite/temperatura),P0,MIG-000,ops,medio,si,1,2,footprint misurato e archiviato
+MIG-010,Gate hardware storage e memoria (HW-01),P1,MIG-003,ops,critico,no,2,4,pg_test_fsync e fio archiviati; HW-01 chiusa per iscritto
+MIG-011,Aggiungere driver pg e pool PostgreSQL,P1,MIG-010,backend,medio,si,2,3,health DB e metriche pool; queue wait misurato
+MIG-012,Aggiungere migration runner PostgreSQL,P1,MIG-011,backend,alto,si,2,4,migration up idempotente con schema_migrations e checksum
+MIG-013,Provisioning PostgreSQL sicuro e backup/PITR,P1,MIG-011,ops,critico,no,3,5,fsync/synchronous_commit attivi; restore testato su hardware reale con tempo misurato
+MIG-020,Creare schemi PG e tabelle foundation,P2,MIG-012,backend,alto,si,3,5,audit/outbox/idempotency/command inbox disponibili
+MIG-021,Transaction helper PG con retry deadlock/serialization,P2,MIG-011,backend,critico,no,3,5,COMMIT/ROLLBACK standardizzati; retry misurato
+MIG-022,Contratto repository e divieto di SQL negli handler,P2,MIG-021,architecture,alto,si,2,4,regola applicata a tutti i domini non solo ai nuovi
+MIG-023,Outbox con lease + FOR UPDATE SKIP LOCKED,P2,"MIG-020,MIG-021",backend,critico,no,4,6,worker concorrenti senza doppio claim; lease scaduto ripreso; consumatori idempotenti
+MIG-024,Audit append-only PostgreSQL,P2,"MIG-020,MIG-021",backend,critico,no,2,4,audit critico nello stesso commit
+MIG-025,Idempotency store PostgreSQL,P2,"MIG-020,MIG-021",backend,critico,no,3,5,unique(scope,key) e replay deterministico
+MIG-026,Retention e partizionamento tabelle append-only,P2,MIG-020,backend/ops,medio,si,2,4,RET-01 chiusa; policy applicate; view di crescita attiva
+MIG-030,Inventario confini route -> dominio,P2b,MIG-022,architecture,alto,si,4,8,server_route_boundaries.csv completo; ogni route ha dominio o marcatura cross-domain
+MIG-031,Estrazione route senza logica da server.js,P2b,MIG-030,backend,alto,si,8,15,server.js sotto 25k righe; suite invariata e verde
+MIG-032,Reader scoped per dominio (ancora su app-state),P2b,MIG-031,backend,alto,si,8,20,nessun handler di dominio chiama readDb direttamente
+MIG-033,Writer scoped per dominio (ancora su app-state),P2b,MIG-032,backend,critico,no,8,20,writeDb non compare negli handler di dominio; zero cambi di comportamento
+MIG-034,Isolamento e documentazione del residuo condiviso,P2b,MIG-033,architecture,medio,si,2,5,server.js sotto 10k righe; server_core_residual.md scritto
+MIG-040,Migrare users/permissions/groups,P3,"MIG-020,MIG-033",backend,alto,si,5,8,0 readDb/writeDb identity
+MIG-041,Migrare auth sessions con PG source of truth,P3,MIG-040,backend,critico,no,4,7,login/logout/revoca/expiry senza cache condivisa
+MIG-042,Migrare configuration settings/device/printers/terminals,P3,"MIG-020,MIG-033",backend,alto,si,6,10,ogni chiave posSettings ha un owner PG esplicito
+MIG-050,Chiudere SEQ-01 e COM-01,P4,MIG-042,architecture/product,critico,no,1,3,decisione scritta su sequenziamento con Commerciale V2 e su versioning
+MIG-051,Unificare menuItems e commercial_products in product master,P4,MIG-050,backend,critico,no,6,10,una sola source of truth prodotto
+MIG-052,Migrare variants/allergens/tags/SKU/barcode/routing,P4,MIG-051,backend,alto,si,4,7,catalog completeness 100%
+MIG-053,Preservare ingredient labels senza interpretazione,P4,MIG-051,backend,alto,si,1,3,conteggio label legacy = righe importate; tabelle inventory vuote
+MIG-054,Migrare cataloghi/menu/categorie/gruppi/entries,P4,MIG-051,backend,alto,si,5,8,catalog resolution golden test verdi
+MIG-055,Migrare listini/schedules/assignments/scopes,P4,MIG-054,backend,critico,no,6,10,pricing equivalence 100% su fixture incluse finestre overnight
+MIG-056,Migrare offers/combo/choice groups/options,P4,MIG-055,backend,alto,si,4,7,fixed e sum_components equivalenti con tax allocation
+MIG-060,Migrare commercial benefits/coupon/voucher/redemptions,P4b,"MIG-055,MIG-025",backend,critico,no,7,12,doppia redemption impossibile per vincolo di schema; residui equivalenti
+MIG-070,Migrare rooms/tables/table groups/state,P5,MIG-042,backend,alto,si,5,8,0 app-state tavoli
+MIG-071,Migrare table work locks con PG autorevole,P5,MIG-070,backend,alto,si,3,5,lock UX non sostituisce constraint/row lock
+MIG-072,Migrare sale sessions/templates/solar closures + BIZ-01,P5,MIG-040,backend,alto,no,5,9,BIZ-01 chiusa; lifecycle completo PG; business date definita in un solo punto
+MIG-073,Migrare reservations/assignments/locks/move requests,P5,MIG-070,backend,alto,si,6,10,multi-table e conflict test verdi
+MIG-080,Migrare order create/read/sync,P6,"MIG-051,MIG-070,MIG-072",backend,critico,no,8,12,ordine 100% PG con lane ancora attive
+MIG-081,Migrare order lines/variants e snapshot commerciali,P6,MIG-080,backend,critico,no,6,10,storico prezzo/tasse immutabile; pricing_snapshot mai vuoto
+MIG-082,Migrare cancel/comp/storno/correction/replacement,P6,MIG-081,backend,critico,no,8,12,tutti i workflow e audit equivalenti
+MIG-083,Migrare transfer/room move/fulfillment events,P6,"MIG-080,MIG-073",backend,alto,si,5,8,nessuna mutation legacy
+MIG-090,Baseline concorrenza attuale su hardware reale,P6b,MIG-083,performance,alto,no,2,4,throughput/p95/p99/profondita coda archiviati; CONC-01 chiusa
+MIG-091,Mappa lane -> invariante -> aggregato -> sostituzione,P6b,MIG-090,architecture,critico,no,2,4,ogni lane ha una riga con la sua sostituzione motivata
+MIG-092,Sostituzione per aggregato con test scritti prima,P6b,MIG-091,backend,critico,no,8,12,test di concorrenza per aggregato verdi inclusi quelli scritti per fallire
+MIG-093,Rimozione backpressure globale e re-baseline,P6b,MIG-092,performance,critico,no,3,5,entro 110% della baseline o regressione accettata per iscritto
+MIG-100,Definire bills e allocations monetarie complete,P7,MIG-081,backend,critico,no,5,8,allocazioni order/bill/line; due_cents coerente per vincolo
+MIG-101,Migrare payment containers/parts/transactions,P7,"MIG-100,MIG-025",backend,critico,no,8,12,COMMIT prima di ACK; doppio retry non genera doppio incasso
+MIG-102,Migrare provider transactions e terminal idempotency,P7,MIG-101,backend,critico,no,5,8,provider reference unique; timeout ambiguo riconciliato
+MIG-103,Migrare cash sessions/movements/denominations,P7,MIG-101,backend,critico,no,6,10,quadratura e restart safe
+MIG-104,Integrare Glory senza transazioni DB lunghe (CASH-01),P7,MIG-103,backend/hardware,critico,no,6,10,CASH-01 chiusa; I/O hardware fuori tx; state machine persistita
+MIG-110,Migrare fiscal documents/operations (FIS-01),P8,"MIG-101,MIG-023",backend,critico,no,10,15,FIS-01 chiusa; outbox atomica con pagamento; restart senza doppia emissione
+MIG-111,Migrare print spool/jobs/attempts,P8,MIG-023,backend,alto,si,6,10,lease + SKIP LOCKED; job persistito prima di ACK
+MIG-120,Cache in-process versionata con invalidazione post-commit,P9,MIG-055,backend,medio,si,3,5,suite funzionale verde con cache disabilitata
+MIG-121,Presence e heartbeat in-process con TTL,P9,MIG-070,backend,medio,si,2,4,ricostruzione dopo restart; stato business resta in PG
+MIG-122,Rate limit con conteggio tentativi persistito,P9,MIG-041,security,alto,no,2,4,protezione brute force attiva dopo riavvio del processo
+MIG-130,Migrare smart customers/pass/access/transactions,P10,MIG-020,backend,medio,si,5,8,0 array storici nested autorevoli
+MIG-131,Migrare notifications/deferred calls/waiter pauses,P10,"MIG-023,MIG-121",backend,medio,si,4,7,durable e volatile separati
+MIG-132,Migrare radio/mobile battery/device config/status,P10,"MIG-042,MIG-121",backend,medio,si,4,7,config in PG; heartbeat volatile
+MIG-140,Convertire reports/analytics a query PG/read model,P11,"MIG-101,MIG-110",backend,alto,si,10,18,nessun report legge app_state
+MIG-150,Importer MariaDB/app_state -> PG,P12,"MIG-040,MIG-051,MIG-070,MIG-080,MIG-101",data,critico,no,8,12,dry-run ripetibile su hardware reale con tempo misurato
+MIG-151,Importer SQLite relational -> PG,P12,MIG-150,data,critico,no,5,8,merge deterministico per revision/timestamp
+MIG-152,Conversione importi legacy -> centesimi (FMT-01),P12,MIG-150,data,critico,no,2,4,FMT-01 chiusa; regola unica in un solo punto; report arrotondamenti
+MIG-153,Riconciliazione legacy vs PG completa,P12,"MIG-150,MIG-151,MIG-152",qa/data,critico,no,4,7,reconcile_legacy_vs_pg.mjs exit 0; zero check INCOMPLETO
+MIG-154,Shadow read comparison senza dual-write permanente,P12,MIG-153,backend/qa,alto,si,4,7,divergenze 0 nel burn-in
+MIG-160,Load test su hardware reale con termica e throttling,P13,MIG-154,performance,alto,no,6,10,target p95/p99 raggiunti con hardware dichiarato
+MIG-161,Crash/reboot/Postgres-restart/worker-crash tests,P13,MIG-154,qa/ops,critico,no,6,10,0 perdita, 0 doppio pagamento, 0 job perso
+MIG-162,Verifica retention e crescita sotto carico,P13,"MIG-026,MIG-160",ops,medio,si,2,4,crescita tabelle proiettata a 12 mesi entro lo spazio disponibile
+MIG-170,Rollback drill pre-cutover (ROL-01),P14,"MIG-160,MIG-161",ops,critico,no,2,4,ROL-01 chiusa; rollback provato non teorico
+MIG-171,Cutover maintenance + delta migration + verify,P14,MIG-170,ops,critico,no,2,4,PostgreSQL primary unico; smoke verde
+MIG-180,Eliminare readDb/writeDb runtime,P15,MIG-171,backend,critico,no,3,5,grep gate = 0 runtime
+MIG-181,Eliminare app_state/domain_records/split repos,P15,MIG-180,backend,alto,si,3,5,nessun mirror/hydration/reconcile
+MIG-182,Eliminare SQLite relational e node:sqlite runtime,P15,MIG-181,backend,alto,si,2,3,nessun file sqlite server-side
+MIG-183,Eliminare MariaDB/mysql2 runtime,P15,MIG-182,backend/ops,alto,si,2,3,mysql2 rimosso e servizio spento
+MIG-184,Final security/performance/release gate,P15,MIG-183,qa/security,critico,no,2,4,DoD di 10_LEGACY_DECOMMISSION.md completa

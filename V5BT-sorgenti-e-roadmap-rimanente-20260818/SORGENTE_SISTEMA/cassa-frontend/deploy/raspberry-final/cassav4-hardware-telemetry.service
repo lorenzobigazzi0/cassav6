@@ -1,0 +1,38 @@
+[Unit]
+Description=CASSAv4 Raspberry persistent hardware telemetry
+After=local-fs.target systemd-journald.service
+Before=cassav4-backend.service cassav4-realtime.service cassav4-api-worker@5283.service cassav4-api-worker@5284.service cassav4-table-lock-worker.service
+
+[Service]
+Type=simple
+User=cassav4
+Group=cassav4
+SupplementaryGroups=systemd-journal video
+Environment=CASSAV4_TELEMETRY_INTERVAL_SEC=5
+Environment=CASSAV4_TELEMETRY_MAX_BYTES=16777216
+Environment=CASSAV4_TELEMETRY_MAX_FILES=3
+Environment=CASSAV4_BOOT_JOURNAL_LINES=2000
+ExecStart=/usr/local/libexec/cassav4-hardware-telemetry
+Restart=always
+RestartSec=5
+TimeoutStopSec=10
+CPUAffinity=0 1 2 3
+Nice=19
+CPUWeight=10
+IOWeight=10
+MemoryMax=64M
+TasksMax=32
+LogsDirectory=cassav4
+StateDirectory=cassav4
+UMask=0027
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+ReadWritePaths=/var/log/cassav4 /var/lib/cassav4
+
+[Install]
+WantedBy=multi-user.target

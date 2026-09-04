@@ -1,0 +1,6 @@
+{
+  "expect": [
+    "permission_required_state",
+    "no_crash"
+  ]
+}

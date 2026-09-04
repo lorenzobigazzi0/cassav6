@@ -1,0 +1,306 @@
+.menu-level-card {
+  position: relative;
+}
+
+.menu-level-card.has-mobile-menu-station-badge {
+  min-height: 88px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  padding-top: 12px;
+  padding-bottom: 38px;
+}
+
+.menu-level-card.has-mobile-menu-station-badge .menu-level-name {
+  width: 100%;
+  padding-right: 4px;
+  line-height: 1.3;
+}
+
+.menu-level-card.has-mobile-menu-station-badge .menu-level-count {
+  margin-top: auto;
+  padding-right: 96px;
+  max-width: calc(100% - 108px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-menu-level-station-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  max-width: calc(100% - 24px);
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 174, 255, 0.34);
+  background: rgba(87, 132, 219, 0.2);
+  color: rgba(239, 245, 255, 0.98);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .mobile-menu-level-station-badge,
+:root:not([data-theme]) .mobile-menu-level-station-badge {
+  border-color: rgba(58, 106, 188, 0.22);
+  background: rgba(76, 133, 221, 0.12);
+  color: #1e3a67;
+}
+
+.mobile-menu-station-badge-list {
+  margin-bottom: 10px;
+}
+
+.mobile-menu-station-badge-row .settings-ios-value {
+  max-width: 34ch;
+}
+
+.settings-page,
+.payments-page,
+.profile-page {
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding-top: 2px;
+  padding-bottom: 0 !important;
+  padding-left: calc(16px + env(safe-area-inset-left)) !important;
+  padding-right: calc(16px + env(safe-area-inset-right)) !important;
+}
+
+.settings-page .swipe-front-layer,
+.payments-page .swipe-front-layer,
+.profile-page .swipe-front-layer {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.settings-shell {
+  --settings-topbar-clearance: 68px;
+  --settings-card-bottom-trim: 25px;
+  --home-shell-side-expand: 5px;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: stretch;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  width: calc(100% + (var(--home-shell-side-expand) * 2));
+  max-width: calc(100% + (var(--home-shell-side-expand) * 2));
+  min-width: 0;
+  margin: 0;
+  margin-left: calc(var(--home-shell-side-expand) * -1);
+  margin-right: calc(var(--home-shell-side-expand) * -1);
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  gap: max(14px, calc(var(--home-shell-gap, 12px) + 2px));
+  overflow: visible;
+  justify-items: stretch;
+}
+
+.settings-shell > .system-row {
+  grid-row: 1;
+  flex: 0 0 auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: visible;
+  position: relative;
+  justify-self: center;
+}
+
+.settings-shell > .settings-topbar,
+.settings-shell > .home-topbar.settings-topbar {
+  grid-row: 2;
+  flex: 0 0 auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  position: relative;
+  z-index: 8;
+  padding: var(--topbar-pad-block, 10px) var(--topbar-pad-inline, 12px);
+  min-height: 64px;
+  overflow: visible;
+  box-shadow: none !important;
+  justify-self: center;
+}
+
+.settings-topbar {
+  gap: 12px;
+}
+
+.settings-topbar-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: min(280px, calc(100% - 232px));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.settings-home-btn,
+.settings-header-spacer {
+  flex: 0 0 96px;
+  width: 96px;
+  min-width: 96px;
+  position: relative;
+  z-index: 2;
+}
+
+.settings-home-btn {
+  justify-content: flex-start;
+}
+
+.settings-shell > .settings-card,
+.settings-shell > .payments-card,
+.settings-shell > .profile-card {
+  grid-row: 3;
+  margin-top: var(--settings-topbar-clearance) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: calc(100% - var(--settings-topbar-clearance) - var(--settings-card-bottom-trim)) !important;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  justify-self: center;
+}
+
+.settings-card,
+.payments-card,
+.profile-card {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: calc(100% - var(--settings-topbar-clearance) - var(--settings-card-bottom-trim)) !important;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.settings-card.settings-card-ios,
+.payments-card.settings-card-ios,
+.profile-card.settings-card-ios {
+  min-height: 0 !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 18, 34, 0.96) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+:root[data-theme="light"] .settings-card.settings-card-ios,
+:root[data-theme="light"] .payments-card.settings-card-ios,
+:root[data-theme="light"] .profile-card.settings-card-ios,
+:root:not([data-theme]) .settings-card.settings-card-ios,
+:root:not([data-theme]) .payments-card.settings-card-ios,
+:root:not([data-theme]) .profile-card.settings-card-ios {
+  background: rgba(255, 255, 255, 0.97) !important;
+  border-color: rgba(20, 40, 80, 0.16) !important;
+}
+
+.settings-card.settings-card-ios::before,
+.settings-card.settings-card-ios::after,
+.payments-card.settings-card-ios::before,
+.payments-card.settings-card-ios::after,
+.profile-card.settings-card-ios::before,
+.profile-card.settings-card-ios::after,
+.settings-card.settings-card-ios .glass-lens,
+.payments-card.settings-card-ios .glass-lens,
+.profile-card.settings-card-ios .glass-lens {
+  display: none !important;
+}
+
+.settings-body,
+.profile-body {
+  min-height: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 12px;
+}
+
+.settings-scroll-area,
+.payments-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: 4px;
+  padding-right: 0 !important;
+  padding-bottom: max(28px, calc(env(safe-area-inset-bottom) + 18px));
+}
+
+.settings-shell {
+  --settings-topbar-clearance: 68px;
+  --settings-card-bottom-trim: 0px;
+  gap: var(--home-shell-gap, 12px);
+}
+
+.settings-shell > .settings-card,
+.settings-shell > .payments-card,
+.settings-shell > .profile-card {
+  margin-top: var(--settings-topbar-clearance) !important;
+  height: calc(100% - var(--settings-topbar-clearance)) !important;
+  max-height: 100% !important;
+}
+
+.settings-card,
+.payments-card,
+.profile-card {
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+}
+
+.settings-card.settings-card-ios,
+.payments-card.settings-card-ios,
+.profile-card.settings-card-ios {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#mobile-order-workflow-delivery-toggle-row .mow-switch.is-disabled {
+  border-color: #c97912 !important;
+  background: #fff1d2 !important;
+  color: #5c3300 !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.78), 0 6px 16px rgba(128, 74, 0, 0.16) !important;
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/device-registry-v1.schema.json",
+  "title": "Cassa V6 Bluetooth Device Registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "createdAt",
+    "updatedAt",
+    "devices",
+    "enrollmentTokens"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "cassav6.bluetooth.device-registry"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/device"
+      }
+    },
+    "enrollmentTokens": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/enrollmentToken"
+      }
+    }
+  },
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "certificateId",
+        "publicKeyAlgorithm",
+        "publicKeySpkiDerBase64",
+        "aliasKeyBase64url",
+        "enrollmentEndpointId",
+        "enrolledAt",
+        "revokedAt"
+      ],
+      "properties": {
+        "nodeId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "certificateId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "publicKeyAlgorithm": {
+          "const": "Ed25519"
+        },
+        "publicKeySpkiDerBase64": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{58}[AEIMQUYcgkosw048]=$"
+        },
+        "aliasKeyBase64url": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+        },
+        "enrollmentEndpointId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "enrolledAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "revokedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        }
+      }
+    },
+    "enrollmentToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokenId",
+        "enrollmentEndpointId",
+        "tokenHashAlgorithm",
+        "tokenHashBase64",
+        "issuedAt",
+        "expiresAt",
+        "consumedAt",
+        "consumedByNodeId"
+      ],
+      "properties": {
+        "tokenId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "enrollmentEndpointId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "tokenHashAlgorithm": {
+          "const": "SHA-256"
+        },
+        "tokenHashBase64": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{42}[AEIMQUYcgkosw048]=$"
+        },
+        "issuedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "consumedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+        },
+        "consumedByNodeId": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

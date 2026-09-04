@@ -1,0 +1,4875 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "v6-postgresql-migration-golden-001",
+  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "currency": "EUR",
+  "purpose": "Equivalence baseline for app-state to PostgreSQL migration",
+  "appState": {
+    "users": [],
+    "userGroups": [],
+    "sessions": [],
+    "saleSessionTemplates": [
+      {
+        "id": "tpl_morning",
+        "name": "Turno Mattina",
+        "startTime": "09:00",
+        "endTime": "17:00",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "tpl_evening",
+        "name": "Turno Serale",
+        "startTime": "17:00",
+        "endTime": "02:00",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      }
+    ],
+    "menuItems": [
+      {
+        "id": "menu_caffetteria_caffe",
+        "name": "Caffe",
+        "price": 1.3,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_caffe_corretto",
+        "name": "Caffe Corretto",
+        "price": 2,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_decaffeinato",
+        "name": "Decaffeinato",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_macchiatone",
+        "name": "Macchiatone",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_cappuccino",
+        "name": "Cappuccino",
+        "price": 1.6,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_latte_macchiato",
+        "name": "Latte Macchiato",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_ginseng_piccolo",
+        "name": "Ginseng Piccolo",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_ginseng_grande",
+        "name": "Ginseng Grande",
+        "price": 1.8,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_orzo_piccolo",
+        "name": "Orzo Piccolo",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_orzo_grande",
+        "name": "Orzo Grande",
+        "price": 1.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_caffe_shakerato",
+        "name": "Caffe Shakerato",
+        "price": 3.5,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_caffetteria_caffe_shakerato_corretto",
+        "name": "Caffe Shakerato Corretto",
+        "price": 4,
+        "category": "Caffetteria",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_acqua_0_5l_nat",
+        "name": "Acqua 0,5L Nat",
+        "price": 1.3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_acqua_0_5l_friz",
+        "name": "Acqua 0,5L Friz",
+        "price": 1.3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_acqua_1l_nat",
+        "name": "Acqua 1L Nat",
+        "price": 2.5,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_acqua_1l_friz",
+        "name": "Acqua 1L Friz",
+        "price": 2.5,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_ace",
+        "name": "Succo ACE",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_arancia",
+        "name": "Succo Arancia",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_ananas",
+        "name": "Succo Ananas",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_albicocca",
+        "name": "Succo Albicocca",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_pera",
+        "name": "Succo Pera",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_pesca",
+        "name": "Succo Pesca",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_pompelmo",
+        "name": "Succo Pompelmo",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_pomodoro",
+        "name": "Succo Pomodoro",
+        "price": 3,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_succo_mirtillo",
+        "name": "Succo Mirtillo",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_estathe_brick_pesca",
+        "name": "Estathe Brick Pesca",
+        "price": 1.5,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_estathe_brick_limone",
+        "name": "Estathe Brick Limone",
+        "price": 1.5,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_coca_cola",
+        "name": "Coca Cola",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_coca_cola_zero",
+        "name": "Coca Cola Zero",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_fanta",
+        "name": "Fanta",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_lemon_soda",
+        "name": "Lemon Soda",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_bitter_rosso",
+        "name": "Bitter Rosso",
+        "price": 3.8,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_bitter_bianco",
+        "name": "Bitter Bianco",
+        "price": 3.8,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_campari_soda",
+        "name": "Campari Soda",
+        "price": 3.8,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_acqua_tonica",
+        "name": "Acqua Tonica",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_ginger_beer",
+        "name": "Ginger Beer",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_ginger_ale",
+        "name": "Ginger Ale",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_crodino",
+        "name": "Crodino",
+        "price": 3.8,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_soda_pompelmo",
+        "name": "Soda Pompelmo",
+        "price": 4,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_bevande_red_bull",
+        "name": "Red Bull",
+        "price": 5,
+        "category": "Bevande",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_birre_corona",
+        "name": "Corona",
+        "price": 4.5,
+        "category": "Birre",
+        "enabled": true,
+        "priceSchedule": [
+          {
+            "id": "diurno",
+            "label": "Diurno",
+            "start": "08:00",
+            "end": "18:00",
+            "price": 4.5,
+            "enabled": true
+          },
+          {
+            "id": "notturno",
+            "label": "Notturno",
+            "start": "18:00",
+            "end": "08:00",
+            "price": 5,
+            "enabled": true
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_birre_corona_0",
+        "name": "Corona 0",
+        "price": 4.5,
+        "category": "Birre",
+        "enabled": true,
+        "priceSchedule": [
+          {
+            "id": "diurno",
+            "label": "Diurno",
+            "start": "08:00",
+            "end": "18:00",
+            "price": 4.5,
+            "enabled": true
+          },
+          {
+            "id": "notturno",
+            "label": "Notturno",
+            "start": "18:00",
+            "end": "08:00",
+            "price": 5,
+            "enabled": true
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_birre_becks",
+        "name": "Becks",
+        "price": 4.5,
+        "category": "Birre",
+        "enabled": true,
+        "priceSchedule": [
+          {
+            "id": "diurno",
+            "label": "Diurno",
+            "start": "08:00",
+            "end": "18:00",
+            "price": 4.5,
+            "enabled": true
+          },
+          {
+            "id": "notturno",
+            "label": "Notturno",
+            "start": "18:00",
+            "end": "08:00",
+            "price": 5,
+            "enabled": true
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_birre_tennents",
+        "name": "Tennents",
+        "price": 4.5,
+        "category": "Birre",
+        "enabled": true,
+        "priceSchedule": [
+          {
+            "id": "diurno",
+            "label": "Diurno",
+            "start": "08:00",
+            "end": "18:00",
+            "price": 4.5,
+            "enabled": true
+          },
+          {
+            "id": "notturno",
+            "label": "Notturno",
+            "start": "18:00",
+            "end": "08:00",
+            "price": 5,
+            "enabled": true
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_birre_ichnusa",
+        "name": "Ichnusa",
+        "price": 4.5,
+        "category": "Birre",
+        "enabled": true,
+        "priceSchedule": [
+          {
+            "id": "diurno",
+            "label": "Diurno",
+            "start": "08:00",
+            "end": "18:00",
+            "price": 4.5,
+            "enabled": true
+          },
+          {
+            "id": "notturno",
+            "label": "Notturno",
+            "start": "18:00",
+            "end": "08:00",
+            "price": 5,
+            "enabled": true
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_k_vermentino",
+        "name": "K Vermentino",
+        "price": 6,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_k_pinot_grigio",
+        "name": "K Pinot Grigio",
+        "price": 6,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_k_chardonnay",
+        "name": "K Chardonnay",
+        "price": 6,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_k_prosecco",
+        "name": "K Prosecco",
+        "price": 6,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_k_merlot",
+        "name": "K Merlot",
+        "price": 6,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_bott_vermentino",
+        "name": "Bott Vermentino",
+        "price": 30,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_bott_pinot_grigio",
+        "name": "Bott Pinot Grigio",
+        "price": 30,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_bott_chardonnay",
+        "name": "Bott Chardonnay",
+        "price": 30,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_bott_prosecco",
+        "name": "Bott Prosecco",
+        "price": 30,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_vino_bott_merlot",
+        "name": "Bott Merlot",
+        "price": 30,
+        "category": "Vino e Prosecco",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_analcolico",
+        "name": "Analcolico",
+        "price": 7,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_aperol_spritz",
+        "name": "Aperol Spritz",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_campari_spritz",
+        "name": "Campari Spritz",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_gin_tonic",
+        "name": "Gin Tonic",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "variants": [
+          {
+            "id": "standard",
+            "name": "Standard",
+            "priceDelta": 0
+          },
+          {
+            "id": "gin_premium",
+            "name": "Gin premium",
+            "priceDelta": 2.5
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_gin_lemon",
+        "name": "Gin Lemon",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "variants": [
+          {
+            "id": "standard",
+            "name": "Standard",
+            "priceDelta": 0
+          },
+          {
+            "id": "gin_premium",
+            "name": "Gin premium",
+            "priceDelta": 2.5
+          }
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_vodka_lemon",
+        "name": "Vodka Lemon",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_vodka_tonic",
+        "name": "Vodka Tonic",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_vodka_redbull",
+        "name": "Vodka Redbull",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_rum_e_cola",
+        "name": "Rum e Cola",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_long_island",
+        "name": "Long Island",
+        "price": 8,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_mojito",
+        "name": "Mojito",
+        "price": 9,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_virgin_mojito",
+        "name": "Virgin Mojito",
+        "price": 9,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_special_10",
+        "name": "Special 10",
+        "price": 10,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_drink_special_12",
+        "name": "Special 12",
+        "price": 12,
+        "category": "Drink",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_averna",
+        "name": "Averna",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_brancamenta",
+        "name": "Brancamenta",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_fernet_branca",
+        "name": "Fernet Branca",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_montenegro",
+        "name": "Montenegro",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_vecchio_amaro_del_capo",
+        "name": "Vecchio Amaro Del Capo",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_braulio",
+        "name": "Braulio",
+        "price": 5,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_rabarbaro_zucca",
+        "name": "Rabarbaro Zucca",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_cynar",
+        "name": "Cynar",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_tattico",
+        "name": "Tattico",
+        "price": 5,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_jagermeister",
+        "name": "Jagermeister",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_jefferson",
+        "name": "Jefferson",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_limoncello_di_capri",
+        "name": "Limoncello Di Capri",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_sambuca_molinari",
+        "name": "Sambuca Molinari",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_baileys_original",
+        "name": "Baileys Original",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_disaronno",
+        "name": "Disaronno",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_frangelico",
+        "name": "Frangelico",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_cointreau",
+        "name": "Cointreau",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_kahlua",
+        "name": "Kahlúa",
+        "price": 4,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_chartreuse_giallo",
+        "name": "Chartreuse Giallo",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_chartreuse_verde",
+        "name": "Chartreuse Verde",
+        "price": 6,
+        "category": "Amari e Liquori",
+        "section": "Amari e Liquori",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_sabatini",
+        "name": "Sabatini London Dry",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_tanqueray_ten",
+        "name": "Tanqueray Ten",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_presobene",
+        "name": "Presobene London Dry",
+        "price": 18,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_hendricks",
+        "name": "Hendryck’s Original Distilled",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_monkey",
+        "name": "Monkey 47 Schwarzwald Dry",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_n3",
+        "name": "Nr 3 London Dry",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_bulldog",
+        "name": "Bulldog London Dry",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_ginepraio",
+        "name": "Ginepraio Dry",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_amuerte",
+        "name": "Amuerte Compound",
+        "price": 15,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gin_raw",
+        "name": "Gin Raw Original Distilled",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gin_raw_cherry_blossom",
+        "name": "Gin Raw Cherry Blossom Distilled",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gin_raw_lavender",
+        "name": "Gin Raw Lavender Distilled",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gin_raw_orange_blossom",
+        "name": "Gin Raw Orange Blossom Distilled",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_mare",
+        "name": "Gin Mare Mediterraneo",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_capri",
+        "name": "Gin Mare Capri Mediterraneo",
+        "price": 14,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_nordes",
+        "name": "Nordes Atlantic Galician",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gin_arte",
+        "name": "Gin Arte Dry",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_engine",
+        "name": "Engine Distilled",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_kinobi",
+        "name": "Kinobi Kyoto Dry",
+        "price": 15,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_etsu",
+        "name": "Etsu Japanese",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_tanqueray_0",
+        "name": "Tanqueray 0",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_tanqueray",
+        "name": "Tanqueray",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Gin",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_grey_goose",
+        "name": "Grey Goose",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Vodka",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_altamura",
+        "name": "Altamura",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Vodka",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_yurt",
+        "name": "Yurt",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Vodka",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_absolut",
+        "name": "Absolut",
+        "price": 8,
+        "category": "Drink Premium",
+        "section": "Vodka",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_skyy",
+        "name": "SKYY",
+        "price": 10,
+        "category": "Drink Premium",
+        "section": "Vodka",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_santa_teresa_solera_1796",
+        "name": "Santa Teresa Solera 1796",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_zacapa_solera_23",
+        "name": "Zacapa Solera 23",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_gosling_black_seal",
+        "name": "Gosling Black Seal",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_don_papa_baroko",
+        "name": "Don Papa Baroko",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_don_papa_masskara",
+        "name": "Don Papa Masskara",
+        "price": 12,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_diplomatico_planas",
+        "name": "Diplomatico Planas",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_diplomatico_mantuano",
+        "name": "Diplomatico Mantuano",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_seilor_jerry_spiced",
+        "name": "Seilor Jerry Spiced",
+        "price": 10,
+        "category": "Rum",
+        "section": "Rum",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_patron_silver",
+        "name": "Patron Silver",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_patron_reposado",
+        "name": "Patron Reposado",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_curado_blue_agave",
+        "name": "Curado Blue Agave",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_curado_capreata",
+        "name": "Curado Capreata",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_curado_espadin",
+        "name": "Curado Espadin",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_picaflor_espadin_joven",
+        "name": "Picaflor Espadin Joven",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_picaflor_wild_ensamble_espadin",
+        "name": "Picaflor Wild Ensamble Espadin",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_xaman_espadin",
+        "name": "Xaman Espadin",
+        "price": 12,
+        "category": "Drink Premium",
+        "section": "Tequila",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_courvoisier",
+        "name": "Courvoisier",
+        "price": 10,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_hennessy",
+        "name": "Hennessy",
+        "price": 10,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_vecchia_romagna",
+        "name": "Vecchia Romagna",
+        "price": 8,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_grand_duque_d_alba",
+        "name": "Grand Duque D’Alba",
+        "price": 10,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_hermano_acholado",
+        "name": "Hermano Acholado",
+        "price": 10,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_hermano_quebranta",
+        "name": "Hermano Quebranta",
+        "price": 10,
+        "category": "Cognac e Brandy",
+        "section": "Cognac e Brandy",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_jack_daniels_bourbon",
+        "name": "Jack Daniel’s Bourbon",
+        "price": 8,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_woodford_reserve_bourbon",
+        "name": "Woodford Reserve Bourbon",
+        "price": 12,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_knob_creek_bourbon",
+        "name": "Knob Creek Bourbon",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_wild_turkey_rye",
+        "name": "Wild Turkey Rye",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_oban_14_single_malt_scotch",
+        "name": "Oban 14 Single Malt Scotch",
+        "price": 15,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_laphroaig_10_sigle_malt_scotch",
+        "name": "Laphroaig 10 Sigle Malt Scotch",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_copper_dog_blended_malt_scotch",
+        "name": "Copper Dog Blended Malt Scotch",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_johnnie_walker_black_label_blended_malt_scotch",
+        "name": "Johnnie Walker Black Label Blended Malt Scotch",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "enabled": true,
+        "department": "bar",
+        "reparto": "bar",
+        "variantRequired": true,
+        "isPremiumAlcohol": true,
+        "variants": [
+          {
+            "id": "drink_premium_liscio",
+            "name": "Liscio",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_lemon",
+            "name": "Lemon",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_tonic",
+            "name": "Tonic",
+            "priceDelta": 0
+          },
+          {
+            "id": "drink_premium_fizz",
+            "name": "Fizz",
+            "priceDelta": 0
+          }
+        ],
+        "id": "menu_drink_premium_flaming_pig_irish",
+        "name": "Flaming Pig Irish",
+        "price": 10,
+        "category": "Wiskey",
+        "section": "Wiskey",
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_amarcord",
+        "name": "Amarcord",
+        "price": 12,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Signature",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un cocktail avvolgente e speziato, con note tropicali e morbide.\nIl cocco e la cannella lo rendono caldo, elegante e memorabile.",
+        "ingredients": [
+          "Santa Teresa Rum alla cannella, Noilly Prat Vermouth Dry, Orange Curaçao, Purea di cocco, Angostura Bitter"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_otto_e_mezzo",
+        "name": "Otto e Mezzo",
+        "price": 10,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Signature",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Fresco e vivace, con un equilibrio tra dolcezza e piccantezza.\nIl lime dona energia, mentre vaniglia e peperoncino lo rendono sorprendente.",
+        "ingredients": [
+          "Leblo Cachaca al peperoncino, Sciroppo alla vaniglia, Succo di lime"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_amore_in_citta",
+        "name": "Amore in Città",
+        "price": 12,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Signature",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un drink morbido e intenso, dal carattere dolce e contemporaneo.\nBanana e caffè tostato creano un incontro originale e seducente.",
+        "ingredients": [
+          "Patron Silver Tequila, Purea di banana, Cordiale al caffè tostato acidificato"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_tre_passi_nel_delirio",
+        "name": "Tre Passi nel Delirio",
+        "price": 12,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Signature",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un cocktail deciso e visionario, tra note affumicate, fruttate e speziate.\nAnanas, barbabietola e zenzero creano una bevuta intensa e fuori dagli schemi.",
+        "ingredients": [
+          "Grey Giise Vodka, Xaman Mezcal, (tutto insieme)Miele di ananas, barbabietola e zenzero, Succo di lime"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_boccaccio_70",
+        "name": "Boccaccio 70",
+        "price": 10,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Signature",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Elegante e fruttato, con un profilo floreale e delicatamente acidulo.\nLa mela verde e i frutti rossi lo rendono fresco, raffinato e piacevole.",
+        "ingredients": [
+          "Bombay Sapphire Gin, St-Germain, Cordiale di frutti rossi, Estratto di mela verde acidificato"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_lo_sceicco_bianco",
+        "name": "Lo Sceicco Bianco",
+        "price": 8,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Alchool Free",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Una proposta analcolica fresca, agrumata e molto dissetante.\nIl pompelmo e il lime donano leggerezza, con un finale pulito e brillante.",
+        "ingredients": [
+          "Tanqueray 0.0, Scirppo di agave, Succo di lime, Soda di pompelmo"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_satiricon",
+        "name": "Satiricon",
+        "price": 8,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Alchool Free",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Colorato e vivace, con un gusto amaro, tropicale e rinfrescante.\nUn analcolico dal carattere deciso, perfetto per una bevuta leggera ma originale.",
+        "ingredients": [
+          "Martini Vibrante Aperitivo, San Bitter bianco, Tropical Blue, Succo di limone"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_il_casanova",
+        "name": "Il Casanova",
+        "price": 8,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Alchool Free",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Esotico e floreale, con una piacevole spinta fruttata e frizzante.\nPassion fruit, lime e ananas creano un analcolico elegante e seducente.",
+        "ingredients": [
+          "Martini Floreale Aperitivo, Fernet 0%vol., Purea di passion fruit, Succo di lime, Soda all'ananas"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_penicillin",
+        "name": "Penicillin",
+        "price": 10,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Classici In Voga",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un grande classico moderno, speziato, agrumato e leggermente torbato.\nIl miele allo zenzero ammorbidisce il whisky, creando una bevuta intensa e bilanciata.",
+        "ingredients": [
+          "William Lawson's Blended Scotch Whisky, Laphroaig Single Malt Whisky, Miele allo zenzero, Succo di lime"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_naked_and_famous",
+        "name": "Naked and Famous",
+        "price": 12,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Classici In Voga",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un cocktail audace e contemporaneo, erbaceo, agrumato e affumicato.\nMezcal, Chartreuse e Aperol si fondono in una bevuta secca e molto riconoscibile.",
+        "ingredients": [
+          "Xaman Mezcal, Chartreuse Giallo, Aperol, Succo di lime"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_new_york_sazerac",
+        "name": "New York Sazerac",
+        "price": 10,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Classici In Voga",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Un drink classico e strutturato, ricco di note aromatiche e speziate.\nCognac, rye whiskey e assenzio creano una bevuta elegante, intensa e persistente.",
+        "ingredients": [
+          "Hennessy Cognac, Knob Creek Rye Whiskey, Assenzio, Peychaud's Bitter"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_signature_cocktail_martinez",
+        "name": "Martinez",
+        "price": 10,
+        "category": "Signature Cocktail",
+        "enabled": true,
+        "section": "Classici In Voga",
+        "department": "bar",
+        "reparto": "bar",
+        "description": "Raffinato e morbido, con un gusto aromatico e leggermente dolce.\nUn classico elegante, perfetto per chi ama cocktail intensi ma ben bilanciati.",
+        "ingredients": [
+          "Bombay Sapphire Gin, Martini Riserva Speciale Rubino, Maraschino, Bitter all'arancia"
+        ],
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_baby",
+        "name": "Baby",
+        "price": 2.7,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_cinque_stelle",
+        "name": "Cinque Stelle",
+        "price": 2.9,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_ghiacciolo",
+        "name": "Ghiacciolo",
+        "price": 1.4,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_long_john",
+        "name": "Long John",
+        "price": 2.5,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_coppa_oro",
+        "name": "Coppa Oro",
+        "price": 2.9,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_mix_max",
+        "name": "Mix Max",
+        "price": 2.3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_bon_bon",
+        "name": "Bon Bon",
+        "price": 2.9,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_intrigo",
+        "name": "Intrigo",
+        "price": 3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_blanco",
+        "name": "Blanco",
+        "price": 3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_stecco_moro",
+        "name": "Stecco Moro",
+        "price": 3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_duetto",
+        "name": "Duetto",
+        "price": 2.6,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_prezzemolo",
+        "name": "Prezzemolo",
+        "price": 2.8,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_sansoni",
+        "name": "Sansoni",
+        "price": 2.9,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_tandem",
+        "name": "Tandem",
+        "price": 3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_plasmon",
+        "name": "Plasmon",
+        "price": 2.8,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_amando",
+        "name": "Amando",
+        "price": 2.7,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_fragolino",
+        "name": "Fragolino",
+        "price": 2,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_gruvi",
+        "name": "Gruvi",
+        "price": 2,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_lipperli",
+        "name": "Lipperli",
+        "price": 2,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_pandistelle",
+        "name": "Pandistelle",
+        "price": 2.6,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_stecco_ducale",
+        "name": "Stecco Ducale",
+        "price": 3,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_sorbello",
+        "name": "Sorbello",
+        "price": 2.1,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_granulato",
+        "name": "Granulato",
+        "price": 2.1,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_unicorno",
+        "name": "Unicorno",
+        "price": 1.5,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelati_pokemon",
+        "name": "Pokemon",
+        "price": 2.5,
+        "category": "Gelati",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelato_premium_coppa_piccola",
+        "name": "Coppetta piccola",
+        "price": 3,
+        "category": "Gelato Premium",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelato_premium_coppa_media",
+        "name": "Coppetta media",
+        "price": 3.5,
+        "category": "Gelato Premium",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelato_premium_coppa_grande",
+        "name": "Coppetta grande",
+        "price": 4,
+        "category": "Gelato Premium",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelato_premium_cono_1g",
+        "name": "Cono 1G",
+        "price": 3,
+        "category": "Gelato Premium",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      },
+      {
+        "id": "menu_gelato_premium_cono_2g",
+        "name": "Cono 2G",
+        "price": 3.5,
+        "category": "Gelato Premium",
+        "enabled": true,
+        "createdByUserId": "system",
+        "createdAt": "2026-08-31T00:00:00.000Z",
+        "updatedAt": "2026-08-31T00:00:00.000Z"
+      }
+    ],
+    "posSettings": {
+      "demoMode": false,
+      "sideBars": {
+        "leftMode": "fixed",
+        "rightMode": "collapse"
+      },
+      "locale": {
+        "id": "locale_default",
+        "name": "Locale",
+        "alias": "Locale",
+        "businessName": "",
+        "vatNumber": "",
+        "address": "",
+        "sdiCode": "",
+        "legalRepresentative": "",
+        "status": "active"
+      },
+      "locales": [
+        {
+          "id": "locale_default",
+          "name": "Locale",
+          "alias": "Locale",
+          "businessName": "",
+          "vatNumber": "",
+          "address": "",
+          "sdiCode": "",
+          "legalRepresentative": "",
+          "status": "active"
+        }
+      ],
+      "activities": [
+        {
+          "id": "activity_default",
+          "name": "Operativa",
+          "type": "operational",
+          "status": "active",
+          "fiscalPolicy": "standard",
+          "fiscalDeviceIds": [],
+          "menuIds": [],
+          "priceListIds": [],
+          "printerIds": [],
+          "workstationIds": [],
+          "menuSchedules": [],
+          "priceListSchedules": []
+        }
+      ],
+      "activityRoomBindings": [],
+      "paymentMethods": [
+        {
+          "id": "pay_cash",
+          "label": "Contanti",
+          "enabled": true,
+          "isSmart": false,
+          "isFiscal": true
+        },
+        {
+          "id": "pay_card",
+          "label": "Carta",
+          "enabled": true,
+          "isSmart": false,
+          "isFiscal": true
+        },
+        {
+          "id": "pay_smart",
+          "label": "Smart",
+          "enabled": true,
+          "isSmart": true,
+          "isFiscal": false
+        },
+        {
+          "id": "pay_chip",
+          "label": "MyConto",
+          "enabled": true,
+          "isSmart": true,
+          "isFiscal": false
+        }
+      ],
+      "paymentTerminals": [
+        {
+          "id": "pos_main",
+          "label": "POS Cassa Principale",
+          "enabled": true,
+          "provider": "mock",
+          "protocol": "mock",
+          "terminalId": "MOCK_MAIN",
+          "merchantId": "",
+          "serialNumber": "",
+          "ipAddress": "",
+          "port": "",
+          "workstationId": "cassa_principale",
+          "notes": "Terminale mock migrato in configurazione POS."
+        },
+        {
+          "id": "pos_terrace",
+          "label": "POS Terrazza",
+          "enabled": true,
+          "provider": "mock",
+          "protocol": "mock",
+          "terminalId": "MOCK_TERRACE",
+          "merchantId": "",
+          "serialNumber": "",
+          "ipAddress": "",
+          "port": "",
+          "workstationId": "terrazza",
+          "notes": "Terminale mock migrato in configurazione POS."
+        },
+        {
+          "id": "pos_mobile",
+          "label": "POS Mobile",
+          "enabled": true,
+          "provider": "mock",
+          "protocol": "mock",
+          "terminalId": "MOCK_MOBILE",
+          "merchantId": "",
+          "serialNumber": "",
+          "ipAddress": "",
+          "port": "",
+          "workstationId": "mobile",
+          "notes": "Terminale mock migrato in configurazione POS."
+        }
+      ],
+      "smartCash": {
+        "beachEntryItemId": "menu_spiaggia_ombrellone",
+        "pointsPerEuro": 1
+      },
+      "tables": [
+        {
+          "id": "room_attesa_virtuale_t01",
+          "number": 1,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t02",
+          "number": 2,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t03",
+          "number": 3,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t04",
+          "number": 4,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t05",
+          "number": 5,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t06",
+          "number": 6,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t07",
+          "number": 7,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t08",
+          "number": 8,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t09",
+          "number": 9,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        },
+        {
+          "id": "room_attesa_virtuale_t10",
+          "number": 10,
+          "type": "Attesa virtuale",
+          "roomId": "room_attesa_virtuale",
+          "status": "free",
+          "covers": 0,
+          "totalDue": 0,
+          "pendingBills": [],
+          "guestName": "",
+          "reservation": null
+        }
+      ],
+      "menus": [],
+      "areaMenus": [],
+      "priceLists": [],
+      "priceListSchedules": [],
+      "menuSchedules": [],
+      "printers": [],
+      "fiscalDevices": [],
+      "mobileDevices": [],
+      "radioChannels": [
+        {
+          "id": "bar",
+          "name": "Bar",
+          "enabled": true,
+          "color": "#00d2ff",
+          "sortOrder": 10
+        },
+        {
+          "id": "generale",
+          "name": "Generale",
+          "enabled": true,
+          "color": "#2ed573",
+          "sortOrder": 20
+        },
+        {
+          "id": "cassa",
+          "name": "Cassa",
+          "enabled": true,
+          "color": "#8b5cf6",
+          "sortOrder": 30
+        }
+      ],
+      "radioPreferences": [],
+      "workstations": [],
+      "areas": [
+        {
+          "id": "room_attesa_virtuale",
+          "name": "Attesa virtuale",
+          "minimumTables": 10,
+          "notes": "Sala virtuale di appoggio prima della sala reale finale.",
+          "menuIds": [],
+          "priceListIds": [],
+          "waiterUserIds": [],
+          "printerIds": [],
+          "cashPoints": [],
+          "workstations": []
+        }
+      ],
+      "orderWorkflow": {
+        "deliveryConfirmationEnabled": true,
+        "requireReadyForDelivery": true,
+        "requireDeliveredForPayment": true
+      },
+      "printPreferences": {
+        "branding": {
+          "logoDataUrl": "",
+          "logoEscposBase64": "",
+          "venueName": "",
+          "address": "",
+          "phone": "",
+          "companyName": "",
+          "vatNumber": ""
+        },
+        "preconto": {
+          "lineWidth": 48,
+          "lineSpacing": 48,
+          "showLogo": true,
+          "showVenueName": true,
+          "showAddress": true,
+          "showPhone": true,
+          "showCompanyName": true,
+          "showVatNumber": true,
+          "showDocumentLabel": true
+        },
+        "order": {
+          "lineWidth": 32,
+          "fontScalePercent": 100,
+          "charWidthMode": "normal",
+          "charSpacing": 0,
+          "lineSpacing": 0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "extraTopLines": [],
+          "extraBottomLines": [],
+          "showStation": true,
+          "showOrderId": true,
+          "showTable": true,
+          "showWaiter": true,
+          "showTime": true,
+          "showVariants": true,
+          "showLineNotes": true,
+          "showOrderNotes": true,
+          "showCommunications": true,
+          "showTotal": true
+        }
+      }
+    },
+    "payments": [
+      {
+        "id": "golden_payment_0001",
+        "tableId": "room_attesa_virtuale_t01",
+        "roomId": "room_attesa_virtuale",
+        "orderId": "golden_order_0001",
+        "orderIds": [
+          "golden_order_0001"
+        ],
+        "billId": "golden_bill_0001",
+        "billIds": [
+          "golden_bill_0001"
+        ],
+        "amount": 3.3,
+        "amountCents": 330,
+        "methodId": "pay_cash",
+        "methodLabel": "Contanti",
+        "fiscal": true,
+        "source": "table_payment",
+        "createdAt": "2026-08-30T18:36:10.000Z",
+        "idempotencyKey": "golden-payment-idem-0001",
+        "clientPaymentId": "golden-client-payment-0001",
+        "paymentContainerId": "golden_payment_container_0001",
+        "paymentPartId": "golden_payment_part_0001",
+        "paymentTxId": "golden_payment_tx_0001"
+      }
+    ],
+    "paymentContainers": [
+      {
+        "id": "golden_payment_container_0001",
+        "tableId": "room_attesa_virtuale_t01",
+        "tableNumber": 1,
+        "tableLabel": "Tavolo 1",
+        "orderId": "golden_order_0001",
+        "orderIds": [
+          "golden_order_0001"
+        ],
+        "billId": "golden_bill_0001",
+        "billIds": [
+          "golden_bill_0001"
+        ],
+        "roomId": "room_attesa_virtuale",
+        "paymentMethod": "pay_cash",
+        "totalCents": 330,
+        "paidCents": 330,
+        "dueCents": 0,
+        "status": "COMPLETED",
+        "splitType": "SINGLE",
+        "idempotencyKey": "golden-payment-container-idem-0001",
+        "clientPaymentId": "golden-client-payment-0001",
+        "createdAt": "2026-08-30T18:36:00.000Z",
+        "updatedAt": "2026-08-30T18:36:10.000Z"
+      }
+    ],
+    "paymentParts": [
+      {
+        "id": "golden_payment_part_0001",
+        "paymentId": "golden_payment_container_0001",
+        "partNo": 1,
+        "methodId": "pay_cash",
+        "methodType": "CASH",
+        "amountCents": 330,
+        "status": "PAID",
+        "createdAt": "2026-08-30T18:36:05.000Z"
+      }
+    ],
+    "paymentTransactions": [
+      {
+        "id": "golden_payment_tx_0001",
+        "paymentContainerId": "golden_payment_container_0001",
+        "partId": "golden_payment_part_0001",
+        "idempotencyKey": "golden-payment-tx-idem-0001",
+        "tableId": "room_attesa_virtuale_t01",
+        "billId": "golden_bill_0001",
+        "orderId": "golden_order_0001",
+        "method": "CASH",
+        "amountCents": 330,
+        "status": "settled",
+        "createdAt": "2026-08-30T18:36:06.000Z",
+        "updatedAt": "2026-08-30T18:36:10.000Z"
+      }
+    ],
+    "paymentProviderTransactions": [],
+    "cashTxDenoms": [],
+    "handheldCashSessions": [],
+    "commercialBenefitCampaigns": [
+      {
+        "id": "golden_benefit_campaign_0001",
+        "title": "Buono Golden 5 EUR",
+        "benefitKind": "value_voucher",
+        "faceValueCents": 500,
+        "residualPolicy": "keep_balance",
+        "status": "active",
+        "validFrom": "2026-08-01T00:00:00.000Z",
+        "validUntil": "2026-12-31T23:59:59.000Z",
+        "createdAt": "2026-08-01T00:00:00.000Z",
+        "updatedAt": "2026-08-01T00:00:00.000Z"
+      }
+    ],
+    "commercialBenefitCoupons": [
+      {
+        "id": "golden_benefit_coupon_0001",
+        "campaignId": "golden_benefit_campaign_0001",
+        "codeMasked": "GOLD-****-0001",
+        "faceValueCents": 500,
+        "balanceCents": 200,
+        "usageCount": 1,
+        "maxUsageCount": 5,
+        "residualPolicy": "keep_balance",
+        "status": "partially_redeemed",
+        "createdAt": "2026-08-01T00:00:00.000Z",
+        "updatedAt": "2026-08-30T18:36:10.000Z"
+      }
+    ],
+    "commercialBenefitApplications": [
+      {
+        "id": "golden_benefit_application_0001",
+        "campaignId": "golden_benefit_campaign_0001",
+        "couponId": "golden_benefit_coupon_0001",
+        "tableId": "room_attesa_virtuale_t01",
+        "payableBeforeCents": 630,
+        "benefitAmountCents": 300,
+        "payableAfterCents": 330,
+        "status": "redeemed",
+        "createdAt": "2026-08-30T18:35:30.000Z",
+        "updatedAt": "2026-08-30T18:36:10.000Z"
+      }
+    ],
+    "commercialBenefitRedemptions": [
+      {
+        "id": "golden_benefit_redemption_0001",
+        "applicationId": "golden_benefit_application_0001",
+        "campaignId": "golden_benefit_campaign_0001",
+        "couponId": "golden_benefit_coupon_0001",
+        "paymentId": "golden_payment_0001",
+        "amountCents": 300,
+        "createdAt": "2026-08-30T18:36:10.000Z"
+      }
+    ],
+    "fiscalReceipts": [],
+    "fiscalEvents": [],
+    "printSpoolJobs": [],
+    "smartNonFiscal": [],
+    "auditEvents": [],
+    "smartCustomers": [],
+    "integration": {
+      "orders": [
+        {
+          "id": "golden_order_0001",
+          "tableId": "room_attesa_virtuale_t01",
+          "tableNumber": 1,
+          "tableLabel": "Tavolo 1",
+          "roomId": "room_attesa_virtuale",
+          "workflowStatus": "delivered",
+          "paymentStatus": "paid",
+          "source": "migration-golden-dataset",
+          "total": 3.3,
+          "totalCents": 330,
+          "station": "BAR PRINCIPALE",
+          "assignedStationId": "BAR PRINCIPALE",
+          "createdByUserId": "golden_user_cashier",
+          "createdByUsername": "golden-cashier",
+          "createdByDeviceUuid": "golden-device-01",
+          "idempotencyKey": "golden-order-idem-0001",
+          "createdAt": "2026-08-30T18:30:00.000Z",
+          "updatedAt": "2026-08-30T18:35:00.000Z",
+          "revision": 2,
+          "currentRevision": 2,
+          "items": [
+            {
+              "id": "golden_item_0001",
+              "lineId": "golden_line_0001",
+              "productId": "menu_caffetteria_caffe",
+              "productNameSnapshot": "Caffe",
+              "name": "Caffe",
+              "qty": 1,
+              "done": true,
+              "doneQty": 1,
+              "unitPriceApplied": 1.3,
+              "unitPriceCents": 130,
+              "listPriceAtTime": 1.3,
+              "lineTotal": 1.3,
+              "lineTotalCents": 130,
+              "routeStations": [
+                "BAR PRINCIPALE"
+              ]
+            },
+            {
+              "id": "golden_item_0002",
+              "lineId": "golden_line_0002",
+              "productId": "menu_caffetteria_caffe_corretto",
+              "productNameSnapshot": "Caffe Corretto",
+              "name": "Caffe Corretto",
+              "qty": 1,
+              "done": true,
+              "doneQty": 1,
+              "unitPriceApplied": 2,
+              "unitPriceCents": 200,
+              "listPriceAtTime": 2,
+              "lineTotal": 2,
+              "lineTotalCents": 200,
+              "routeStations": [
+                "BAR PRINCIPALE"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "golden_order_event_0001",
+              "type": "order.created",
+              "occurredAt": "2026-08-30T18:30:00.000Z",
+              "actorUserId": "golden_user_cashier",
+              "payload": {
+                "source": "golden-dataset"
+              }
+            }
+          ]
+        }
+      ],
+      "barChargeReplacements": [],
+      "orderComps": [],
+      "orderCorrections": [],
+      "orderCorrectionRequests": [],
+      "orderFulfillmentHistory": [],
+      "fulfillmentAnomalyStats": {
+        "global": {
+          "total": 0,
+          "anomalies": 0
+        },
+        "byStation": {},
+        "byUser": {},
+        "byStationUser": {}
+      },
+      "notifications": [],
+      "waiterPauses": [],
+      "waiterDeferredCalls": [],
+      "noActiveStationsAlert": {
+        "active": false,
+        "notifiedAtMs": 0,
+        "recoveredAtMs": 0
+      },
+      "recentBellClaims": [],
+      "itemAvailability": {},
+      "tableGroups": [],
+      "stationStates": [],
+      "sequence": {
+        "order": 2,
+        "notification": 1
+      },
+      "lastWriteAt": "2026-08-30T18:36:00.000Z"
+    },
+    "posRoomChangeRequests": [],
+    "posTableRoomMoveRequests": [],
+    "posReservationStates": [
+      {
+        "key": "room_attesa_virtuale:2026-08-31",
+        "roomId": "room_attesa_virtuale",
+        "serviceDate": "2026-08-31",
+        "version": 1,
+        "reservations": [
+          {
+            "id": "golden_reservation_0001",
+            "roomId": "room_attesa_virtuale",
+            "serviceDate": "2026-08-31",
+            "reservationAt": 1788204600000,
+            "customerName": "Cliente Golden",
+            "customerPhone": "+39000000000",
+            "covers": 2,
+            "intolerances": "lattosio",
+            "note": "Fixture migrazione PostgreSQL",
+            "assignedTableId": "room_attesa_virtuale_t01",
+            "assignedTableIds": [
+              "room_attesa_virtuale_t01"
+            ],
+            "status": "confirmed",
+            "createdAt": 1788091200000,
+            "updatedAt": 1788091500000
+          }
+        ]
+      }
+    ],
+    "posReservationLocks": [],
+    "saleSessions": [],
+    "solarClosures": [],
+    "meta": {
+      "lastWriteAt": "2026-08-30T18:36:10.000Z",
+      "settingsLastWriteAt": "2026-08-31T00:00:00.000Z",
+      "crypto": {
+        "pinHash": "scrypt",
+        "sessionTokenHash": "hmac-sha256"
+      }
+    }
+  },
+  "expected": {
+    "menuItemCount": 189,
+    "orderCount": 1,
+    "orderTotalCents": 330,
+    "settledPaymentCents": 330,
+    "reservationCount": 1,
+    "benefitRedemptionCents": 300,
+    "benefitRemainingCents": 200
+  }
+}

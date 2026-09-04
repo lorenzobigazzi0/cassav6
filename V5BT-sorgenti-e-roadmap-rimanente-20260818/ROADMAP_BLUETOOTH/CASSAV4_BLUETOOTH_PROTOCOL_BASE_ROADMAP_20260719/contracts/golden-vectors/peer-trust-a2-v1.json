@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "cassav5bt.bluetooth.peer-trust-a2-golden-vector",
+  "authorityPublicKeySpkiBase64": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvD07rM7n0CeRPKd03J08gwJtoXZH8akYZgUddZV5vMyiMEXoEMJ+N85j/pcRzZkQV9t8OlNMgkfEEsol7fEbfw==",
+  "directoryWireBase64": "eyJzY2hlbWFWZXJzaW9uIjoxLCJraW5kIjoiY2Fzc2F2NWJ0LmJsdWV0b290aC5wZWVyLXRydXN0LWRpcmVjdG9yeSIsImlzc3VlcklkIjoicmFzcGJlcnJ5LWxhYi12NWJ0IiwicmV2aXNpb24iOjQyLCJpc3N1ZWRBdCI6IjIwMjYtMDgtMThUMTA6MDA6MDAuMDAwWiIsImV4cGlyZXNBdCI6IjIwMjYtMDgtMTlUMTA6MDA6MDAuMDAwWiIsImFsaWFzRXBvY2giOjI5NzczMjAsImF1dGhvcml0eUtleUlkIjoiMmRkNTZiMzViMDE1NDZkMDZhNjlhMTQzMDA3YzM3ODViOWM2MTUwYTA1NDNiZDIwZWM5ZTU0NGVkYWNlN2MyNSIsInNpZ25hdHVyZUFsZ29yaXRobSI6IkVDRFNBLVAyNTYtU0hBMjU2LVAxMzYzIiwiZGV2aWNlcyI6W3sibm9kZUlkIjoiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExIiwiY2VydGlmaWNhdGVJZCI6IjIyMjIyMjIyLTIyMjItNDIyMi04MjIyLTIyMjIyMjIyMjIyMiIsInB1YmxpY0tleUFsZ29yaXRobSI6IkVDLVAyNTYiLCJwdWJsaWNLZXlTcGtpRGVyQmFzZTY0IjoiTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFMzBZTnF6NzhVbHpSb3hkbmE1TnpIVzBIZzVTNnIzbHdmdGRuTktveUl5NWZDZTlVMTlwWFBRN3c5NVRWNjVkMmQ2NVJEK0R5dnduQ0h4UXVKb1NQdVE9PSIsInN0YXR1cyI6IkFDVElWRSIsImN1cnJlbnRBbGlhcyI6IjAwMTEyMjMzNDQ1NSIsIm5leHRBbGlhcyI6IjExMTEyMjIyMzMzMyJ9LHsibm9kZUlkIjoiMzMzMzMzMzMtMzMzMy00MzMzLTgzMzMtMzMzMzMzMzMzMzMzIiwiY2VydGlmaWNhdGVJZCI6IjQ0NDQ0NDQ0LTQ0NDQtNDQ0NC04NDQ0LTQ0NDQ0NDQ0NDQ0NCIsInB1YmxpY0tleUFsZ29yaXRobSI6IkVDLVAyNTYiLCJwdWJsaWNLZXlTcGtpRGVyQmFzZTY0IjoiTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFM0wyVVZjM2FGYXNHV2pNTGRSQ1JQazdONU96VTdONnZES3RWMGpPTVdpeFlBS04wV21aZ0E1bXZKQmlQSE5JQ3BIUXQyOGQ0Vjh5ajkrTzZybDVVc2c9PSIsInN0YXR1cyI6IkFDVElWRSIsImN1cnJlbnRBbGlhcyI6Ijg4OTlhYWJiY2NkZCIsIm5leHRBbGlhcyI6IjU1NTU2NjY2Nzc3NyJ9XSwic2lnbmF0dXJlQmFzZTY0IjoiNXY0ZHluWXhDdTRaazFkNS9pSTdBWDZBR1FsMDhKWGFVMlM0SU1uendlOGt4VDFTRU5QeU5pRlVoaGhlRzNLRS80MEhaQkpGL1dTTHdISm1hRitFWHc9PSJ9",
+  "clientPeerTrustId": "42543cad8e489587a484d4ea13f9f874f4dc423e25f6b7c4fc223d3f2e546e43",
+  "serverPeerTrustId": "cb72562c1990960758d4b057bba054ecc45a464ee120ed4ab5270fadb59a5915",
+  "a2": {
+    "binding": {
+      "clientHello": {
+        "protocolVersion": 1,
+        "sessionId": "AAECAwQFBgcICQoLDA0ODw",
+        "nodeId": "11111111-1111-4111-8111-111111111111",
+        "bootId": 7,
+        "capabilities": 12,
+        "nonce": "AAECAwQFBgcICQoLDA0ODw"
+      },
+      "serverHello": {
+        "protocolVersion": 1,
+        "sessionId": "AAECAwQFBgcICQoLDA0ODw",
+        "nodeId": "33333333-3333-4333-8333-333333333333",
+        "bootId": 8,
+        "capabilities": 12,
+        "nonce": "ICEiIyQlJicoKSorLC0uLw"
+      },
+      "clientCertificateId": "22222222-2222-4222-8222-222222222222",
+      "serverCertificateId": "44444444-4444-4444-8444-444444444444",
+      "aliasEpoch": 2977320,
+      "clientAlias": "001122334455",
+      "serverAlias": "8899aabbccdd",
+      "clientRole": "CLIENT",
+      "serverRole": "SERVER"
+    },
+    "clientIdentityPublicKeySpkiBase64": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE30YNqz78UlzRoxdna5NzHW0Hg5S6r3lwftdnNKoyIy5fCe9U19pXPQ7w95TV65d2d65RD+DyvwnCHxQuJoSPuQ==",
+    "serverIdentityPublicKeySpkiBase64": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE3L2UVc3aFasGWjMLdRCRPk7N5OzU7N6vDKtV0jOMWixYAKN0WmZgA5mvJBiPHNICpHQt28d4V8yj9+O6rl5Usg==",
+    "clientEphemeralSpkiBase64": "MCowBQYDK2VuAyEA+Ig5uljlGbKZ2h061BWvx1Q/byTkY5FTo/x1cxY3am8=",
+    "serverEphemeralSpkiBase64": "MCowBQYDK2VuAyEAlAUCsayNg7lEnJVa/k0TdL46WWkwOiTWI7EnFssMnGo=",
+    "clientSignatureBase64": "0fMskB0crlVqCH1u2McDGgpwLaLGfVNGE0dhKFp5/ZVMAtPiEcJrauXju3NXP+kETPurzg1RWxl0AzQmQW6BDg==",
+    "serverSignatureBase64": "F6kPDwX/tfQZaYF0GjncGoD+wdu/h+zymyyP8wdxKhcWsSb+cq4XAheHRDq05BZLW/clzsk8J2JD+Q1N16VcJg==",
+    "transcriptHashHex": "f97ee3e6b9a4bea5cecd5ee7a4aa2ff02cc87143359942d834aa286265670758",
+    "sharedSecretHex": "e5751725e48597384fa7f15f375dc4bd05c482b0931343babbb8b42487144337",
+    "serverConfirmationHex": "1a1452c4be3a3a8f13696c4bf08dd26ca251699a60b7817140a517f024dc5b5a",
+    "clientConfirmationHex": "91ceb9cf93dfb0fd3ca5d505affc59544b4f43e46cdd2494362f2c40e0cc1242",
+    "clientToServerControlKeyHex": "de49a8c4d13b30c631f2f08fa2f21b32c36c12001bb3dd30ef3491b735ac4661",
+    "serverToClientControlKeyHex": "11a597a5d57938d39ecb91bc4eb417cd2ac6f5973a0b2cf18874a937c76bebec",
+    "clientInitWireBase64": "AgEAAQIDBAUGBwgJCgsMDQ4PIiIiIiIiQiKCIiIiIiIiIkREREREREREhEREREREREQwKjAFBgMrZW4DIQD4iDm6WOUZspnaHTrUFa/HVD9vJORjkVOj/HVzFjdqb9HzLJAdHK5Vagh9btjHAxoKcC2ixn1TRhNHYShaef2VTALT4hHCa2rl47tzVz/pBEz7q84NUVsZdAM0JkFugQ4=",
+    "serverReplyWireBase64": "AgIAAQIDBAUGBwgJCgsMDQ4PIiIiIiIiQiKCIiIiIiIiIkREREREREREhEREREREREQwKjAFBgMrZW4DIQCUBQKxrI2DuUSclVr+TRN0vjpZaTA6JNYjsScWywycahepDw8F/7X0GWmBdBo53BqA/sHbv4fs8pssj/MHcSoXFrEm/nKuFwIXh0Q6tOQWS1v3Jc7JPCdiQ/kNTdelXCYaFFLEvjo6jxNpbEvwjdJsolFpmmC3gXFApRfwJNxbWg==",
+    "clientFinishWireBase64": "AgMAAQIDBAUGBwgJCgsMDQ4Pkc65z5PfsP08pdUFr/xZVEtPQ+Rs3SSUNi8sQODMEkI="
+  }
+}

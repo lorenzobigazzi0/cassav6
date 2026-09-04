@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "evidenceDate": "2026-08-03",
+  "minimumFullNodesRequired": 2,
+  "devices": [
+    {
+      "role": "handheld",
+      "vendor": "replace-me-vendor",
+      "model": "replace-me-phone",
+      "androidApi": null,
+      "connectionStatus": "NOT_CONNECTED",
+      "evidenceClass": "FORMAL",
+      "scan": "NOT_TESTED",
+      "advertise": "NOT_TESTED",
+      "gattClient": "NOT_TESTED",
+      "gattServer": "NOT_TESTED",
+      "scanAdvertiseConcurrent": "NOT_TESTED",
+      "wifiBleCoexistence": "NOT_TESTED",
+      "backgroundForeground": "NOT_TESTED",
+      "classification": "UNKNOWN"
+    },
+    {
+      "role": "station",
+      "vendor": "replace-me-vendor",
+      "model": "replace-me-tablet",
+      "androidApi": null,
+      "connectionStatus": "NOT_CONNECTED",
+      "evidenceClass": "FORMAL",
+      "scan": "NOT_TESTED",
+      "advertise": "NOT_TESTED",
+      "gattClient": "NOT_TESTED",
+      "gattServer": "NOT_TESTED",
+      "scanAdvertiseConcurrent": "NOT_TESTED",
+      "wifiBleCoexistence": "NOT_TESTED",
+      "backgroundForeground": "NOT_TESTED",
+      "classification": "UNKNOWN"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "steps": [
+    "connect",
+    "out_of_range_20s",
+    "return"
+  ],
+  "expect": [
+    "peer_expired",
+    "rediscovered",
+    "reconnected"
+  ]
+}

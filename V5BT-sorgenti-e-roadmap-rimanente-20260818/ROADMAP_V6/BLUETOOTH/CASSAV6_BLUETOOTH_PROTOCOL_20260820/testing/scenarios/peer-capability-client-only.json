@@ -1,0 +1,6 @@
+{
+  "expect": [
+    "classification_client_only",
+    "no_inbound_role_assumption"
+  ]
+}

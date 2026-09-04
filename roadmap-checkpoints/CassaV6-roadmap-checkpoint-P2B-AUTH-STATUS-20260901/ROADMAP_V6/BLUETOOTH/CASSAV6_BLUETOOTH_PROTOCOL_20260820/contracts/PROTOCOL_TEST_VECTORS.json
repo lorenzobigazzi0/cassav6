@@ -1,0 +1,172 @@
+{
+  "advertisement": {
+    "description": "frozen compact v1 advertisement for a reachable handheld",
+    "serviceUuid": "3c9734f1-46cb-5672-96e9-e7a03a710f95",
+    "fields": {
+      "protocolVersion": 1,
+      "nodeKind": "handheld",
+      "rotatingAlias": "aabbccddeeff",
+      "bootId": 17,
+      "capabilities": 47,
+      "serverReachable": true,
+      "sequence": 102
+    },
+    "payloadHex": "31aabbccddeeff112f66",
+    "payloadBytes": 10,
+    "legacyAdvertisingHex": "0201061b21950f713aa0e7e9967256cb46f134973c31aabbccddeeff112f66",
+    "bluezObservedAdvDataHex": "1b21950f713aa0e7e9967256cb46f134973c31aabbccddeeff112f66020106",
+    "legacyAdvertisingBytes": 31
+  },
+  "invalidAdvertisements": [
+    {
+      "name": "obsolete-17-byte-payload",
+      "payloadHex": "0101aabbccddeeff001122334455660102",
+      "expectedError": "INVALID_PAYLOAD_LENGTH"
+    },
+    {
+      "name": "reserved-header-bits",
+      "payloadHex": "f1aabbccddeeff112f66",
+      "expectedError": "RESERVED_HEADER_BITS"
+    },
+    {
+      "name": "reserved-capability-bit",
+      "payloadHex": "31aabbccddeeff11af66",
+      "expectedError": "RESERVED_CAPABILITY_BITS"
+    }
+  ],
+  "rotatingAlias": {
+    "algorithm": "HMAC-SHA256",
+    "nodeIdSerialization": "canonical-lowercase-uuid-utf8-36",
+    "epochSerialization": "uint64-big-endian",
+    "aliasKeyHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "nodeId": "550e8400-e29b-41d4-a716-446655440000",
+    "timestampSeconds": 1710000060,
+    "epochSeconds": 60,
+    "epoch": 28500001,
+    "messageHex": "43415353415f56362d42542d414c4941532d56310035353065383430302d653239622d343164342d613731362d343436363535343430303030000000000001b2e021",
+    "hmacSha256Hex": "a20dd6c6a124e549096f1dc48c8ea2f912a965c3b713b6910ed0e74d1247180c",
+    "expectedAlias": "a20dd6c6a124"
+  },
+  "enrollmentProof": {
+    "algorithm": "Ed25519",
+    "context": "CASSA_V6-BT-ENROLLMENT-PROOF-V1",
+    "protocolVersion": 1,
+    "enrollmentEndpointId": "raspberry-lab-cassav6",
+    "token": "c6e1_SkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSko",
+    "nodeId": "550e8400-e29b-41d4-a716-446655440000",
+    "publicKeySpkiDerBase64": "MCowBQYDK2VwAyEAA6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+    "proofUtf8Base64": "Q0FTU0FfVjYtQlQtRU5ST0xMTUVOVC1QUk9PRi1WMQAxAHJhc3BiZXJyeS1sYWItY2Fzc2F2NgBjNmUxX1NrcEtTa3BLU2twS1NrcEtTa3BLU2twS1NrcEtTa3BLU2twS1NrcEtTa28ANTUwZTg0MDAtZTI5Yi00MWQ0LWE3MTYtNDQ2NjU1NDQwMDAwAE1Db3dCUVlESzJWd0F5RUFBNkVIdi9QT0VMNGRjTjBZNTB2QW1XZmsxakNicFExZkhkeUdaQkpWTWJnPQ==",
+    "proofSignatureBase64": "bkyhmbXK2PIrBweKxxcMoBk0fXTqZE1TWXVDrlIcUN5R/4ljJ9hnq3JzPMQmb3MmYanGJjZ+664D2jZpmbz5CQ=="
+  },
+  "dialerElection": [
+    {
+      "localAlias": "000000000001",
+      "remoteAlias": "000000000002",
+      "expectedRole": "GATT_SERVER"
+    },
+    {
+      "localAlias": "000000000003",
+      "remoteAlias": "000000000002",
+      "expectedRole": "GATT_CLIENT"
+    }
+  ],
+  "directSession": {
+    "protocolVersion": 1,
+    "sessionIdEncoding": "base64url-unpadded-128-bit",
+    "sessionId": "AbCdEfGhIjKlMnOpQrStUg",
+    "roles": {
+      "android": "android-client",
+      "raspberry": "raspberry-server"
+    },
+    "minimumGattMtu": 23,
+    "preferredGattMtu": 247,
+    "maximumGattMtu": 517,
+    "heartbeatMissesBeforeClose": 3,
+    "androidClientSequence": [
+      "GATT_CONNECTED",
+      "SERVICES_DISCOVERED",
+      "MTU_NEGOTIATED",
+      "HELLO_ACCEPTED",
+      "AUTH_STARTED",
+      "AUTH_VERIFIED",
+      "SESSION_KEY_ESTABLISHED",
+      "HEARTBEAT_STARTED"
+    ],
+    "raspberryServerSequence": [
+      "GATT_CONNECTED",
+      "MTU_NEGOTIATED",
+      "HELLO_ACCEPTED",
+      "AUTH_STARTED",
+      "AUTH_VERIFIED",
+      "SESSION_KEY_ESTABLISHED",
+      "HEARTBEAT_STARTED"
+    ]
+  },
+  "helloWire": {
+    "description": "fixed B5.5 Android request HELLO",
+    "encoding": "binary-fixed-v1",
+    "wireBytes": 51,
+    "minimumGattMtu": 54,
+    "request": {
+      "protocolVersion": 1,
+      "sessionId": "AbCdEfGhIjKlMnOpQrStUg",
+      "nodeId": "550e8400-e29b-41d4-a716-446655440000",
+      "bootId": 17,
+      "capabilities": 47,
+      "nonce": "AAECAwQFBgcICQoLDA0ODw"
+    },
+    "requestHex": "0101b09d11f1a12232a53273a942b4ad52550e8400e29b41d4a716446655440000112f000102030405060708090a0b0c0d0e0f"
+  },
+  "mutualAuthWire": {
+    "description": "frozen B5.6 mutual-auth proof exchange bound to both HELLO messages",
+    "encoding": "binary-fixed-v1",
+    "minimumGattMtu": 101,
+    "clientHello": {
+      "protocolVersion": 1,
+      "sessionId": "AbCdEfGhIjKlMnOpQrStUg",
+      "nodeId": "550e8400-e29b-41d4-a716-446655440000",
+      "bootId": 17,
+      "capabilities": 47,
+      "nonce": "AAECAwQFBgcICQoLDA0ODw"
+    },
+    "serverHello": {
+      "protocolVersion": 1,
+      "sessionId": "AbCdEfGhIjKlMnOpQrStUg",
+      "nodeId": "123e4567-e89b-12d3-a456-426614174000",
+      "bootId": 54,
+      "capabilities": 72,
+      "nonce": "ICEiIyQlJicoKSorLC0uLw"
+    },
+    "deviceCertificateId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "devicePublicKeySpkiDerBase64": "MCowBQYDK2VwAyEAA6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+    "aliasKeyHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "clientProof": {
+      "wireBytes": 98,
+      "messageHex": "43415353415f56362d42542d415554482d434c49454e542d5631000101b09d11f1a12232a53273a942b4ad52550e8400e29b41d4a716446655440000112f000102030405060708090a0b0c0d0e0f0101b09d11f1a12232a53273a942b4ad52123e4567e89b12d3a4564266141740003648202122232425262728292a2b2c2d2e2ff47ac10b58cc4372a5670e02b2c3d479",
+      "signatureBase64": "pasFI3Eb5Xpl3Nn/LOdMYkuZV6aaV0ENKD7CmYj8ZmcENKPgmJbFcDXD7WTmFQ0xm/wKHV+Ldp7nLdJHXNLDBQ==",
+      "wireHex": "010101b09d11f1a12232a53273a942b4ad52f47ac10b58cc4372a5670e02b2c3d479a5ab0523711be57a65dcd9ff2ce74c624b9957a69a57410d283ec29988fc66670434a3e09896c57035c3ed64e6150d319bfc0a1d5f8b769ee72dd2475cd2c305"
+    },
+    "serverProof": {
+      "wireBytes": 66,
+      "messageHex": "43415353415f56362d42542d415554482d5345525645522d5631000101b09d11f1a12232a53273a942b4ad52550e8400e29b41d4a716446655440000112f000102030405060708090a0b0c0d0e0f0101b09d11f1a12232a53273a942b4ad52123e4567e89b12d3a4564266141740003648202122232425262728292a2b2c2d2e2ff47ac10b58cc4372a5670e02b2c3d479a5ab0523711be57a65dcd9ff2ce74c624b9957a69a57410d283ec29988fc66670434a3e09896c57035c3ed64e6150d319bfc0a1d5f8b769ee72dd2475cd2c305",
+      "proofBase64": "BS6AkrSRJzeCso+sI4J4G8sUjm/Gs05Zzlddc6xvmbs=",
+      "wireHex": "010201b09d11f1a12232a53273a942b4ad52f47ac10b58cc4372a5670e02b2c3d479052e8092b491273782b28fac2382781bcb148e6fc6b34e59ce575d73ac6f99bb"
+    },
+    "finish": {
+      "wireBytes": 50,
+      "messageHex": "43415353415f56362d42542d415554482d46494e4953482d5631000101b09d11f1a12232a53273a942b4ad52550e8400e29b41d4a716446655440000112f000102030405060708090a0b0c0d0e0f0101b09d11f1a12232a53273a942b4ad52123e4567e89b12d3a4564266141740003648202122232425262728292a2b2c2d2e2ff47ac10b58cc4372a5670e02b2c3d479a5ab0523711be57a65dcd9ff2ce74c624b9957a69a57410d283ec29988fc66670434a3e09896c57035c3ed64e6150d319bfc0a1d5f8b769ee72dd2475cd2c305052e8092b491273782b28fac2382781bcb148e6fc6b34e59ce575d73ac6f99bb",
+      "proofBase64": "T8oZZ84Cd0PbeUw7XDZRSSKmYdl8mpvwpexwGMvmdQY=",
+      "wireHex": "010301b09d11f1a12232a53273a942b4ad524fca1967ce027743db794c3b5c36514922a661d97c9a9bf0a5ec7018cbe67506"
+    }
+  },
+  "frameFragmentation": {
+    "payloadBytes": 1024,
+    "mtu": 247,
+    "expectedFragments": 5
+  },
+  "errors": [
+    "AUTH_FAILED",
+    "DUPLICATE_SESSION",
+    "MESSAGE_TOO_LARGE"
+  ]
+}

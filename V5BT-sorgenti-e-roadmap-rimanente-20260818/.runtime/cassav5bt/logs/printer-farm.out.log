@@ -1,0 +1,12 @@
+[24/08/2026 15:06:55,27] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics
+[24/08/2026 16:20:51,10] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics
+[25/08/2026 10:15:41,16] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics
+[26/08/2026  9:42:53,56] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics
+[27/08/2026  9:41:18,76] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics
+[28/08/2026  9:32:44,91] avvio printer-farm 
+[mock-printer-farm] tcp=127.0.0.1:9201,127.0.0.1:9202,127.0.0.1:9203,127.0.0.1:9204 metrics=http://127.0.0.1:9299/metrics

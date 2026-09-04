@@ -1,0 +1,350 @@
+/* styles.css */
+:root {
+	--bg-color: #f4f6f8;
+	--card-bg: #ffffff;
+	--text-main: #2c3e50;
+	--text-secondary: #7f8c8d;
+	--border-color: #e0e0e0;
+	--primary-blue: #0056b3;
+	--active-green: #27ae60;
+	--paused-grey: #95a5a6;
+	--status-new: #2ecc71;
+	--status-prep: #f39c12;
+	--status-ready: #1e88e5;
+	--status-done: #e91e1e;
+	--tap-min: 48px;
+
+	/* ------------------------------------------------------------
+	   Fluid sizing tokens - OTTIMIZZAZIONE TABLET
+	   Riduco la larghezza minima della sidebar e dei gap
+	------------------------------------------------------------ */
+	/* Su iPad (1024px) la sidebar era troppo larga. La stringiamo. */
+	--sidebar-w: clamp(260px, 25vw, 420px); 
+	--sidebar-w-touch: clamp(280px, 28vw, 460px);
+	--orders-sidebar-w: clamp(234px, 22.5vw, 378px);
+	--orders-sidebar-w-touch: clamp(252px, 25.2vw, 414px);
+	
+	--qty-col: clamp(50px, 5vw, 74px);
+	--check-size: clamp(34px, 4.2vw, 42px);
+	--check-pad: clamp(44px, 5.2vw, 54px);
+	--row-gap: clamp(4px, 1vw, 10px);
+	--notes-max: clamp(140px, 16vw, 280px);
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ------------------------------------------------------------
+   KIOSK / ANTI-ZOOM (iOS/iPadOS)
+   Limita le gesture allo scroll e riduce i comportamenti di zoom automatico.
+------------------------------------------------------------ */
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden; /* Blocca rimbalzi indesiderati su iOS */
+	touch-action: pan-x pan-y; /* Disabilita pinch-to-zoom dove supportato */
+	-webkit-text-size-adjust: 100%; /* Evita ridimensionamento font automatico */
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	min-height: 0;
+	overflow: hidden;
+}
+
+body {
+	background-color: var(--bg-color);
+	display: flex;
+	flex-direction: column;
+	color: var(--text-main);
+}
+
+/* ------------------------------------------------------------
+   PAUSA (Kiosk lock)
+   In pausa TUTTO è disabilitato, tranne lo switch Play/Pausa.
+------------------------------------------------------------ */
+body.is-paused * {
+	pointer-events: none;
+	user-select: none;
+}
+
+/* Riabilita SOLO lo switch Play/Pausa (header sinistra) */
+body.is-paused .station-status-wrapper,
+body.is-paused .station-status-wrapper * {
+	pointer-events: auto;
+	user-select: auto;
+}
+
+/* ------------------------------------------------------------
+   Responsive scaling
+   iPad (1024px) e iPad Air (1180px)
+------------------------------------------------------------ */
+html{ font-size: 16px; }
+
+/* Range Tablet Landscape (da 1024px a 1199px) */
+@media (orientation: landscape) and (max-width: 1199px) {
+	html { 
+		/* Font leggermente più piccolo ma leggibile */
+		font-size: 14px; 
+	}
+	header { 
+		/* Header più compatto in altezza */
+		height: 64px; 
+		padding: 0 10px; 
+	}
+	.station-status-wrapper { 
+		/* Riduciamo larghezza minima switch */
+		min-width: 160px; 
+	}
+}
+
+header {
+	height: 72px;
+	background: white;
+	border-bottom: 1px solid var(--border-color);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 18px;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+	z-index: 100;
+	gap: 14px;
+}
+
+.station-status-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 220px;
+}
+
+.station-label {
+	font-weight: 800;
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: .6px;
+	white-space: nowrap;
+}
+
+.toggle-switch {
+	position: relative;
+	width: 84px;
+	height: 40px;
+	-webkit-user-select: none;
+	user-select: none;
+	flex: 0 0 auto;
+}
+
+.toggle-checkbox { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--paused-grey);
+	transition: .25s;
+	border-radius: 999px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 10px;
+	font-size: 16px;
+	color: white;
+}
+
+.toggle-slider:before {
+	position: absolute;
+	content: "";
+	height: 32px;
+	width: 32px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	transition: .25s;
+	border-radius: 50%;
+	z-index: 2;
+	box-shadow: 0 8px 14px rgba(0,0,0,0.18);
+}
+
+.toggle-checkbox:checked + .toggle-slider { background-color: var(--active-green); }
+.toggle-checkbox:checked + .toggle-slider:before { transform: translateX(44px); }
+
+.icon-play { opacity: 0; transition: 0.2s; margin-left: 5px; }
+.icon-pause { opacity: 1; transition: 0.2s; margin-left: auto; margin-right: 5px; }
+.toggle-checkbox:checked + .toggle-slider .icon-play { opacity: 1; }
+.toggle-checkbox:checked + .toggle-slider .icon-pause { opacity: 0; }
+
+/* Header Elements Styling */
+.header-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	text-align: center;
+	flex: 1;
+	min-width: 0;
+}
+.date-display,
+.time-display {
+	font-size: 1.8rem;
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: 0;
+	color: var(--text-main);
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.header-right { display: flex; align-items: center; gap: 14px; justify-content: flex-end; min-width: 320px; }
+
+.bluetooth-diagnostic-badge {
+	--bluetooth-diagnostic-color: #7b8798;
+	width: 32px;
+	height: 32px;
+	flex: 0 0 32px;
+	display: inline-grid;
+	place-items: center;
+	position: relative;
+	border-radius: 50%;
+	color: var(--bluetooth-diagnostic-color);
+	background: color-mix(in srgb, var(--bluetooth-diagnostic-color) 10%, white);
+	border: 1px solid color-mix(in srgb, var(--bluetooth-diagnostic-color) 42%, transparent);
+	box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+
+.bluetooth-diagnostic-badge svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.bluetooth-diagnostic-badge::after {
+	content: "";
+	position: absolute;
+	right: -1px;
+	bottom: -1px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: currentColor;
+	border: 1px solid white;
+}
+
+.bluetooth-diagnostic-badge.is-active { --bluetooth-diagnostic-color: #218c52; }
+.bluetooth-diagnostic-badge.is-pending { --bluetooth-diagnostic-color: #1878c9; }
+.bluetooth-diagnostic-badge.is-attention { --bluetooth-diagnostic-color: #c47b00; }
+
+body[data-theme="dark"] .bluetooth-diagnostic-badge {
+	background: rgba(255,255,255,.06);
+	box-shadow: 0 3px 10px rgba(0,0,0,.3);
+}
+
+body[data-theme="dark"] .bluetooth-diagnostic-badge::after {
+	border-color: #111a2b;
+}
+
+.bluetooth-diagnostic-badge.is-pending::after,
+.bluetooth-diagnostic-badge.is-attention::after {
+	animation: bluetooth-diagnostic-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes bluetooth-diagnostic-pulse {
+	50% { opacity: .38; transform: scale(.82); }
+}
+
+.system-pill {
+	display: flex; align-items: center; gap: 8px;
+	background: #e8f5e9; color: #2e7d32;
+	padding: 8px 14px; border-radius: 999px;
+	font-size: 0.85rem; font-weight: 900;
+	min-height: var(--tap-min);
+}
+
+.blink-dot {
+	width: 10px; height: 10px; background: #2e7d32;
+	border-radius: 50%; animation: blink 2s infinite;
+}
+
+.station-selector {
+	text-align: right; border-right: 1px solid var(--border-color);
+	padding-right: 14px; cursor: pointer;
+	min-height: var(--tap-min);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.station-selector-static { cursor: default; }
+.station-selector-static .ss-value:hover { text-decoration: none; }
+
+.ss-label { font-size: 0.72rem; color: var(--text-secondary); display: block; font-weight: 800; }
+.ss-value { font-weight: 900; color: var(--primary-blue); display: flex; align-items: center; gap: 6px; }
+.ss-value:hover { text-decoration: underline; }
+
+.user-profile {
+	display: flex; align-items: center; gap: 10px;
+	cursor: pointer; padding: 8px 10px; border-radius: 12px;
+	transition: background 0.2s;
+	min-height: var(--tap-min);
+}
+
+.user-profile:hover { background-color: #f0f2f5; }
+
+.avatar-circle {
+	width: 40px; height: 40px; background: var(--primary-blue);
+	color: white; border-radius: 50%; display: flex;
+	align-items: center; justify-content: center; font-weight: 900;
+}
+
+.user-info { display: flex; flex-direction: column; line-height: 1.12; }
+.user-name { font-weight: 800; font-size: 0.95rem; }
+.user-role { font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; }
+
+.logout-btn {
+	color: #c0392b; background: transparent; border: none;
+	cursor: pointer; width: var(--tap-min); height: var(--tap-min);
+	border-radius: 14px;
+	transition: background 0.2s;
+	display: grid;
+	place-items: center;
+}
+
+.logout-btn:hover { background: #fdeaea; }
+
+/* ------------------------------------------------------------
+   HEADER RESPONSIVE TWEAKS FOR TABLET
+   Nascondi elementi non essenziali sotto i 1100px
+------------------------------------------------------------ */
+@media (max-width: 1180px) {
+	.header-right { min-width: auto; gap: 8px; }
+	.station-label { display: none; } /* Nascondi scritta "POSTAZIONE" */
+	.ss-label { display: none; } /* Nascondi "POSTAZIONE ATTIVA" */
+	.station-selector { border-right: none; padding-right: 0; }
+	.user-role { display: none; } /* Nascondi ruolo utente */
+	.header-center { gap: 8px; }
+	.date-display,
+	.time-display { font-size: 1.35rem; }
+	.system-pill span { display: none; } /* Nascondi scritta "ONLINE", lascia pallino */
+	.system-pill { padding: 0; width: 32px; height: 32px; justify-content: center; background: transparent; }
+	.blink-dot { width: 14px; height: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.bluetooth-diagnostic-badge::after { animation: none; }
+}

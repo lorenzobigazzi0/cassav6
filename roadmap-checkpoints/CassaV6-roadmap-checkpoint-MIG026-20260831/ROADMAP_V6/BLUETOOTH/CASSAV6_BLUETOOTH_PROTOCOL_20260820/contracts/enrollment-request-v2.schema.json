@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/enrollment-request-v2.schema.json",
+  "title": "CASSA V6 Bluetooth Initial Enrollment Request v2",
+  "description": "One-time enrollment claim signed by an Android Keystore P-256 key using canonical low-S IEEE-P1363, with both algorithm identifiers included in the signed transcript.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "enrollmentEndpointId",
+    "token",
+    "nodeId",
+    "publicKeyAlgorithm",
+    "publicKeySpkiDerBase64",
+    "proofAlgorithm",
+    "proofSignatureBase64"
+  ],
+  "properties": {
+    "protocolVersion": { "const": 2 },
+    "enrollmentEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^c6e2_[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    },
+    "nodeId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "publicKeyAlgorithm": { "const": "EC-P256" },
+    "publicKeySpkiDerBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{121}[AQgw]==$"
+    },
+    "proofAlgorithm": { "const": "ECDSA-P256-SHA256-P1363" },
+    "proofSignatureBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{85}[AQgw]==$"
+    }
+  }
+}

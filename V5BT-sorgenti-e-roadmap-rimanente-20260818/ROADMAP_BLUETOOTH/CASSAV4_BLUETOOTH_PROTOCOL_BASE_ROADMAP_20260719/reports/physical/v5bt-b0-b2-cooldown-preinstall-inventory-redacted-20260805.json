@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "mode": "REDACTED_READ_ONLY_BENCH_INVENTORY",
+  "generatedAt": "2026-08-05T07:13:50.530Z",
+  "status": "INCOMPLETE",
+  "readOnly": true,
+  "commandPolicy": {
+    "shell": false,
+    "mutationAllowed": false,
+    "upsMode": "DISCOVERY_ONLY",
+    "fixedAllowlist": true,
+    "sshAuthentication": "PASSWORD",
+    "sudoReadOnly": true,
+    "passwordRecorded": false
+  },
+  "limitations": [
+    {
+      "code": "UPS_DISCOVERY_UNAVAILABLE"
+    }
+  ],
+  "redaction": {
+    "serialsExcluded": true,
+    "networkIdentifiersExcluded": true,
+    "registryIdentifiersExcluded": true,
+    "rawCommandOutputExcluded": true
+  },
+  "adb": {
+    "probeAvailable": true,
+    "expectedTargets": 2,
+    "connectedDevices": 2,
+    "unavailableDevices": 0,
+    "unexpectedConnectedDevices": 0
+  },
+  "android": [
+    {
+      "role": "handheld",
+      "connected": true,
+      "androidUserMatches": true,
+      "androidApi": 36,
+      "packageInstalled": true,
+      "packageStopped": false,
+      "versionName": "1.0.38",
+      "versionCode": 39,
+      "versionNameMatches": false,
+      "versionCodeMatches": false,
+      "apkSha256Matches": false,
+      "permissionsGranted": true,
+      "authenticatedSession": false,
+      "sessionIdentityDistinct": false,
+      "enrollmentReady": true,
+      "enrollmentIdentityDistinct": true,
+      "registryBindingMatches": true,
+      "enrollmentAttempt": "READY"
+    },
+    {
+      "role": "handheld",
+      "connected": true,
+      "androidUserMatches": true,
+      "androidApi": 36,
+      "packageInstalled": true,
+      "packageStopped": false,
+      "versionName": "1.0.38",
+      "versionCode": 39,
+      "versionNameMatches": false,
+      "versionCodeMatches": false,
+      "apkSha256Matches": false,
+      "permissionsGranted": true,
+      "authenticatedSession": false,
+      "sessionIdentityDistinct": false,
+      "enrollmentReady": true,
+      "enrollmentIdentityDistinct": true,
+      "registryBindingMatches": true,
+      "enrollmentAttempt": "READY"
+    }
+  ],
+  "raspberry": {
+    "reachable": true,
+    "architecture": "aarch64",
+    "bluez": {
+      "available": true,
+      "version": "5.82",
+      "powered": true,
+      "discovering": false
+    },
+    "ntpSynchronized": true,
+    "ups": {
+      "discoveryOnly": true,
+      "probeAvailable": false,
+      "discoveredDevices": 0,
+      "serviceProbeAvailable": true,
+      "serviceUnitsObserved": 0
+    },
+    "services": [
+      {
+        "service": "cassav5bt.service",
+        "requirement": "OPERATIONAL_REQUIRED",
+        "expectedState": "LOADED_ACTIVE_ENABLED",
+        "observed": true,
+        "expectationMet": true,
+        "loaded": true,
+        "active": true,
+        "subState": "running",
+        "enabled": true
+      },
+      {
+        "service": "bluetooth.service",
+        "requirement": "OPERATIONAL_REQUIRED",
+        "expectedState": "LOADED_ACTIVE_ENABLED",
+        "observed": true,
+        "expectationMet": true,
+        "loaded": true,
+        "active": true,
+        "subState": "running",
+        "enabled": true
+      },
+      {
+        "service": "cassav5bt-bluetooth-node.service",
+        "requirement": "OBSERVE_ONLY",
+        "expectedState": "ANY_OBSERVED_STATE",
+        "observed": true,
+        "expectationMet": true,
+        "loaded": false,
+        "active": false,
+        "subState": "dead",
+        "enabled": false
+      },
+      {
+        "service": "cassav5bt-bluetooth-enrollment.service",
+        "requirement": "OBSERVE_ONLY",
+        "expectedState": "ANY_OBSERVED_STATE",
+        "observed": true,
+        "expectationMet": true,
+        "loaded": true,
+        "active": false,
+        "subState": "dead",
+        "enabled": false
+      }
+    ],
+    "registry": {
+      "devices": 5,
+      "activeDevices": 4,
+      "revokedDevices": 1,
+      "enrollmentTokens": 8,
+      "pendingTokens": 0
+    },
+    "enrollmentTransactions": {
+      "files": 4,
+      "allPrivate": true
+    },
+    "permissionsSecure": true
+  },
+  "errors": []
+}

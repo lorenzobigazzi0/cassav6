@@ -1,0 +1,124 @@
+{
+  "ok": true,
+  "task": "MIG-026",
+  "taskStatus": "IN_PROGRESS",
+  "scope": "DEV_ONLY_MICROSD",
+  "mode": "CONTROL_PLANE_DISABLED",
+  "blockingDecision": "RET-01",
+  "testFirst": {
+    "red": {
+      "passed": 0,
+      "failed": 5
+    },
+    "focusedGreen": {
+      "passed": 5,
+      "failed": 0
+    },
+    "migrationSuite": {
+      "passed": 17,
+      "failed": 0
+    }
+  },
+  "hardware": {
+    "hostname": "raspberrypi",
+    "architecture": "aarch64",
+    "storageDevice": "/dev/mmcblk0p2",
+    "storageFilesystem": "ext4"
+  },
+  "postgres": {
+    "serverVersion": "17.11 (Debian 17.11-0+deb13u1)",
+    "applicationUser": "cassav6_app",
+    "temporaryDatabase": "cassav6_mig026_20260831a",
+    "developmentDatabase": "cassav6"
+  },
+  "policies": {
+    "total": 13,
+    "proposedDisabled": 8,
+    "legallyProtected": 5,
+    "enabled": 0
+  },
+  "observability": {
+    "growthViewActive": true,
+    "candidateViewActive": true,
+    "growthRelationsOnSmoke": 4,
+    "candidateTargets": 3,
+    "eligibleRowsAfterCleanup": 0
+  },
+  "runtimePrivileges": {
+    "policySelect": true,
+    "policyUpdate": false,
+    "growthSelect": true,
+    "outboxPurgeExecute": false,
+    "idempotencyPurgeExecute": false
+  },
+  "guards": {
+    "runtimePolicyUpdateSqlState": "42501",
+    "runtimePurgeExecuteSqlState": "42501",
+    "ownerDisabledPolicySqlState": "55000",
+    "ownerProtectedPolicySqlState": "55000"
+  },
+  "temporaryOwnerProbe": {
+    "outbox": {
+      "dryRun": 1,
+      "deleted": 1,
+      "secondPass": 0,
+      "preservedRows": 2
+    },
+    "idempotency": {
+      "dryRun": 1,
+      "deleted": 1,
+      "secondPass": 0,
+      "preservedRows": 2
+    },
+    "policiesResetToDisabled": true,
+    "testRowsRemoved": true
+  },
+  "temporaryDatabaseFinalCounts": {
+    "auditEvents": 0,
+    "eventOutbox": 0,
+    "idempotencyKeys": 0,
+    "commandInbox": 0
+  },
+  "smokeDurationMs": 54.66,
+  "mainDevApply": {
+    "firstRun": {
+      "applied": 1,
+      "skipped": 4
+    },
+    "secondRun": {
+      "applied": 0,
+      "skipped": 5
+    },
+    "migration005Checksum": "cfca4fecc4556d33d78404b18e025c2681fe71520bcab74c33aef7e5864963d2",
+    "policies": {
+      "total": 13,
+      "enabled": 0,
+      "legallyProtected": 5,
+      "ret01Todo": 8
+    },
+    "views": [
+      "v_retention_candidates",
+      "v_table_growth"
+    ],
+    "enabledTriggers": [
+      "retention_policies_enforce_safety"
+    ],
+    "foundationCounts": {
+      "auditEvents": 0,
+      "idempotencyKeys": 0,
+      "commandInbox": 0,
+      "eventOutbox": 0
+    }
+  },
+  "partitioning": {
+    "applied": false,
+    "reason": "RET-01 aperta e unicita globale delle chiavi non compatibile con una conversione RANGE ingenua"
+  },
+  "services": {
+    "postgresql17Main": "active",
+    "cassav5bt": "active"
+  },
+  "temporaryArtifactsRemoved": true,
+  "automaticPurgeEnabled": false,
+  "productionRetentionAuthorized": false
+}

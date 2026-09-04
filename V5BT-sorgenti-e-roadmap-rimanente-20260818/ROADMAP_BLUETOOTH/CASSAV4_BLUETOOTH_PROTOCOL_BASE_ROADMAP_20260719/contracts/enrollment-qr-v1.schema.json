@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav4.local/contracts/enrollment-qr-v1.schema.json",
+  "title": "CASSAv4 Bluetooth One-Time Enrollment QR v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "enrollmentEndpointId",
+    "token"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "enrollmentEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^c5e1_[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+[24/08/2026 15:06:55,92] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://172.24.112.1:5381 | http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[24/08/2026 16:20:51,73] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://172.24.112.1:5381 | http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[25/08/2026 10:15:41,77] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[26/08/2026  9:42:54,17] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[27/08/2026  9:41:19,36] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[28/08/2026  9:32:45,55] avvio backend 
+[backend] API attiva su http://0.0.0.0:5381
+[backend] URL rete locale: http://192.168.0.28:5381 | http://192.168.56.1:5381 | http://10.147.19.211:5381 | http://192.168.235.1:5381 | http://192.168.35.1:5381
+[backend] DB mode attivo: mysql
+[backend] Data path attivo: 127.0.0.1:3306/cassa_v5bt
+[backend] MySQL app-state: 127.0.0.1:3306/cassa_v5bt, tabella app_state
+[backend] MySQL table locks puntuali attivi: tabella app_table_work_locks, named-lock=off, tombstone=off
+[backend] MySQL split domini app-state attivo: tabella app_state_domain_records, domini users, userGroups, saleSessionTemplates, menuItems, posSettings, payments, paymentContainers, paymentParts, paymentTransactions, cashTxDenoms, fiscalReceipts, fiscalEvents, smartNonFiscal, smartCustomers, integration, posRoomChangeRequests, posTableRoomMoveRequests, posReservationStates, posReservationLocks, saleSessions, solarClosures, printSpoolJobs, posReservations, paymentProviderTransactions, maintenance, tableLocks, handheldCashSessions, commercialBenefitCampaigns, commercialBenefitCoupons, commercialBenefitApplications, commercialBenefitRedemptions
+[backend:p4.3] durablePaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=relationalPaymentsFreeSplitWritePrimary
+[backend:p4.3] paymentMirrorSkipTables: requested=OFF effective=OFF source=default fallback=none unmet=relationalTablesReadPrimary,relationalLayoutTablesReadPrimary
+[backend:p4.3] statelessPaymentMirror: requested=OFF effective=OFF source=default fallback=none unmet=durablePaymentMirror,paymentMirrorSkipTables,mysqlSplitAuditEvents
+[backend:p4.3] paymentSettingsReuse: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] waiterPauseFastWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitSessions,mysqlSplitAuditEvents
+[backend:p4.3] waiterPauseTelemetry: requested=ON effective=ON source=env fallback=none unmet=none
+[backend:p4.3] notificationPunctualWriter: requested=OFF effective=OFF source=default fallback=none unmet=none
+[backend:p4.3] counterCollectionAtomicWriter: requested=OFF effective=OFF source=default fallback=none unmet=mysqlSplitAuditEvents
+[backend:p4.3] scopedRealtimeDelivery: requested=ON effective=ON source=env fallback=none unmet=none
+[backend] Split tableStates app-state: externalized (D:\sistemacassav6\V5BT-sorgenti-e-roadmap-rimanente-20260818\.runtime\cassav5bt\data\app-state-split.sqlite)
+[backend] Maintenance endpoints disabilitati.
+[backend] Lettore smart card: modalita push (seriale disattivato).
+[backend] Smart card push: token middleware richiesto.
+[print] Retention spool (scheduled): file=7, orfani=7, cancellati=5, errori=0
+[print] Retention spool (scheduled): file=2, orfani=2, cancellati=2, errori=0

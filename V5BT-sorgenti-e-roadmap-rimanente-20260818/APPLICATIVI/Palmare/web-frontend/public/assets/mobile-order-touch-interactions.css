@@ -1,0 +1,22 @@
+.table-order-product-row {
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.table-order-swipe-row,
+.table-order-swipe-row .table-order-item,
+.table-order-swipe-row .table-order-item-main,
+.table-order-swipe-row .table-order-item-info {
+  touch-action: pan-y;
+}
+
+.table-order-swipe-row {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.table-order-swipe-row .table-order-swipe-action {
+  touch-action: none;
+}

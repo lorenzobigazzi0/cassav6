@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily CassaV6 PostgreSQL logical backup
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+Persistent=true
+RandomizedDelaySec=10m
+AccuracySec=1m
+Unit=cassav6-postgresql-logical-backup.service
+
+[Install]
+WantedBy=timers.target

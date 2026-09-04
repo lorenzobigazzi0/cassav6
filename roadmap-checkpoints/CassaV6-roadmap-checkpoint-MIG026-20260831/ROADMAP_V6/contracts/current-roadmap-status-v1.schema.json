@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassa.local/contracts/v6/current-roadmap-status-v1.schema.json",
+  "title": "Cassa V6 Current Roadmap Status V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "mode",
+    "product",
+    "targetReleaseVersion",
+    "roadmapId",
+    "roadmapRevision",
+    "statusAsOf",
+    "baselineIdentityState",
+    "officialProgressPercent",
+    "progressPolicy",
+    "sourceBaselines",
+    "phases",
+    "promotion"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "mode": { "const": "CURRENT_ROADMAP_STATUS" },
+    "product": { "const": "CASSA_V6" },
+    "targetReleaseVersion": { "type": "string", "pattern": "^6\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$" },
+    "roadmapId": { "const": "CASSA_V6_ROADMAP" },
+    "roadmapRevision": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "statusAsOf": { "type": "string", "format": "date" },
+    "baselineIdentityState": {
+      "enum": [
+        "LEGACY_V5BT_IDENTIFIERS_INHERITED",
+        "V6_IDENTIFIERS_APPLIED_NOT_VERIFIED",
+        "V6_IDENTITY_MIGRATION_IN_PROGRESS",
+        "V6_IDENTITY_VERIFIED"
+      ]
+    },
+    "officialProgressPercent": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "progressPolicy": { "$ref": "#/$defs/progressPolicy" },
+    "sourceBaselines": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/sourceBaseline" }
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": { "$ref": "#/$defs/phase" }
+    },
+    "promotion": { "$ref": "#/$defs/promotion" }
+  },
+  "$defs": {
+    "stringRefArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "progressPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formula",
+        "phaseWeightsTotalPercent",
+        "candidateImportedCountsTowardProgress",
+        "legacyEvidenceCountsTowardProgress",
+        "requiredEvidenceScope"
+      ],
+      "properties": {
+        "formula": { "const": "SUM_WEIGHTS_OF_VERIFIED_COMPLETE_PHASES" },
+        "phaseWeightsTotalPercent": { "const": 100 },
+        "candidateImportedCountsTowardProgress": { "const": false },
+        "legacyEvidenceCountsTowardProgress": { "const": false },
+        "requiredEvidenceScope": { "const": "V6_ONLY" }
+      }
+    },
+    "sourceBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "artifact",
+        "sha256",
+        "classification",
+        "countsTowardOfficialProgress",
+        "requiresV6Reverification"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]+$" },
+        "kind": { "enum": ["V6_BOOTSTRAP", "COMMERCIAL_V2_CANDIDATE", "LEGACY_V5BT"] },
+        "artifact": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "classification": {
+          "enum": [
+            "BOOTSTRAP_INPUT_NOT_RELEASE_EVIDENCE",
+            "CANDIDATE_IMPORTED_NOT_VERIFIED",
+            "HISTORICAL_REFERENCE_ONLY"
+          ]
+        },
+        "countsTowardOfficialProgress": { "const": false },
+        "requiresV6Reverification": { "const": true }
+      }
+    },
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sequence",
+        "name",
+        "weightPercent",
+        "status",
+        "creditedPercent",
+        "candidateSourceRefs",
+        "verifiedEvidenceRefs"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^V6-P[0-8]$" },
+        "sequence": { "type": "integer", "minimum": 0, "maximum": 8 },
+        "name": { "type": "string", "minLength": 1 },
+        "weightPercent": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "status": {
+          "enum": [
+            "PENDING",
+            "IN_PROGRESS",
+            "CANDIDATE_IMPORTED_NOT_VERIFIED",
+            "VERIFIED_COMPLETE",
+            "BLOCKED"
+          ]
+        },
+        "creditedPercent": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "candidateSourceRefs": { "$ref": "#/$defs/stringRefArray" },
+        "verifiedEvidenceRefs": { "$ref": "#/$defs/stringRefArray" }
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "requiresAllPhasesVerifiedComplete",
+        "authorizationEvidenceRefs",
+        "blockers"
+      ],
+      "properties": {
+        "allowed": { "type": "boolean" },
+        "requiresAllPhasesVerifiedComplete": { "const": true },
+        "authorizationEvidenceRefs": { "$ref": "#/$defs/stringRefArray" },
+        "blockers": { "$ref": "#/$defs/stringRefArray" }
+      }
+    }
+  }
+}

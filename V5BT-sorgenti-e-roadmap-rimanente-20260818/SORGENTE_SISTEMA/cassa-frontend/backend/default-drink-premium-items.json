@@ -1,0 +1,415 @@
+{
+  "category": "Drink Premium",
+  "defaults": {
+    "enabled": true,
+    "department": "bar",
+    "reparto": "bar",
+    "variantRequired": true,
+    "isPremiumAlcohol": true,
+    "variants": [
+      { "id": "drink_premium_liscio", "name": "Liscio", "priceDelta": 0 },
+      { "id": "drink_premium_lemon", "name": "Lemon", "priceDelta": 0 },
+      { "id": "drink_premium_tonic", "name": "Tonic", "priceDelta": 0 },
+      { "id": "drink_premium_fizz", "name": "Fizz", "priceDelta": 0 }
+    ]
+  },
+  "sections": [
+    {
+      "name": "Amari e Liquori",
+      "category": "Amari e Liquori",
+      "items": [
+        { "id": "menu_drink_premium_averna", "name": "Averna", "price": 4 },
+        {
+          "id": "menu_drink_premium_brancamenta",
+          "name": "Brancamenta",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_fernet_branca",
+          "name": "Fernet Branca",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_montenegro",
+          "name": "Montenegro",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_vecchio_amaro_del_capo",
+          "name": "Vecchio Amaro Del Capo",
+          "price": 4
+        },
+        { "id": "menu_drink_premium_braulio", "name": "Braulio", "price": 5 },
+        {
+          "id": "menu_drink_premium_rabarbaro_zucca",
+          "name": "Rabarbaro Zucca",
+          "price": 4
+        },
+        { "id": "menu_drink_premium_cynar", "name": "Cynar", "price": 4 },
+        { "id": "menu_drink_premium_tattico", "name": "Tattico", "price": 5 },
+        {
+          "id": "menu_drink_premium_jagermeister",
+          "name": "Jagermeister",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_jefferson",
+          "name": "Jefferson",
+          "price": 6
+        },
+        {
+          "id": "menu_drink_premium_limoncello_di_capri",
+          "name": "Limoncello Di Capri",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_sambuca_molinari",
+          "name": "Sambuca Molinari",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_baileys_original",
+          "name": "Baileys Original",
+          "price": 4
+        },
+        {
+          "id": "menu_drink_premium_disaronno",
+          "name": "Disaronno",
+          "price": 6
+        },
+        {
+          "id": "menu_drink_premium_frangelico",
+          "name": "Frangelico",
+          "price": 6
+        },
+        {
+          "id": "menu_drink_premium_cointreau",
+          "name": "Cointreau",
+          "price": 6
+        },
+        { "id": "menu_drink_premium_kahlua", "name": "Kahlúa", "price": 4 },
+        {
+          "id": "menu_drink_premium_chartreuse_giallo",
+          "name": "Chartreuse Giallo",
+          "price": 6
+        },
+        {
+          "id": "menu_drink_premium_chartreuse_verde",
+          "name": "Chartreuse Verde",
+          "price": 6
+        }
+      ]
+    },
+    {
+      "name": "Gin",
+      "items": [
+        {
+          "id": "menu_drink_premium_sabatini",
+          "name": "Sabatini London Dry",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_tanqueray_ten",
+          "name": "Tanqueray Ten",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_presobene",
+          "name": "Presobene London Dry",
+          "price": 18
+        },
+        {
+          "id": "menu_drink_premium_hendricks",
+          "name": "Hendryck’s Original Distilled",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_monkey",
+          "name": "Monkey 47 Schwarzwald Dry",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_n3",
+          "name": "Nr 3 London Dry",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_bulldog",
+          "name": "Bulldog London Dry",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_ginepraio",
+          "name": "Ginepraio Dry",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_amuerte",
+          "name": "Amuerte Compound",
+          "price": 15
+        },
+        {
+          "id": "menu_drink_premium_gin_raw",
+          "name": "Gin Raw Original Distilled",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_gin_raw_cherry_blossom",
+          "name": "Gin Raw Cherry Blossom Distilled",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_gin_raw_lavender",
+          "name": "Gin Raw Lavender Distilled",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_gin_raw_orange_blossom",
+          "name": "Gin Raw Orange Blossom Distilled",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_mare",
+          "name": "Gin Mare Mediterraneo",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_capri",
+          "name": "Gin Mare Capri Mediterraneo",
+          "price": 14
+        },
+        {
+          "id": "menu_drink_premium_nordes",
+          "name": "Nordes Atlantic Galician",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_gin_arte",
+          "name": "Gin Arte Dry",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_engine",
+          "name": "Engine Distilled",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_kinobi",
+          "name": "Kinobi Kyoto Dry",
+          "price": 15
+        },
+        {
+          "id": "menu_drink_premium_etsu",
+          "name": "Etsu Japanese",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_tanqueray_0",
+          "name": "Tanqueray 0",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_tanqueray",
+          "name": "Tanqueray",
+          "price": 10
+        }
+      ]
+    },
+    {
+      "name": "Vodka",
+      "items": [
+        {
+          "id": "menu_drink_premium_grey_goose",
+          "name": "Grey Goose",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_altamura",
+          "name": "Altamura",
+          "price": 10
+        },
+        { "id": "menu_drink_premium_yurt", "name": "Yurt", "price": 12 },
+        { "id": "menu_drink_premium_absolut", "name": "Absolut", "price": 8 },
+        { "id": "menu_drink_premium_skyy", "name": "SKYY", "price": 10 }
+      ]
+    },
+    {
+      "name": "Rum",
+      "category": "Rum",
+      "items": [
+        {
+          "id": "menu_drink_premium_santa_teresa_solera_1796",
+          "name": "Santa Teresa Solera 1796",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_zacapa_solera_23",
+          "name": "Zacapa Solera 23",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_gosling_black_seal",
+          "name": "Gosling Black Seal",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_don_papa_baroko",
+          "name": "Don Papa Baroko",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_don_papa_masskara",
+          "name": "Don Papa Masskara",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_diplomatico_planas",
+          "name": "Diplomatico Planas",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_diplomatico_mantuano",
+          "name": "Diplomatico Mantuano",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_seilor_jerry_spiced",
+          "name": "Seilor Jerry Spiced",
+          "price": 10
+        }
+      ]
+    },
+    {
+      "name": "Tequila",
+      "items": [
+        {
+          "id": "menu_drink_premium_patron_silver",
+          "name": "Patron Silver",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_patron_reposado",
+          "name": "Patron Reposado",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_curado_blue_agave",
+          "name": "Curado Blue Agave",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_curado_capreata",
+          "name": "Curado Capreata",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_curado_espadin",
+          "name": "Curado Espadin",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_picaflor_espadin_joven",
+          "name": "Picaflor Espadin Joven",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_picaflor_wild_ensamble_espadin",
+          "name": "Picaflor Wild Ensamble Espadin",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_xaman_espadin",
+          "name": "Xaman Espadin",
+          "price": 12
+        }
+      ]
+    },
+    {
+      "name": "Cognac e Brandy",
+      "category": "Cognac e Brandy",
+      "items": [
+        {
+          "id": "menu_drink_premium_courvoisier",
+          "name": "Courvoisier",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_hennessy",
+          "name": "Hennessy",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_vecchia_romagna",
+          "name": "Vecchia Romagna",
+          "price": 8
+        },
+        {
+          "id": "menu_drink_premium_grand_duque_d_alba",
+          "name": "Grand Duque D’Alba",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_hermano_acholado",
+          "name": "Hermano Acholado",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_hermano_quebranta",
+          "name": "Hermano Quebranta",
+          "price": 10
+        }
+      ]
+    },
+    {
+      "name": "Wiskey",
+      "category": "Wiskey",
+      "items": [
+        {
+          "id": "menu_drink_premium_jack_daniels_bourbon",
+          "name": "Jack Daniel’s Bourbon",
+          "price": 8
+        },
+        {
+          "id": "menu_drink_premium_woodford_reserve_bourbon",
+          "name": "Woodford Reserve Bourbon",
+          "price": 12
+        },
+        {
+          "id": "menu_drink_premium_knob_creek_bourbon",
+          "name": "Knob Creek Bourbon",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_wild_turkey_rye",
+          "name": "Wild Turkey Rye",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_oban_14_single_malt_scotch",
+          "name": "Oban 14 Single Malt Scotch",
+          "price": 15
+        },
+        {
+          "id": "menu_drink_premium_laphroaig_10_sigle_malt_scotch",
+          "name": "Laphroaig 10 Sigle Malt Scotch",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_copper_dog_blended_malt_scotch",
+          "name": "Copper Dog Blended Malt Scotch",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_johnnie_walker_black_label_blended_malt_scotch",
+          "name": "Johnnie Walker Black Label Blended Malt Scotch",
+          "price": 10
+        },
+        {
+          "id": "menu_drink_premium_flaming_pig_irish",
+          "name": "Flaming Pig Irish",
+          "price": 10
+        }
+      ]
+    }
+  ]
+}

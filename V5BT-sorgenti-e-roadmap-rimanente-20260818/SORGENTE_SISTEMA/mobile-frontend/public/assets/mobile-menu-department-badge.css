@@ -1,0 +1,35 @@
+.menu-level-card {
+  position: relative;
+  padding-bottom: 36px;
+}
+
+.menu-level-department-badge {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 20px);
+  min-height: 22px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 174, 255, 0.34);
+  background: rgba(76, 122, 210, 0.22);
+  color: rgba(232, 241, 255, 0.94);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .menu-level-department-badge,
+:root:not([data-theme]) .menu-level-department-badge {
+  border-color: rgba(42, 103, 190, 0.28);
+  background: rgba(218, 232, 255, 0.92);
+  color: rgba(18, 54, 108, 0.94);
+}

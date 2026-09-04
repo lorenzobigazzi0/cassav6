@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "generatedForDate": "2026-09-01",
+  "status": "P2B_IDENTITY_INVENTORIED_P2B2_ALREADY_EXTRACTED_P2B3_P2B4_OPEN",
+  "behaviorChanged": false,
+  "databaseChanged": false,
+  "routes": [
+    {
+      "method": "POST",
+      "route": "/api/auth/login",
+      "handlerKey": "auth.login",
+      "functionName": "handleLogin",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "posSettings",
+        "meta"
+      ],
+      "writes": [
+        "users",
+        "sessions",
+        "auditEvents",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "audit",
+        "pos-settings/workstations",
+        "redis/session-cache",
+        "notifications"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 3,
+      "directReadDb": 1,
+      "directWriteDb": 3
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/logout",
+      "handlerKey": "auth.logout",
+      "functionName": "handleLogout",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "integration.stationStates"
+      ],
+      "writes": [
+        "sessions",
+        "integration",
+        "auditEvents",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "audit",
+        "integration/station-presence",
+        "notifications",
+        "redis/session-cache"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 3,
+      "directReadDb": 1,
+      "directWriteDb": 3
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/session/status",
+      "handlerKey": "auth.sessionStatus",
+      "functionName": "handleAuthSessionStatus",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "integration.stationStates"
+      ],
+      "writes": [
+        "sessions",
+        "integration.stationStates",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "integration/station-presence",
+        "redis/session-cache"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 1,
+      "directReadDb": 1,
+      "directWriteDb": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/workstation/select",
+      "handlerKey": "auth.selectWorkstation",
+      "functionName": "handleSelectWorkstation",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "posSettings"
+      ],
+      "writes": [
+        "sessions",
+        "auditEvents",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "audit",
+        "pos-settings/workstations",
+        "redis/session-cache"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 1,
+      "directReadDb": 1,
+      "directWriteDb": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/change-pin",
+      "handlerKey": "auth.changePin",
+      "functionName": "handleChangePin",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions"
+      ],
+      "writes": [
+        "users",
+        "auditEvents",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "audit"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 2,
+      "directReadDb": 1,
+      "directWriteDb": 2
+    },
+    {
+      "method": "POST",
+      "route": "/api/settings/pos/users",
+      "handlerKey": "users.list",
+      "functionName": "handlePosSettingsUsers",
+      "sourceFile": "backend/users/users.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "userGroups",
+        "posSettings",
+        "meta"
+      ],
+      "writes": [],
+      "crossDomainDependencies": [
+        "pos-settings",
+        "permissions"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 0,
+      "directReadDb": 1,
+      "directWriteDb": 0
+    },
+    {
+      "method": "POST",
+      "route": "/api/settings/pos/users/save",
+      "handlerKey": "users.save",
+      "functionName": "handleSavePosSettingsUsers",
+      "sourceFile": "backend/users/users.handlers.js",
+      "domain": "identity",
+      "reads": [
+        "users",
+        "sessions",
+        "userGroups",
+        "posSettings",
+        "meta"
+      ],
+      "writes": [
+        "users",
+        "sessions",
+        "userGroups",
+        "auditEvents",
+        "meta"
+      ],
+      "crossDomainDependencies": [
+        "audit",
+        "pos-settings",
+        "permissions",
+        "redis/session-cache"
+      ],
+      "directReadDbExpected": 1,
+      "directWriteDbExpected": 1,
+      "directReadDb": 1,
+      "directWriteDb": 1
+    }
+  ],
+  "metrics": {
+    "routeCount": 7,
+    "extractedHandlerFileCount": 2,
+    "extractedHandlerLines": 1141,
+    "serverLines": 38730,
+    "directReadDb": 7,
+    "directWriteDb": 11,
+    "crossDomainRouteCount": 7
+  },
+  "nextGate": "P2b.3/P2b.4 identity: zero readDb/writeDb diretti negli handler identity"
+}

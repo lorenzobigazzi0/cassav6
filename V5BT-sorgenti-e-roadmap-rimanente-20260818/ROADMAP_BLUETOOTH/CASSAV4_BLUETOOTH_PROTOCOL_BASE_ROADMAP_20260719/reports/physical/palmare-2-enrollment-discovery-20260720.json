@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "generatedAt": "2026-07-20T13:48:17.525Z",
+  "mode": "PHYSICAL_SINGLE_NODE",
+  "verdict": "FAIL",
+  "failure": {
+    "code": "QR_SIZE_INVALID",
+    "message": "Enrollment QR must contain 1 to 512 bytes"
+  },
+  "activeV4Changes": false
+}

@@ -1,0 +1,7 @@
+{
+  "logLevel": "info",
+  "metricsIntervalMs": 10000,
+  "redactNodeStableIdInNormalLogs": true,
+  "captureBtSnoopInLabOnly": true,
+  "maxSessionHistory": 10000
+}

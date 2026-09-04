@@ -1,0 +1,138 @@
+{
+  "ok": true,
+  "task": "MIG-025",
+  "scope": "DEV_ONLY_MICROSD",
+  "testFirst": {
+    "red": {
+      "passed": 0,
+      "failed": 10
+    },
+    "focusedGreen": {
+      "passed": 10,
+      "failed": 0
+    },
+    "migrationSuite": {
+      "passed": 33,
+      "failed": 0
+    }
+  },
+  "hardware": {
+    "hostname": "raspberrypi",
+    "architecture": "aarch64",
+    "storageDevice": "/dev/mmcblk0p2",
+    "storageFilesystem": "ext4"
+  },
+  "postgres": {
+    "serverVersion": "17.11 (Debian 17.11-0+deb13u1)",
+    "applicationUser": "cassav6_app",
+    "temporaryDatabase": "cassav6_mig025_20260831a",
+    "developmentDatabase": "cassav6"
+  },
+  "privileges": {
+    "select": true,
+    "insert": true,
+    "update": true,
+    "delete": false,
+    "truncate": false
+  },
+  "concurrency": {
+    "callers": 8,
+    "executed": 1,
+    "replayed": 7,
+    "businessExecutions": 1,
+    "deterministicResponses": 8,
+    "durationMs": 102.67
+  },
+  "conflict": {
+    "state": "conflict",
+    "businessExecutions": 0
+  },
+  "scopeIsolation": {
+    "sameKeyDifferentScope": "executed"
+  },
+  "rollbackRecovery": {
+    "afterFailure": {
+      "businessRows": 0,
+      "keyRows": 0
+    },
+    "retryState": "executed"
+  },
+  "terminalFailureReplay": {
+    "firstState": "executed",
+    "replayState": "replayed",
+    "executions": 1,
+    "responseCode": 422
+  },
+  "guards": {
+    "unfinishedCommitSqlState": "55000",
+    "runtimeTerminalUpdateSqlState": "55000",
+    "ownerTerminalUpdateSqlState": "55000",
+    "runtimeDeleteSqlState": "42501",
+    "runtimeTruncateSqlState": "42501",
+    "invalidHashSqlState": "23514"
+  },
+  "temporaryDatabaseFinalCounts": {
+    "businessRows": 3,
+    "idempotencyRows": 4,
+    "processingRows": 0
+  },
+  "smokeDurationMs": 181.86,
+  "mainDevApply": {
+    "firstRun": {
+      "applied": 1,
+      "skipped": 3
+    },
+    "secondRun": {
+      "applied": 0,
+      "skipped": 4
+    },
+    "registry": [
+      {
+        "version": "001",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+      },
+      {
+        "version": "002",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+      },
+      {
+        "version": "003",
+        "checksum": "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673"
+      },
+      {
+        "version": "004",
+        "checksum": "c66c1804dff7ecd3abcbeed01845194688f386f93ce4e6bb9a0e12c7978ef2de"
+      }
+    ],
+    "validatedConstraints": [
+      "idempotency_keys_expiry_valid",
+      "idempotency_keys_key_format",
+      "idempotency_keys_pkey",
+      "idempotency_keys_request_hash_format",
+      "idempotency_keys_require_terminal",
+      "idempotency_keys_scope_format",
+      "idempotency_keys_state_coherent",
+      "idempotency_keys_status_valid"
+    ],
+    "enabledTriggers": [
+      "idempotency_keys_enforce_transition",
+      "idempotency_keys_require_terminal"
+    ],
+    "notNullColumns": [
+      "request_hash",
+      "expires_at"
+    ],
+    "foundationCounts": {
+      "auditEvents": 0,
+      "idempotencyKeys": 0,
+      "commandInbox": 0,
+      "eventOutbox": 0
+    }
+  },
+  "services": {
+    "postgresql17Main": "active",
+    "cassav5bt": "active"
+  },
+  "temporaryArtifactsRemoved": true,
+  "productionCutoverAuthorized": false
+}

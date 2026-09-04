@@ -1,0 +1,24 @@
+{
+  "_comment": "Copiare in reconcile.config.json (gitignored) e riempire. Nessun segreto in repository.",
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "cassa_v6",
+    "user": "cassa_v6_reconcile",
+    "password": "SOSTITUIRE",
+    "max": 2,
+    "_note": "Utente in sola lettura, distinto da quello applicativo e da quello di migration."
+  },
+  "mariadb": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "cassa_v5bt",
+    "user": "cassa_v5bt_reconcile",
+    "password": "SOSTITUIRE",
+    "_note": "Sola lettura. Durante il cutover la sorgente deve essere congelata read-only."
+  },
+  "sqlite": {
+    "path": "/percorso/a/backend-relational.sqlite",
+    "_note": "Aperto in readOnly dallo script."
+  }
+}

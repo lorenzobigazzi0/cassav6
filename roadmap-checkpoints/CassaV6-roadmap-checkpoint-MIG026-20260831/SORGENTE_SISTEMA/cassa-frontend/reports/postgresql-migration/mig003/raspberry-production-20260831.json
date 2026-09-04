@@ -1,0 +1,3027 @@
+{
+  "schemaVersion": 1,
+  "task": "MIG-003",
+  "generatedAt": "2026-08-31T08:59:09.734Z",
+  "capture": {
+    "durationSeconds": 300,
+    "intervalSeconds": 5
+  },
+  "host": {
+    "hostname": "raspberrypi",
+    "platform": "linux",
+    "release": "6.18.37-rt+",
+    "architecture": "arm64",
+    "cpuModel": "Cortex-A76",
+    "logicalCpuCount": 4,
+    "model": "Raspberry Pi 5 Model B Rev 1.0",
+    "nodeVersion": "v24.15.0"
+  },
+  "services": {
+    "mariadb": "active",
+    "postgresql": "unavailable-or-inactive"
+  },
+  "storage": {
+    "lsblk": {
+      "blockdevices": [
+        {
+          "name": "loop0",
+          "kname": "loop0",
+          "type": "loop",
+          "size": 2147483648,
+          "model": null,
+          "tran": null,
+          "rota": false,
+          "mountpoints": [],
+          "fstype": "swap"
+        },
+        {
+          "name": "mmcblk0",
+          "kname": "mmcblk0",
+          "type": "disk",
+          "size": 63864569856,
+          "model": null,
+          "tran": "mmc",
+          "rota": false,
+          "mountpoints": [],
+          "fstype": null,
+          "children": [
+            {
+              "name": "mmcblk0p1",
+              "kname": "mmcblk0p1",
+              "type": "part",
+              "size": 536870912,
+              "model": null,
+              "tran": "mmc",
+              "rota": false,
+              "mountpoints": [
+                "/boot/firmware"
+              ],
+              "fstype": "vfat"
+            },
+            {
+              "name": "mmcblk0p2",
+              "kname": "mmcblk0p2",
+              "type": "part",
+              "size": 63319310336,
+              "model": null,
+              "tran": "mmc",
+              "rota": false,
+              "mountpoints": [
+                "/"
+              ],
+              "fstype": "ext4"
+            }
+          ]
+        },
+        {
+          "name": "zram0",
+          "kname": "zram0",
+          "type": "disk",
+          "size": 2147483648,
+          "model": null,
+          "tran": null,
+          "rota": false,
+          "mountpoints": [
+            "[SWAP]"
+          ],
+          "fstype": "swap"
+        }
+      ]
+    },
+    "findmnt": {
+      "filesystems": [
+        {
+          "target": "/",
+          "source": "/dev/mmcblk0p2",
+          "fstype": "ext4",
+          "options": "rw,noatime",
+          "children": [
+            {
+              "target": "/dev",
+              "source": "devtmpfs",
+              "fstype": "devtmpfs",
+              "options": "rw,relatime,size=2039216k,nr_inodes=127451,mode=755",
+              "children": [
+                {
+                  "target": "/dev/shm",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "rw,nosuid,nodev"
+                },
+                {
+                  "target": "/dev/pts",
+                  "source": "devpts",
+                  "fstype": "devpts",
+                  "options": "rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000"
+                },
+                {
+                  "target": "/dev/mqueue",
+                  "source": "mqueue",
+                  "fstype": "mqueue",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                }
+              ]
+            },
+            {
+              "target": "/proc",
+              "source": "proc",
+              "fstype": "proc",
+              "options": "rw,relatime",
+              "children": [
+                {
+                  "target": "/proc/sys/fs/binfmt_misc",
+                  "source": "systemd-1",
+                  "fstype": "autofs",
+                  "options": "rw,relatime,fd=36,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=2795",
+                  "children": [
+                    {
+                      "target": "/proc/sys/fs/binfmt_misc",
+                      "source": "binfmt_misc",
+                      "fstype": "binfmt_misc",
+                      "options": "rw,nosuid,nodev,noexec,relatime"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "target": "/sys",
+              "source": "sysfs",
+              "fstype": "sysfs",
+              "options": "rw,nosuid,nodev,noexec,relatime",
+              "children": [
+                {
+                  "target": "/sys/kernel/security",
+                  "source": "securityfs",
+                  "fstype": "securityfs",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                },
+                {
+                  "target": "/sys/fs/cgroup",
+                  "source": "cgroup2",
+                  "fstype": "cgroup2",
+                  "options": "rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot"
+                },
+                {
+                  "target": "/sys/fs/pstore",
+                  "source": "none",
+                  "fstype": "pstore",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                },
+                {
+                  "target": "/sys/fs/bpf",
+                  "source": "bpf",
+                  "fstype": "bpf",
+                  "options": "rw,nosuid,nodev,noexec,relatime,mode=700"
+                },
+                {
+                  "target": "/sys/kernel/tracing",
+                  "source": "tracefs",
+                  "fstype": "tracefs",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                },
+                {
+                  "target": "/sys/kernel/debug",
+                  "source": "debugfs",
+                  "fstype": "debugfs",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                },
+                {
+                  "target": "/sys/kernel/config",
+                  "source": "configfs",
+                  "fstype": "configfs",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                },
+                {
+                  "target": "/sys/fs/fuse/connections",
+                  "source": "fusectl",
+                  "fstype": "fusectl",
+                  "options": "rw,nosuid,nodev,noexec,relatime"
+                }
+              ]
+            },
+            {
+              "target": "/run",
+              "source": "tmpfs",
+              "fstype": "tmpfs",
+              "options": "rw,nosuid,nodev,size=829248k,nr_inodes=819200,mode=755",
+              "children": [
+                {
+                  "target": "/run/lock",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "rw,nosuid,nodev,noexec,relatime,size=5120k"
+                },
+                {
+                  "target": "/run/credentials/systemd-journald.service",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap"
+                },
+                {
+                  "target": "/run/rpc_pipefs",
+                  "source": "sunrpc",
+                  "fstype": "rpc_pipefs",
+                  "options": "rw,relatime"
+                },
+                {
+                  "target": "/run/user/1000",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "rw,nosuid,nodev,relatime,size=414608k,nr_inodes=103652,mode=700,uid=1000,gid=1000",
+                  "children": [
+                    {
+                      "target": "/run/user/1000/gvfs",
+                      "source": "gvfsd-fuse",
+                      "fstype": "fuse.gvfsd-fuse",
+                      "options": "rw,nosuid,nodev,relatime,user_id=1000,group_id=1000"
+                    },
+                    {
+                      "target": "/run/user/1000/doc",
+                      "source": "portal",
+                      "fstype": "fuse.portal",
+                      "options": "rw,nosuid,nodev,relatime,user_id=1000,group_id=1000"
+                    }
+                  ]
+                },
+                {
+                  "target": "/run/credentials/serial-getty@ttyAMA10.service",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap"
+                },
+                {
+                  "target": "/run/credentials/getty@tty1.service",
+                  "source": "tmpfs",
+                  "fstype": "tmpfs",
+                  "options": "ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap"
+                }
+              ]
+            },
+            {
+              "target": "/tmp",
+              "source": "tmpfs",
+              "fstype": "tmpfs",
+              "options": "rw,nosuid,nodev,nr_inodes=1048576"
+            },
+            {
+              "target": "/boot/firmware",
+              "source": "/dev/mmcblk0p1",
+              "fstype": "vfat",
+              "options": "rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sqlite": {
+    "dataDir": "/home/admin/cassav5bt-current/cassa V5BT/.runtime/cassav5bt/data",
+    "available": true,
+    "files": [
+      {
+        "relativePath": "app-state-split.sqlite",
+        "sizeBytes": 176128,
+        "modifiedAt": "2026-08-18T19:22:36.929Z"
+      },
+      {
+        "relativePath": "app-state-split.sqlite-shm",
+        "sizeBytes": 32768,
+        "modifiedAt": "2026-08-19T16:12:59.006Z"
+      },
+      {
+        "relativePath": "app-state-split.sqlite-wal",
+        "sizeBytes": 4128272,
+        "modifiedAt": "2026-08-18T19:23:42.490Z"
+      },
+      {
+        "relativePath": "backend-relational.sqlite",
+        "sizeBytes": 174292992,
+        "modifiedAt": "2026-07-20T08:38:26.062Z"
+      },
+      {
+        "relativePath": "backend-relational.sqlite-shm",
+        "sizeBytes": 32768,
+        "modifiedAt": "2026-08-19T16:12:55.257Z"
+      },
+      {
+        "relativePath": "backend-relational.sqlite-wal",
+        "sizeBytes": 28872,
+        "modifiedAt": "2026-08-18T18:35:32.850Z"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "capturedAt": "2026-08-31T08:54:08.330Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3237347328,
+        "freeBytes": 2236334080,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 49512448,
+          "virtualBytes": 1201405952,
+          "cpuPercent": 50
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.1,
+        0.41,
+        0.37
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:13.355Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3234381824,
+        "freeBytes": 2233368576,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 52346880,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 1.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 49.4,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.09,
+        0.4,
+        0.37
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:18.380Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3233906688,
+        "freeBytes": 2232893440,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53051392,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.5
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.09,
+        0.4,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:23.405Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3236741120,
+        "freeBytes": 2235727872,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53198848,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.5
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.08,
+        0.39,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:28.427Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3239362560,
+        "freeBytes": 2238332928,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53264384,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.4
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.07,
+        0.38,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:33.450Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3235627008,
+        "freeBytes": 2234597376,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53280768,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.3
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.07,
+        0.38,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:38.472Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3235561472,
+        "freeBytes": 2234531840,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53297152,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.3
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.06,
+        0.37,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:43.500Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3238199296,
+        "freeBytes": 2237169664,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 53297152,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.06,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:48.523Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3235381248,
+        "freeBytes": 2234351616,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 58769408,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.05,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:53.546Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3235201024,
+        "freeBytes": 2234155008,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 58785792,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.05,
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:54:58.569Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3236708352,
+        "freeBytes": 2235662336,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 58785792,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.04,
+        0.35,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:03.591Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3234840576,
+        "freeBytes": 2233794560,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 58851328,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.04,
+        0.34,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:08.620Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3235987456,
+        "freeBytes": 2234941440,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59113472,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.04,
+        0.33,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:13.642Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3236659200,
+        "freeBytes": 2235613184,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59113472,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.03,
+        0.33,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:18.665Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3236315136,
+        "freeBytes": 2235269120,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59113472,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.03,
+        0.32,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:23.693Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3238494208,
+        "freeBytes": 2237448192,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59129856,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.03,
+        0.32,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:28.716Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3237298176,
+        "freeBytes": 2236252160,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.31,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:33.739Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3238133760,
+        "freeBytes": 2237087744,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.2
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.31,
+        0.33
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:38.761Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3209756672,
+        "freeBytes": 2208710656,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.3,
+        0.33
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:43.785Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3192832000,
+        "freeBytes": 2191785984,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.29,
+        0.33
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:48.808Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3199713280,
+        "freeBytes": 2198667264,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.29,
+        0.33
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:53.831Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203137536,
+        "freeBytes": 2202091520,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.02,
+        0.28,
+        0.33
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:55:58.854Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203973120,
+        "freeBytes": 2202927104,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.28,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:03.877Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3207102464,
+        "freeBytes": 2206056448,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59146240,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.27,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:08.900Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204988928,
+        "freeBytes": 2203942912,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.27,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:13.924Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3206774784,
+        "freeBytes": 2205728768,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.27,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:18.947Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3206479872,
+        "freeBytes": 2205433856,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.26,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:23.969Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205578752,
+        "freeBytes": 2204532736,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.26,
+        0.31
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:28.992Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3207561216,
+        "freeBytes": 2206515200,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.25,
+        0.31
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:34.014Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205201920,
+        "freeBytes": 2204155904,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.25,
+        0.31
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:39.042Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205070848,
+        "freeBytes": 2204024832,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.01,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:44.064Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203203072,
+        "freeBytes": 2202157056,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59179008,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:49.087Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3207315456,
+        "freeBytes": 2206269440,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59572224,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0,
+        0.23,
+        0.3
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:54.110Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3207839744,
+        "freeBytes": 2206793728,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59572224,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0,
+        0.23,
+        0.3
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:56:59.137Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204186112,
+        "freeBytes": 2203140096,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0,
+        0.23,
+        0.3
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:04.160Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205382144,
+        "freeBytes": 2204336128,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.08,
+        0.24,
+        0.3
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:09.184Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3206610944,
+        "freeBytes": 2205564928,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.4,
+        0.3,
+        0.32
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:14.207Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204481024,
+        "freeBytes": 2203435008,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.77,
+        0.38,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:19.229Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205103616,
+        "freeBytes": 2204057600,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.7,
+        0.37,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:24.252Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3206709248,
+        "freeBytes": 2205663232,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.65,
+        0.37,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:29.275Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204530176,
+        "freeBytes": 2203484160,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.6,
+        0.36,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:34.299Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3199303680,
+        "freeBytes": 2198093824,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.63,
+        0.37,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:39.322Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203530752,
+        "freeBytes": 2202320896,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59604992,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.74,
+        0.4,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:44.344Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204546560,
+        "freeBytes": 2203303936,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59375616,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 49.4,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.76,
+        0.41,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:49.367Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201236992,
+        "freeBytes": 2199994368,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59375616,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.7,
+        0.4,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:54.389Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3202433024,
+        "freeBytes": 2201190400,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59392000,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.2,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.64,
+        0.4,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:57:59.411Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203268608,
+        "freeBytes": 2202025984,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59392000,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.59,
+        0.39,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:04.439Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201974272,
+        "freeBytes": 2200731648,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59408384,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.54,
+        0.38,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:09.461Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201744896,
+        "freeBytes": 2200502272,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59408384,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.5,
+        0.38,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:14.482Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201662976,
+        "freeBytes": 2200420352,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.46,
+        0.37,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:19.509Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3200057344,
+        "freeBytes": 2198814720,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.42,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:24.533Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3202007040,
+        "freeBytes": 2200764416,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.39,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:29.555Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3202695168,
+        "freeBytes": 2201452544,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.36,
+        0.35,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:34.578Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3202220032,
+        "freeBytes": 2200977408,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.33,
+        0.34,
+        0.34
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:39.601Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205070848,
+        "freeBytes": 2203828224,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.54,
+        0.39,
+        0.36
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:44.624Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3204579328,
+        "freeBytes": 2203336704,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59899904,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 47.7,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.5,
+        0.38,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:49.646Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3205562368,
+        "freeBytes": 2204319744,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59916288,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.46,
+        0.38,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:54.668Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201056768,
+        "freeBytes": 2199814144,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59916288,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.42,
+        0.37,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:58:59.690Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3201564672,
+        "freeBytes": 2200322048,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59916288,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.39,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:59:04.711Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3202924544,
+        "freeBytes": 2201681920,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59916288,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.3,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.36,
+        0.36,
+        0.35
+      ]
+    },
+    {
+      "capturedAt": "2026-08-31T08:59:09.734Z",
+      "memory": {
+        "totalBytes": 4245716992,
+        "availableBytes": 3203039232,
+        "freeBytes": 2201796608,
+        "swapTotalBytes": 2147467264,
+        "swapFreeBytes": 2147467264
+      },
+      "processInventoryAvailable": true,
+      "processes": {
+        "node": {
+          "processCount": 1,
+          "rssBytes": 59916288,
+          "virtualBytes": 1202978816,
+          "cpuPercent": 0.1
+        },
+        "mariaDb": {
+          "processCount": 1,
+          "rssBytes": 205832192,
+          "virtualBytes": 1630715904,
+          "cpuPercent": 0.3
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": 48.8,
+      "throttling": "throttled=0x0",
+      "loadAverage": [
+        0.33,
+        0.35,
+        0.34
+      ]
+    }
+  ],
+  "summary": {
+    "sampleCount": 61,
+    "nodeMaxRssBytes": 59916288,
+    "mariaDbMaxRssBytes": 205832192,
+    "postgresqlMaxRssBytes": 0,
+    "maximumTemperatureCelsius": 49.4,
+    "minimumAvailableMemoryBytes": 3192832000
+  },
+  "gate": {
+    "checks": {
+      "linux": true,
+      "arm64": true,
+      "raspberryModel": true,
+      "memoryCaptured": true,
+      "processInventoryCaptured": true,
+      "nodeRunning": true,
+      "mariaDbRunning": true,
+      "sqliteFilesCaptured": true,
+      "storageInventoryCaptured": true,
+      "temperatureCaptured": true
+    },
+    "failedChecks": [],
+    "validForMig003": true,
+    "nextGate": "MIG-010/HW-01",
+    "nextGateStatus": "BLOCKED",
+    "nextGateReason": "MIG-010 additionally requires pg_test_fsync, fio and a written SD-vs-SSD decision on the real Raspberry."
+  }
+}

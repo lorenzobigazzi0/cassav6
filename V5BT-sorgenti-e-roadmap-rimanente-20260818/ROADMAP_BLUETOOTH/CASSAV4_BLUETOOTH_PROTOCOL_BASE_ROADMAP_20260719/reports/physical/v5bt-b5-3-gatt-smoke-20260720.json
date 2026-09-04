@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B5.3",
+  "generatedAt": "2026-07-20T13:03:45.337Z",
+  "mode": "PHYSICAL",
+  "verdict": "PASS",
+  "target": {
+    "hostname": "raspberrypi",
+    "architecture": "arm64",
+    "nodeVersion": "v24.15.0",
+    "bluezVersion": "5.82",
+    "adapterName": "hci0"
+  },
+  "checks": {
+    "bluezPreflight": "PASS",
+    "registerApplication": "PASS",
+    "objectManagerConsumed": "PASS",
+    "preSessionTraffic": "ZERO",
+    "unregisterApplication": "PASS",
+    "resourceCleanup": "PASS"
+  },
+  "observed": {
+    "managedObjectCount": 8,
+    "managedObjectRequests": 1,
+    "characteristicCount": 7,
+    "durationMs": 1581,
+    "discoveryStatePreserved": true,
+    "sessionsOpened": 0
+  },
+  "gate": {
+    "raspberryGattSmoke": "PASS",
+    "androidGattClient": "NOT_STARTED",
+    "b5HundredSessionGate": "PENDING"
+  },
+  "physicalRadioAccessed": true,
+  "activeV4Changes": false
+}

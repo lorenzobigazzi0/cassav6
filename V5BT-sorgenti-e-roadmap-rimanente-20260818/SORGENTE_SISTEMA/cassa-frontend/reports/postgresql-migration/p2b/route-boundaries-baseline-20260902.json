@@ -1,0 +1,5912 @@
+{
+  "schemaVersion": 1,
+  "generatedForDate": "2026-09-02",
+  "status": "MIG030_ROUTE_BOUNDARIES_DECLARED",
+  "behaviorChanged": false,
+  "databaseChanged": false,
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "handlerKey": "health",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "meta"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": "Legge db.meta come fallback quando lo snapshot di salute non porta settingsVersion. Dichiarato a mano: l analizzatore non attribuisce la collezione a un await inline. La voce era invisibile all inventario finche la chiave nel dispatch non e stata quotata."
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/order-workflow",
+      "handlerKey": "settings.orderWorkflow",
+      "domain": "configuration",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/payment-methods",
+      "handlerKey": "settings.paymentMethods",
+      "domain": "configuration",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/settings/payment-terminals",
+      "handlerKey": "settings.paymentTerminals",
+      "domain": "configuration",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/monitor/overview",
+      "handlerKey": "monitor.overview",
+      "domain": "app_meta",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "payments",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/monitor/runtime-metrics",
+      "handlerKey": "monitor.runtimeMetrics",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/internal/monitor/runtime-metrics",
+      "handlerKey": "monitor.runtimeMetricsInternal",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "integration",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/monitor/runtime-metrics/reset",
+      "handlerKey": "monitor.runtimeMetricsReset",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/monitor/control",
+      "handlerKey": "monitor.control",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "operations",
+        "payments",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "saleSessions",
+        "sessions",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "saleSessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/status/status.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "handlerKey": "auth.login",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "handlerKey": "auth.logout",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/session/status",
+      "handlerKey": "auth.sessionStatus",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/workstation/select",
+      "handlerKey": "auth.selectWorkstation",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/change-pin",
+      "handlerKey": "auth.changePin",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/auth/auth.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/verifica",
+      "handlerKey": "vat.verify",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/external-lookups/external-lookups.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/ip-coords",
+      "handlerKey": "ip.coords",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/external-lookups/external-lookups.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/city-search",
+      "handlerKey": "city.search",
+      "domain": "app_meta",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/external-lookups/external-lookups.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/mobile/battery",
+      "handlerKey": "mobile.battery",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/mobile-battery/mobile-battery.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/mobile/battery/events",
+      "handlerKey": "mobile.batteryEvents",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/mobile-battery/mobile-battery.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/mobile-devices/status",
+      "handlerKey": "mobile.batteryDevices",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/mobile-battery/mobile-battery.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/menu/catalog",
+      "handlerKey": "menu.catalog",
+      "domain": "catalog",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/menu",
+      "handlerKey": "settings.menu",
+      "domain": "catalog",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_menu",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/menu/suggestions",
+      "handlerKey": "settings.menuSuggestions",
+      "domain": "catalog",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "manage_menu",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/flags",
+      "handlerKey": "postazione.flags",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/postazione-actions/postazione-actions.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/actions",
+      "handlerKey": "postazione.actions",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_menu",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/postazione-actions/postazione-actions.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/users",
+      "handlerKey": "users.list",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "meta",
+        "posSettings",
+        "sessions",
+        "userGroups",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/users/users.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/users/save",
+      "handlerKey": "users.save",
+      "domain": "identity",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions",
+        "userGroups",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "userGroups",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/users/users.handlers.js",
+      "note": "Letture e scritture unite a quelle verificate a mano nel pilot identity."
+    },
+    {
+      "method": "GET",
+      "path": "/api/app-state",
+      "handlerKey": "appState.get",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "payments",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/app-state/sync",
+      "handlerKey": "appState.sync",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "payments",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "solarClosures"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/maintenance/app-state/reset",
+      "handlerKey": "appState.reset",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "operations",
+        "payments",
+        "reservations",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "saleSessions",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "orders",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "reservations",
+        "rooms",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "tableGroups",
+        "tables",
+        "userGroups",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": "Reset completo dell app-state: riscrive ogni collezione. Dichiarato a mano, l analisi statica non attraversa resetAppState iniettato."
+    },
+    {
+      "method": "POST",
+      "path": "/api/app-state/reset",
+      "handlerKey": "appState.reset",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "operations",
+        "payments",
+        "reservations",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "saleSessions",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "orders",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "reservations",
+        "rooms",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "tableGroups",
+        "tables",
+        "userGroups",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": "Reset completo dell app-state: riscrive ogni collezione. Dichiarato a mano, l analisi statica non attraversa resetAppState iniettato."
+    },
+    {
+      "method": "GET",
+      "path": "/api/mock-db",
+      "handlerKey": "appState.get",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "payments",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mock-db/reset",
+      "handlerKey": "appState.reset",
+      "domain": "app_meta",
+      "crossDomain": [
+        "catalog",
+        "crm",
+        "operations",
+        "payments",
+        "reservations",
+        "sales"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "saleSessions",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "orders",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "reservations",
+        "rooms",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "smartCustomers",
+        "solarClosures",
+        "tableGroups",
+        "tables",
+        "userGroups",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/app-state/app-state.handlers.js",
+      "note": "Reset completo dell app-state: riscrive ogni collezione. Dichiarato a mano, l analisi statica non attraversa resetAppState iniettato."
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/menu",
+      "handlerKey": "integration.menu",
+      "domain": "catalog",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/integration-menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/menu/top-sold",
+      "handlerKey": "integration.menuTopSold",
+      "domain": "catalog",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "payments"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/integration-menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/menu",
+      "handlerKey": "integration.menu",
+      "domain": "catalog",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_menu",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/menu/integration-menu.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/drawer/open",
+      "handlerKey": "integration.drawerOpen",
+      "domain": "operations",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "users"
+      ],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "open_drawer",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/misc.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/print",
+      "handlerKey": "integration.print",
+      "domain": "operations",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "print_orders",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/print.handlers.js",
+      "note": "Avvolta da commandInboxPilot.wrap: risolta a mano sulla funzione sottostante."
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/waiters",
+      "handlerKey": "integration.waiters",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/misc.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mobile/waiter-pause/status",
+      "handlerKey": "mobile.waiterPauseStatus",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mobile/waiter-pause/start",
+      "handlerKey": "mobile.waiterPauseStart",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/waiter-pause.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mobile/waiter-pause/stop",
+      "handlerKey": "mobile.waiterPauseStop",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/waiter-pause.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/waiter-pause/defer-call",
+      "handlerKey": "integration.waiterPauseDeferCall",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/waiter-pause.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/layout",
+      "handlerKey": "integration.layout",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/table-groups",
+      "handlerKey": "integration.tableGroups",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "menuItems",
+        "posSettings"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/waiter-pause.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/table-groups/save",
+      "handlerKey": "integration.tableGroupsSave",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "menuItems",
+        "posSettings",
+        "printSpoolJobs",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_tables",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/waiter-pause.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/stations/active",
+      "handlerKey": "integration.stationsActive",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/station-snapshot.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/stations/state",
+      "handlerKey": "integration.stationsState",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/station-snapshot.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/stations/state",
+      "handlerKey": "integration.stationsStateUpsert",
+      "domain": "operations",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/station-state-upsert.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/sync",
+      "handlerKey": "integration.tableSync",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/pos-rooms/room-change.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/move",
+      "handlerKey": "integration.tableMove",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_tables",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/table-move.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/room-move/request",
+      "handlerKey": "integration.tableRoomMoveRequest",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/table-room-move/room-move.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/room-move/status",
+      "handlerKey": "integration.tableRoomMoveStatus",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/table-room-move/room-move.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/room-move/pending",
+      "handlerKey": "integration.tableRoomMovePending",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/table-room-move/room-move.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/layout/table/room-move/resolve",
+      "handlerKey": "integration.tableRoomMoveResolve",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/table-room-move/room-move.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/create",
+      "handlerKey": "integration.orderCreate",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-create.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/orders",
+      "handlerKey": "integration.orders",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-list.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/sync",
+      "handlerKey": "integration.orderSync",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-sync.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/line/split",
+      "handlerKey": "integration.orderLineSplit",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-sync.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/line/price-override",
+      "handlerKey": "integration.orderLinePriceOverride",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "override_order_price",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-sync.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/correct",
+      "handlerKey": "integration.orderCorrect",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-correction.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/cancel",
+      "handlerKey": "integration.orderCancel",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-correction.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/orders/correct/pending",
+      "handlerKey": "integration.orderCorrectPending",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-correction.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/correct/resolve",
+      "handlerKey": "integration.orderCorrectResolve",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-correction.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/comp",
+      "handlerKey": "integration.orderComp",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-comp.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/storno",
+      "handlerKey": "integration.orderStorno",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "payments",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-comp.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/internal/orders/async-appstate-flush",
+      "handlerKey": "integration.orderAsyncAppStateFlush",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "meta",
+        "posSettings"
+      ],
+      "writes": [
+        "meta",
+        "orders"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "integration",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": "Flush asincrono degli ordini: scrittura dichiarata a mano, la delega passa da un servizio iniettato a metodo."
+    },
+    {
+      "method": "POST",
+      "path": "/api/internal/print-spool/legacy-mirror",
+      "handlerKey": "integration.printSpoolLegacyMirror",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [
+        "meta",
+        "printSpoolJobs"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "integration",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": "Mirror dello spool di stampa: scrittura dichiarata a mano, delega iniettata a metodo."
+    },
+    {
+      "method": "POST",
+      "path": "/api/internal/print-spool/auto-print",
+      "handlerKey": "integration.printSpoolAutoPrint",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [
+        "meta",
+        "printSpoolJobs"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "integration",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": "Auto-print dello spool: scrittura dichiarata a mano, delega iniettata a metodo."
+    },
+    {
+      "method": "POST",
+      "path": "/api/orders/replacement/bar-charge",
+      "handlerKey": "integration.barChargeReplacement",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "create_bar_replacement",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/bar-charge.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/replacement/bar-charge",
+      "handlerKey": "integration.barChargeReplacement",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "create_bar_replacement",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/bar-charge.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/transfer/request",
+      "handlerKey": "integration.orderTransferRequest",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "meta",
+        "posSettings"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-transfer-request.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/transfer/resolve",
+      "handlerKey": "integration.orderTransferResolve",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "meta",
+        "posSettings"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-create.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/orders/transfer/force",
+      "handlerKey": "integration.orderTransferForce",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "meta",
+        "posSettings"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/order-create.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/notifications/publish",
+      "handlerKey": "integration.notificationPublish",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/notifications.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/notifications/pull",
+      "handlerKey": "integration.notificationsPull",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/notifications.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/integration/notifications/stream",
+      "handlerKey": "integration.notificationsStream",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/integration/notifications/ack",
+      "handlerKey": "integration.notificationAck",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/notifications/notifications.handlers.js",
+      "note": "Avvolta da commandInboxPilot.wrap: risolta a mano sulla funzione sottostante."
+    },
+    {
+      "method": "GET",
+      "path": "/api/realtime/replay",
+      "handlerKey": "realtime.replay",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/integration/misc.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/tables/:tableId",
+      "handlerKey": "scopedReads.table",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/scoped-reads/scoped-reads.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/tables/:tableId/open-order",
+      "handlerKey": "scopedReads.tableOpenOrder",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "integration"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/scoped-reads/scoped-reads.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/rooms/:roomId/tables",
+      "handlerKey": "scopedReads.roomTables",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/scoped-reads/scoped-reads.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/notifications",
+      "handlerKey": "scopedReads.notifications",
+      "domain": "messaging",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/scoped-reads/scoped-reads.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/print/jobs/:jobId",
+      "handlerKey": "scopedReads.printJob",
+      "domain": "operations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/scoped-reads/scoped-reads.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/rooms",
+      "handlerKey": "pos.rooms",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/pos-rooms/pos-rooms.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/room-change/request",
+      "handlerKey": "pos.roomChangeRequest",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/pos-rooms/room-change.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/room-change/approve",
+      "handlerKey": "pos.roomChangeApprove",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/pos-rooms/room-change.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/room-change/cancel",
+      "handlerKey": "pos.roomChangeCancel",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/pos-rooms/room-change.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/public/reservations/list",
+      "handlerKey": "pos.publicReservationsList",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/public/reservations/availability",
+      "handlerKey": "pos.publicReservationsAvailability",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/public/reservations/create",
+      "handlerKey": "pos.publicReservationsCreate",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings"
+      ],
+      "writes": [
+        "meta"
+      ],
+      "mutation": true,
+      "authRequired": false,
+      "permission": "",
+      "admin": false,
+      "public": true,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/list",
+      "handlerKey": "pos.reservationsList",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/create",
+      "handlerKey": "pos.reservationsCreate",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/lock/acquire",
+      "handlerKey": "pos.reservationsLockAcquire",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/lock/release",
+      "handlerKey": "pos.reservationsLockRelease",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/update",
+      "handlerKey": "pos.reservationsUpdate",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/status",
+      "handlerKey": "pos.reservationsStatus",
+      "domain": "reservations",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/delete",
+      "handlerKey": "pos.reservationsDelete",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_reservations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/availability",
+      "handlerKey": "pos.reservationsAvailability",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "posSettings",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/pos/reservations/lock/state",
+      "handlerKey": "pos.reservationsLockState",
+      "domain": "reservations",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reservations/reservations.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/configuration/snapshot",
+      "handlerKey": "settings.configurationSnapshot",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos",
+      "handlerKey": "settings.pos",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/areas",
+      "handlerKey": "settings.posAreas",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/areas/save",
+      "handlerKey": "settings.savePosAreas",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/print-preferences/save",
+      "handlerKey": "settings.savePrintPreferences",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/general/save",
+      "handlerKey": "settings.saveGeneral",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/payment-methods",
+      "handlerKey": "settings.savePaymentMethods",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/user/payment-preferences",
+      "handlerKey": "settings.userPaymentPreferences",
+      "domain": "configuration",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/user/payment-preferences/save",
+      "handlerKey": "settings.saveUserPaymentPreferences",
+      "domain": "configuration",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/mobile-devices/save",
+      "handlerKey": "settings.saveMobileDevices",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/mobile-devices/ring",
+      "handlerKey": "settings.ringMobileDevice",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/settings/settings.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/settings",
+      "handlerKey": "automaticCash.settings",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "users"
+      ],
+      "writes": [],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "PUT",
+      "path": "/api/automatic-cash/settings",
+      "handlerKey": "automaticCash.saveSettings",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/config-sets",
+      "handlerKey": "automaticCash.uploadConfigSet",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/config-sets/default-100",
+      "handlerKey": "automaticCash.uploadDefaultConfigSet",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/reserve-configs",
+      "handlerKey": "automaticCash.uploadReserveConfig",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/status",
+      "handlerKey": "automaticCash.status",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/gateway/state",
+      "handlerKey": "automaticCash.gatewayState",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/gateway/restart",
+      "handlerKey": "automaticCash.gatewayRestart",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/gateway/reset",
+      "handlerKey": "automaticCash.gatewayReset",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-movements",
+      "handlerKey": "automaticCash.cashMovements",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-movements/active",
+      "handlerKey": "automaticCash.activeCashMovement",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-movements/withdrawal-availability",
+      "handlerKey": "automaticCash.cashMovementWithdrawalAvailability",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-movements/:movementId/state",
+      "handlerKey": "automaticCash.cashMovementState",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-movements/start",
+      "handlerKey": "automaticCash.startCashMovement",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-movements/:movementId/prepare",
+      "handlerKey": "automaticCash.prepareCashMovement",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-movements/:movementId/complete",
+      "handlerKey": "automaticCash.completeCashMovement",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-movements/:movementId/print",
+      "handlerKey": "automaticCash.printCashMovementReport",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-movements/:movementId/cancel",
+      "handlerKey": "automaticCash.cancelCashMovement",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/cash-movement.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-float/preflight",
+      "handlerKey": "automaticCash.cashFloatPreflight",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/cash-float/active",
+      "handlerKey": "automaticCash.activeCashFloatWorkflow",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-float/generate",
+      "handlerKey": "automaticCash.generateCashFloat",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-float/confirm-removed",
+      "handlerKey": "automaticCash.confirmCashFloatRemoved",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-float/ticket/printed",
+      "handlerKey": "automaticCash.cashFloatTicketPrinted",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-float/confirm-ticket-in-pouch",
+      "handlerKey": "automaticCash.confirmCashFloatTicketInPouch",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/cash-float/load-from-qr",
+      "handlerKey": "automaticCash.loadCashFloatFromQr",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/settlements",
+      "handlerKey": "automaticCash.listSettlementRecords",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/settlements/latest",
+      "handlerKey": "automaticCash.latestSettlementRecord",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/settlements",
+      "handlerKey": "automaticCash.saveSettlementRecord",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/deposit/start",
+      "handlerKey": "automaticCash.startDeposit",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/deposit/close",
+      "handlerKey": "automaticCash.closeDeposit",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/deposit/cancel",
+      "handlerKey": "automaticCash.cancelDeposit",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/exchange/active",
+      "handlerKey": "automaticCash.activeCashExchange",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/payment/start",
+      "handlerKey": "automaticCash.startCashPayment",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/payment/:operationId/state",
+      "handlerKey": "automaticCash.cashPaymentState",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/payment/:operationId/complete",
+      "handlerKey": "automaticCash.completeCashPayment",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/payment/:operationId/cancel",
+      "handlerKey": "automaticCash.cancelCashPayment",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/exchange/start",
+      "handlerKey": "automaticCash.startCashExchange",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "GET",
+      "path": "/api/automatic-cash/exchange/:exchangeId/state",
+      "handlerKey": "automaticCash.cashExchangeState",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/exchange/:exchangeId/cancel",
+      "handlerKey": "automaticCash.cancelCashExchange",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/exchange/:exchangeId/confirm-deposit",
+      "handlerKey": "automaticCash.confirmCashExchangeDeposit",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/exchange/:exchangeId/execute",
+      "handlerKey": "automaticCash.executeCashExchange",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/automatic-cash/exchange/:exchangeId/confirm-removed",
+      "handlerKey": "automaticCash.confirmCashExchangeRemoved",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/automatic-cash/automatic-cash.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/campaigns/list",
+      "handlerKey": "commercialBenefits.listCampaigns",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/campaigns",
+      "handlerKey": "commercialBenefits.createCampaign",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/campaigns/update",
+      "handlerKey": "commercialBenefits.updateCampaign",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/coupons/update",
+      "handlerKey": "commercialBenefits.updateCoupon",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/print",
+      "handlerKey": "commercialBenefits.printCoupon",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_settings",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/validate",
+      "handlerKey": "commercialBenefits.validate",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/commercial-benefits/release",
+      "handlerKey": "commercialBenefits.release",
+      "domain": "commerce",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/commercial-benefits/commercial-benefits.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/radio",
+      "handlerKey": "settings.radio",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/radio/radio.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/radio/save",
+      "handlerKey": "settings.saveRadio",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/radio/radio.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mobile/radio/config",
+      "handlerKey": "mobile.radioConfig",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/radio/radio.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/mobile/radio/config/save",
+      "handlerKey": "mobile.saveRadioConfig",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/radio/radio.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/order-workflow",
+      "handlerKey": "settings.saveOrderWorkflow",
+      "domain": "configuration",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "meta",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/settings/pos/assign-bill",
+      "handlerKey": "settings.assignBill",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "collect_payments",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/assign-bill.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/tables/lock/acquire",
+      "handlerKey": "tables.lockAcquire",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/tables/table-lock.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/tables/lock/heartbeat",
+      "handlerKey": "tables.lockHeartbeat",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/tables/table-lock.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/tables/lock/release",
+      "handlerKey": "tables.lockRelease",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/tables/table-lock.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/tables/lock/force-release",
+      "handlerKey": "tables.lockForceRelease",
+      "domain": "sales",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "approve_room_change",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/tables/table-lock.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/payments/table",
+      "handlerKey": "payments.table",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog",
+        "crm"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "payments",
+        "posSettings",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "collect_payments",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/payments/free-split",
+      "handlerKey": "payments.freeSplit",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "collect_payments",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/payment-movement/reprint",
+      "handlerKey": "reports.paymentMovementReprint",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog",
+        "operations"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "posSettings",
+        "printSpoolJobs",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "integration",
+        "meta",
+        "printSpoolJobs",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/payment-movement/fiscal/verify",
+      "handlerKey": "reports.paymentMovementFiscalVerify",
+      "domain": "fiscal",
+      "crossDomain": [
+        "catalog",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "fiscal_operations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/payment-movement/fiscal/issue",
+      "handlerKey": "reports.paymentMovementFiscalIssue",
+      "domain": "fiscal",
+      "crossDomain": [
+        "catalog",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "fiscal_operations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/payment-movement/fiscal/void",
+      "handlerKey": "reports.paymentMovementFiscalVoid",
+      "domain": "fiscal",
+      "crossDomain": [
+        "catalog",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": true,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/payments.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/payments/ticket",
+      "handlerKey": "payments.ticket",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog",
+        "crm"
+      ],
+      "legacyStores": [
+        "posSettings",
+        "integration"
+      ],
+      "reads": [
+        "auditEvents",
+        "integration",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "collect_payments",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/payments/pay-ticket.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/tables/counter/orders/collect",
+      "handlerKey": "payments.counterCollect",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "meta",
+        "payments",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "collect_payments",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/counter/counter.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/fiscal/command",
+      "handlerKey": "fiscal.command",
+      "domain": "fiscal",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "fiscal_operations",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/fiscal-pos/fiscal.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/customers",
+      "handlerKey": "smart.customers",
+      "domain": "crm",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/customers/upsert",
+      "handlerKey": "smart.customerUpsert",
+      "domain": "crm",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_smart_customers",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/customers/delete",
+      "handlerKey": "smart.customerDelete",
+      "domain": "crm",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_smart_customers",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/card/read",
+      "handlerKey": "smart.cardRead",
+      "domain": "crm",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/cash/beach-entry",
+      "handlerKey": "smart.beachEntry",
+      "domain": "crm",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_smart_customers",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/card/detected",
+      "handlerKey": "smart.cardDetected",
+      "domain": "crm",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [],
+      "writes": [],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "smart-card",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/customers/recharge",
+      "handlerKey": "smart.customerRecharge",
+      "domain": "crm",
+      "crossDomain": [
+        "catalog",
+        "payments"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "payments",
+        "posSettings",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_smart_customers",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/smart/non-fiscal",
+      "handlerKey": "smart.nonFiscal",
+      "domain": "crm",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "smartCustomers",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "payments",
+        "sessions",
+        "smartCustomers"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_smart_customers",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/smart/smart.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/audit/events",
+      "handlerKey": "audit.events",
+      "domain": "audit",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/audit/events/delete",
+      "handlerKey": "audit.eventDelete",
+      "domain": "audit",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_users",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/sales",
+      "handlerKey": "reports.sales",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/handheld-session",
+      "handlerKey": "reports.handheldSession",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/handheld-session/cash/open",
+      "handlerKey": "reports.handheldCashSessionOpen",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/handheld-session/cash/close",
+      "handlerKey": "reports.handheldCashSessionClose",
+      "domain": "payments",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "sessions"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/handheld-session/print",
+      "handlerKey": "reports.handheldSessionPrint",
+      "domain": "payments",
+      "crossDomain": [
+        "catalog"
+      ],
+      "legacyStores": [
+        "posSettings"
+      ],
+      "reads": [
+        "auditEvents",
+        "menuItems",
+        "posSettings",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/reports/non-fiscalized",
+      "handlerKey": "reports.nonFiscalized",
+      "domain": "fiscal",
+      "crossDomain": [
+        "payments"
+      ],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "payments",
+        "sessions",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/server.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/sales/sessions/status",
+      "handlerKey": "sales.sessionStatus",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "saleSessions",
+        "sessions",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "solarClosures"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/sales-sessions/sales-sessions.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/sales/sessions/open",
+      "handlerKey": "sales.sessionOpen",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "saleSessionTemplates",
+        "saleSessions",
+        "sessions",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "saleSessions",
+        "sessions",
+        "solarClosures"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_sale_sessions",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/sales-sessions/sales-sessions.handlers.js",
+      "note": ""
+    },
+    {
+      "method": "POST",
+      "path": "/api/sales/sessions/close",
+      "handlerKey": "sales.sessionClose",
+      "domain": "sales",
+      "crossDomain": [],
+      "legacyStores": [],
+      "reads": [
+        "auditEvents",
+        "saleSessions",
+        "sessions",
+        "solarClosures",
+        "users"
+      ],
+      "writes": [
+        "auditEvents",
+        "meta",
+        "sessions",
+        "solarClosures"
+      ],
+      "mutation": true,
+      "authRequired": true,
+      "permission": "manage_sale_sessions",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/sales-sessions/sales-sessions.handlers.js",
+      "note": ""
+    }
+  ],
+  "metrics": {
+    "routeCount": 198,
+    "handlerKeyCount": 193,
+    "domainCount": 13,
+    "routesPerDomain": {
+      "app_meta": 15,
+      "configuration": 19,
+      "identity": 7,
+      "operations": 18,
+      "catalog": 6,
+      "sales": 35,
+      "reservations": 19,
+      "messaging": 6,
+      "payments": 51,
+      "commerce": 7,
+      "fiscal": 5,
+      "crm": 8,
+      "audit": 2
+    },
+    "crossDomainRouteCount": 89,
+    "legacyStoreRouteCount": 124,
+    "unresolvedRouteCount": 0,
+    "mutationRouteCount": 134,
+    "appStateWritingRouteCount": 144
+  },
+  "nextGate": "MIG-031: estrazione delle route senza logica da server.js, sotto 25.000 righe"
+}

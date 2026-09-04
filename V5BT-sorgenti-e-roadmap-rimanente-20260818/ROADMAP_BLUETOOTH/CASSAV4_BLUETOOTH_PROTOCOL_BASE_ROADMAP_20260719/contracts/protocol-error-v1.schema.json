@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "code",
+    "message"
+  ],
+  "properties": {
+    "code": {
+      "enum": [
+        "VERSION_UNSUPPORTED",
+        "AUTH_FAILED",
+        "DEVICE_REVOKED",
+        "FRAME_INVALID",
+        "MESSAGE_TOO_LARGE",
+        "DUPLICATE_SESSION",
+        "TTL_EXPIRED",
+        "CAPABILITY_MISMATCH"
+      ]
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

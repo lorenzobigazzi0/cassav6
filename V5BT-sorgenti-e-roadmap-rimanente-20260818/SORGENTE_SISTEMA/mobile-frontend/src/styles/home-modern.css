@@ -1,0 +1,395 @@
+/*
+  Restyle della schermata Home del Palmare (2026-08-24).
+
+  Regole limitate alla shell dell'app loggata (`.home-page:not(.login-page)`) e
+  alla dashboard (`.home-view.view-home`). Le icone non sono toccate: nessuna
+  regola agisce su `.app-icon-img`, sulle loro dimensioni o sui glifi SVG.
+
+  Le tessere di stato usano i token `--table-filter-*` dentro
+  legacy-mobile-assets/assets/mobile-home-dashboard-overrides.css, dove sono
+  marcate come prioritarie: qui i token vengono ridefiniti sul contenitore,
+  cosi' le regole legacy leggono i valori nuovi senza doverle sovrascrivere.
+
+  Rollback: rimuovere l'import da `src/main.tsx`. I backup dei sorgenti
+  precedenti sono stati rimossi su richiesta.
+*/
+
+/* ---------- Shell: barra alta e barra bassa ---------- */
+
+.home-page:not(.login-page) .home-topbar {
+  border-radius: 20px;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.045) 100%);
+  box-shadow: 0 10px 26px rgba(6, 8, 20, 0.32);
+}
+
+.home-page:not(.login-page) .topbar-title {
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.home-page:not(.login-page) .bottom-bar {
+  border-radius: 20px;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.045) 100%);
+  box-shadow: 0 12px 30px rgba(6, 8, 20, 0.36);
+}
+
+.home-page:not(.login-page) .bottom-btn {
+  border-radius: 14px;
+}
+
+/* Pillola della scheda attiva: stessa forma, tinta piu' sobria. */
+.home-page:not(.login-page) .bottom-indicator {
+  border-radius: 14px;
+  border-color: rgba(255, 255, 255, 0.22);
+  opacity: 0.82;
+}
+
+/* ---------- Contenitore della dashboard ---------- */
+
+/* Stesso spazio sotto della scheda Menu (94px invece di 90px): senza questo
+   la card della Home resterebbe piu' alta di 4px di quella del Menu. */
+.home-page:not(.login-page) .home-content.home-content-home {
+  padding-bottom: calc(
+    var(--bottom-bar-height) + var(--bottom-bar-offset) + var(--home-shell-gap)
+  );
+}
+
+/* Nessuna ombra intorno al corpo della card: resta solo il bordo. */
+.home-view.view-home .home-card.workspace-card {
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.12);
+  /* Stessa altezza della card del Menu: riempie l'area di lavoro. */
+  height: 100%;
+  min-height: 0;
+}
+
+.home-view.view-home .card-body {
+  box-shadow: none;
+  text-shadow: none;
+  height: 100%;
+  min-height: 0;
+}
+
+.home-view.view-home .mobile-dashboard-shell {
+  gap: 12px;
+}
+
+.home-view.view-home .mobile-dashboard-grid {
+  gap: 12px;
+}
+
+/* ---------- Tessera sala ---------- */
+
+.home-view.view-home .mobile-dashboard-room-card {
+  padding: 16px;
+  border-radius: 18px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035) 62%),
+    radial-gradient(circle at top left, rgba(120, 170, 255, 0.16), transparent 62%);
+}
+
+.home-view.view-home .mobile-dashboard-room-eyebrow,
+.home-view.view-home .mobile-dashboard-widget-eyebrow {
+  font-weight: 700;
+}
+
+/* Occhiello della sala: piu' grande di quello delle tessere sotto. */
+.home-view.view-home .mobile-dashboard-room-eyebrow {
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  width: 100%;
+  text-align: center;
+}
+
+.home-view.view-home .mobile-dashboard-room-card {
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Nome a sinistra, numero tavoli a destra sulla stessa riga. */
+.home-view.view-home .mobile-dashboard-room-line {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.home-view.view-home .mobile-dashboard-room-name {
+  min-width: 0;
+  flex: 1 1 auto;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.home-view.view-home .mobile-dashboard-room-meta {
+  flex: 0 0 auto;
+  font-size: clamp(26.4px, 7vw, 33px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  /* Stessa luminosita' del nome sala: era il grigio del vecchio sottotitolo. */
+  color: rgba(248, 251, 255, 0.98);
+}
+
+:root[data-theme="light"] .home-view.view-home .mobile-dashboard-room-meta {
+  color: rgba(10, 15, 26, 0.92);
+}
+
+.home-view.view-home .mobile-dashboard-widget-meta {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* ---------- Tessere di stato: superfici uniformi, colore come accento ---------- */
+
+.home-view.view-home .mobile-dashboard-shell {
+  --table-filter-free-bg: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.1) 62%
+  );
+  --table-filter-free-border: rgba(255, 255, 255, 0.82);
+  --table-filter-free-color: rgba(255, 255, 255, 1);
+  --table-filter-occupied-bg: linear-gradient(
+    160deg,
+    rgba(34, 235, 136, 0.36),
+    rgba(34, 235, 136, 0.13) 62%
+  );
+  --table-filter-occupied-border: rgba(64, 250, 160, 0.95);
+  --table-filter-occupied-color: rgba(92, 255, 178, 1);
+  --table-filter-ordering-bg: linear-gradient(
+    160deg,
+    rgba(255, 190, 60, 0.36),
+    rgba(255, 190, 60, 0.13) 62%
+  );
+  --table-filter-ordering-border: rgba(255, 205, 70, 0.95);
+  --table-filter-ordering-color: rgba(255, 210, 84, 1);
+  --table-filter-payment-bg: linear-gradient(
+    160deg,
+    rgba(255, 84, 84, 0.36),
+    rgba(255, 84, 84, 0.13) 62%
+  );
+  --table-filter-payment-border: rgba(255, 110, 110, 0.95);
+  --table-filter-payment-color: rgba(255, 132, 132, 1);
+}
+
+.home-view.view-home .mobile-dashboard-widget {
+  min-height: 126px;
+  padding: 18px;
+  border-radius: 18px;
+  border-width: 1.5px;
+  box-shadow: none;
+}
+
+/* 11px con tracking piu' stretto: a 11.5px "ORDINI IN ATTESA" andava a capo.
+   `align-self: stretch` serve perche' il widget e' un flex con
+   align-items: flex-start, altrimenti l'etichetta resta larga quanto il testo
+   e centrarla non sposterebbe nulla. */
+.home-view.view-home .mobile-dashboard-widget-eyebrow {
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  align-self: stretch;
+  width: 100%;
+  text-align: center;
+  /* Spazio riservato a due righe in tutte le tessere: il numero resta cosi'
+     alla stessa altezza sia con l'etichetta su una riga sia su due. */
+  min-height: 2.4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Una riga per segmento: le etichette con barra occupano due righe. */
+.home-view.view-home .mobile-dashboard-widget-eyebrow-line {
+  display: block;
+}
+
+/* Riga di dettaglio rimossa: la tessera resta etichetta + numero. */
+.home-view.view-home .mobile-dashboard-widget-meta {
+  display: none;
+}
+
+.home-view.view-home .mobile-dashboard-widget {
+  justify-content: center;
+  gap: 10px;
+}
+
+.home-view.view-home .mobile-dashboard-widget strong {
+  font-size: clamp(30.8px, 8.8vw, 39.6px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  align-self: stretch;
+  width: 100%;
+  text-align: center;
+}
+
+/* Altezza ridotta del 20% rispetto ai 128px precedenti. */
+.home-view.view-home .mobile-dashboard-room-card {
+  min-height: 102px;
+}
+
+/* ---------- Tessera pausa ---------- */
+
+.home-view.view-home .waiter-pause-card {
+  padding: 14px;
+  border-radius: 18px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(255, 255, 255, 0.04) 58%),
+    rgba(12, 18, 32, 0.5);
+  box-shadow: none;
+}
+
+.home-view.view-home .waiter-pause-card.is-paused {
+  border-color: rgba(251, 146, 60, 0.38);
+  background:
+    linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(127, 29, 29, 0.12) 58%),
+    rgba(16, 18, 30, 0.6);
+}
+
+.home-view.view-home .waiter-pause-timer span {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+}
+
+.home-view.view-home .waiter-pause-timer strong {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.home-view.view-home .waiter-pause-timer small {
+  font-weight: 600;
+  font-size: 14.5px;
+}
+
+/* Il pulsante resta giallo e della stessa misura: cambia solo la morbidezza. */
+.home-view.view-home .waiter-pause-button {
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f5c518, #f59f4a);
+  box-shadow: 0 8px 18px rgba(245, 159, 74, 0.2);
+}
+
+/* ---------- Tema chiaro ---------- */
+
+:root[data-theme="light"] .home-page:not(.login-page) .home-topbar,
+:root[data-theme="light"] .home-page:not(.login-page) .bottom-bar {
+  border-color: rgba(16, 28, 56, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(246, 249, 255, 0.72) 100%);
+  box-shadow: 0 10px 26px rgba(30, 45, 90, 0.12);
+}
+
+:root[data-theme="light"] .home-view.view-home .home-card.workspace-card {
+  box-shadow: none;
+  border-color: rgba(16, 28, 56, 0.1);
+}
+
+:root[data-theme="light"] .home-view.view-home .mobile-dashboard-room-card {
+  border-color: rgba(16, 28, 56, 0.1);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6) 62%),
+    radial-gradient(circle at top left, rgba(120, 170, 255, 0.18), transparent 62%);
+}
+
+:root[data-theme="light"] .home-view.view-home .mobile-dashboard-shell {
+  --table-filter-free-bg: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.86) 62%
+  );
+  --table-filter-free-border: rgba(16, 28, 56, 0.5);
+  --table-filter-free-color: rgba(8, 12, 22, 1);
+  --table-filter-occupied-bg: linear-gradient(
+    160deg,
+    rgba(28, 200, 122, 0.36),
+    rgba(28, 200, 122, 0.13) 62%
+  );
+  --table-filter-occupied-border: rgba(16, 168, 100, 0.9);
+  --table-filter-occupied-color: rgba(6, 116, 68, 1);
+  --table-filter-ordering-bg: linear-gradient(
+    160deg,
+    rgba(248, 176, 24, 0.38),
+    rgba(248, 176, 24, 0.14) 62%
+  );
+  --table-filter-ordering-border: rgba(216, 146, 8, 0.9);
+  --table-filter-ordering-color: rgba(150, 96, 0, 1);
+  --table-filter-payment-bg: linear-gradient(
+    160deg,
+    rgba(248, 70, 70, 0.32),
+    rgba(248, 70, 70, 0.11) 62%
+  );
+  --table-filter-payment-border: rgba(214, 42, 42, 0.9);
+  --table-filter-payment-color: rgba(176, 16, 16, 1);
+}
+
+:root[data-theme="light"] .home-view.view-home .waiter-pause-card {
+  border-color: rgba(16, 28, 56, 0.1);
+  background:
+    linear-gradient(135deg, rgba(250, 204, 21, 0.16), rgba(255, 255, 255, 0.7) 58%),
+    rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Modale cambio sala ---------- */
+/* Vale per il modale aperto dalla Home e per quello della scheda Tavoli:
+   condividono le stesse classi. Il sottotitolo "Sala attuale: ..." e' stato
+   rimosso dal markup. */
+
+.tables-room-change-head {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  /* Un filo di respiro in piu' prima della prima sala. */
+  margin-bottom: 20px;
+}
+
+.tables-room-change-title {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Specificita' doppia: reservations.css posiziona questo bottone dentro un
+   :is(...) che include `.reservations-icon-btn.is-close`, quindi pesa 0,2,0. */
+.tables-room-change-modal .tables-room-change-head .tables-room-change-close {
+  position: absolute;
+  /* Centrata sulla riga del titolo, non appesa in alto. */
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  flex: 0 0 auto;
+}
+
+.tables-room-change-option {
+  position: relative;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 14px;
+  /* Spazio a destra riservato al badge "Attuale", che e' fuori flusso. */
+  padding-right: 84px;
+}
+
+.tables-room-change-option > span {
+  flex: 1 1 auto;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* Il badge "Attuale" esce dal flusso, cosi' il nome resta centrato davvero. */
+.tables-room-change-option strong {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+}

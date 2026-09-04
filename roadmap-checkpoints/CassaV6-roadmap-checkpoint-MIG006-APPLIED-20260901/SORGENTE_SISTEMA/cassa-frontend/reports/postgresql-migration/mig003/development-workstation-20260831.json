@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "task": "MIG-003",
+  "generatedAt": "2026-08-31T08:30:00.853Z",
+  "capture": {
+    "durationSeconds": 0,
+    "intervalSeconds": 1
+  },
+  "host": {
+    "hostname": "VECTORCAST-PC",
+    "platform": "win32",
+    "release": "10.0.19045",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "logicalCpuCount": 12,
+    "model": null,
+    "nodeVersion": "v22.16.0"
+  },
+  "services": {
+    "mariadb": "unavailable-or-inactive",
+    "postgresql": "unavailable-or-inactive"
+  },
+  "storage": {
+    "lsblk": null,
+    "findmnt": null
+  },
+  "sqlite": {
+    "dataDir": "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818\\.runtime\\cassav5bt\\data",
+    "available": true,
+    "files": [
+      {
+        "relativePath": "app-state-split.sqlite",
+        "sizeBytes": 53248,
+        "modifiedAt": "2026-08-24T13:02:40.587Z"
+      },
+      {
+        "relativePath": "app-state-split.sqlite-shm",
+        "sizeBytes": 32768,
+        "modifiedAt": "2026-08-28T07:32:50.681Z"
+      },
+      {
+        "relativePath": "app-state-split.sqlite-wal",
+        "sizeBytes": 589192,
+        "modifiedAt": "2026-08-28T15:36:02.793Z"
+      },
+      {
+        "relativePath": "backend-relational.sqlite",
+        "sizeBytes": 174292992,
+        "modifiedAt": "2026-08-24T13:02:40.773Z"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "capturedAt": "2026-08-31T08:30:00.852Z",
+      "memory": {
+        "totalBytes": 17019662336,
+        "availableBytes": 7687041024,
+        "freeBytes": 7687041024,
+        "swapTotalBytes": 0,
+        "swapFreeBytes": 0
+      },
+      "processInventoryAvailable": false,
+      "processes": {
+        "node": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "mariaDb": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "postgresql": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        },
+        "sqliteCli": {
+          "processCount": 0,
+          "rssBytes": 0,
+          "virtualBytes": 0,
+          "cpuPercent": 0
+        }
+      },
+      "temperatureCelsius": null,
+      "throttling": null,
+      "loadAverage": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "summary": {
+    "sampleCount": 1,
+    "nodeMaxRssBytes": 0,
+    "mariaDbMaxRssBytes": 0,
+    "postgresqlMaxRssBytes": 0,
+    "maximumTemperatureCelsius": null,
+    "minimumAvailableMemoryBytes": 7687041024
+  },
+  "gate": {
+    "checks": {
+      "linux": false,
+      "arm64": false,
+      "raspberryModel": false,
+      "memoryCaptured": true,
+      "processInventoryCaptured": false,
+      "nodeRunning": false,
+      "mariaDbRunning": false,
+      "sqliteFilesCaptured": true,
+      "storageInventoryCaptured": false,
+      "temperatureCaptured": false
+    },
+    "failedChecks": [
+      "linux",
+      "arm64",
+      "raspberryModel",
+      "processInventoryCaptured",
+      "nodeRunning",
+      "mariaDbRunning",
+      "storageInventoryCaptured",
+      "temperatureCaptured"
+    ],
+    "validForMig003": false,
+    "nextGate": "MIG-010/HW-01",
+    "nextGateStatus": "BLOCKED",
+    "nextGateReason": "MIG-010 additionally requires pg_test_fsync, fio and a written SD-vs-SSD decision on the real Raspberry."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "service": "b1c4a500-7d1f-4f32-9a64-4f4b6c410001",
+  "advertisementServiceData": "b1c4a500-7d1f-4f32-9a64-4f4b6c410001",
+  "hello": "b1c4a500-7d1f-4f32-9a64-4f4b6c410002",
+  "controlRx": "b1c4a500-7d1f-4f32-9a64-4f4b6c410003",
+  "controlTx": "b1c4a500-7d1f-4f32-9a64-4f4b6c410004",
+  "dataRx": "b1c4a500-7d1f-4f32-9a64-4f4b6c410005",
+  "dataTx": "b1c4a500-7d1f-4f32-9a64-4f4b6c410006",
+  "ackTx": "b1c4a500-7d1f-4f32-9a64-4f4b6c410007",
+  "metrics": "b1c4a500-7d1f-4f32-9a64-4f4b6c410008"
+}

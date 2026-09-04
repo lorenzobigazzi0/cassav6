@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "packageLabel": "v4.6",
+  "packageRoot": "CASSAV4_V4.6_SOURCE_ANDROID_20260716-094842",
+  "generatedAt": "2026-07-16T07:51:48.098Z",
+  "baseArchive": {
+    "name": "v4.5.zip",
+    "sha256": "b2648bfc2d2c78594ae0c1a1df8d5ba6e12656393312d26b4dee3bfbd5a4707e"
+  },
+  "content": {
+    "payloadFileCount": 2586,
+    "payloadBytes": 195911506,
+    "contentTreeSha256": "7b12ebc8cad6195e2a5b4bc031a40b115107b6ab5d5ca6d4d36abe5aba8b8e95"
+  },
+  "source": {
+    "directory": "sistema-cassa-v4.6-source",
+    "contentTreeSha256": "b65eebeb7e9c90414b86909214512d2e55c86f3bd6ca9839be755147f6f12e4c"
+  },
+  "android": {
+    "included": true,
+    "apkCount": 8,
+    "apks": [
+      {
+        "path": "android/Palmare/backups/Palmare-1.0.5-debug-before-frontend-sync-20260715-132225.apk",
+        "bytes": 16157279,
+        "sha256": "e7310cd1e9a303a2af6a0e92745675fa2de254ee816ba92c65b2a4d019c79076"
+      },
+      {
+        "path": "android/Palmare/Palmare-1.0.5-debug-originale-rollback.apk",
+        "bytes": 15867740,
+        "sha256": "803f71acaab4317f455c3c21adbb805e01568c5797727c66f971f264adf442d9"
+      },
+      {
+        "path": "android/Palmare/Palmare-1.0.5-debug.apk",
+        "bytes": 16305536,
+        "sha256": "a933e388841968e1a2bbc7534ed16571c12f68cd5c1dd3d7ac11aaf8a42716a6"
+      },
+      {
+        "path": "android/Palmare/Palmare-1.0.6-debug.apk",
+        "bytes": 16138974,
+        "sha256": "9d782b59e2a5bf940b3a1447059353123f0572657a08446d7fd8451a07aabad6"
+      },
+      {
+        "path": "android/Palmare/Palmare-1.0.7-debug.apk",
+        "bytes": 16139929,
+        "sha256": "b24b10e7bc936cff669b06a8652521a1e8b44107ca2e006c7dc504a5f68ac529"
+      },
+      {
+        "path": "android/Postazione/Postazione-2.0.10-debug.apk",
+        "bytes": 14788649,
+        "sha256": "b7eb27da085139559a3381ea89d52d518496bcd991c186521466a60ba919b7ae"
+      },
+      {
+        "path": "android/Postazione/Postazione-2.0.11-debug.apk",
+        "bytes": 14789957,
+        "sha256": "d4d8ab49a4077365050850aa43e88db3a47688ac1e6b80d38db10729565a9da9"
+      },
+      {
+        "path": "android/Postazione/Postazione-2.0.12-debug.apk",
+        "bytes": 14875912,
+        "sha256": "53cc57aa75e64d25ab8b747103a9b33de7e593d596d2c3d49ef8e049991a7d16"
+      }
+    ]
+  },
+  "p5PartialTest": {
+    "report": "TEST_REPORT_P5_PARTIAL_20260716.pdf",
+    "targetActions": 25000,
+    "checkpointActions": 20135,
+    "checkpointPercent": 80.54,
+    "duration": "3h 15m 33s",
+    "performanceResult": "non_conforme",
+    "completed": false,
+    "stoppedOnUserRequest": true
+  },
+  "exclusions": [
+    "node_modules",
+    ".git",
+    ".gradle",
+    "build",
+    "logs",
+    "runtime databases",
+    "spool",
+    "private keys and certificates",
+    "test-results",
+    "playwright-report",
+    "coverage"
+  ],
+  "hardwarePolicy": {
+    "realPrintingUsedByP5": false,
+    "realFiscalUsedByP5": false,
+    "realAutomaticCashUsedByP5": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "cassav5bt-bluetooth-node",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js",
+    "gate:b4-servicedata": "node scripts/run-b4-raspberry-servicedata-gate.mjs",
+    "gate:b4-ten-device": "node scripts/run-b4-ten-device-gate.mjs",
+    "gate:b5-gatt-smoke": "npm run build && node scripts/run-b5-raspberry-gatt-smoke.mjs",
+    "gate:b5-hello-smoke": "npm run build && node scripts/run-b5-android-hello-smoke.mjs",
+    "gate:b5-mutual-auth-smoke": "npm run build && node scripts/run-b5-mutual-auth-smoke.mjs",
+    "gate:b5-direct-control-smoke": "npm run build && node scripts/run-b5-direct-control-smoke.mjs",
+    "collect:b5-direct-control": "node scripts/collect-b5-direct-control-session.mjs",
+    "supervise:b5-campaign": "node scripts/run-b5-campaign-supervisor.mjs",
+    "monitor:b5-raspberry": "node ../scripts/run-b5-raspberry-continuity-monitor.mjs",
+    "gate:b5-hundred-session": "node scripts/run-b5-hundred-session-gate.mjs",
+    "gate:b5-promote": "node scripts/run-b5-promotion-gate.mjs",
+    "run:b11-software-non-gate": "npm run build && node scripts/run-b11-software-non-gate.mjs --profile soak",
+    "run:maximum-virtualized-system-non-gate": "npm run build && node scripts/run-b11-software-non-gate.mjs --profile hybrid",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "test:b1-registry": "node --test ../shared/provisioning/device-registry-v1.test.mjs",
+    "test:b1-registry-v2": "node --test ../shared/provisioning/device-registry-v2.test.mjs",
+    "test:b1-enrollment-transport": "node --test ../shared/provisioning/enrollment-transport-v1.test.mjs",
+    "test:b1-enrollment-transport-v2": "node --test ../shared/provisioning/enrollment-transport-v2.test.mjs",
+    "test:b11-software-non-gate": "npm run build && node --test test/b11-software-non-gate.test.mjs",
+    "registry": "node scripts/device-registry.mjs",
+    "enrollment": "node scripts/enrollment-server.mjs",
+    "peer-trust-authority": "npm run build && node scripts/peer-trust-authority.mjs"
+  },
+  "dependencies": {
+    "@jellybrick/dbus-next": "0.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "5.9.3"
+  }
+}

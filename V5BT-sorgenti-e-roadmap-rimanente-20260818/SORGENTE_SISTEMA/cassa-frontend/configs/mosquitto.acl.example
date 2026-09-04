@@ -1,0 +1,15 @@
+# Backend authoritative publisher: only backend may write realtime events.
+user backend
+topic write pos/+/events/#
+topic read pos/+/devices/+/acks/#
+
+# Handheld/device template. Replace palmare-template with the MQTT username.
+user palmare-template
+topic read pos/+/events/#
+topic write pos/+/devices/%u/presence
+topic write pos/+/devices/%u/acks/#
+
+# Printer gateway template. Replace printer-gateway-template with the MQTT username.
+user printer-gateway-template
+topic read pos/+/events/prints/#
+topic write pos/+/printers/%u/status

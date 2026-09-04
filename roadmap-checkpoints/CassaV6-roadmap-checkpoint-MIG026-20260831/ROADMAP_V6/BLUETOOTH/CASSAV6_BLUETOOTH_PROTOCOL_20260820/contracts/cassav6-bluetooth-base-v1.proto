@@ -1,0 +1,7 @@
+syntax = "proto3";
+package cassav6.bluetooth.v1;
+// Logical representation. The BLE wire codec uses the fixed 10-byte layout
+// documented in architecture/DISCOVERY_PROTOCOL.md.
+message NodeAdvertisement { uint32 protocol_version=1; uint32 node_kind=2; bytes rotating_alias=3; uint32 boot_id=4; uint32 capabilities=5; bool server_reachable=6; uint32 sequence=7; }
+message TransportFrame { uint32 protocol_version=1; bytes session_id=2; bytes message_id=3; uint64 sequence=4; uint32 fragment_index=5; uint32 fragment_count=6; string message_type=7; bytes payload=8; }
+message Ack { bytes session_id=1; bytes message_id=2; string ack_type=3; string error_code=4; }

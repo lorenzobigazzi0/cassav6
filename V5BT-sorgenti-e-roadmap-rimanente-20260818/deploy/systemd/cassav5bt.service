@@ -1,0 +1,29 @@
+[Unit]
+Description=Cassa V5BT
+Wants=network-online.target
+After=network-online.target mariadb.service
+Requires=mariadb.service
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=admin
+Group=admin
+WorkingDirectory=/home/admin/cassav5bt-current/cassa V5BT
+Environment=HOME=/home/admin
+Environment=LANG=C.UTF-8
+UMask=0077
+ExecStart="/home/admin/cassav5bt-current/cassa V5BT/tools/run-v5bt-service.sh"
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=180
+TimeoutStopSec=90
+KillMode=mixed
+NoNewPrivileges=true
+PrivateTmp=true
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

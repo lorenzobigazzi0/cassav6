@@ -1,0 +1,66 @@
+.table-history-preview-card {
+  color: rgba(242, 247, 255, 0.98);
+}
+
+.table-history-preview-title,
+.table-history-preview-meta .table-history-total {
+  color: rgba(246, 250, 255, 0.99);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.32);
+}
+
+.table-history-preview-time,
+.table-history-preview-note,
+.table-history-line small {
+  color: rgba(218, 228, 248, 0.88);
+}
+
+.table-history-preview-note strong,
+.table-history-line,
+.table-history-line span,
+.mobile-service-recovery-line-left {
+  color: rgba(244, 248, 255, 0.98);
+}
+
+.table-history-line {
+  background: rgba(10, 18, 34, 0.58);
+  border-color: rgba(198, 222, 255, 0.2);
+}
+
+.mobile-service-recovery-line-price {
+  color: rgba(255, 245, 210, 0.98);
+  font-weight: 950;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.42);
+}
+
+:root[data-theme="light"] .table-history-preview-card {
+  color: rgba(18, 30, 46, 0.98);
+}
+
+:root[data-theme="light"] .table-history-preview-title,
+:root[data-theme="light"] .table-history-preview-meta .table-history-total {
+  color: rgba(8, 18, 32, 0.98);
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .table-history-preview-time,
+:root[data-theme="light"] .table-history-preview-note,
+:root[data-theme="light"] .table-history-line small {
+  color: rgba(34, 49, 70, 0.82);
+}
+
+:root[data-theme="light"] .table-history-preview-note strong,
+:root[data-theme="light"] .table-history-line,
+:root[data-theme="light"] .table-history-line span,
+:root[data-theme="light"] .mobile-service-recovery-line-left {
+  color: rgba(12, 24, 40, 0.96);
+}
+
+:root[data-theme="light"] .table-history-line {
+  background: rgba(247, 250, 255, 0.96);
+  border-color: rgba(20, 40, 80, 0.16);
+}
+
+:root[data-theme="light"] .mobile-service-recovery-line-price {
+  color: rgba(112, 58, 0, 0.98);
+  text-shadow: none;
+}

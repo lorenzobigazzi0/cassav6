@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "phase": "B5.6_PREREQUISITE",
+  "generatedAt": "2026-07-20T23:26:59.286Z",
+  "mode": "PHYSICAL_TWO_PALMARI_REDACTED",
+  "verdict": "PASS",
+  "targets": [
+    {
+      "label": "palmare-a",
+      "model": "SM-A165F",
+      "androidApi": 36,
+      "bluetoothLeFeature": true,
+      "bluetoothEnabled": true,
+      "permissionsAllGranted": true,
+      "enrollment": {
+        "status": "PASS",
+        "code": "ENROLLMENT_READY",
+        "identityStatus": "READY",
+        "transitions": [
+          "BUSY",
+          "READY"
+        ]
+      },
+      "discovery": {
+        "status": "PASS",
+        "code": "SINGLE_NODE_DISCOVERY_EVIDENCE_PASS",
+        "durationMs": 35536,
+        "sampleCount": 18,
+        "ready": true,
+        "radioActive": true,
+        "activePeerCount": 1,
+        "scanFailures": 0,
+        "advertisementFailures": 0,
+        "firstObservationOffsetP95Ms": 4063,
+        "targetP95Ms": 8000
+      }
+    },
+    {
+      "label": "palmare-b",
+      "model": "SM-A165F",
+      "androidApi": 36,
+      "bluetoothLeFeature": true,
+      "bluetoothEnabled": true,
+      "permissionsAllGranted": true,
+      "enrollment": {
+        "status": "PASS",
+        "code": "ENROLLMENT_READY",
+        "identityStatus": "READY",
+        "transitions": [
+          "BUSY",
+          "READY"
+        ]
+      },
+      "discovery": {
+        "status": "PASS",
+        "code": "SINGLE_NODE_DISCOVERY_EVIDENCE_PASS",
+        "durationMs": 35016,
+        "sampleCount": 18,
+        "ready": true,
+        "radioActive": true,
+        "activePeerCount": 1,
+        "scanFailures": 0,
+        "advertisementFailures": 0,
+        "firstObservationOffsetP95Ms": 1020,
+        "targetP95Ms": 8000
+      }
+    }
+  ],
+  "registryAfter": {
+    "deviceCount": 5,
+    "newlyEnrolledDevices": 2,
+    "activeEnrollmentTokens": 0
+  },
+  "enrollmentEndpointAfter": {
+    "active": false,
+    "enabled": false,
+    "listener9443": false
+  },
+  "activeV4Changes": false,
+  "privacy": {
+    "adbSerialsIncluded": false,
+    "nodeIdsIncluded": false,
+    "certificateIdsIncluded": false,
+    "bluetoothAddressesIncluded": false,
+    "enrollmentTokensIncluded": false,
+    "cryptographicMaterialIncluded": false
+  }
+}

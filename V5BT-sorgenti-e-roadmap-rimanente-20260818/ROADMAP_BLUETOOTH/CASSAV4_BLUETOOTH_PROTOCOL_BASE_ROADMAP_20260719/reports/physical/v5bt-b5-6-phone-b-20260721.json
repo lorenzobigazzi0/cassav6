@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B5.6",
+  "generatedAt": "2026-07-20T23:37:15.119Z",
+  "mode": "PHYSICAL",
+  "verdict": "PASS",
+  "target": {
+    "role": "GATT_SERVER",
+    "hostname": "raspberrypi",
+    "architecture": "arm64",
+    "nodeVersion": "v24.15.0",
+    "bluezVersion": "5.82",
+    "adapterName": "hci0"
+  },
+  "checks": {
+    "bluezPreflight": "PASS",
+    "registryReadOnlyInspection": "PASS",
+    "helloExchange": "PASS",
+    "clientIdentityProof": "PASS",
+    "serverIdentityProof": "PASS",
+    "clientFinishProof": "PASS",
+    "exactSingleAuthenticatedSession": "PASS",
+    "businessCharacteristics": "FAIL_CLOSED",
+    "unregisterApplication": "PASS",
+    "resourceCleanup": "PASS"
+  },
+  "observed": {
+    "state": "AUTHENTICATED",
+    "durationMs": 60087,
+    "managedObjectCount": 8,
+    "characteristicCount": 7,
+    "helloExchanged": 1,
+    "clientProofsVerified": 1,
+    "serverProofsIssued": 1,
+    "finishProofsVerified": 1,
+    "authenticatedSessionsBeforeCleanup": 1,
+    "authenticatedSessionsAfterCleanup": 0,
+    "failures": 0
+  },
+  "gate": {
+    "mutualAuthentication": "PASS_ONE_PHYSICAL_TARGET",
+    "sessionKey": "NOT_STARTED",
+    "heartbeat": "NOT_STARTED",
+    "activeBusinessSession": "NOT_STARTED",
+    "b5HundredSessionGate": "PENDING"
+  },
+  "privacy": {
+    "stableNodeIdsIncluded": false,
+    "certificateIdsIncluded": false,
+    "sessionIdsIncluded": false,
+    "bluetoothAddressesIncluded": false,
+    "cryptographicMaterialIncluded": false,
+    "payloadsIncluded": false
+  },
+  "physicalRadioAccessed": true,
+  "activeV4Changes": false
+}

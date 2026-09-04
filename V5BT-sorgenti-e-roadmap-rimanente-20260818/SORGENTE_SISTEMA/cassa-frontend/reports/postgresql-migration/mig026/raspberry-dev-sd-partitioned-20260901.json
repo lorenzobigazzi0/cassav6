@@ -1,0 +1,209 @@
+{
+    "ok":  true,
+    "task":  "MIG-026",
+    "taskStatus":  "IN_PROGRESS",
+    "completedOperation":  "MIGRATION_006_APPLIED_AND_VERIFIED",
+    "scope":  "DEV_ONLY_MICROSD",
+    "mode":  "AUDIT_PARTITIONED_RETENTION_DISABLED",
+    "recordedAt":  "2026-09-01T12:24:40.9613070+02:00",
+    "blockingDecision":  "RET-01",
+    "hardware":  {
+                     "hostname":  "raspberrypi",
+                     "architecture":  "aarch64",
+                     "storageDevice":  "/dev/mmcblk0p2",
+                     "storageFilesystem":  "ext4",
+                     "ssdRequiredForDevelopment":  false
+                 },
+    "package":  {
+                    "name":  "cassav6-mig006-20260901g.tar.gz",
+                    "sha256":  "460dc38fd8343f49e4c56e06791800ddc320ab89d9b96ed9b7ae31cfb3fb5617",
+                    "manifestFiles":  162,
+                    "bytes":  154098
+                },
+    "localFocusedTests":  {
+                              "passed":  21,
+                              "failed":  0,
+                              "command":  "npm run test:migration:pg:mig026"
+                          },
+    "temporaryFoundation":  {
+                                "ok":  true,
+                                "mode":  "apply-and-exercise",
+                                "firstApplied":  6,
+                                "secondSkipped":  6,
+                                "leafPartitions":  16,
+                                "hasDefault":  true,
+                                "runtimeExercise":  {
+                                                        "audit_count":  1,
+                                                        "idempotency_status":  "completed",
+                                                        "outbox_attempts":  1
+                                                    },
+                                "durationMs":  214.3
+                            },
+    "temporaryRetention":  {
+                               "ok":  true,
+                               "policiesTotal":  13,
+                               "policiesEnabled":  0,
+                               "runtimeGuards":  {
+                                                     "policyUpdateSqlState":  "42501",
+                                                     "purgeExecuteSqlState":  "42501"
+                                                 },
+                               "ownerTemporaryProbe":  {
+                                                           "disabledPolicySqlState":  "55000",
+                                                           "protectedPolicySqlState":  "55000",
+                                                           "outboxDryRun":  1,
+                                                           "outboxDeleted":  1,
+                                                           "outboxSecondPass":  0,
+                                                           "idempotencyDryRun":  1,
+                                                           "idempotencyDeleted":  1,
+                                                           "idempotencySecondPass":  0,
+                                                           "preservedOutboxRows":  2,
+                                                           "preservedIdempotencyRows":  2,
+                                                           "resetToDisabled":  true
+                                                       },
+                               "finalCounts":  {
+                                                   "audit_rows":  0,
+                                                   "outbox_rows":  0,
+                                                   "idempotency_rows":  0,
+                                                   "inbox_rows":  0
+                                               },
+                               "productionRetentionAuthorized":  false,
+                               "durationMs":  76.7
+                           },
+    "backup":  {
+                   "serviceResult":  "success",
+                   "execStatus":  0,
+                   "path":  "/var/backups/cassav6-postgresql/logical/logical-cassav6-20260901T101729Z.dump",
+                   "sha256":  "5eadd04bbbe0411b59a1a67dc40e643ada383bd2c5e40a8c0348eee26a81c1b2",
+                   "bytes":  63492,
+                   "restoreDatabase":  "cassav6_restore_verify_20260901101729_14725",
+                   "restoreDurationMs":  767,
+                   "restoreCatalogObjects":  8,
+                   "expectedAuditRows":  0,
+                   "independentDevice":  false
+               },
+    "rollbackExercise":  {
+                             "performed":  true,
+                             "reason":  "postcheck harness used unsupported psql variable syntax",
+                             "cloneRestored":  true,
+                             "restoredState":  "5 migrations, audit.events relkind r, 0 rows",
+                             "serviceHealthAfterRestore":  "HTTPS 200; HTTP 200",
+                             "quarantineDatabase":  "cassav6_failed_mig006_20260901g"
+                         },
+    "mainDevApply":  {
+                         "firstRun":  {
+                                          "applied":  1,
+                                          "skipped":  5
+                                      },
+                         "secondRun":  {
+                                           "applied":  0,
+                                           "skipped":  6
+                                       },
+                         "migration006Checksum":  "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad",
+                         "registry":  [
+                                          {
+                                              "version":  "001",
+                                              "checksum":  "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+                                          },
+                                          {
+                                              "version":  "002",
+                                              "checksum":  "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+                                          },
+                                          {
+                                              "version":  "003",
+                                              "checksum":  "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673"
+                                          },
+                                          {
+                                              "version":  "004",
+                                              "checksum":  "c66c1804dff7ecd3abcbeed01845194688f386f93ce4e6bb9a0e12c7978ef2de"
+                                          },
+                                          {
+                                              "version":  "005",
+                                              "checksum":  "cfca4fecc4556d33d78404b18e025c2681fe71520bcab74c33aef7e5864963d2"
+                                          },
+                                          {
+                                              "version":  "006",
+                                              "checksum":  "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad"
+                                          }
+                                      ]
+                     },
+    "partitioning":  {
+                         "applied":  true,
+                         "parentKind":  "p",
+                         "leafPartitions":  16,
+                         "hasDefault":  true,
+                         "globalIdRegistry":  true,
+                         "auditRows":  0,
+                         "eventIdRows":  0
+                     },
+    "runtimePrivileges":  {
+                              "app_is_runtime_member":  true,
+                              "app_meta_usage":  true,
+                              "audit_usage":  true,
+                              "audit_create":  false,
+                              "messaging_usage":  true,
+                              "messaging_create":  false,
+                              "audit_select":  true,
+                              "audit_insert":  true,
+                              "audit_update":  false,
+                              "audit_delete":  false,
+                              "audit_id_select":  true,
+                              "audit_id_insert":  false,
+                              "audit_partition_execute":  false,
+                              "outbox_select":  true,
+                              "outbox_insert":  true,
+                              "outbox_update":  true,
+                              "outbox_delete":  false
+                          },
+    "retention":  {
+                      "target":  "audit.events",
+                      "retentionDays":  1095,
+                      "strategy":  "drop_partition",
+                      "enabled":  false,
+                      "decisionRef":  "RET-01:TODO",
+                      "automaticPurgeEnabled":  false
+                  },
+    "services":  {
+                     "postgresql17Main":  "active",
+                     "cassav5bt":  "active",
+                     "https5380":  200,
+                     "http5381":  200
+                 },
+    "rollback":  {
+                     "logicalBackupRetained":  true,
+                     "databaseCloneRetained":  "cassav6_rollback_mig006_20260901h",
+                     "sameMicroSd":  true
+                 },
+    "rawEvidence":  [
+                        {
+                            "file":  "mig006-temp-foundation-20260901g.json",
+                            "bytes":  7620,
+                            "sha256":  "542a25527095ff4805fb5c65e493d0cdc7eedf3f227c402f5dd5a003bf44674a"
+                        },
+                        {
+                            "file":  "mig006-temp-retention-20260901g.json",
+                            "bytes":  1473,
+                            "sha256":  "837d80954e53ba92694a2f7956564d38703a1de50c6e0ac2a728836028bcb96e"
+                        },
+                        {
+                            "file":  "mig006-backup-metadata-20260901g.txt",
+                            "bytes":  238,
+                            "sha256":  "d772a2d7e009f38583006bd5087f637286dbfa1d6942a752a2da7d11f1c8b115"
+                        },
+                        {
+                            "file":  "mig006-backup-restore-20260901g.txt",
+                            "bytes":  135,
+                            "sha256":  "73470fabefc379b66a787f99ad543e4e9f009c696edd4fcae6577adcfcd1b465"
+                        },
+                        {
+                            "file":  "mig006-real-apply-20260901h.txt",
+                            "bytes":  427,
+                            "sha256":  "7a0764e89ea6347007f57f030f5b7baacb93c7177d36a7fe26673d2d2da801d4"
+                        },
+                        {
+                            "file":  "mig006-real-verify-20260901h.json",
+                            "bytes":  5151,
+                            "sha256":  "9543c904b96f6327235a65c3e5a62aac49b1c90b3391b6c2a2f25b0ce39a06d2"
+                        }
+                    ],
+    "productionCertified":  false
+}

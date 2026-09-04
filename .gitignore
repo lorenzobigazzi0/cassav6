@@ -1,0 +1,21 @@
+# Dipendenze e prodotti di build: si rigenerano, e gonfiano il repository.
+node_modules/
+.gradle/
+.idea/
+**/dist/
+**/build/
+*.apk
+*.aab
+
+# Archivi di consegna: superano il limite di 100 MB per file di GitHub.
+*.zip
+
+# Copie di lavoro degli staging: alberi duplicati, ~1,7 GB.
+.staging/
+
+# Binari oltre il limite di GitHub (167, 167 e 146 MB).
+*.sqlite
+*.sql.gz
+
+# Scratch locali
+.rollback/

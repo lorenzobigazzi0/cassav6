@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "evidenceDate": "2026-07-19",
+  "minimumFullNodesRequired": 2,
+  "devices": [
+    {
+      "role": "handheld",
+      "vendor": "Samsung",
+      "model": "SM-A165F",
+      "androidApi": null,
+      "connectionStatus": "NOT_CONNECTED",
+      "evidenceClass": "FORMAL",
+      "scan": "NOT_TESTED",
+      "advertise": "NOT_TESTED",
+      "gattClient": "NOT_TESTED",
+      "gattServer": "NOT_TESTED",
+      "scanAdvertiseConcurrent": "NOT_TESTED",
+      "wifiBleCoexistence": "NOT_TESTED",
+      "backgroundForeground": "NOT_TESTED",
+      "classification": "UNKNOWN"
+    },
+    {
+      "role": "station",
+      "vendor": "Samsung",
+      "model": "SM-T503",
+      "androidApi": null,
+      "connectionStatus": "NOT_CONNECTED",
+      "evidenceClass": "FORMAL",
+      "scan": "NOT_TESTED",
+      "advertise": "NOT_TESTED",
+      "gattClient": "NOT_TESTED",
+      "gattServer": "NOT_TESTED",
+      "scanAdvertiseConcurrent": "NOT_TESTED",
+      "wifiBleCoexistence": "NOT_TESTED",
+      "backgroundForeground": "NOT_TESTED",
+      "classification": "UNKNOWN"
+    }
+  ]
+}

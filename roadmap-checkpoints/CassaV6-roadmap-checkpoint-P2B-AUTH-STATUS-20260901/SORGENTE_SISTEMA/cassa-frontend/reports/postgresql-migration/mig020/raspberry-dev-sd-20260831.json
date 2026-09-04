@@ -1,0 +1,54 @@
+{
+  "task": "MIG-020",
+  "scope": "DEV_ONLY",
+  "created_at_utc": "20260831T115251Z",
+  "host": "raspberrypi",
+  "architecture": "aarch64",
+  "storage": "/dev/mmcblk0p2 ext4 /",
+  "postgresql_version": "17.11 (Debian 17.11-0+deb13u1)",
+  "migration": {
+    "version": "001",
+    "name": "foundation",
+    "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7",
+    "temporary_database_apply_ms": 14.37,
+    "temporary_database_smoke_ms": 86.74,
+    "development_database_verify_ms": 28.59,
+    "second_run_skipped": true
+  },
+  "schemas": ["app_meta", "audit", "messaging"],
+  "tables": [
+    "app_meta.schema_migrations",
+    "audit.events",
+    "messaging.command_inbox",
+    "messaging.event_outbox",
+    "messaging.idempotency_keys"
+  ],
+  "runtime_role": {
+    "name": "cassav6_runtime",
+    "can_login": false,
+    "app_is_member": true,
+    "app_can_create_schema_objects": false,
+    "app_can_update_or_delete_audit": false,
+    "app_can_delete_outbox": false
+  },
+  "invariants_verified": [
+    "duplicate_idempotency_key_rejected",
+    "negative_outbox_attempt_count_rejected",
+    "runtime_ddl_rejected",
+    "runtime_app_meta_access_rejected"
+  ],
+  "development_database_rows_after_apply": {
+    "audit.events": 0,
+    "messaging.command_inbox": 0,
+    "messaging.event_outbox": 0,
+    "messaging.idempotency_keys": 0
+  },
+  "post_migration_logical_restore_ms": 31,
+  "post_migration_restore_catalog_objects": 5,
+  "wal_archiver": {
+    "archived_count": 22,
+    "failed_count": 0
+  },
+  "services_active": ["cassav5bt.service", "mariadb", "postgresql@17-main"],
+  "production_certified": false
+}

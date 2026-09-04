@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b11-mixed-physical-virtual-non-gate-v3.schema.json",
+  "title": "V6 B11 Maximum Mixed Physical Virtual Non-Gate Report V3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "harnessVersion", "phase", "mode", "profile",
+    "evidenceClass", "verdict", "gateImpact", "promotionAllowed",
+    "officialEvidence", "statusMutationAllowed", "officialProgressPercent",
+    "b11Gate", "composedAt", "timeBasis", "composerHardwareAccess",
+    "physicalEvidenceConsumed", "actorInventory", "sourceBindings",
+    "physicalPresence", "physicalFunctionalCoverage", "coveragePartition",
+    "simulatedScaleCoverage", "virtualPeripherals", "limitations", "checks",
+    "reportDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 3 },
+    "harnessVersion": { "const": "3.0.0" },
+    "phase": { "const": "B11" },
+    "mode": { "const": "MAXIMUM_MIXED_PHYSICAL_VIRTUAL_SYSTEM_NON_GATE" },
+    "profile": { "const": "mixed-physical" },
+    "evidenceClass": { "const": "MIXED_NON_GATE_EVIDENCE" },
+    "verdict": { "const": "MIXED_NON_GATE_INCOMPLETE" },
+    "gateImpact": { "const": "NONE" },
+    "promotionAllowed": { "const": false },
+    "officialEvidence": { "const": false },
+    "statusMutationAllowed": { "const": false },
+    "officialProgressPercent": { "const": 49 },
+    "b11Gate": { "const": "PENDING" },
+    "composedAt": { "type": "string", "format": "date-time" },
+    "timeBasis": {
+      "const": "WALL_CLOCK_ATTESTATION_PLUS_DETERMINISTIC_SIMULATION"
+    },
+    "composerHardwareAccess": { "const": false },
+    "physicalEvidenceConsumed": { "const": true },
+    "actorInventory": { "$ref": "#/$defs/actorInventory" },
+    "sourceBindings": { "$ref": "#/$defs/sourceBindings" },
+    "physicalPresence": { "$ref": "#/$defs/physicalPresence" },
+    "physicalFunctionalCoverage": { "$ref": "#/$defs/physicalFunctionalCoverage" },
+    "coveragePartition": { "$ref": "#/$defs/coveragePartition" },
+    "simulatedScaleCoverage": { "$ref": "#/$defs/simulatedScaleCoverage" },
+    "virtualPeripherals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["automaticCashInstances", "fiscalRtInstances", "realInstances"],
+      "properties": {
+        "automaticCashInstances": { "const": 1 },
+        "fiscalRtInstances": { "const": 1 },
+        "realInstances": { "const": 0 }
+      }
+    },
+    "limitations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mixedProfileIsOfficialGateEvidence",
+        "simulatedCyclesAttributedToPhysicalActors",
+        "simulatedBusinessActionsAttributedToPhysicalActors",
+        "physicalPassRequiresSeparateCampaignEvidence",
+        "stationSignatureWaiverCanPromoteGate"
+      ],
+      "properties": {
+        "mixedProfileIsOfficialGateEvidence": { "const": false },
+        "simulatedCyclesAttributedToPhysicalActors": { "const": false },
+        "simulatedBusinessActionsAttributedToPhysicalActors": { "const": false },
+        "physicalPassRequiresSeparateCampaignEvidence": { "const": true },
+        "stationSignatureWaiverCanPromoteGate": { "const": false }
+      }
+    },
+    "checks": { "$ref": "#/$defs/checks" },
+    "reportDigest": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": {
+        "physicalPresence": {
+          "properties": { "complete": { "const": true } },
+          "required": ["complete"]
+        }
+      } },
+      "then": { "properties": {
+        "physicalPresence": { "properties": {
+          "observedPhysicalActors": { "const": 4 },
+          "observedHandhelds": { "const": 2 },
+          "observedStations": { "const": 1 },
+          "observedRaspberry": { "const": 1 }
+        } },
+        "checks": { "properties": {
+          "physicalPresenceComplete": { "const": true }
+        } }
+      } },
+      "else": { "properties": {
+        "checks": { "properties": {
+          "physicalPresenceComplete": { "const": false }
+        } }
+      } }
+    },
+    {
+      "if": { "properties": {
+        "physicalFunctionalCoverage": {
+          "properties": { "inventoryReadinessComplete": { "const": true } },
+          "required": ["inventoryReadinessComplete"]
+        }
+      } },
+      "then": { "properties": {
+        "checks": { "properties": {
+          "physicalRuntimeReadinessComplete": { "const": true }
+        } }
+      } },
+      "else": { "properties": {
+        "physicalFunctionalCoverage": { "properties": {
+          "readinessStatus": { "const": "MIXED_PHYSICAL_INCOMPLETE" }
+        } },
+        "checks": { "properties": {
+          "physicalRuntimeReadinessComplete": { "const": false }
+        } }
+      } }
+    },
+    {
+      "if": { "properties": {
+        "physicalFunctionalCoverage": { "properties": {
+          "readinessStatus": { "const": "MIXED_READY_CERTIFIED" }
+        } }
+      } },
+      "then": { "properties": {
+        "physicalFunctionalCoverage": { "properties": {
+          "stationSigningVerified": { "const": true },
+          "inventoryReadinessComplete": { "const": true }
+        } }
+      } }
+    },
+    {
+      "if": { "properties": {
+        "physicalFunctionalCoverage": { "properties": {
+          "readinessStatus": {
+            "const": "MIXED_READY_WITH_NON_GATE_STATION_WAIVER"
+          }
+        } }
+      } },
+      "then": { "properties": {
+        "physicalFunctionalCoverage": { "properties": {
+          "stationSigningPolicy": { "const": "WAIVED_NON_GATE" },
+          "stationSigningVerified": { "const": false },
+          "inventoryReadinessComplete": { "const": true }
+        } }
+      } }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "roleSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "physical", "virtual"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "physical": { "type": "integer", "minimum": 0 },
+        "virtual": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "actorInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalActors", "physicalActors", "virtualActors", "roles"],
+      "properties": {
+        "totalActors": { "const": 16 },
+        "physicalActors": { "const": 4 },
+        "virtualActors": { "const": 12 },
+        "roles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "HANDHELD", "STATION", "RASPBERRY", "AUTOMATIC_CASH", "FISCAL_RT"
+          ],
+          "properties": {
+            "HANDHELD": {
+              "allOf": [
+                { "$ref": "#/$defs/roleSplit" },
+                { "properties": { "total": { "const": 10 }, "physical": { "const": 2 }, "virtual": { "const": 8 } } }
+              ]
+            },
+            "STATION": {
+              "allOf": [
+                { "$ref": "#/$defs/roleSplit" },
+                { "properties": { "total": { "const": 3 }, "physical": { "const": 1 }, "virtual": { "const": 2 } } }
+              ]
+            },
+            "RASPBERRY": {
+              "allOf": [
+                { "$ref": "#/$defs/roleSplit" },
+                { "properties": { "total": { "const": 1 }, "physical": { "const": 1 }, "virtual": { "const": 0 } } }
+              ]
+            },
+            "AUTOMATIC_CASH": {
+              "allOf": [
+                { "$ref": "#/$defs/roleSplit" },
+                { "properties": { "total": { "const": 1 }, "physical": { "const": 0 }, "virtual": { "const": 1 } } }
+              ]
+            },
+            "FISCAL_RT": {
+              "allOf": [
+                { "$ref": "#/$defs/roleSplit" },
+                { "properties": { "total": { "const": 1 }, "physical": { "const": 0 }, "virtual": { "const": 1 } } }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "sourceBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "physicalAttestationSha256", "physicalAttestationDigest",
+        "physicalInventorySha256", "simulatedReportSha256", "simulatedReportDigest"
+      ],
+      "properties": {
+        "physicalAttestationSha256": { "$ref": "#/$defs/sha256" },
+        "physicalAttestationDigest": { "$ref": "#/$defs/sha256" },
+        "physicalInventorySha256": { "$ref": "#/$defs/sha256" },
+        "simulatedReportSha256": { "$ref": "#/$defs/sha256" },
+        "simulatedReportDigest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "physicalPresence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredPhysicalActors", "observedPhysicalActors", "requiredHandhelds",
+        "observedHandhelds", "requiredStations", "observedStations",
+        "requiredRaspberry", "observedRaspberry", "complete",
+        "virtualSubstitutionAllowed"
+      ],
+      "properties": {
+        "requiredPhysicalActors": { "const": 4 },
+        "observedPhysicalActors": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "requiredHandhelds": { "const": 2 },
+        "observedHandhelds": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "requiredStations": { "const": 1 },
+        "observedStations": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "requiredRaspberry": { "const": 1 },
+        "observedRaspberry": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "complete": { "type": "boolean" },
+        "virtualSubstitutionAllowed": { "const": false }
+      }
+    },
+    "physicalFunctionalCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readinessStatus", "stationSigningPolicy", "stationSigningVerified",
+        "gateEligible", "inventoryReadinessComplete", "radioWorkloadStatus",
+        "physicalCyclesCompleted", "physicalBusinessStatus",
+        "physicalActionsCompleted", "physicalHandheldCommandsCompleted",
+        "continuityStatus", "monitoredPhysicalActors", "physicalSoakStatus",
+        "physicalSoakObservedMs", "physicalSoakWallClock",
+        "campaignEvidenceCommitment"
+      ],
+      "properties": {
+        "readinessStatus": {
+          "enum": [
+            "MIXED_READY_CERTIFIED",
+            "MIXED_READY_WITH_NON_GATE_STATION_WAIVER",
+            "MIXED_PHYSICAL_INCOMPLETE"
+          ]
+        },
+        "stationSigningPolicy": {
+          "enum": ["CERTIFIED_REQUIRED", "WAIVED_NON_GATE"]
+        },
+        "stationSigningVerified": { "type": "boolean" },
+        "gateEligible": { "const": false },
+        "inventoryReadinessComplete": { "type": "boolean" },
+        "radioWorkloadStatus": { "const": "NOT_RUN" },
+        "physicalCyclesCompleted": { "const": 0 },
+        "physicalBusinessStatus": { "const": "NOT_RUN" },
+        "physicalActionsCompleted": { "const": 0 },
+        "physicalHandheldCommandsCompleted": { "const": 0 },
+        "continuityStatus": { "const": "NOT_RUN" },
+        "monitoredPhysicalActors": { "const": 0 },
+        "physicalSoakStatus": { "const": "NOT_RUN" },
+        "physicalSoakObservedMs": { "const": 0 },
+        "physicalSoakWallClock": { "const": false },
+        "campaignEvidenceCommitment": { "type": "null" }
+      }
+    },
+    "coveragePartition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cyclesPerLink", "realReal", "logicalCrossDomain", "virtualOnly",
+        "totalLogicalLinks", "totalRequiredCycles"
+      ],
+      "properties": {
+        "cyclesPerLink": { "const": 100 },
+        "realReal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["linkCount", "requiredCycles", "completedPhysicalCycles", "attribution"],
+          "properties": {
+            "linkCount": { "const": 6 }, "requiredCycles": { "const": 600 },
+            "completedPhysicalCycles": { "const": 0 },
+            "attribution": { "const": "PHYSICAL_CAMPAIGN_ONLY" }
+          }
+        },
+        "logicalCrossDomain": { "$ref": "#/$defs/crossDomain" },
+        "virtualOnly": { "$ref": "#/$defs/virtualOnly" },
+        "totalLogicalLinks": { "const": 91 },
+        "totalRequiredCycles": { "const": 9100 }
+      }
+    },
+    "crossDomain": {
+      "type": "object", "additionalProperties": false,
+      "required": ["linkCount", "requiredCycles", "completedSoftwareCycles", "attribution"],
+      "properties": {
+        "linkCount": { "const": 40 }, "requiredCycles": { "const": 4000 },
+        "completedSoftwareCycles": { "const": 4000 },
+        "attribution": { "const": "SOFTWARE_MODEL_ONLY" }
+      }
+    },
+    "virtualOnly": {
+      "type": "object", "additionalProperties": false,
+      "required": ["linkCount", "requiredCycles", "completedSoftwareCycles", "attribution"],
+      "properties": {
+        "linkCount": { "const": 45 }, "requiredCycles": { "const": 4500 },
+        "completedSoftwareCycles": { "const": 4500 },
+        "attribution": { "const": "SOFTWARE_MODEL_ONLY" }
+      }
+    },
+    "simulatedScaleCoverage": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "sourceMode", "logicalActorsModeled", "logicalBluetoothNodesModeled",
+        "logicalLinksModeled", "softwareModelCompletedCycles",
+        "softwareAttributedCycles", "physicalSlotSurrogateCyclesExcluded",
+        "softwareModelBusinessActions", "softwareAttributedVirtualActions",
+        "physicalSlotSurrogateActionsExcluded", "attribution"
+      ],
+      "properties": {
+        "sourceMode": { "const": "MAXIMUM_VIRTUALIZED_SYSTEM_NON_GATE" },
+        "logicalActorsModeled": { "const": 16 },
+        "logicalBluetoothNodesModeled": { "const": 14 },
+        "logicalLinksModeled": { "const": 91 },
+        "softwareModelCompletedCycles": { "const": 9100 },
+        "softwareAttributedCycles": { "const": 8500 },
+        "physicalSlotSurrogateCyclesExcluded": { "const": 600 },
+        "softwareModelBusinessActions": { "const": 2600 },
+        "softwareAttributedVirtualActions": { "const": 2000 },
+        "physicalSlotSurrogateActionsExcluded": { "const": 600 },
+        "attribution": { "const": "SOFTWARE_MODEL_ONLY" }
+      }
+    },
+    "checks": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "exactMixedActorInventory", "physicalAttestationFresh",
+        "physicalAttestationRedacted", "physicalRoleConfigurationExact",
+        "physicalPresenceComplete", "physicalRuntimeReadinessComplete",
+        "stationSigningPolicySatisfied", "physicalRadioWorkloadComplete",
+        "physicalBusinessWorkloadComplete", "continuityMonitoringComplete",
+        "physicalWallClockSoakComplete", "simulatedScaleReportValid",
+        "simulatedCoveragePartitionComplete", "virtualPeripheralsOnly",
+        "attributionSeparated", "antiPromotionLocked"
+      ],
+      "properties": {
+        "exactMixedActorInventory": { "const": true },
+        "physicalAttestationFresh": { "const": true },
+        "physicalAttestationRedacted": { "const": true },
+        "physicalRoleConfigurationExact": { "const": true },
+        "physicalPresenceComplete": { "type": "boolean" },
+        "physicalRuntimeReadinessComplete": { "type": "boolean" },
+        "stationSigningPolicySatisfied": { "type": "boolean" },
+        "physicalRadioWorkloadComplete": { "const": false },
+        "physicalBusinessWorkloadComplete": { "const": false },
+        "continuityMonitoringComplete": { "const": false },
+        "physicalWallClockSoakComplete": { "const": false },
+        "simulatedScaleReportValid": { "const": true },
+        "simulatedCoveragePartitionComplete": { "const": true },
+        "virtualPeripheralsOnly": { "const": true },
+        "attributionSeparated": { "const": true },
+        "antiPromotionLocked": { "const": true }
+      }
+    }
+  }
+}

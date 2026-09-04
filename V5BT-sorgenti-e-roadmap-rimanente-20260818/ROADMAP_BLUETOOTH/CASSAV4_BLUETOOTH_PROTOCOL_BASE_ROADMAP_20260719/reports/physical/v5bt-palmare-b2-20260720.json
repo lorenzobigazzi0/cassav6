@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "generatedAt": "2026-07-20T09:33:38.779Z",
+  "mode": "PHYSICAL_SINGLE_NODE",
+  "verdict": "FAIL",
+  "failure": {
+    "code": "PRIVATE_STAGE_FAILED",
+    "message": "Unable to stage private enrollment input"
+  },
+  "activeV4Changes": false
+}

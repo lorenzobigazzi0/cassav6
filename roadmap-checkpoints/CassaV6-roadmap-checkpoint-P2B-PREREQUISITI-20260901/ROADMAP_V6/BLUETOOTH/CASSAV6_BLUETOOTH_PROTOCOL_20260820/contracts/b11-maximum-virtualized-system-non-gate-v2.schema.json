@@ -1,0 +1,505 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/b11-maximum-virtualized-system-non-gate-v2.schema.json",
+  "title": "V6 B11 Maximum Virtualized System Non-Gate Report V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "harnessVersion",
+    "phase",
+    "mode",
+    "profile",
+    "evidenceClass",
+    "verdict",
+    "gateImpact",
+    "promotionAllowed",
+    "officialEvidence",
+    "statusMutationAllowed",
+    "officialProgressPercent",
+    "b11Gate",
+    "hardwareAccess",
+    "radioAccess",
+    "adbAccess",
+    "sshAccess",
+    "serviceAccess",
+    "realPeripheralAccess",
+    "virtualizationPolicy",
+    "missingHardwarePolicy",
+    "timeBasis",
+    "seedCommitment",
+    "actors",
+    "topology",
+    "phaseCoverage",
+    "workload",
+    "businessPlane",
+    "businessWorkload",
+    "virtualPeripherals",
+    "faultModel",
+    "soak",
+    "persistence",
+    "teardown",
+    "checks",
+    "reportDigest"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "harnessVersion": { "const": "2.0.0" },
+    "phase": { "const": "B11" },
+    "mode": { "const": "MAXIMUM_VIRTUALIZED_SYSTEM_NON_GATE" },
+    "profile": { "const": "hybrid" },
+    "evidenceClass": { "const": "NON_GATE_EVIDENCE" },
+    "verdict": { "enum": ["NON_GATE_PASS", "NON_GATE_FAIL"] },
+    "gateImpact": { "const": "NONE" },
+    "promotionAllowed": { "const": false },
+    "officialEvidence": { "const": false },
+    "statusMutationAllowed": { "const": false },
+    "officialProgressPercent": { "const": 49 },
+    "b11Gate": { "const": "PENDING" },
+    "hardwareAccess": { "const": false },
+    "radioAccess": { "const": false },
+    "adbAccess": { "const": false },
+    "sshAccess": { "const": false },
+    "serviceAccess": { "const": false },
+    "realPeripheralAccess": { "const": false },
+    "virtualizationPolicy": { "const": "IGNORE_AND_VIRTUALIZE_NON_GATE" },
+    "missingHardwarePolicy": { "const": "IGNORE_AND_VIRTUALIZE_NON_GATE" },
+    "timeBasis": { "const": "VIRTUAL_MONOTONIC" },
+    "seedCommitment": { "$ref": "#/$defs/sha256" },
+    "actors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalActors", "virtualizedActors", "physicalActors", "roles"],
+      "properties": {
+        "totalActors": { "const": 16 },
+        "virtualizedActors": { "const": 16 },
+        "physicalActors": { "const": 0 },
+        "roles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "HANDHELD",
+            "STATION",
+            "RASPBERRY_VIRTUAL",
+            "AUTOMATIC_CASH_VIRTUAL",
+            "FISCAL_RT_VIRTUAL"
+          ],
+          "properties": {
+            "HANDHELD": { "const": 10 },
+            "STATION": { "const": 3 },
+            "RASPBERRY_VIRTUAL": { "const": 1 },
+            "AUTOMATIC_CASH_VIRTUAL": { "const": 1 },
+            "FISCAL_RT_VIRTUAL": { "const": 1 }
+          }
+        }
+      }
+    },
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeCount",
+        "androidNodeCount",
+        "usefulPairCount",
+        "androidPairCount",
+        "androidRaspberryLinkCount",
+        "deterministic"
+      ],
+      "properties": {
+        "nodeCount": { "const": 14 },
+        "androidNodeCount": { "const": 13 },
+        "usefulPairCount": { "const": 91 },
+        "androidPairCount": { "const": 78 },
+        "androidRaspberryLinkCount": { "const": 13 },
+        "deterministic": { "const": true }
+      }
+    },
+    "phaseCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["B6", "B7", "B8", "B9", "B10"],
+      "properties": {
+        "B6": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "roleElections",
+            "duplicateConnectionsArbitrated",
+            "androidPairsOnly"
+          ],
+          "properties": {
+            "roleElections": { "const": 156 },
+            "duplicateConnectionsArbitrated": { "const": 78 },
+            "androidPairsOnly": { "const": true }
+          }
+        },
+        "B7": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reliableFramesTx",
+            "fragmentedSessions",
+            "retriesObserved",
+            "duplicatesObserved"
+          ],
+          "properties": {
+            "reliableFramesTx": { "$ref": "#/$defs/nonNegativeInteger" },
+            "fragmentedSessions": { "$ref": "#/$defs/nonNegativeInteger" },
+            "retriesObserved": { "$ref": "#/$defs/nonNegativeInteger" },
+            "duplicatesObserved": { "$ref": "#/$defs/nonNegativeInteger" }
+          }
+        },
+        "B8": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["recoveredDurableMessages", "sessionHistoryCount", "knownPeerCount"],
+          "properties": {
+            "recoveredDurableMessages": { "const": 1 },
+            "sessionHistoryCount": { "const": 18200 },
+            "knownPeerCount": { "const": 182 }
+          }
+        },
+        "B9": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["routeAdvertisementsPersisted", "multihopClaimsRejected"],
+          "properties": {
+            "routeAdvertisementsPersisted": { "const": 14 },
+            "multihopClaimsRejected": { "const": 1 }
+          }
+        },
+        "B10": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "shadowDiagnosticsAccepted",
+            "shadowDuplicatesSuppressed",
+            "defaultOffRejections",
+            "businessMessagesRejected",
+            "businessMessagesForwarded"
+          ],
+          "properties": {
+            "shadowDiagnosticsAccepted": { "const": 3 },
+            "shadowDuplicatesSuppressed": { "const": 3 },
+            "defaultOffRejections": { "const": 1 },
+            "businessMessagesRejected": { "const": 1 },
+            "businessMessagesForwarded": { "const": 0 }
+          }
+        }
+      }
+    },
+    "workload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cyclesPerPair",
+        "expectedConnectDisconnectCycles",
+        "completedConnectDisconnectCycles",
+        "framesTx",
+        "fragmentedSessions",
+        "maximumFragmentsPerMessage"
+      ],
+      "properties": {
+        "cyclesPerPair": { "const": 100 },
+        "expectedConnectDisconnectCycles": { "const": 9100 },
+        "completedConnectDisconnectCycles": { "const": 9100 },
+        "framesTx": { "$ref": "#/$defs/nonNegativeInteger" },
+        "fragmentedSessions": { "$ref": "#/$defs/nonNegativeInteger" },
+        "maximumFragmentsPerMessage": { "$ref": "#/$defs/nonNegativeInteger" }
+      }
+    },
+    "businessPlane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transport", "bluetoothBusinessMessagesForwarded"],
+      "properties": {
+        "transport": { "const": "LAN_HTTP_SSE" },
+        "bluetoothBusinessMessagesForwarded": { "const": 0 }
+      }
+    },
+    "businessWorkload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actionsPerAndroid",
+        "expectedActions",
+        "completedActions",
+        "handheldActions",
+        "stationActions",
+        "handheldCommands",
+        "coveredHandhelds",
+        "coveredStations",
+        "raspberryCount",
+        "raspberryBrokeredActions",
+        "automaticCash",
+        "fiscalRt",
+        "businessTransport",
+        "bluetoothBusinessMessagesForwarded",
+        "externalAccess",
+        "cleanupComplete"
+      ],
+      "properties": {
+        "actionsPerAndroid": { "const": 200 },
+        "expectedActions": { "const": 2600 },
+        "completedActions": { "const": 2600 },
+        "handheldActions": { "const": 2000 },
+        "stationActions": { "const": 600 },
+        "handheldCommands": { "const": 800 },
+        "coveredHandhelds": { "const": 10 },
+        "coveredStations": { "const": 3 },
+        "raspberryCount": { "const": 1 },
+        "raspberryBrokeredActions": { "const": 2600 },
+        "automaticCash": { "$ref": "#/$defs/peripheralSummary" },
+        "fiscalRt": { "$ref": "#/$defs/peripheralSummary" },
+        "businessTransport": { "const": "LAN_HTTP_SSE" },
+        "bluetoothBusinessMessagesForwarded": { "const": 0 },
+        "externalAccess": { "const": false },
+        "cleanupComplete": { "const": true }
+      }
+    },
+    "virtualPeripherals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["automaticCashInstances", "fiscalRtInstances", "realInstances"],
+      "properties": {
+        "automaticCashInstances": { "const": 1 },
+        "fiscalRtInstances": { "const": 1 },
+        "realInstances": { "const": 0 }
+      }
+    },
+    "faultModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retryFaults",
+        "retriesObserved",
+        "duplicateFaults",
+        "duplicatesObserved",
+        "backgroundFaults",
+        "backgroundTransitions",
+        "rebootCount",
+        "recoveredDurableMessages",
+        "invalidCertificateAttempts",
+        "invalidCertificatesRejected"
+      ],
+      "properties": {
+        "retryFaults": { "$ref": "#/$defs/nonNegativeInteger" },
+        "retriesObserved": { "$ref": "#/$defs/nonNegativeInteger" },
+        "duplicateFaults": { "$ref": "#/$defs/nonNegativeInteger" },
+        "duplicatesObserved": { "$ref": "#/$defs/nonNegativeInteger" },
+        "backgroundFaults": { "$ref": "#/$defs/nonNegativeInteger" },
+        "backgroundTransitions": { "$ref": "#/$defs/nonNegativeInteger" },
+        "rebootCount": { "const": 1 },
+        "recoveredDurableMessages": { "const": 1 },
+        "invalidCertificateAttempts": { "const": 1 },
+        "invalidCertificatesRejected": { "const": 1 }
+      }
+    },
+    "soak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "simulatedDurationMs",
+        "requiredDurationMs",
+        "ticks",
+        "samples",
+        "wallClockSleeping",
+        "requiredProfileSatisfied"
+      ],
+      "properties": {
+        "simulatedDurationMs": { "const": 7200000 },
+        "requiredDurationMs": { "const": 7200000 },
+        "ticks": { "const": 7200 },
+        "samples": { "$ref": "#/$defs/nonNegativeInteger" },
+        "wallClockSleeping": { "const": false },
+        "requiredProfileSatisfied": { "const": true }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessionHistoryCount",
+        "knownPeerCount",
+        "serverAdvertisementCount",
+        "inboxDedupDepthAfterSoak",
+        "openSessionCount",
+        "outboxDepth"
+      ],
+      "properties": {
+        "sessionHistoryCount": { "const": 18200 },
+        "knownPeerCount": { "const": 182 },
+        "serverAdvertisementCount": { "const": 14 },
+        "inboxDedupDepthAfterSoak": { "$ref": "#/$defs/nonNegativeInteger" },
+        "openSessionCount": { "const": 0 },
+        "outboxDepth": { "const": 0 }
+      }
+    },
+    "teardown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["temporaryWorkspaceRemoved", "persistentArtifactsRetained"],
+      "properties": {
+        "temporaryWorkspaceRemoved": { "const": true },
+        "persistentArtifactsRetained": { "const": 0 }
+      }
+    },
+    "checks": { "$ref": "#/$defs/checks" },
+    "reportDigest": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "verdict": { "const": "NON_GATE_PASS" } },
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": { "checks": { "$ref": "#/$defs/passChecks" } }
+      }
+    },
+    {
+      "if": {
+        "properties": { "verdict": { "const": "NON_GATE_FAIL" } },
+        "required": ["verdict"]
+      },
+      "then": {
+        "properties": {
+          "checks": { "not": { "$ref": "#/$defs/passChecks" } }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "peripheralSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedTransactions",
+        "completedTransactions",
+        "exactReplays",
+        "mutatedReplaysRejected",
+        "outageFaults",
+        "recoveries",
+        "totalCents",
+        "pendingTransactions"
+      ],
+      "properties": {
+        "expectedTransactions": { "const": 100 },
+        "completedTransactions": { "const": 100 },
+        "exactReplays": { "const": 100 },
+        "mutatedReplaysRejected": { "const": 1 },
+        "outageFaults": { "const": 1 },
+        "recoveries": { "const": 1 },
+        "totalCents": { "const": 688150 },
+        "pendingTransactions": { "const": 0 }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exactVirtualActorInventory",
+        "allActorsVirtualized",
+        "authorizedBluetoothGraphComplete",
+        "b6AndroidRoleElectionComplete",
+        "b6AndroidDuplicateArbitrationComplete",
+        "connectDisconnectComplete",
+        "fragmentationExercised",
+        "retryExercised",
+        "dedupExercised",
+        "rebootRecoveryComplete",
+        "b8PersistenceComplete",
+        "b9RouteAdvertisementsComplete",
+        "b9MultihopForbidden",
+        "b10ShadowDiagnosticsComplete",
+        "b10BusinessRoutingForbidden",
+        "b10DefaultOff",
+        "invalidCertificateRejected",
+        "backgroundFaultRecovered",
+        "virtualBusinessWorkloadComplete",
+        "automaticCashVirtualCyclesComplete",
+        "fiscalRtVirtualCyclesComplete",
+        "virtualBusinessExternalAccessForbidden",
+        "virtualBusinessCleanupComplete",
+        "syntheticSoakComplete",
+        "zeroSessionLeak",
+        "zeroOutboxLeak",
+        "teardownComplete",
+        "antiPromotionLocked"
+      ],
+      "properties": {
+        "exactVirtualActorInventory": { "type": "boolean" },
+        "allActorsVirtualized": { "const": true },
+        "authorizedBluetoothGraphComplete": { "type": "boolean" },
+        "b6AndroidRoleElectionComplete": { "type": "boolean" },
+        "b6AndroidDuplicateArbitrationComplete": { "type": "boolean" },
+        "connectDisconnectComplete": { "type": "boolean" },
+        "fragmentationExercised": { "type": "boolean" },
+        "retryExercised": { "type": "boolean" },
+        "dedupExercised": { "type": "boolean" },
+        "rebootRecoveryComplete": { "type": "boolean" },
+        "b8PersistenceComplete": { "type": "boolean" },
+        "b9RouteAdvertisementsComplete": { "type": "boolean" },
+        "b9MultihopForbidden": { "type": "boolean" },
+        "b10ShadowDiagnosticsComplete": { "type": "boolean" },
+        "b10BusinessRoutingForbidden": { "type": "boolean" },
+        "b10DefaultOff": { "type": "boolean" },
+        "invalidCertificateRejected": { "type": "boolean" },
+        "backgroundFaultRecovered": { "type": "boolean" },
+        "virtualBusinessWorkloadComplete": { "type": "boolean" },
+        "automaticCashVirtualCyclesComplete": { "type": "boolean" },
+        "fiscalRtVirtualCyclesComplete": { "type": "boolean" },
+        "virtualBusinessExternalAccessForbidden": { "type": "boolean" },
+        "virtualBusinessCleanupComplete": { "type": "boolean" },
+        "syntheticSoakComplete": { "type": "boolean" },
+        "zeroSessionLeak": { "type": "boolean" },
+        "zeroOutboxLeak": { "type": "boolean" },
+        "teardownComplete": { "type": "boolean" },
+        "antiPromotionLocked": { "const": true }
+      }
+    },
+    "passChecks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exactVirtualActorInventory": { "const": true },
+        "allActorsVirtualized": { "const": true },
+        "authorizedBluetoothGraphComplete": { "const": true },
+        "b6AndroidRoleElectionComplete": { "const": true },
+        "b6AndroidDuplicateArbitrationComplete": { "const": true },
+        "connectDisconnectComplete": { "const": true },
+        "fragmentationExercised": { "const": true },
+        "retryExercised": { "const": true },
+        "dedupExercised": { "const": true },
+        "rebootRecoveryComplete": { "const": true },
+        "b8PersistenceComplete": { "const": true },
+        "b9RouteAdvertisementsComplete": { "const": true },
+        "b9MultihopForbidden": { "const": true },
+        "b10ShadowDiagnosticsComplete": { "const": true },
+        "b10BusinessRoutingForbidden": { "const": true },
+        "b10DefaultOff": { "const": true },
+        "invalidCertificateRejected": { "const": true },
+        "backgroundFaultRecovered": { "const": true },
+        "virtualBusinessWorkloadComplete": { "const": true },
+        "automaticCashVirtualCyclesComplete": { "const": true },
+        "fiscalRtVirtualCyclesComplete": { "const": true },
+        "virtualBusinessExternalAccessForbidden": { "const": true },
+        "virtualBusinessCleanupComplete": { "const": true },
+        "syntheticSoakComplete": { "const": true },
+        "zeroSessionLeak": { "const": true },
+        "zeroOutboxLeak": { "const": true },
+        "teardownComplete": { "const": true },
+        "antiPromotionLocked": { "const": true }
+      }
+    }
+  }
+}

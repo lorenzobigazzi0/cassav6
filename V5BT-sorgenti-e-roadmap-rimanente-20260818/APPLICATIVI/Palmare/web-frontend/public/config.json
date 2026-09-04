@@ -1,0 +1,12 @@
+{
+  "appName": "mobile",
+  "apiBaseUrl": "/api",
+  "sseBaseUrl": "/api",
+  "defaultOrderStation": "BAR PRINCIPALE",
+  "features": {
+    "clientPushFirst": true,
+    "wideInvalidateDisabled": true,
+    "clientOptimisticActions": true,
+    "offlineMode": true
+  }
+}

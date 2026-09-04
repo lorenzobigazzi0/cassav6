@@ -1,0 +1,10 @@
+{
+  "task": "MIG-022",
+  "generatedAt": "2026-08-31T12:56:17.178Z",
+  "ok": true,
+  "scope": "backend-runtime",
+  "runtimeFiles": 334,
+  "handlerFiles": 47,
+  "repositoryFiles": 63,
+  "violations": []
+}

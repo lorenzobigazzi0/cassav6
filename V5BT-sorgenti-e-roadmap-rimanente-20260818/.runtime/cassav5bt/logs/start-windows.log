@@ -1,0 +1,94 @@
+﻿2026-08-24 15:06:47 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-24 15:06:50 Avvio battery
+2026-08-24 15:06:53 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-24 15:06:53 Avvio fiscal
+2026-08-24 15:06:54 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-24 15:06:54 Avvio automatic-cash
+2026-08-24 15:06:55 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-24 15:06:55 Avvio printer-farm
+2026-08-24 15:06:55 Health OK (200): http://127.0.0.1:9299/health
+2026-08-24 15:06:55 Avvio backend
+2026-08-24 15:07:01 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-24 15:07:01 Avvio frontend
+2026-08-24 15:07:02 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-24 15:07:02 Cassa V5BT avviata
+2026-08-24 16:20:45 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-24 16:20:46 Porta 5380: terminato pid 11428
+2026-08-24 16:20:46 Porta 5381: terminato pid 22904
+2026-08-24 16:20:46 Porta 8865: terminato pid 13576
+2026-08-24 16:20:47 Porta 9390: terminato pid 18572
+2026-08-24 16:20:47 Porta 9391: terminato pid 14208
+2026-08-24 16:20:47 Porta 9299: terminato pid 6056
+2026-08-24 16:20:49 Avvio battery
+2026-08-24 16:20:49 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-24 16:20:49 Avvio fiscal
+2026-08-24 16:20:50 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-24 16:20:50 Avvio automatic-cash
+2026-08-24 16:20:50 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-24 16:20:50 Avvio printer-farm
+2026-08-24 16:20:51 Health OK (200): http://127.0.0.1:9299/health
+2026-08-24 16:20:51 Avvio backend
+2026-08-24 16:20:53 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-24 16:20:53 Avvio frontend
+2026-08-24 16:20:53 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-24 16:20:53 Cassa V5BT avviata
+2026-08-25 10:15:26 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-25 10:15:28 MySQL non in ascolto: avvio XAMPP
+2026-08-25 10:15:36 Avvio battery
+2026-08-25 10:15:39 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-25 10:15:39 Avvio fiscal
+2026-08-25 10:15:40 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-25 10:15:40 Avvio automatic-cash
+2026-08-25 10:15:41 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-25 10:15:41 Avvio printer-farm
+2026-08-25 10:15:41 Health OK (200): http://127.0.0.1:9299/health
+2026-08-25 10:15:41 Avvio backend
+2026-08-25 10:15:48 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-25 10:15:48 Avvio frontend
+2026-08-25 10:15:48 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-25 10:15:48 Cassa V5BT avviata
+2026-08-26 09:42:44 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-26 09:42:46 MySQL non in ascolto: avvio XAMPP
+2026-08-26 09:42:51 Avvio battery
+2026-08-26 09:42:52 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-26 09:42:52 Avvio fiscal
+2026-08-26 09:42:52 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-26 09:42:52 Avvio automatic-cash
+2026-08-26 09:42:53 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-26 09:42:53 Avvio printer-farm
+2026-08-26 09:42:54 Health OK (200): http://127.0.0.1:9299/health
+2026-08-26 09:42:54 Avvio backend
+2026-08-26 09:42:55 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-26 09:42:55 Avvio frontend
+2026-08-26 09:42:55 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-26 09:42:55 Cassa V5BT avviata
+2026-08-27 09:41:07 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-27 09:41:08 MySQL non in ascolto: avvio XAMPP
+2026-08-27 09:41:14 Avvio battery
+2026-08-27 09:41:17 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-27 09:41:17 Avvio fiscal
+2026-08-27 09:41:18 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-27 09:41:18 Avvio automatic-cash
+2026-08-27 09:41:18 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-27 09:41:18 Avvio printer-farm
+2026-08-27 09:41:19 Health OK (200): http://127.0.0.1:9299/health
+2026-08-27 09:41:19 Avvio backend
+2026-08-27 09:41:22 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-27 09:41:22 Avvio frontend
+2026-08-27 09:41:22 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-27 09:41:22 Cassa V5BT avviata
+2026-08-28 09:32:32 Avvio Cassa V5BT (Windows, hardware=simulated)
+2026-08-28 09:32:34 MySQL non in ascolto: avvio XAMPP
+2026-08-28 09:32:40 Avvio battery
+2026-08-28 09:32:43 Health OK (200): http://127.0.0.1:8865/api/health
+2026-08-28 09:32:43 Avvio fiscal
+2026-08-28 09:32:44 Health OK (200): http://127.0.0.1:9390/api/fiscal/status
+2026-08-28 09:32:44 Avvio automatic-cash
+2026-08-28 09:32:44 Health OK (200): http://127.0.0.1:9391/api/health
+2026-08-28 09:32:44 Avvio printer-farm
+2026-08-28 09:32:45 Health OK (200): http://127.0.0.1:9299/health
+2026-08-28 09:32:45 Avvio backend
+2026-08-28 09:32:51 Health OK (200): http://127.0.0.1:5381/api/health
+2026-08-28 09:32:51 Avvio frontend
+2026-08-28 09:32:51 Health OK (200): https://127.0.0.1:5380/mobile/
+2026-08-28 09:32:51 Cassa V5BT avviata

@@ -1,0 +1,17 @@
+{
+  "appLayerMutualAuth": true,
+  "androidKeyStore": true,
+  "raspberryDeviceRegistry": true,
+  "advertisementStableIds": false,
+  "rotatingAlias": true,
+  "frameEncryption": "AES_256_GCM_or_ChaCha20_Poly1305",
+  "signature": "Ed25519",
+  "keyAgreement": "X25519",
+  "allowUnprovisionedDevelopmentDevices": false,
+  "enrollmentRuntimeEnabledByDefault": false,
+  "enrollmentTokenMinimumBits": 128,
+  "enrollmentTokenOneTime": true,
+  "enrollmentResponseRecoverySeconds": 600,
+  "deviceRegistryFileMode": "0600",
+  "storeAndroidPrivateKeys": false
+}

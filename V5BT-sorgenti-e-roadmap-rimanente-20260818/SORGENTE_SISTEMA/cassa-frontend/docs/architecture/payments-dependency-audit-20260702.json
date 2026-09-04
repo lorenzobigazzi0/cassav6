@@ -1,0 +1,1856 @@
+{
+  "roadmapStep": "K-PRE.0",
+  "generatedAt": "2026-07-02T07:26:37.750Z",
+  "sourceFile": "backend/server.js",
+  "sourceLineCount": 40497,
+  "handlerNames": [
+    "handleFiscalCommand",
+    "handlePaymentMovementReprint",
+    "handlePayTable",
+    "handlePaymentFreeSplit"
+  ],
+  "topLevelDeclarationCount": 1582,
+  "handlers": [
+    {
+      "name": "handleFiscalCommand",
+      "startLine": 37666,
+      "endLine": 37768,
+      "lineCount": 103,
+      "params": [
+        "req",
+        "res"
+      ],
+      "dependencyCount": 13,
+      "dependencies": [
+        {
+          "name": "randomUUID",
+          "kind": "import",
+          "line": 2
+        },
+        {
+          "name": "HttpError",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "sendJson",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "nowIso",
+          "kind": "function",
+          "line": 2635
+        },
+        {
+          "name": "appendAuditEvent",
+          "kind": "const",
+          "line": 12966
+        },
+        {
+          "name": "sanitizePosSettings",
+          "kind": "function",
+          "line": 16317
+        },
+        {
+          "name": "readDb",
+          "kind": "const",
+          "line": 17085
+        },
+        {
+          "name": "writePaymentDb",
+          "kind": "function",
+          "line": 17249
+        },
+        {
+          "name": "buildAuditActor",
+          "kind": "function",
+          "line": 17547
+        },
+        {
+          "name": "validateSessionContext",
+          "kind": "function",
+          "line": 17776
+        },
+        {
+          "name": "executeFiscalProvider",
+          "kind": "function",
+          "line": 20965
+        },
+        {
+          "name": "isPosDemoModeEnabled",
+          "kind": "function",
+          "line": 22801
+        },
+        {
+          "name": "readJsonBody",
+          "kind": "function",
+          "line": 23702
+        }
+      ],
+      "sharedDependencyCandidates": [
+        "randomUUID",
+        "HttpError",
+        "sendJson",
+        "nowIso",
+        "appendAuditEvent",
+        "sanitizePosSettings",
+        "readDb",
+        "writePaymentDb",
+        "buildAuditActor",
+        "validateSessionContext",
+        "executeFiscalProvider",
+        "isPosDemoModeEnabled",
+        "readJsonBody"
+      ],
+      "unknownExternalIdentifiers": [
+        "action",
+        "annull",
+        "createdAt",
+        "createdByUserId",
+        "createdByUsername",
+        "demoMode",
+        "entityId",
+        "entityType",
+        "fiscal_evt_",
+        "fiscalError",
+        "fiscalProvider",
+        "fiscalProviderRef",
+        "fiscalStatus",
+        "g",
+        "i",
+        "id",
+        "menuItems",
+        "message",
+        "ok",
+        "processedAt",
+        "requiresFiscalRetry",
+        "responseCode",
+        "responseMessage",
+        "result",
+        "skipped",
+        "storn"
+      ],
+      "localIdentifierCount": 10
+    },
+    {
+      "name": "handlePaymentMovementReprint",
+      "startLine": 39051,
+      "endLine": 39224,
+      "lineCount": 174,
+      "params": [
+        "req",
+        "res"
+      ],
+      "dependencyCount": 24,
+      "dependencies": [
+        {
+          "name": "HttpError",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "sendJson",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "nowIso",
+          "kind": "function",
+          "line": 2635
+        },
+        {
+          "name": "appendAuditEvent",
+          "kind": "const",
+          "line": 12966
+        },
+        {
+          "name": "ensurePaymentTrackingArrays",
+          "kind": "function",
+          "line": 13271
+        },
+        {
+          "name": "readDb",
+          "kind": "const",
+          "line": 17085
+        },
+        {
+          "name": "writePaymentDb",
+          "kind": "function",
+          "line": 17249
+        },
+        {
+          "name": "buildAuditActor",
+          "kind": "function",
+          "line": 17547
+        },
+        {
+          "name": "validateSessionContext",
+          "kind": "function",
+          "line": 17776
+        },
+        {
+          "name": "queuePrintSpoolWorker",
+          "kind": "function",
+          "line": 20659
+        },
+        {
+          "name": "schedulePosFiscalReprintBackgroundJobs",
+          "kind": "function",
+          "line": 21820
+        },
+        {
+          "name": "hasConfiguredPosFiscalApiDevice",
+          "kind": "function",
+          "line": 22981
+        },
+        {
+          "name": "readJsonBody",
+          "kind": "function",
+          "line": 23702
+        },
+        {
+          "name": "ensureIntegrationOrderComps",
+          "kind": "function",
+          "line": 34342
+        },
+        {
+          "name": "normalizePaymentMovementId",
+          "kind": "function",
+          "line": 38373
+        },
+        {
+          "name": "normalizePaymentMovementAdvancedDetails",
+          "kind": "function",
+          "line": 38381
+        },
+        {
+          "name": "enqueuePaymentMovementAdvancedPrintJobToDb",
+          "kind": "function",
+          "line": 38438
+        },
+        {
+          "name": "findPaymentReprintContainer",
+          "kind": "function",
+          "line": 38482
+        },
+        {
+          "name": "enqueuePaymentMovementReprintJobsToDb",
+          "kind": "function",
+          "line": 38528
+        },
+        {
+          "name": "buildPosFiscalReprintJobsForPaymentContainer",
+          "kind": "function",
+          "line": 38644
+        },
+        {
+          "name": "appendQueuedPosFiscalReprintEvents",
+          "kind": "function",
+          "line": 38712
+        },
+        {
+          "name": "findPaymentStornoCompRecord",
+          "kind": "function",
+          "line": 38728
+        },
+        {
+          "name": "canReprintPaymentMovement",
+          "kind": "function",
+          "line": 38739
+        },
+        {
+          "name": "enqueueStornoMovementReprintJobToDb",
+          "kind": "function",
+          "line": 38963
+        }
+      ],
+      "sharedDependencyCandidates": [
+        "HttpError",
+        "sendJson",
+        "nowIso",
+        "appendAuditEvent",
+        "ensurePaymentTrackingArrays",
+        "readDb",
+        "writePaymentDb",
+        "buildAuditActor",
+        "validateSessionContext",
+        "queuePrintSpoolWorker",
+        "schedulePosFiscalReprintBackgroundJobs",
+        "hasConfiguredPosFiscalApiDevice",
+        "readJsonBody",
+        "ensureIntegrationOrderComps",
+        "normalizePaymentMovementId",
+        "normalizePaymentMovementAdvancedDetails",
+        "enqueuePaymentMovementAdvancedPrintJobToDb",
+        "findPaymentReprintContainer",
+        "enqueuePaymentMovementReprintJobsToDb",
+        "buildPosFiscalReprintJobsForPaymentContainer",
+        "appendQueuedPosFiscalReprintEvents",
+        "findPaymentStornoCompRecord",
+        "canReprintPaymentMovement",
+        "enqueueStornoMovementReprintJobToDb"
+      ],
+      "unknownExternalIdentifiers": [
+        "action",
+        "compId",
+        "detailCount",
+        "details",
+        "entityId",
+        "entityType",
+        "fiscalReissued",
+        "fiscalReprinted",
+        "fiscalReprintPaymentIds",
+        "fiscalReprintQueued",
+        "fiscalReprintReceiptIds",
+        "id",
+        "ok",
+        "orderId",
+        "paymentId",
+        "printerName",
+        "printJobId",
+        "printJobIds",
+        "providerRef",
+        "receiptId",
+        "roomId",
+        "status",
+        "transactions"
+      ],
+      "localIdentifierCount": 18
+    },
+    {
+      "name": "handlePayTable",
+      "startLine": 30499,
+      "endLine": 31500,
+      "lineCount": 1002,
+      "params": [
+        "req",
+        "res"
+      ],
+      "dependencyCount": 66,
+      "dependencies": [
+        {
+          "name": "randomUUID",
+          "kind": "import",
+          "line": 2
+        },
+        {
+          "name": "collectArticleUnitIdsFromPaymentItems",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "isAmountStylePaymentContinuationMode",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "normalizePaymentContinuationSplitMode",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "normalizePaymentLineSelections",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "resolvePaymentOrderRefs",
+          "kind": "import",
+          "line": 77
+        },
+        {
+          "name": "resolveIntegrationLinkedTableIds",
+          "kind": "import",
+          "line": 93
+        },
+        {
+          "name": "resolveIntegrationLogicalTableLabel",
+          "kind": "import",
+          "line": 93
+        },
+        {
+          "name": "sanitizeIntegrationTableLabel",
+          "kind": "import",
+          "line": 93
+        },
+        {
+          "name": "findIntegrationOrderIndexByLookup",
+          "kind": "import",
+          "line": 112
+        },
+        {
+          "name": "HttpError",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "sendJson",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "ensureCommercialBenefitCollections",
+          "kind": "import",
+          "line": 242
+        },
+        {
+          "name": "nowIso",
+          "kind": "function",
+          "line": 2635
+        },
+        {
+          "name": "normalizeSmartCardCode",
+          "kind": "function",
+          "line": 2877
+        },
+        {
+          "name": "publishIntegrationNotificationStreamRefresh",
+          "kind": "function",
+          "line": 3412
+        },
+        {
+          "name": "assertArticleSplitAllowedForTable",
+          "kind": "function",
+          "line": 6130
+        },
+        {
+          "name": "getIntegrationLinkedTableLiveStat",
+          "kind": "function",
+          "line": 6578
+        },
+        {
+          "name": "syncPosTableFinancialsFromIntegrationOrders",
+          "kind": "function",
+          "line": 6928
+        },
+        {
+          "name": "applyBillPaymentsToIntegrationOrders",
+          "kind": "function",
+          "line": 8348
+        },
+        {
+          "name": "buildIntegrationLayoutFromSettings",
+          "kind": "function",
+          "line": 8416
+        },
+        {
+          "name": "sanitizeIntegrationOrder",
+          "kind": "function",
+          "line": 9066
+        },
+        {
+          "name": "normalizePaymentPrintNote",
+          "kind": "const",
+          "line": 10087
+        },
+        {
+          "name": "enqueueMobileElectronicPaymentReceipts",
+          "kind": "function",
+          "line": 11406
+        },
+        {
+          "name": "sanitizeSmartNonFiscalEntry",
+          "kind": "function",
+          "line": 12938
+        },
+        {
+          "name": "appendAuditEvent",
+          "kind": "const",
+          "line": 12966
+        },
+        {
+          "name": "mapPaymentMethodToTransactionType",
+          "kind": "function",
+          "line": 12997
+        },
+        {
+          "name": "normalizePaymentCollectionMetadata",
+          "kind": "function",
+          "line": 13025
+        },
+        {
+          "name": "sanitizePaymentContainerRecord",
+          "kind": "function",
+          "line": 13047
+        },
+        {
+          "name": "sanitizePaymentPartRecord",
+          "kind": "function",
+          "line": 13194
+        },
+        {
+          "name": "sanitizePaymentTransactionRecord",
+          "kind": "function",
+          "line": 13207
+        },
+        {
+          "name": "sanitizeCashTxDenomRecord",
+          "kind": "function",
+          "line": 13255
+        },
+        {
+          "name": "ensurePaymentTrackingArrays",
+          "kind": "function",
+          "line": 13271
+        },
+        {
+          "name": "sanitizePaymentItem",
+          "kind": "function",
+          "line": 13278
+        },
+        {
+          "name": "sanitizePaymentRecord",
+          "kind": "function",
+          "line": 13349
+        },
+        {
+          "name": "sanitizeFiscalReceipt",
+          "kind": "const",
+          "line": 13458
+        },
+        {
+          "name": "normalizeStringList",
+          "kind": "function",
+          "line": 13486
+        },
+        {
+          "name": "normalizeSeatedAtMs",
+          "kind": "function",
+          "line": 13504
+        },
+        {
+          "name": "roundMoney",
+          "kind": "function",
+          "line": 13519
+        },
+        {
+          "name": "assertActiveTableWorkLock",
+          "kind": "function",
+          "line": 13990
+        },
+        {
+          "name": "sanitizePosTable",
+          "kind": "function",
+          "line": 15514
+        },
+        {
+          "name": "getPosBillSubtotal",
+          "kind": "function",
+          "line": 15785
+        },
+        {
+          "name": "buildLegacyPosPaymentBill",
+          "kind": "function",
+          "line": 15832
+        },
+        {
+          "name": "applyAmountPaymentToPosBills",
+          "kind": "function",
+          "line": 15881
+        },
+        {
+          "name": "applyLineSelectionsToPosBills",
+          "kind": "function",
+          "line": 15929
+        },
+        {
+          "name": "paymentIdempotencyCoordinator",
+          "kind": "const",
+          "line": 16635
+        },
+        {
+          "name": "readDb",
+          "kind": "const",
+          "line": 17085
+        },
+        {
+          "name": "writePaymentDb",
+          "kind": "function",
+          "line": 17249
+        },
+        {
+          "name": "buildAuditActor",
+          "kind": "function",
+          "line": 17547
+        },
+        {
+          "name": "validateSessionContext",
+          "kind": "function",
+          "line": 17776
+        },
+        {
+          "name": "findPaymentMethod",
+          "kind": "function",
+          "line": 20922
+        },
+        {
+          "name": "assertUserPaymentMethodAllowed",
+          "kind": "function",
+          "line": 20932
+        },
+        {
+          "name": "executeFiscalProvider",
+          "kind": "function",
+          "line": 20965
+        },
+        {
+          "name": "schedulePosFiscalReceiptBackgroundJob",
+          "kind": "function",
+          "line": 21908
+        },
+        {
+          "name": "maybeIssuePosFiscalReceipt",
+          "kind": "function",
+          "line": 22483
+        },
+        {
+          "name": "isPosDemoModeEnabled",
+          "kind": "function",
+          "line": 22801
+        },
+        {
+          "name": "isMobileDeviceFiscalAllowed",
+          "kind": "function",
+          "line": 22826
+        },
+        {
+          "name": "shouldIssuePosFiscalReceiptForTransaction",
+          "kind": "function",
+          "line": 22997
+        },
+        {
+          "name": "normalizeIdempotencyKey",
+          "kind": "function",
+          "line": 23024
+        },
+        {
+          "name": "appendPaymentProviderAuditEvent",
+          "kind": "function",
+          "line": 23051
+        },
+        {
+          "name": "persistPaymentProviderTransaction",
+          "kind": "function",
+          "line": 23070
+        },
+        {
+          "name": "persistPaymentProviderFailure",
+          "kind": "function",
+          "line": 23105
+        },
+        {
+          "name": "authorizeCardPayment",
+          "kind": "function",
+          "line": 23161
+        },
+        {
+          "name": "findExistingPaymentByIdempotency",
+          "kind": "function",
+          "line": 23283
+        },
+        {
+          "name": "readJsonBody",
+          "kind": "function",
+          "line": 23702
+        },
+        {
+          "name": "paymentTransactionRepository",
+          "kind": "const",
+          "line": 39662
+        }
+      ],
+      "sharedDependencyCandidates": [
+        "randomUUID",
+        "collectArticleUnitIdsFromPaymentItems",
+        "isAmountStylePaymentContinuationMode",
+        "normalizePaymentContinuationSplitMode",
+        "normalizePaymentLineSelections",
+        "resolvePaymentOrderRefs",
+        "resolveIntegrationLinkedTableIds",
+        "resolveIntegrationLogicalTableLabel",
+        "sanitizeIntegrationTableLabel",
+        "findIntegrationOrderIndexByLookup",
+        "HttpError",
+        "sendJson",
+        "ensureCommercialBenefitCollections",
+        "nowIso",
+        "normalizeSmartCardCode",
+        "publishIntegrationNotificationStreamRefresh",
+        "assertArticleSplitAllowedForTable",
+        "getIntegrationLinkedTableLiveStat",
+        "syncPosTableFinancialsFromIntegrationOrders",
+        "applyBillPaymentsToIntegrationOrders",
+        "buildIntegrationLayoutFromSettings",
+        "sanitizeIntegrationOrder",
+        "normalizePaymentPrintNote",
+        "enqueueMobileElectronicPaymentReceipts",
+        "sanitizeSmartNonFiscalEntry",
+        "appendAuditEvent",
+        "mapPaymentMethodToTransactionType",
+        "normalizePaymentCollectionMetadata",
+        "sanitizePaymentContainerRecord",
+        "sanitizePaymentPartRecord",
+        "sanitizePaymentTransactionRecord",
+        "sanitizeCashTxDenomRecord",
+        "ensurePaymentTrackingArrays",
+        "sanitizePaymentItem",
+        "sanitizePaymentRecord",
+        "sanitizeFiscalReceipt",
+        "normalizeStringList",
+        "normalizeSeatedAtMs",
+        "roundMoney",
+        "assertActiveTableWorkLock",
+        "sanitizePosTable",
+        "getPosBillSubtotal",
+        "buildLegacyPosPaymentBill",
+        "applyAmountPaymentToPosBills",
+        "applyLineSelectionsToPosBills",
+        "paymentIdempotencyCoordinator",
+        "readDb",
+        "writePaymentDb",
+        "buildAuditActor",
+        "validateSessionContext",
+        "findPaymentMethod",
+        "assertUserPaymentMethodAllowed",
+        "executeFiscalProvider",
+        "schedulePosFiscalReceiptBackgroundJob",
+        "maybeIssuePosFiscalReceipt",
+        "isPosDemoModeEnabled",
+        "isMobileDeviceFiscalAllowed",
+        "shouldIssuePosFiscalReceiptForTransaction",
+        "normalizeIdempotencyKey",
+        "appendPaymentProviderAuditEvent",
+        "persistPaymentProviderTransaction",
+        "persistPaymentProviderFailure",
+        "authorizeCardPayment",
+        "findExistingPaymentByIdempotency",
+        "readJsonBody",
+        "paymentTransactionRepository"
+      ],
+      "unknownExternalIdentifiers": [
+        "_",
+        "action",
+        "after",
+        "amountDue",
+        "amountPaid",
+        "articleUnitIds",
+        "authorization",
+        "automaticCashPaymentOperationId",
+        "before",
+        "billId",
+        "billIds",
+        "clientApp",
+        "clientPaymentId",
+        "code",
+        "collectedByDeviceUuid",
+        "collectedByUserId",
+        "collectedByUsername",
+        "command",
+        "createdAt",
+        "createdByUserId",
+        "createdByUsername",
+        "currency",
+        "customerId",
+        "deferSchedule",
+        "denom_in_",
+        "denom_out_",
+        "denomCents",
+        "description",
+        "details",
+        "deviceUuid",
+        "direction",
+        "dueAmount",
+        "endpoint",
+        "entityId",
+        "entityType",
+        "fallbackOrderId",
+        "fiscal",
+        "fiscal_",
+        "fiscalDocNo",
+        "fiscalDocType",
+        "fiscalIssuedAt",
+        "fiscalIssuedBy",
+        "fiscalProvider",
+        "fiscalRecoveryRequired",
+        "fiscalWarning",
+        "g",
+        "id",
+        "idempotent",
+        "index",
+        "issuedAt",
+        "issuedBy",
+        "items",
+        "keptOccupied",
+        "key",
+        "kind",
+        "lineSelections",
+        "linesSnapshot",
+        "message",
+        "methodId",
+        "methodLabel",
+        "middleware",
+        "nextStatus",
+        "note",
+        "number",
+        "ok",
+        "orderIds",
+        "Pagamento",
+        "paidAmount",
+        "part_",
+        "partNo",
+        "partsCount",
+        "pay_",
+        "payment",
+        "paymentContainerId",
+        "paymentItems",
+        "paymentMethod",
+        "paymentMethodLabel",
+        "paymentPartId",
+        "paymentSource",
+        "paymentStatus",
+        "paymentTxId",
+        "pendingBills",
+        "phase",
+        "posFiscalReceipt",
+        "posProvider",
+        "posTxRef",
+        "printerName",
+        "provider",
+        "providerType",
+        "ptx_",
+        "purpose",
+        "qty",
+        "receiptId",
+        "requireExisting",
+        "requiresFiscalRetry",
+        "responseCode",
+        "responseMessage",
+        "roomId",
+        "scope",
+        "seatedAt",
+        "selectedBillIds",
+        "settlementError",
+        "settlementResponse",
+        "smart",
+        "smart_nf_",
+        "source",
+        "splitType",
+        "status",
+        "tableCovers",
+        "tableNumber",
+        "Tavolo",
+        "totalDue",
+        "transaction",
+        "transactionId",
+        "transactions",
+        "tx_",
+        "workflowStatus"
+      ],
+      "localIdentifierCount": 98
+    },
+    {
+      "name": "handlePaymentFreeSplit",
+      "startLine": 32037,
+      "endLine": 33444,
+      "lineCount": 1408,
+      "params": [
+        "req",
+        "res"
+      ],
+      "dependencyCount": 69,
+      "dependencies": [
+        {
+          "name": "randomUUID",
+          "kind": "import",
+          "line": 2
+        },
+        {
+          "name": "normalizePaymentContinuationSplitMode",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "normalizePaymentSplitType",
+          "kind": "import",
+          "line": 69
+        },
+        {
+          "name": "resolvePaymentOrderRefs",
+          "kind": "import",
+          "line": 77
+        },
+        {
+          "name": "resolveIntegrationLogicalTableLabel",
+          "kind": "import",
+          "line": 93
+        },
+        {
+          "name": "HttpError",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "sendJson",
+          "kind": "import",
+          "line": 138
+        },
+        {
+          "name": "commercialBenefitCentsToMoney",
+          "kind": "import",
+          "line": 242
+        },
+        {
+          "name": "ensureCommercialBenefitCollections",
+          "kind": "import",
+          "line": 242
+        },
+        {
+          "name": "redeemCommercialBenefitApplications",
+          "kind": "import",
+          "line": 242
+        },
+        {
+          "name": "nowIso",
+          "kind": "function",
+          "line": 2635
+        },
+        {
+          "name": "publishIntegrationNotificationStreamRefresh",
+          "kind": "function",
+          "line": 3412
+        },
+        {
+          "name": "assertArticleSplitAllowedForTable",
+          "kind": "function",
+          "line": 6130
+        },
+        {
+          "name": "getIntegrationTableLiveStat",
+          "kind": "function",
+          "line": 6488
+        },
+        {
+          "name": "normalizePaymentResponseTableDue",
+          "kind": "function",
+          "line": 6613
+        },
+        {
+          "name": "buildIntegrationTableLiveStats",
+          "kind": "function",
+          "line": 6647
+        },
+        {
+          "name": "overlayIntegrationLayoutFinancials",
+          "kind": "function",
+          "line": 6865
+        },
+        {
+          "name": "syncPosTableFinancialsFromIntegrationOrders",
+          "kind": "function",
+          "line": 6928
+        },
+        {
+          "name": "summarizeIntegrationPaymentReadiness",
+          "kind": "function",
+          "line": 7148
+        },
+        {
+          "name": "applyIntegrationPaymentToOrders",
+          "kind": "function",
+          "line": 7209
+        },
+        {
+          "name": "centsToMoney",
+          "kind": "const",
+          "line": 7360
+        },
+        {
+          "name": "moneyToCents",
+          "kind": "const",
+          "line": 7360
+        },
+        {
+          "name": "validateFreeSplitAuthoritativePayable",
+          "kind": "function",
+          "line": 7370
+        },
+        {
+          "name": "isCommercialBenefitOnlyPaymentRequest",
+          "kind": "function",
+          "line": 7664
+        },
+        {
+          "name": "summarizeFreeSplitPaymentRequest",
+          "kind": "function",
+          "line": 7680
+        },
+        {
+          "name": "normalizePaymentCommercialBenefitApplicationRefs",
+          "kind": "function",
+          "line": 7762
+        },
+        {
+          "name": "summarizePaymentCommercialBenefitApplications",
+          "kind": "function",
+          "line": 7773
+        },
+        {
+          "name": "normalizePaymentAdminAdjustment",
+          "kind": "function",
+          "line": 7913
+        },
+        {
+          "name": "findCompletedPaymentContainerForFiscalReplay",
+          "kind": "function",
+          "line": 8030
+        },
+        {
+          "name": "collectPaymentPartsAndTransactionsForContainer",
+          "kind": "function",
+          "line": 8064
+        },
+        {
+          "name": "applyPaymentAdminAdjustmentToOrders",
+          "kind": "function",
+          "line": 8211
+        },
+        {
+          "name": "buildIntegrationLayoutFromSettings",
+          "kind": "function",
+          "line": 8416
+        },
+        {
+          "name": "normalizePaymentPrintNote",
+          "kind": "const",
+          "line": 10087
+        },
+        {
+          "name": "enqueueMobileElectronicPaymentReceipts",
+          "kind": "function",
+          "line": 11406
+        },
+        {
+          "name": "appendAuditEvent",
+          "kind": "const",
+          "line": 12966
+        },
+        {
+          "name": "normalizePaymentMethodType",
+          "kind": "function",
+          "line": 12983
+        },
+        {
+          "name": "normalizePaymentCollectionMetadata",
+          "kind": "function",
+          "line": 13025
+        },
+        {
+          "name": "sanitizePaymentContainerRecord",
+          "kind": "function",
+          "line": 13047
+        },
+        {
+          "name": "sanitizePaymentPartRecord",
+          "kind": "function",
+          "line": 13194
+        },
+        {
+          "name": "sanitizePaymentTransactionRecord",
+          "kind": "function",
+          "line": 13207
+        },
+        {
+          "name": "sanitizeCashTxDenomRecord",
+          "kind": "function",
+          "line": 13255
+        },
+        {
+          "name": "ensurePaymentTrackingArrays",
+          "kind": "function",
+          "line": 13271
+        },
+        {
+          "name": "sanitizePaymentRecord",
+          "kind": "function",
+          "line": 13349
+        },
+        {
+          "name": "normalizeStringList",
+          "kind": "function",
+          "line": 13486
+        },
+        {
+          "name": "roundMoney",
+          "kind": "function",
+          "line": 13519
+        },
+        {
+          "name": "assertActiveTableWorkLock",
+          "kind": "function",
+          "line": 13990
+        },
+        {
+          "name": "sanitizePosTable",
+          "kind": "function",
+          "line": 15514
+        },
+        {
+          "name": "sanitizePosSettings",
+          "kind": "function",
+          "line": 16317
+        },
+        {
+          "name": "paymentIdempotencyCoordinator",
+          "kind": "const",
+          "line": 16635
+        },
+        {
+          "name": "readDb",
+          "kind": "const",
+          "line": 17085
+        },
+        {
+          "name": "writePaymentDb",
+          "kind": "function",
+          "line": 17249
+        },
+        {
+          "name": "buildAuditActor",
+          "kind": "function",
+          "line": 17547
+        },
+        {
+          "name": "validateSessionContext",
+          "kind": "function",
+          "line": 17776
+        },
+        {
+          "name": "assertUserPaymentMethodAllowed",
+          "kind": "function",
+          "line": 20932
+        },
+        {
+          "name": "executeFiscalProvider",
+          "kind": "function",
+          "line": 20965
+        },
+        {
+          "name": "schedulePosFiscalReceiptBackgroundJob",
+          "kind": "function",
+          "line": 21908
+        },
+        {
+          "name": "maybeIssuePosFiscalReceipt",
+          "kind": "function",
+          "line": 22483
+        },
+        {
+          "name": "shouldIssuePosFiscalReceiptForPayload",
+          "kind": "function",
+          "line": 22774
+        },
+        {
+          "name": "isPosDemoModeEnabled",
+          "kind": "function",
+          "line": 22801
+        },
+        {
+          "name": "isMobileDeviceFiscalAllowed",
+          "kind": "function",
+          "line": 22826
+        },
+        {
+          "name": "hasConfiguredPosFiscalApiDevice",
+          "kind": "function",
+          "line": 22981
+        },
+        {
+          "name": "normalizeIdempotencyKey",
+          "kind": "function",
+          "line": 23024
+        },
+        {
+          "name": "appendPaymentProviderAuditEvent",
+          "kind": "function",
+          "line": 23051
+        },
+        {
+          "name": "persistPaymentProviderTransaction",
+          "kind": "function",
+          "line": 23070
+        },
+        {
+          "name": "persistPaymentProviderFailure",
+          "kind": "function",
+          "line": 23105
+        },
+        {
+          "name": "authorizeCardPayment",
+          "kind": "function",
+          "line": 23161
+        },
+        {
+          "name": "findExistingPaymentByIdempotency",
+          "kind": "function",
+          "line": 23283
+        },
+        {
+          "name": "readJsonBody",
+          "kind": "function",
+          "line": 23702
+        },
+        {
+          "name": "paymentTransactionRepository",
+          "kind": "const",
+          "line": 39662
+        }
+      ],
+      "sharedDependencyCandidates": [
+        "randomUUID",
+        "normalizePaymentContinuationSplitMode",
+        "normalizePaymentSplitType",
+        "resolvePaymentOrderRefs",
+        "resolveIntegrationLogicalTableLabel",
+        "HttpError",
+        "sendJson",
+        "commercialBenefitCentsToMoney",
+        "ensureCommercialBenefitCollections",
+        "redeemCommercialBenefitApplications",
+        "nowIso",
+        "publishIntegrationNotificationStreamRefresh",
+        "assertArticleSplitAllowedForTable",
+        "getIntegrationTableLiveStat",
+        "normalizePaymentResponseTableDue",
+        "buildIntegrationTableLiveStats",
+        "overlayIntegrationLayoutFinancials",
+        "syncPosTableFinancialsFromIntegrationOrders",
+        "summarizeIntegrationPaymentReadiness",
+        "applyIntegrationPaymentToOrders",
+        "centsToMoney",
+        "moneyToCents",
+        "validateFreeSplitAuthoritativePayable",
+        "isCommercialBenefitOnlyPaymentRequest",
+        "summarizeFreeSplitPaymentRequest",
+        "normalizePaymentCommercialBenefitApplicationRefs",
+        "summarizePaymentCommercialBenefitApplications",
+        "normalizePaymentAdminAdjustment",
+        "findCompletedPaymentContainerForFiscalReplay",
+        "collectPaymentPartsAndTransactionsForContainer",
+        "applyPaymentAdminAdjustmentToOrders",
+        "buildIntegrationLayoutFromSettings",
+        "normalizePaymentPrintNote",
+        "enqueueMobileElectronicPaymentReceipts",
+        "appendAuditEvent",
+        "normalizePaymentMethodType",
+        "normalizePaymentCollectionMetadata",
+        "sanitizePaymentContainerRecord",
+        "sanitizePaymentPartRecord",
+        "sanitizePaymentTransactionRecord",
+        "sanitizeCashTxDenomRecord",
+        "ensurePaymentTrackingArrays",
+        "sanitizePaymentRecord",
+        "normalizeStringList",
+        "roundMoney",
+        "assertActiveTableWorkLock",
+        "sanitizePosTable",
+        "sanitizePosSettings",
+        "paymentIdempotencyCoordinator",
+        "readDb",
+        "writePaymentDb",
+        "buildAuditActor",
+        "validateSessionContext",
+        "assertUserPaymentMethodAllowed",
+        "executeFiscalProvider",
+        "schedulePosFiscalReceiptBackgroundJob",
+        "maybeIssuePosFiscalReceipt",
+        "shouldIssuePosFiscalReceiptForPayload",
+        "isPosDemoModeEnabled",
+        "isMobileDeviceFiscalAllowed",
+        "hasConfiguredPosFiscalApiDevice",
+        "normalizeIdempotencyKey",
+        "appendPaymentProviderAuditEvent",
+        "persistPaymentProviderTransaction",
+        "persistPaymentProviderFailure",
+        "authorizeCardPayment",
+        "findExistingPaymentByIdempotency",
+        "readJsonBody",
+        "paymentTransactionRepository"
+      ],
+      "unknownExternalIdentifiers": [
+        "_",
+        "action",
+        "adjustment",
+        "adjustmentKind",
+        "allowCommercialBenefitOnly",
+        "alreadySettledDue",
+        "amount",
+        "applicationId",
+        "authorization",
+        "balanceAfterCents",
+        "benefitAmountCents",
+        "billId",
+        "billIds",
+        "campaignId",
+        "cardAuthorization",
+        "cashDenoms",
+        "clientApp",
+        "clientPaymentId",
+        "code",
+        "collectedByDeviceUuid",
+        "collectedByUserId",
+        "collectedByUsername",
+        "command",
+        "commercialBenefitApplicationIds",
+        "couponId",
+        "createdAt",
+        "createdByUserId",
+        "createdByUsername",
+        "currency",
+        "customerId",
+        "deferSchedule",
+        "denom_in_",
+        "denom_out_",
+        "denomCents",
+        "details",
+        "direction",
+        "doc_",
+        "endpoint",
+        "entityId",
+        "entityType",
+        "fallbackOrderId",
+        "fiscal",
+        "fiscalIssuedAt",
+        "fiscalIssuedBy",
+        "fiscalRecoveryRequired",
+        "fiscalReplay",
+        "fiscalWarnings",
+        "forfeitedCents",
+        "g",
+        "hasLineSelections",
+        "idempotent",
+        "index",
+        "issuedBy",
+        "items",
+        "keptOccupied",
+        "key",
+        "lineSelections",
+        "linesSnapshot",
+        "liveStats",
+        "menuItems",
+        "message",
+        "methodIds",
+        "methodType",
+        "nella",
+        "nextStatus",
+        "non",
+        "note",
+        "now",
+        "ok",
+        "orderIds",
+        "part",
+        "part_",
+        "parts",
+        "partsCount",
+        "pay_",
+        "payableDue",
+        "payment",
+        "paymentContainerId",
+        "paymentMethodId",
+        "paymentMethodLabel",
+        "paymentPartId",
+        "paymentTxId",
+        "pendingBills",
+        "phase",
+        "pos",
+        "posFiscalReceipts",
+        "posProvider",
+        "posSettings",
+        "posTxRef",
+        "printerName",
+        "provider",
+        "providerType",
+        "ptx_",
+        "purpose",
+        "qty",
+        "quota",
+        "Quota",
+        "requireExisting",
+        "requiresFiscalRetry",
+        "scope",
+        "selectedArticleDue",
+        "selectedBillIds",
+        "senza",
+        "settlementResponse",
+        "source",
+        "splitMode",
+        "status",
+        "tableBills",
+        "tableCovers",
+        "tableLabel",
+        "tableNumber",
+        "transaction",
+        "transactionId",
+        "transactions",
+        "Transazione",
+        "transazioni",
+        "tx",
+        "tx_",
+        "valida"
+      ],
+      "localIdentifierCount": 145
+    }
+  ],
+  "sharedDependencies": [
+    {
+      "name": "HttpError",
+      "kind": "import",
+      "line": 138,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sendJson",
+      "kind": "import",
+      "line": 138,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "nowIso",
+      "kind": "function",
+      "line": 2635,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "appendAuditEvent",
+      "kind": "const",
+      "line": 12966,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "readDb",
+      "kind": "const",
+      "line": 17085,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "writePaymentDb",
+      "kind": "function",
+      "line": 17249,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "buildAuditActor",
+      "kind": "function",
+      "line": 17547,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "validateSessionContext",
+      "kind": "function",
+      "line": 17776,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "readJsonBody",
+      "kind": "function",
+      "line": 23702,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "randomUUID",
+      "kind": "import",
+      "line": 2,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "ensurePaymentTrackingArrays",
+      "kind": "function",
+      "line": 13271,
+      "handlers": [
+        "handlePaymentMovementReprint",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "executeFiscalProvider",
+      "kind": "function",
+      "line": 20965,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "isPosDemoModeEnabled",
+      "kind": "function",
+      "line": 22801,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "normalizePaymentContinuationSplitMode",
+      "kind": "import",
+      "line": 69,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "resolvePaymentOrderRefs",
+      "kind": "import",
+      "line": 77,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "resolveIntegrationLogicalTableLabel",
+      "kind": "import",
+      "line": 93,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "ensureCommercialBenefitCollections",
+      "kind": "import",
+      "line": 242,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "publishIntegrationNotificationStreamRefresh",
+      "kind": "function",
+      "line": 3412,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "assertArticleSplitAllowedForTable",
+      "kind": "function",
+      "line": 6130,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "syncPosTableFinancialsFromIntegrationOrders",
+      "kind": "function",
+      "line": 6928,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "buildIntegrationLayoutFromSettings",
+      "kind": "function",
+      "line": 8416,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "normalizePaymentPrintNote",
+      "kind": "const",
+      "line": 10087,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "enqueueMobileElectronicPaymentReceipts",
+      "kind": "function",
+      "line": 11406,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "normalizePaymentCollectionMetadata",
+      "kind": "function",
+      "line": 13025,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePaymentContainerRecord",
+      "kind": "function",
+      "line": 13047,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePaymentPartRecord",
+      "kind": "function",
+      "line": 13194,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePaymentTransactionRecord",
+      "kind": "function",
+      "line": 13207,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizeCashTxDenomRecord",
+      "kind": "function",
+      "line": 13255,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePaymentRecord",
+      "kind": "function",
+      "line": 13349,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "normalizeStringList",
+      "kind": "function",
+      "line": 13486,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "roundMoney",
+      "kind": "function",
+      "line": 13519,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "assertActiveTableWorkLock",
+      "kind": "function",
+      "line": 13990,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePosTable",
+      "kind": "function",
+      "line": 15514,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "sanitizePosSettings",
+      "kind": "function",
+      "line": 16317,
+      "handlers": [
+        "handleFiscalCommand",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "paymentIdempotencyCoordinator",
+      "kind": "const",
+      "line": 16635,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "assertUserPaymentMethodAllowed",
+      "kind": "function",
+      "line": 20932,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "schedulePosFiscalReceiptBackgroundJob",
+      "kind": "function",
+      "line": 21908,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "maybeIssuePosFiscalReceipt",
+      "kind": "function",
+      "line": 22483,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "isMobileDeviceFiscalAllowed",
+      "kind": "function",
+      "line": 22826,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "hasConfiguredPosFiscalApiDevice",
+      "kind": "function",
+      "line": 22981,
+      "handlers": [
+        "handlePaymentMovementReprint",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "normalizeIdempotencyKey",
+      "kind": "function",
+      "line": 23024,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "appendPaymentProviderAuditEvent",
+      "kind": "function",
+      "line": 23051,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "persistPaymentProviderTransaction",
+      "kind": "function",
+      "line": 23070,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "persistPaymentProviderFailure",
+      "kind": "function",
+      "line": 23105,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "authorizeCardPayment",
+      "kind": "function",
+      "line": 23161,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "findExistingPaymentByIdempotency",
+      "kind": "function",
+      "line": 23283,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    },
+    {
+      "name": "paymentTransactionRepository",
+      "kind": "const",
+      "line": 39662,
+      "handlers": [
+        "handlePayTable",
+        "handlePaymentFreeSplit"
+      ]
+    }
+  ],
+  "notes": [
+    "Parser minimale senza dipendenze esterne: maschera commenti/stringhe, individua range funzione, binding locali e dichiarazioni top-level.",
+    "dependencies contiene identificatori liberi dell'handler che corrispondono a dichiarazioni top-level di server.js: sono i candidati da passare alla factory durante K-PRE.1.",
+    "unknownExternalIdentifiers va rivisto manualmente: in genere contiene chiavi oggetto, parole in template literal o globali non mappati."
+  ]
+}

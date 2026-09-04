@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "sessionId",
+    "messageId",
+    "ackType"
+  ],
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$"
+    },
+    "messageId": {
+      "type": "string"
+    },
+    "ackType": {
+      "enum": [
+        "RECEIVED",
+        "DURABLE",
+        "REJECTED"
+      ]
+    },
+    "errorCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Directory migrazioni: /home/admin/cassav6-mig006-20260901g/backend/db/postgresql/migrations
+Migrazioni applicate: 1
+Migrazioni gia presenti: 5
+UP 006_audit_events_partitioned_retention 62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad
+Esito finale: ok
+Directory migrazioni: /home/admin/cassav6-mig006-20260901g/backend/db/postgresql/migrations
+Migrazioni applicate: 0
+Migrazioni gia presenti: 6
+Esito finale: ok

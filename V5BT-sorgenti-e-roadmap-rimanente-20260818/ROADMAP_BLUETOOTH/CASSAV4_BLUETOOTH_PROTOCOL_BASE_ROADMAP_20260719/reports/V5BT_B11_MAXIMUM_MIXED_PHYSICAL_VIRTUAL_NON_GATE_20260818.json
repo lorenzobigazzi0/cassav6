@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 3,
+  "harnessVersion": "3.0.0",
+  "phase": "B11",
+  "mode": "MAXIMUM_MIXED_PHYSICAL_VIRTUAL_SYSTEM_NON_GATE",
+  "profile": "mixed-physical",
+  "evidenceClass": "MIXED_NON_GATE_EVIDENCE",
+  "verdict": "MIXED_NON_GATE_INCOMPLETE",
+  "gateImpact": "NONE",
+  "promotionAllowed": false,
+  "officialEvidence": false,
+  "statusMutationAllowed": false,
+  "officialProgressPercent": 49,
+  "b11Gate": "PENDING",
+  "composedAt": "2026-08-18T11:26:26.521Z",
+  "timeBasis": "WALL_CLOCK_ATTESTATION_PLUS_DETERMINISTIC_SIMULATION",
+  "composerHardwareAccess": false,
+  "physicalEvidenceConsumed": true,
+  "actorInventory": {
+    "totalActors": 16,
+    "physicalActors": 4,
+    "virtualActors": 12,
+    "roles": {
+      "HANDHELD": {
+        "total": 10,
+        "physical": 2,
+        "virtual": 8
+      },
+      "STATION": {
+        "total": 3,
+        "physical": 1,
+        "virtual": 2
+      },
+      "RASPBERRY": {
+        "total": 1,
+        "physical": 1,
+        "virtual": 0
+      },
+      "AUTOMATIC_CASH": {
+        "total": 1,
+        "physical": 0,
+        "virtual": 1
+      },
+      "FISCAL_RT": {
+        "total": 1,
+        "physical": 0,
+        "virtual": 1
+      }
+    }
+  },
+  "sourceBindings": {
+    "physicalAttestationSha256": "b57275d16504e7b6a017cd4be38a36883aadb971a665bd46cf71f9c5bbd7c587",
+    "physicalAttestationDigest": "cb2eb7896d9ea169ea7e407faa00621ae90d3263c141f609f3c98be4594ff6e5",
+    "physicalInventorySha256": "9dd2e8f1c50032cf77961265740aab587d6572b22a7bb16ed2839a25a22d6885",
+    "simulatedReportSha256": "a439a52f1d7b2405359509f7c715a5f68ea7f673b0d86ea1b468f7c02ae0629a",
+    "simulatedReportDigest": "6b527f1003329004628dc79abad1db2d2ca607a68551f7030e699abda7ef8f37"
+  },
+  "physicalPresence": {
+    "requiredPhysicalActors": 4,
+    "observedPhysicalActors": 2,
+    "requiredHandhelds": 2,
+    "observedHandhelds": 2,
+    "requiredStations": 1,
+    "observedStations": 0,
+    "requiredRaspberry": 1,
+    "observedRaspberry": 0,
+    "complete": false,
+    "virtualSubstitutionAllowed": false
+  },
+  "physicalFunctionalCoverage": {
+    "readinessStatus": "MIXED_PHYSICAL_INCOMPLETE",
+    "stationSigningPolicy": "WAIVED_NON_GATE",
+    "stationSigningVerified": false,
+    "gateEligible": false,
+    "inventoryReadinessComplete": false,
+    "radioWorkloadStatus": "NOT_RUN",
+    "physicalCyclesCompleted": 0,
+    "physicalBusinessStatus": "NOT_RUN",
+    "physicalActionsCompleted": 0,
+    "physicalHandheldCommandsCompleted": 0,
+    "continuityStatus": "NOT_RUN",
+    "monitoredPhysicalActors": 0,
+    "physicalSoakStatus": "NOT_RUN",
+    "physicalSoakObservedMs": 0,
+    "physicalSoakWallClock": false,
+    "campaignEvidenceCommitment": null
+  },
+  "coveragePartition": {
+    "cyclesPerLink": 100,
+    "realReal": {
+      "linkCount": 6,
+      "requiredCycles": 600,
+      "completedPhysicalCycles": 0,
+      "attribution": "PHYSICAL_CAMPAIGN_ONLY"
+    },
+    "logicalCrossDomain": {
+      "linkCount": 40,
+      "requiredCycles": 4000,
+      "completedSoftwareCycles": 4000,
+      "attribution": "SOFTWARE_MODEL_ONLY"
+    },
+    "virtualOnly": {
+      "linkCount": 45,
+      "requiredCycles": 4500,
+      "completedSoftwareCycles": 4500,
+      "attribution": "SOFTWARE_MODEL_ONLY"
+    },
+    "totalLogicalLinks": 91,
+    "totalRequiredCycles": 9100
+  },
+  "simulatedScaleCoverage": {
+    "sourceMode": "MAXIMUM_VIRTUALIZED_SYSTEM_NON_GATE",
+    "logicalActorsModeled": 16,
+    "logicalBluetoothNodesModeled": 14,
+    "logicalLinksModeled": 91,
+    "softwareModelCompletedCycles": 9100,
+    "softwareAttributedCycles": 8500,
+    "physicalSlotSurrogateCyclesExcluded": 600,
+    "softwareModelBusinessActions": 2600,
+    "softwareAttributedVirtualActions": 2000,
+    "physicalSlotSurrogateActionsExcluded": 600,
+    "attribution": "SOFTWARE_MODEL_ONLY"
+  },
+  "virtualPeripherals": {
+    "automaticCashInstances": 1,
+    "fiscalRtInstances": 1,
+    "realInstances": 0
+  },
+  "limitations": {
+    "mixedProfileIsOfficialGateEvidence": false,
+    "simulatedCyclesAttributedToPhysicalActors": false,
+    "simulatedBusinessActionsAttributedToPhysicalActors": false,
+    "physicalPassRequiresSeparateCampaignEvidence": true,
+    "stationSignatureWaiverCanPromoteGate": false
+  },
+  "checks": {
+    "exactMixedActorInventory": true,
+    "physicalAttestationFresh": true,
+    "physicalAttestationRedacted": true,
+    "physicalRoleConfigurationExact": true,
+    "physicalPresenceComplete": false,
+    "physicalRuntimeReadinessComplete": false,
+    "stationSigningPolicySatisfied": true,
+    "physicalRadioWorkloadComplete": false,
+    "physicalBusinessWorkloadComplete": false,
+    "continuityMonitoringComplete": false,
+    "physicalWallClockSoakComplete": false,
+    "simulatedScaleReportValid": true,
+    "simulatedCoveragePartitionComplete": true,
+    "virtualPeripheralsOnly": true,
+    "attributionSeparated": true,
+    "antiPromotionLocked": true
+  },
+  "reportDigest": "79b733a08b0a32cc6bc579bfb94f63d992ec195ad2451b4ab8b4560fd25c79ea"
+}

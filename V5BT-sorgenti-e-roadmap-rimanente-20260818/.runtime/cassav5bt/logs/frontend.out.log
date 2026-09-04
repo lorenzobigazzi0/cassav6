@@ -1,0 +1,30 @@
+[24/08/2026 15:07:01,95] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865
+[24/08/2026 16:20:53,32] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865
+[25/08/2026 10:15:48,32] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865
+[26/08/2026  9:42:55,23] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865
+[27/08/2026  9:41:22,14] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865
+[28/08/2026  9:32:51,13] avvio frontend 
+[frontends] Static server attivo su https://0.0.0.0:5380
+[frontends] URL principali: /mobile/ | /cassa/ | /postazione/ | /impostazioni/ | /monitor/ | /prenotazioni/ | /batteria/
+[frontends] Proxy API verso http://127.0.0.1:5381
+[frontends] Proxy batteria verso http://127.0.0.1:8865

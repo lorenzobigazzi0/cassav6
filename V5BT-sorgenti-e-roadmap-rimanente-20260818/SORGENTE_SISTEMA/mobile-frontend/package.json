@@ -1,0 +1,54 @@
+{
+  "name": "pos-frontend",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "cert:lan": "node scripts/create-lan-cert.mjs",
+    "dev:lan:https": "vite --mode lanhttps --host 0.0.0.0 --port 5280",
+    "dev:https:lan": "npm run dev:lan:https",
+    "certs:mkcert": "npm run cert:lan",
+    "typecheck": "tsc -b",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:phase8": "vitest run tests/realtimeEventEnvelope.test.ts tests/notificationCenterSession.test.tsx tests/tablesWorkspaceOptimistic.test.ts",
+    "test:static": "vitest run tests/static",
+    "test:e2e": "playwright test --pass-with-no-tests",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.62.0",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^10.4.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.59.4",
+    "vite": "^5.4.8",
+    "vitest": "^4.1.6"
+  }
+}

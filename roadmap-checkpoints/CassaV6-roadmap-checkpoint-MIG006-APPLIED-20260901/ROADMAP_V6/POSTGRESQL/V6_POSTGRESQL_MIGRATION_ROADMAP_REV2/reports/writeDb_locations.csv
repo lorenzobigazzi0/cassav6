@@ -1,0 +1,92 @@
+file,line,code
+backend/server.js,16525,"const result = await appStateRepository.writeDb(db, writeOptions);"
+backend/server.js,16564,"await writeDb(snapshot, { metricLabel: `${label}.backgroundFlush.appStateWrite`, ...flushOptions });"
+backend/server.js,16663,"return writeDb(db, {"
+backend/server.js,16755,"return writeDb(db, {"
+backend/server.js,16764,"return writeDb(db, {"
+backend/server.js,16791,"return writeDb(db, {"
+backend/server.js,16801,"return writeDb(db, {"
+backend/server.js,16810,"return writeDb(db, {"
+backend/server.js,17078,"await writeDb(db, { metricLabel: ""printSpool.sync.appStateWrite"", splitDomains: [""printSpoolJobs""] });"
+backend/server.js,17163,await writeDb(next);
+backend/server.js,17753,await writeDb(db);
+backend/server.js,20935,await writeDb(latestDb);
+backend/server.js,24484,await writeDb(db);
+backend/server.js,24887,await writeDb(db);
+backend/server.js,24928,"await writeDb(db, {"
+backend/server.js,24988,"if (!fastWritten) await writeDb(db, {"
+backend/server.js,28397,"if (!(canUsePresenceFastWrite && await writeIntegrationStationPresenceDb(db, { stationStateIds: [integrationStationStateMysqlRecordId(nextEntry)], notificationIds: stationStateNotificationIds, syncNoActiveStationsAlert: noActiveStationsAlertChanged }))) await writeDb(db, {"
+backend/server.js,32333,await writeDb(db);
+backend/server.js,32392,"await writeDb(db, { splitDomains: [""tableLocks"", ""auditEvents""] });"
+backend/server.js,32420,await writeDb(db);
+backend/server.js,32471,"await writeDb(db, { splitDomains: [""tableLocks"", ""auditEvents""] });"
+backend/server.js,32507,await writeDb(db);
+backend/server.js,32548,"await writeDb(db, { splitDomains: [""tableLocks"", ""auditEvents""] });"
+backend/server.js,32565,await writeDb(db);
+backend/server.js,32607,"await writeDb(db, { splitDomains: [""tableLocks"", ""auditEvents""] });"
+backend/server.js,32634,await writeDb(db);
+backend/auth/auth.handlers.js,183,"await writeDb(db, {"
+backend/auth/auth.handlers.js,208,"await writeDb(db, {"
+backend/auth/auth.handlers.js,407,"if (!wroteAuthSessionFast) await writeDb(db, {"
+backend/auth/auth.handlers.js,515,"await writeDb(db, {"
+backend/auth/auth.handlers.js,593,"await writeDb(db, {"
+backend/auth/auth.handlers.js,663,"await writeDb(db, {"
+backend/auth/auth.handlers.js,702,"await writeDb(db, {"
+backend/auth/auth.handlers.js,768,"await writeDb(db, {"
+backend/auth/auth.handlers.js,783,"await writeDb(db, {"
+backend/auth/auth.handlers.js,791,"if (!wroteAuthSessionFast) await writeDb(db, {"
+backend/users/users.handlers.js,311,"await writeDb(db, {"
+backend/modules/integration/station-snapshot.handlers.js,106,await writeDb(db);
+backend/modules/app-state/app-state.handlers.js,80,await writeDb(db);
+backend/modules/sales-sessions/sales-sessions.handlers.js,34,await writeDb(db);
+backend/modules/sales-sessions/sales-sessions.handlers.js,52,await writeDb(db);
+backend/modules/sales-sessions/sales-sessions.handlers.js,95,await writeDb(db);
+backend/modules/sales-sessions/sales-sessions.handlers.js,107,await writeDb(db);
+backend/modules/sales-sessions/sales-sessions.handlers.js,139,await writeDb(db);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,636,await writeDb(db);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,676,await writeDb(db);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,720,await writeDb(db);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,788,await writeDb(latestDb);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,923,await writeDb(db);
+backend/modules/commercial-benefits/commercial-benefits.handlers.js,956,await writeDb(db);
+backend/modules/menu/menu.handlers.js,696,await writeDb(db);
+backend/modules/counter/counter.handlers.js,792,"await writeDb(db, {"
+backend/modules/counter/counter-collection-writer.js,38,"return writeDb(db, {"
+backend/modules/settings/settings.handlers.js,355,await writeDb(db);
+backend/modules/settings/settings.handlers.js,393,await writeDb(db);
+backend/modules/settings/settings.handlers.js,434,await writeDb(db);
+backend/modules/settings/settings.handlers.js,461,await writeDb(db);
+backend/modules/settings/settings.handlers.js,503,await writeDb(db);
+backend/modules/settings/settings.handlers.js,547,await writeDb(db);
+backend/modules/settings/settings.handlers.js,629,await writeDb(db);
+backend/modules/reports/reports.handlers.js,164,await writeDb(db);
+backend/modules/reports/reports.handlers.js,989,"await writeDb(db, {"
+backend/modules/reports/reports.handlers.js,1033,"await writeDb(db, {"
+backend/modules/reports/reports.handlers.js,1089,await writeDb(db);
+backend/modules/reservations/reservations.handlers.js,650,await writeDb(
+backend/modules/reservations/reservations.handlers.js,666,await writeDb(
+backend/modules/reservations/reservations.handlers.js,869,await writeDb(
+backend/modules/reservations/reservations.handlers.js,915,await writeDb(
+backend/modules/reservations/reservations.handlers.js,952,await writeDb(
+backend/modules/reservations/reservations.handlers.js,979,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1104,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1124,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1277,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1313,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1422,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1443,await writeDb(
+backend/modules/reservations/reservations.handlers.js,1535,await writeDb(
+backend/modules/radio/radio.handlers.js,145,await writeDb(db);
+backend/modules/radio/radio.handlers.js,198,await writeDb(db);
+backend/modules/payments-provider/payment-provider-transactions.repository.js,188,await this.writeDb(db);
+backend/modules/payments-provider/payment-provider-transactions.repository.js,198,await this.writeDb(db);
+backend/modules/postazione-actions/postazione-actions.handlers.js,225,await writeDb(db);
+backend/modules/status/status.handlers.js,1485,await writeDb(
+backend/modules/smart/smart.handlers.js,101,await writeDb(db);
+backend/modules/smart/smart.handlers.js,122,await writeDb(db);
+backend/modules/smart/smart.handlers.js,302,await writeDb(db);
+backend/modules/smart/smart.handlers.js,528,await writeDb(db);
+backend/db/app-state/app-state.repository.js,647,await writeDb(dbCache);
+backend/db/app-state/app-state.repository.js,842,await writeDb(dbCache);
+backend/db/app-state/app-state.repository.js,866,"async function writeDb(db, options = {}) {"
+backend/db/app-state/automatic-cash-split-guard.js,45,"await writeDb(db, {"

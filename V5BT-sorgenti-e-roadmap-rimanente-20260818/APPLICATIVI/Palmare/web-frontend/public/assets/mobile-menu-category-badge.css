@@ -1,0 +1,24 @@
+.menu-product-category-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 22px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 174, 255, 0.46);
+  background: rgba(78, 132, 236, 0.18);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:root[data-theme="light"] .menu-product-category-badge,
+:root:not([data-theme]) .menu-product-category-badge {
+  border-color: rgba(42, 105, 196, 0.34);
+  background: rgba(205, 224, 255, 0.86);
+  color: rgba(18, 48, 96, 0.95);
+}

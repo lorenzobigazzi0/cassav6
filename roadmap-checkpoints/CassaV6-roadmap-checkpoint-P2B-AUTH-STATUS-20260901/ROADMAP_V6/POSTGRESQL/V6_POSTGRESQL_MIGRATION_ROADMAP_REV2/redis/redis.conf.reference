@@ -1,0 +1,15 @@
+# DIFFERITO — fuori perimetro della migrazione (ANNEX_A_FUORI_PERIMETRO.md A.3).
+# Conservato come riferimento per quando esistera piu di un processo Node.
+# Non introdurre Redis in produzione durante la migrazione.
+# Reference only. Adapt to deployment/security model.
+bind 127.0.0.1 ::1
+protected-mode yes
+port 6379
+tcp-keepalive 60
+timeout 0
+# Redis is not source of truth; persistence is optional by architecture.
+save ""
+appendonly no
+maxmemory 256mb
+maxmemory-policy volatile-lru
+# Configure ACL/password/TLS in deployment; do not embed secrets in source.

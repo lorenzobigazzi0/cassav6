@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "statusAsOf": "2026-08-03",
+  "promotionAllowed": false,
+  "items": [
+    {
+      "path": "reports/physical/postazione-enrollment-discovery-20260720-retry1.json",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    },
+    {
+      "path": "reports/physical/v6-b4-3-servicedata-node-20260720.log",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    },
+    {
+      "path": "reports/physical/v6-palmare-b2-20260720-ready.json",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    },
+    {
+      "path": "reports/physical/v6-palmare-b2-20260720-retry2.json",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    },
+    {
+      "path": "reports/physical/v6-palmare-bt-server-20260720.log",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    },
+    {
+      "path": "reports/physical/v6-palmare-to-raspberry-live-20260720.json",
+      "status": "UNAVAILABLE",
+      "mustNotBeSynthesized": true
+    }
+  ]
+}

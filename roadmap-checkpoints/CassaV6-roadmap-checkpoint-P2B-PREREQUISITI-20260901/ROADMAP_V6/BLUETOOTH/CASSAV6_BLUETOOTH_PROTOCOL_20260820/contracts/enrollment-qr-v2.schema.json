@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/enrollment-qr-v2.schema.json",
+  "title": "CASSA V6 Bluetooth One-Time Enrollment QR v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "enrollmentEndpointId", "token"],
+  "properties": {
+    "version": { "const": 2 },
+    "enrollmentEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^c6e2_[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    }
+  }
+}

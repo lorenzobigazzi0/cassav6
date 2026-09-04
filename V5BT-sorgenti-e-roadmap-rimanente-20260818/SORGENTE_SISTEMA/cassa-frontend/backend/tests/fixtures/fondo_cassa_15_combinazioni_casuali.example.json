@@ -1,0 +1,257 @@
+{
+  "nome": "Fondo cassa - 15 combinazioni",
+  "valuta": "EUR",
+  "denominazioni_centesimi": {
+    "20_euro": 2000,
+    "10_euro": 1000,
+    "5_euro": 500,
+    "2_euro": 200,
+    "1_euro": 100,
+    "50_cent": 50,
+    "20_cent": 20,
+    "10_cent": 10,
+    "5_cent": 5
+  },
+  "combinazioni": [
+    {
+      "id": "FC-01",
+      "totale_centesimi": 12030,
+      "pezzi_totali": 33,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 2,
+        "5_euro": 4,
+        "2_euro": 6,
+        "1_euro": 6,
+        "50_cent": 2,
+        "20_cent": 4,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-02",
+      "totale_centesimi": 12370,
+      "pezzi_totali": 35,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 2,
+        "5_euro": 4,
+        "2_euro": 8,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 3,
+        "10_cent": 5,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-03",
+      "totale_centesimi": 12610,
+      "pezzi_totali": 33,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 2,
+        "5_euro": 5,
+        "2_euro": 7,
+        "1_euro": 5,
+        "50_cent": 2,
+        "20_cent": 3,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-04",
+      "totale_centesimi": 12880,
+      "pezzi_totali": 36,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 2,
+        "5_euro": 5,
+        "2_euro": 8,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 4,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-05",
+      "totale_centesimi": 13140,
+      "pezzi_totali": 33,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 3,
+        "5_euro": 4,
+        "2_euro": 7,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 2,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-06",
+      "totale_centesimi": 13460,
+      "pezzi_totali": 34,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 3,
+        "5_euro": 5,
+        "2_euro": 6,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 3,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-07",
+      "totale_centesimi": 13720,
+      "pezzi_totali": 36,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 3,
+        "5_euro": 5,
+        "2_euro": 7,
+        "1_euro": 6,
+        "50_cent": 2,
+        "20_cent": 3,
+        "10_cent": 5,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-08",
+      "totale_centesimi": 14130,
+      "pezzi_totali": 35,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 4,
+        "5_euro": 4,
+        "2_euro": 7,
+        "1_euro": 5,
+        "50_cent": 2,
+        "20_cent": 4,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-09",
+      "totale_centesimi": 14390,
+      "pezzi_totali": 33,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 4,
+        "5_euro": 5,
+        "2_euro": 6,
+        "1_euro": 5,
+        "50_cent": 2,
+        "20_cent": 2,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-10",
+      "totale_centesimi": 14670,
+      "pezzi_totali": 37,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 4,
+        "5_euro": 5,
+        "2_euro": 7,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 3,
+        "10_cent": 5,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-11",
+      "totale_centesimi": 14940,
+      "pezzi_totali": 34,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 5,
+        "5_euro": 4,
+        "2_euro": 6,
+        "1_euro": 5,
+        "50_cent": 3,
+        "20_cent": 2,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-12",
+      "totale_centesimi": 15280,
+      "pezzi_totali": 38,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 5,
+        "5_euro": 4,
+        "2_euro": 7,
+        "1_euro": 6,
+        "50_cent": 3,
+        "20_cent": 4,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-13",
+      "totale_centesimi": 15530,
+      "pezzi_totali": 37,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 5,
+        "5_euro": 5,
+        "2_euro": 6,
+        "1_euro": 6,
+        "50_cent": 2,
+        "20_cent": 4,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-14",
+      "totale_centesimi": 15760,
+      "pezzi_totali": 38,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 5,
+        "5_euro": 5,
+        "2_euro": 7,
+        "1_euro": 6,
+        "50_cent": 3,
+        "20_cent": 3,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    },
+    {
+      "id": "FC-15",
+      "totale_centesimi": 15990,
+      "pezzi_totali": 36,
+      "tagli": {
+        "20_euro": 3,
+        "10_euro": 5,
+        "5_euro": 6,
+        "2_euro": 6,
+        "1_euro": 6,
+        "50_cent": 2,
+        "20_cent": 2,
+        "10_cent": 4,
+        "5_cent": 2
+      }
+    }
+  ]
+}

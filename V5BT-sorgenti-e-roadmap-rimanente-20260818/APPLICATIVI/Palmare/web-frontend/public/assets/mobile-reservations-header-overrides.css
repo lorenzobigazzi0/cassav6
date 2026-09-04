@@ -1,0 +1,122 @@
+.reservations-head[data-mobile-reservations-header-ready="1"] {
+  display: grid;
+  grid-template-columns: minmax(108px, 1.15fr) 208px minmax(40px, 0.85fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-head-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-head-title > .h1 {
+  display: none !important;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-label,
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-head-title .p {
+  margin: 0 !important;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  text-align: left;
+  margin-left: -4px;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-picker {
+  width: 208px;
+  max-width: 208px;
+  justify-self: center;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-room-dropdown {
+  width: 100%;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display > span {
+  display: none !important;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display strong {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-add-btn,
+.reservations-head[data-mobile-reservations-header-ready="1"] .reservations-add-btn {
+  justify-self: end;
+  margin-left: 4px;
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+:root[data-theme="light"] .reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display strong,
+:root:not([data-theme]) .reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display strong,
+:root[data-theme="light"] .reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-label,
+:root:not([data-theme]) .reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-label,
+:root[data-theme="light"] .reservations-head[data-mobile-reservations-header-ready="1"] .reservations-head-title .p,
+:root:not([data-theme]) .reservations-head[data-mobile-reservations-header-ready="1"] .reservations-head-title .p {
+  color: #14243b;
+}
+
+@media (max-width: 430px) {
+  .reservations-head[data-mobile-reservations-header-ready="1"] {
+    grid-template-columns: minmax(101px, 1.15fr) 186px minmax(42px, 0.85fr);
+    gap: 7px;
+  }
+
+  .reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-picker {
+    width: 186px;
+    max-width: 186px;
+  }
+}
+
+@media (max-width: 340px) {
+  .reservations-head[data-mobile-reservations-header-ready="1"] {
+    grid-template-columns: minmax(90px, 1.15fr) 164px minmax(36px, 0.85fr);
+    gap: 5px;
+  }
+
+  .reservations-head[data-mobile-reservations-header-ready="1"] .mobile-reservations-room-picker {
+    width: 164px;
+    max-width: 164px;
+  }
+
+  .reservations-head[data-mobile-reservations-header-ready="1"] .reservations-date-display strong {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "phase": "B5.5_MULTI_DEVICE_VALIDATION",
+  "generatedAt": "2026-07-20T17:54:22.6913177+02:00",
+  "verdict": "PASS_WITH_PLATFORM_LIMITATION",
+  "apks": {
+    "palmare": {
+      "packageName": "com.sentrapa.palmare.advanced",
+      "versionName": "1.0.24",
+      "versionCode": 25,
+      "sha256": "35406973205D0EACFA6DF8BAB8A7763515A5AC9A7A33B8758CEE997DB9BCDC6B"
+    },
+    "postazione": {
+      "packageName": "com.sentrapa.postazione.advanced",
+      "versionName": "2.0.19",
+      "versionCode": 21,
+      "sha256": "8D0A181A82110B423BFD8569D2E6D5FB3809A72AFB008F7D08B30FABBA23841F"
+    }
+  },
+  "reciprocalDiscovery": {
+    "mode": "TWO_ANDROID_NODES_CONCURRENT",
+    "durationSeconds": 30,
+    "verdict": "PASS_APP_LEVEL_EVIDENCE",
+    "palmare1": {
+      "model": "SM-A165F",
+      "androidApi": 36,
+      "sampleCount": 15,
+      "activePeerCount": 1,
+      "firstObservationOffsetP95Ms": 3069,
+      "acceptedObservations": 2,
+      "scanWindowsStarted": 4,
+      "scanWindowsCompleted": 4,
+      "scanFailures": 0,
+      "advertisementFailures": 0
+    },
+    "palmare2": {
+      "model": "SM-A165F",
+      "androidApi": 36,
+      "sampleCount": 16,
+      "activePeerCount": 1,
+      "firstObservationOffsetP95Ms": 1798,
+      "acceptedObservations": 2,
+      "scanWindowsStarted": 4,
+      "scanWindowsCompleted": 4,
+      "scanFailures": 0,
+      "advertisementFailures": 0
+    },
+    "formalGate": "PENDING_CONTROLLER_CAPTURE_CORRELATION"
+  },
+  "helloExchange": {
+    "mode": "SEQUENTIAL_ISOLATED_TARGETS",
+    "verdict": "PASS_TWO_PHYSICAL_TARGETS",
+    "palmare1": {
+      "state": "HELLO_EXCHANGED",
+      "profileValidated": true,
+      "negotiatedMtu": 517,
+      "writesStarted": 1,
+      "writesCompleted": 1,
+      "readsCompleted": 1,
+      "exchanges": 1,
+      "failures": 0,
+      "authenticatedSessionCount": 0,
+      "raspberryDurationMs": 30090
+    },
+    "palmare2": {
+      "state": "HELLO_EXCHANGED",
+      "profileValidated": true,
+      "negotiatedMtu": 517,
+      "writesStarted": 1,
+      "writesCompleted": 1,
+      "readsCompleted": 1,
+      "exchanges": 1,
+      "failures": 0,
+      "authenticatedSessionCount": 0,
+      "raspberryDurationMs": 30078
+    },
+    "raspberry": {
+      "model": "RASPBERRY_ARM64",
+      "bluezVersion": "5.82",
+      "adapter": "hci0",
+      "exactSingleExchangePerRun": true,
+      "nonHelloCharacteristics": "FAIL_CLOSED",
+      "resourceCleanup": "PASS"
+    }
+  },
+  "postazione": {
+    "model": "SM-T503",
+    "androidApi": 31,
+    "packageName": "com.sentrapa.postazione.advanced",
+    "processAlive": true,
+    "identityStatus": "ED25519_UNSUPPORTED",
+    "discoveryReadiness": "PLATFORM_UNSUPPORTED",
+    "radioActive": false,
+    "scanFailures": 0,
+    "advertisementFailures": 0,
+    "verdict": "EXPECTED_FAIL_CLOSED",
+    "requiredMinimumAndroidApi": 33
+  },
+  "uiSmoke": {
+    "palmare1": {
+      "screen": "HOME",
+      "processAlive": true,
+      "fatalOrAnr": 0
+    },
+    "palmare2": {
+      "screen": "LOGIN",
+      "processAlive": true,
+      "fatalOrAnr": 0
+    },
+    "postazione": {
+      "screen": "LOGIN_LANDSCAPE",
+      "processAlive": true,
+      "fatalOrAnr": 0
+    }
+  },
+  "cleanup": {
+    "bluetoothService": "ACTIVE",
+    "adapterPowered": true,
+    "adapterDiscovering": false,
+    "adapterDiscoverable": false,
+    "temporaryGattProcesses": 0,
+    "temporaryAdvertisementProcesses": 0,
+    "enrollmentService": "INACTIVE_DISABLED"
+  },
+  "remainingGates": {
+    "mutualAuthentication": "NOT_STARTED",
+    "sessionKey": "NOT_STARTED",
+    "heartbeat": "NOT_STARTED",
+    "businessTraffic": "NOT_STARTED",
+    "hundredSessionGate": "PENDING"
+  },
+  "privacy": {
+    "adbSerialsIncluded": false,
+    "bluetoothAddressesIncluded": false,
+    "stableNodeIdsIncluded": false,
+    "sessionIdsIncluded": false,
+    "tokensIncluded": false,
+    "keysIncluded": false,
+    "payloadsIncluded": false
+  }
+}

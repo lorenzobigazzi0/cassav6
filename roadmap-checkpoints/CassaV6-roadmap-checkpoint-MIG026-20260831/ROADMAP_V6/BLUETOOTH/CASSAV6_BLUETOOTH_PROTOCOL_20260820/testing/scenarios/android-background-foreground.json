@@ -1,0 +1,7 @@
+{
+  "repeat": 20,
+  "expect": [
+    "service_alive",
+    "session_or_clean_reconnect"
+  ]
+}

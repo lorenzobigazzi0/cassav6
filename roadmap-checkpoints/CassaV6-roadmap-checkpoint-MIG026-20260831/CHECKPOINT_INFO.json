@@ -1,0 +1,12 @@
+{
+    "schemaVersion":  1,
+    "product":  "CASSA_V6",
+    "checkpoint":  "MIG-026_RETENTION_CONTROL_PLANE",
+    "createdAt":  "2026-08-31T17:30:37.3663625+02:00",
+    "sourceRoot":  "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818",
+    "roadmapStatus":  "MIG-020..MIG-025 DONE; MIG-026 IN_PROGRESS",
+    "openDecision":  "RET-01 TODO",
+    "developmentStorage":  "microSD; SSD not required for development",
+    "destructiveRetentionEnabled":  false,
+    "sourceMigrationStatusSha256":  "fd435c8e9d79b8a2547ddd2391f394be446bfe3b16409c9e412c66ecbe817155"
+}

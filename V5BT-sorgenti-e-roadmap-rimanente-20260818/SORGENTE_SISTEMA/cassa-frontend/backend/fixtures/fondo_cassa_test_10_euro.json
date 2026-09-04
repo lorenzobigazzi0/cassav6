@@ -1,0 +1,19 @@
+{
+  "nome": "Fondo cassa test - 1 pezzo da 10 euro",
+  "valuta": "EUR",
+  "descrizione": "Configurazione V5BT per il collaudo con una sola banconota da 10 euro.",
+  "denominazioni_centesimi": {
+    "10_euro": 1000
+  },
+  "combinazioni": [
+    {
+      "id": "TEST-10-EUR-01",
+      "totale_euro": "10,00",
+      "totale_centesimi": 1000,
+      "pezzi_totali": 1,
+      "tagli": {
+        "10_euro": 1
+      }
+    }
+  ]
+}

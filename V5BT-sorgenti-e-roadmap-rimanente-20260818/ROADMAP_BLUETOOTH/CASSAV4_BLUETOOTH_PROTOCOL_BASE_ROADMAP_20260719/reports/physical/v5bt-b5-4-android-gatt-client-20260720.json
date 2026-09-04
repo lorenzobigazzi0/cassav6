@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "evidenceVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B5.4",
+  "generatedAt": "2026-07-20T14:01:52.7053409Z",
+  "mode": "PHYSICAL",
+  "verdict": "PASS",
+  "target": {
+    "role": "GATT_CLIENT",
+    "deviceClass": "HANDHELD",
+    "model": "SM-A165F",
+    "androidApi": 36,
+    "appPackage": "com.sentrapa.palmare.advanced",
+    "appVersionName": "1.0.23",
+    "appVersionCode": 24
+  },
+  "peer": {
+    "role": "GATT_SERVER",
+    "hostname": "raspberrypi",
+    "architecture": "arm64",
+    "bluezVersion": "5.82",
+    "adapterName": "hci0"
+  },
+  "checks": {
+    "candidatePolicy": "PASS",
+    "gattConnection": "PASS",
+    "serviceDiscovery": "PASS",
+    "exactProfileValidation": "PASS",
+    "mtuNegotiation": "PASS",
+    "preSessionTraffic": "ZERO",
+    "raspberryCleanup": "PASS"
+  },
+  "observed": {
+    "state": "READY",
+    "profileValidated": true,
+    "negotiatedMtu": 517,
+    "connectionAttempts": 1,
+    "connectionsEstablished": 1,
+    "servicesValidated": 1,
+    "mtuNegotiated": 1,
+    "disconnects": 0,
+    "failures": 0,
+    "sessionsOpened": 0,
+    "raspberryManagedObjectCount": 8,
+    "raspberryCharacteristicCount": 7
+  },
+  "additionalTargets": {
+    "handheld": "NOT_ELIGIBLE_IDENTITY_NOT_READY",
+    "station": "NOT_ELIGIBLE_IDENTITY_NOT_READY"
+  },
+  "gate": {
+    "androidGattClientIncrement": "PASS_ONE_PHYSICAL_TARGET",
+    "helloExchange": "NOT_STARTED",
+    "mutualAuthentication": "NOT_STARTED",
+    "b5HundredSessionGate": "PENDING"
+  },
+  "physicalRadioAccessed": true,
+  "activeV4Changes": false
+}

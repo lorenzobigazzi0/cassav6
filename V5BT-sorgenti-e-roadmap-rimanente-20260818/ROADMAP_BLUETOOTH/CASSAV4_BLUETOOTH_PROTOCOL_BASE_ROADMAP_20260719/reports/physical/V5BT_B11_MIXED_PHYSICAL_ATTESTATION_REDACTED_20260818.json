@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B11",
+  "mode": "B11_MIXED_PHYSICAL_ATTESTATION",
+  "captureMode": "LIVE",
+  "fixtureUsed": false,
+  "generatedAt": "2026-08-18T11:25:36.199Z",
+  "readinessStatus": "MIXED_PHYSICAL_INCOMPLETE",
+  "stationSigningPolicy": "WAIVED_NON_GATE",
+  "stationSigningVerified": false,
+  "gateEligible": false,
+  "configuredPhysicalActors": 4,
+  "observedPhysicalActors": 2,
+  "physicalPresenceComplete": false,
+  "functionalReadinessComplete": false,
+  "captureScope": "INVENTORY_ONLY",
+  "hardwareAccess": true,
+  "adbExecuted": true,
+  "sshExecuted": true,
+  "readOnly": true,
+  "inventoryEncoding": "JSON_UTF8_COMPACT",
+  "inventorySha256": "9dd2e8f1c50032cf77961265740aab587d6572b22a7bb16ed2839a25a22d6885",
+  "inventory": {
+    "schemaVersion": 1,
+    "product": "V5BT",
+    "certificationMatrixSha256": "45712f686dd521fc739929a985d7a56ccc44ef6264023db3014cf8dce2da66e7",
+    "mode": "REDACTED_READ_ONLY_BENCH_INVENTORY",
+    "generatedAt": "2026-08-18T11:25:36.199Z",
+    "status": "INCOMPLETE",
+    "readOnly": true,
+    "commandPolicy": {
+      "shell": false,
+      "mutationAllowed": false,
+      "upsMode": "DISCOVERY_ONLY",
+      "fixedAllowlist": true,
+      "sshAuthentication": "PUBLIC_KEY",
+      "sudoReadOnly": false,
+      "passwordRecorded": false
+    },
+    "limitations": [],
+    "redaction": {
+      "serialsExcluded": true,
+      "networkIdentifiersExcluded": true,
+      "registryIdentifiersExcluded": true,
+      "rawCommandOutputExcluded": true
+    },
+    "roleCoverage": {
+      "requiredRoles": [
+        "handheld",
+        "station"
+      ],
+      "configuredRoles": [
+        "handheld",
+        "station"
+      ],
+      "missingRequiredRoles": [],
+      "complete": true
+    },
+    "adb": {
+      "probeAvailable": true,
+      "expectedTargets": 3,
+      "connectedDevices": 2,
+      "unavailableDevices": 0,
+      "unexpectedConnectedDevices": 0
+    },
+    "android": [
+      {
+        "role": "handheld",
+        "connected": true,
+        "androidUserMatches": true,
+        "androidApi": 36,
+        "packageInstalled": true,
+        "packageStopped": false,
+        "versionName": "1.0.39",
+        "versionCode": 40,
+        "versionNameMatches": true,
+        "versionCodeMatches": true,
+        "apkSha256Matches": true,
+        "expectedSigningCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+        "signingCertificatePinCoveredByCertifiedApk": true,
+        "permissionsGranted": true,
+        "authenticatedSession": false,
+        "sessionIdentityDistinct": false,
+        "enrollmentReady": true,
+        "enrollmentIdentityDistinct": true,
+        "registryBindingMatches": false,
+        "enrollmentAttempt": "READY"
+      },
+      {
+        "role": "handheld",
+        "connected": true,
+        "androidUserMatches": true,
+        "androidApi": 36,
+        "packageInstalled": true,
+        "packageStopped": false,
+        "versionName": "1.0.39",
+        "versionCode": 40,
+        "versionNameMatches": true,
+        "versionCodeMatches": true,
+        "apkSha256Matches": true,
+        "expectedSigningCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+        "signingCertificatePinCoveredByCertifiedApk": true,
+        "permissionsGranted": true,
+        "authenticatedSession": false,
+        "sessionIdentityDistinct": false,
+        "enrollmentReady": true,
+        "enrollmentIdentityDistinct": true,
+        "registryBindingMatches": false,
+        "enrollmentAttempt": "READY"
+      },
+      {
+        "role": "station",
+        "connected": false,
+        "androidUserMatches": false,
+        "androidApi": null,
+        "packageInstalled": false,
+        "packageStopped": null,
+        "versionName": null,
+        "versionCode": null,
+        "versionNameMatches": false,
+        "versionCodeMatches": false,
+        "apkSha256Matches": false,
+        "expectedSigningCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+        "signingCertificatePinCoveredByCertifiedApk": false,
+        "permissionsGranted": false,
+        "authenticatedSession": false,
+        "sessionIdentityDistinct": false,
+        "enrollmentReady": false,
+        "enrollmentIdentityDistinct": false,
+        "registryBindingMatches": false,
+        "enrollmentAttempt": null
+      }
+    ],
+    "raspberry": {
+      "reachable": false,
+      "architecture": null,
+      "bluez": {
+        "available": false,
+        "version": null,
+        "powered": false,
+        "discovering": false
+      },
+      "ntpSynchronized": false,
+      "ups": {
+        "discoveryOnly": true,
+        "probeAvailable": false,
+        "discoveredDevices": 0,
+        "serviceProbeAvailable": false,
+        "serviceUnitsObserved": 0
+      },
+      "services": [
+        {
+          "service": "cassav5bt.service",
+          "requirement": "OPERATIONAL_REQUIRED",
+          "expectedState": "LOADED_ACTIVE_ENABLED",
+          "observed": false,
+          "expectationMet": false,
+          "loaded": null,
+          "active": null,
+          "subState": null,
+          "enabled": null
+        },
+        {
+          "service": "bluetooth.service",
+          "requirement": "OPERATIONAL_REQUIRED",
+          "expectedState": "LOADED_ACTIVE_ENABLED",
+          "observed": false,
+          "expectationMet": false,
+          "loaded": null,
+          "active": null,
+          "subState": null,
+          "enabled": null
+        },
+        {
+          "service": "cassav5bt-bluetooth-node.service",
+          "requirement": "OBSERVE_ONLY",
+          "expectedState": "ANY_OBSERVED_STATE",
+          "observed": false,
+          "expectationMet": false,
+          "loaded": null,
+          "active": null,
+          "subState": null,
+          "enabled": null
+        },
+        {
+          "service": "cassav5bt-bluetooth-enrollment.service",
+          "requirement": "OBSERVE_ONLY",
+          "expectedState": "ANY_OBSERVED_STATE",
+          "observed": false,
+          "expectationMet": false,
+          "loaded": null,
+          "active": null,
+          "subState": null,
+          "enabled": null
+        }
+      ],
+      "registry": null,
+      "enrollmentTransactions": {
+        "files": 0,
+        "allPrivate": true
+      },
+      "permissionsSecure": false
+    },
+    "errors": [
+      {
+        "probe": "raspberry.identity",
+        "code": "UNAVAILABLE"
+      }
+    ]
+  },
+  "radioWorkload": {
+    "status": "NOT_RUN",
+    "evidenceSha256": null,
+    "realRealLinkCount": 6,
+    "cyclesPerLink": 100,
+    "expectedCycles": 600,
+    "completedCycles": 0,
+    "helloCycles": 0,
+    "authenticatedCycles": 0,
+    "bidirectionalDataCycles": 0,
+    "cleanupCycles": 0
+  },
+  "physicalBusiness": {
+    "status": "NOT_RUN",
+    "evidenceSha256": null,
+    "expectedActions": 600,
+    "completedActions": 0,
+    "expectedHandheldCommands": 160,
+    "completedHandheldCommands": 0
+  },
+  "continuityMonitoring": {
+    "status": "NOT_RUN",
+    "evidenceSha256": null,
+    "expectedActors": 4,
+    "monitoredActors": 0,
+    "continuous": false
+  },
+  "physicalSoak": {
+    "status": "NOT_RUN",
+    "evidenceSha256": null,
+    "requiredDurationMs": 7200000,
+    "observedDurationMs": 0,
+    "wallClock": false
+  },
+  "campaignEvidenceCommitment": null,
+  "attestationDigest": "cb2eb7896d9ea169ea7e407faa00621ae90d3263c141f609f3c98be4594ff6e5"
+}

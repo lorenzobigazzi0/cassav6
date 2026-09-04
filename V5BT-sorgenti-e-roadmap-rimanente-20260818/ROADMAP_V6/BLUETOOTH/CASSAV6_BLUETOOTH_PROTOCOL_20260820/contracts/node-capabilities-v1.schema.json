@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "required": [
+    "scan",
+    "advertise",
+    "gattClient",
+    "gattServer"
+  ],
+  "properties": {
+    "scan": {
+      "type": "boolean"
+    },
+    "advertise": {
+      "type": "boolean"
+    },
+    "gattClient": {
+      "type": "boolean"
+    },
+    "gattServer": {
+      "type": "boolean"
+    },
+    "maxConcurrentLinks": {
+      "type": "integer"
+    },
+    "maxMtu": {
+      "type": "integer"
+    }
+  }
+}

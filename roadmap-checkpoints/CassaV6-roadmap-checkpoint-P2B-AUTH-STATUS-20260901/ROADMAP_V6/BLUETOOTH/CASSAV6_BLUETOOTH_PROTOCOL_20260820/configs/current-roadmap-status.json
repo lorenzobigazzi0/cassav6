@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "product": "V6",
+  "mode": "CURRENT_ROADMAP_STATUS",
+  "statusAsOf": "2026-08-10",
+  "officialProgressPercent": 49,
+  "certificationMatrix": {
+    "schemaVersion": 1,
+    "canonicalization": "V6_ADVANCED_CERTIFICATION_TARGETS_CANONICAL_JSON_V1",
+    "digestAlgorithm": "SHA-256",
+    "matrixSha256": "e176022e19ad4804c92fce3f433ab40cdb052d4339e81b04092b499852193c36"
+  },
+  "b4": {
+    "gateStatus": "PENDING",
+    "evidenceClass": "NON_GATE_EVIDENCE",
+    "requiredPhysicalDevices": 10,
+    "recordedPhysicalDevices": 2,
+    "remainingPhysicalDevices": 8,
+    "simulatedDevices": 8,
+    "simulatedDevicesCountedTowardGate": 0
+  },
+  "b5": {
+    "gateStatus": "PENDING",
+    "diagnosticPilotAuthorized": false,
+    "officialCampaignAuthorized": false,
+    "requiredOfficialSessions": 100,
+    "recordedOfficialSessions": 0
+  },
+  "b6": {
+    "gateStatus": "PENDING",
+    "startAuthorization": "BLOCKED"
+  },
+  "applicationLoad": {
+    "micro": "PASS",
+    "smoke": "FAIL",
+    "full": "NOT_RUN"
+  },
+  "promotion": {
+    "physicalGatePromotionAllowed": false,
+    "officialProgressIncreaseAllowed": false
+  }
+}

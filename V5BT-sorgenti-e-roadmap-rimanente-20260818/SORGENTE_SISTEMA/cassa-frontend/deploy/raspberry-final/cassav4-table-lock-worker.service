@@ -1,0 +1,34 @@
+[Unit]
+Description=CASSAv4 dedicated table lock worker
+Wants=network-online.target mariadb.service redis-server.service cassav4-backend.service
+After=network-online.target mariadb.service redis-server.service cassav4-backend.service
+
+[Service]
+Type=simple
+User=cassav4
+Group=cassav4
+WorkingDirectory=/opt/cassav4/current/cassa-frontend
+EnvironmentFile=/etc/cassav4/cassav4.env
+EnvironmentFile=-/etc/cassav4/cassav4-table-lock-worker.env
+Environment=BACKEND_PROCESS_ROLE=table-lock-worker
+Environment=BACKEND_HOST=127.0.0.1
+Environment=BACKEND_PORT=5285
+Environment=PORT=5285
+Environment=BACKEND_MYSQL_POOL_METRICS=1
+Environment=REDIS_PERSISTENT_CLIENT=1
+Environment=REDIS_PERSISTENT_POOL_SIZE=4
+Environment=PRINTING_ENABLED=0
+ExecStart=/usr/local/bin/node backend/scripts/start-backend.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+KillSignal=SIGTERM
+CPUAffinity=0 1 2 3
+LimitNOFILE=65535
+MemoryMax=650M
+StateDirectory=cassav4
+LogsDirectory=cassav4
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

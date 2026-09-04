@@ -1,0 +1,232 @@
+.mobile-history-print-actions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.mobile-history-print-preview-actions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mobile-history-print-btn {
+  min-height: 30px;
+  padding: 6px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.mobile-history-print-btn-icon {
+  width: 13px;
+  height: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.mobile-history-print-btn svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mobile-history-print-btn-order {
+  border-color: rgba(120, 186, 255, 0.62);
+  background: linear-gradient(180deg, rgba(56, 112, 214, 0.62), rgba(39, 78, 150, 0.56));
+  color: rgba(238, 246, 255, 0.98);
+}
+
+.mobile-history-print-btn-preconto {
+  border-color: rgba(255, 205, 106, 0.62);
+  background: linear-gradient(180deg, rgba(190, 126, 34, 0.62), rgba(142, 91, 24, 0.56));
+  color: rgba(255, 244, 220, 0.98);
+}
+
+.mobile-history-print-btn.is-busy {
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.mobile-history-print-toast-layer {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 86px);
+  transform: translateX(-50%);
+  width: min(320px, calc(100vw - 28px));
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  z-index: 1400;
+  pointer-events: none;
+}
+
+.mobile-history-print-toast {
+  border-radius: 12px;
+  border: 1px solid rgba(122, 194, 255, 0.28);
+  background: rgba(8, 14, 26, 0.96);
+  color: rgba(240, 247, 255, 0.98);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-history-print-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-history-print-toast.is-error {
+  border-color: rgba(255, 124, 124, 0.34);
+  color: rgba(255, 232, 232, 0.98);
+}
+
+:root[data-theme="light"] .mobile-history-print-btn-order {
+  border-color: rgba(53, 121, 224, 0.46);
+  background: linear-gradient(180deg, rgba(214, 232, 255, 0.98), rgba(177, 209, 255, 0.92));
+  color: rgba(18, 56, 112, 0.98);
+}
+
+:root[data-theme="light"] .mobile-history-print-btn-preconto {
+  border-color: rgba(186, 124, 26, 0.42);
+  background: linear-gradient(180deg, rgba(255, 236, 202, 0.98), rgba(255, 218, 154, 0.94));
+  color: rgba(104, 58, 7, 0.98);
+}
+
+:root[data-theme="light"] .mobile-history-print-toast {
+  border-color: rgba(20, 40, 80, 0.14);
+  background: rgba(255, 255, 255, 0.97);
+  color: rgba(20, 30, 45, 0.98);
+}
+
+:root[data-theme="light"] .mobile-history-print-toast.is-error {
+  border-color: rgba(201, 68, 68, 0.22);
+  color: rgba(131, 28, 28, 0.98);
+}
+
+/* Allinea PAGA con i pulsanti Comanda/Preconto senza toccare la logica React. */
+.table-history-row .table-history-right {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  justify-items: stretch;
+  gap: 6px;
+  width: 100%;
+  flex: 1 0 100%;
+}
+
+.table-history-row {
+  flex-wrap: wrap;
+}
+
+.table-history-row .table-history-right > .table-history-state,
+.table-history-row .table-history-right > .table-history-total,
+.table-history-row .table-history-right > .table-history-action:not(.table-history-pay-action):not(.mobile-history-print-btn) {
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+
+.table-history-row .mobile-history-print-actions {
+  display: contents;
+}
+
+.table-history-row .table-history-pay-action,
+.table-history-row .mobile-history-print-btn {
+  min-height: 36px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table-history-row .table-history-pay-action {
+  order: 20;
+  grid-column: 1;
+  border-color: rgba(58, 202, 126, 0.62);
+  background: linear-gradient(180deg, rgba(42, 174, 98, 0.66), rgba(25, 125, 70, 0.58));
+  color: rgba(232, 255, 241, 0.98);
+}
+
+.table-history-row .mobile-history-print-btn-order {
+  order: 21;
+  grid-column: 2;
+}
+
+.table-history-row .mobile-history-print-btn-preconto {
+  order: 22;
+  grid-column: 3;
+}
+
+.table-history-row .table-history-right:not(:has(.table-history-pay-action)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.table-history-row .table-history-right:not(:has(.table-history-pay-action)) .mobile-history-print-btn-order {
+  grid-column: 1;
+}
+
+.table-history-row .table-history-right:not(:has(.table-history-pay-action)) .mobile-history-print-btn-preconto {
+  grid-column: 2;
+}
+
+.table-history-row .table-history-pay-wallet-icon,
+.table-history-row .mobile-history-print-btn-icon,
+.table-history-row .mobile-history-print-btn svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+@media (max-width: 380px) {
+  .table-history-row .table-history-right {
+    gap: 5px;
+  }
+
+  .table-history-row .table-history-pay-action,
+  .table-history-row .mobile-history-print-btn {
+    padding-inline: 7px;
+    font-size: 10.5px;
+  }
+}
+
+:root[data-theme="light"] .table-history-row .table-history-pay-action {
+  border-color: rgba(28, 132, 74, 0.44);
+  background: linear-gradient(180deg, rgba(190, 241, 209, 0.98), rgba(144, 221, 176, 0.94));
+  color: rgba(10, 82, 42, 0.98);
+}
+
+:root:not([data-theme]) .table-history-row .table-history-pay-action {
+  border-color: rgba(28, 132, 74, 0.44);
+  background: linear-gradient(180deg, rgba(190, 241, 209, 0.98), rgba(144, 221, 176, 0.94));
+  color: rgba(10, 82, 42, 0.98);
+}

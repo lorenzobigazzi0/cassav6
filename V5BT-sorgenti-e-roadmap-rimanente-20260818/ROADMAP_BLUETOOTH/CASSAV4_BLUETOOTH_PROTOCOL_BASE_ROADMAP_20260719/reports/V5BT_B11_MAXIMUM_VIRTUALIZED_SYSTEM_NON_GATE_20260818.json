@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 2,
+  "harnessVersion": "2.0.0",
+  "phase": "B11",
+  "mode": "MAXIMUM_VIRTUALIZED_SYSTEM_NON_GATE",
+  "profile": "hybrid",
+  "evidenceClass": "NON_GATE_EVIDENCE",
+  "verdict": "NON_GATE_PASS",
+  "gateImpact": "NONE",
+  "promotionAllowed": false,
+  "officialEvidence": false,
+  "statusMutationAllowed": false,
+  "officialProgressPercent": 49,
+  "b11Gate": "PENDING",
+  "hardwareAccess": false,
+  "radioAccess": false,
+  "adbAccess": false,
+  "sshAccess": false,
+  "serviceAccess": false,
+  "realPeripheralAccess": false,
+  "virtualizationPolicy": "IGNORE_AND_VIRTUALIZE_NON_GATE",
+  "missingHardwarePolicy": "IGNORE_AND_VIRTUALIZE_NON_GATE",
+  "timeBasis": "VIRTUAL_MONOTONIC",
+  "seedCommitment": "af998605c3b0d8f3c35cab2ff67df58bb2f6508dc2a5d577db7cd21bf1e03572",
+  "actors": {
+    "totalActors": 16,
+    "virtualizedActors": 16,
+    "physicalActors": 0,
+    "roles": {
+      "HANDHELD": 10,
+      "STATION": 3,
+      "RASPBERRY_VIRTUAL": 1,
+      "AUTOMATIC_CASH_VIRTUAL": 1,
+      "FISCAL_RT_VIRTUAL": 1
+    }
+  },
+  "topology": {
+    "nodeCount": 14,
+    "androidNodeCount": 13,
+    "usefulPairCount": 91,
+    "androidPairCount": 78,
+    "androidRaspberryLinkCount": 13,
+    "deterministic": true
+  },
+  "phaseCoverage": {
+    "B6": {
+      "roleElections": 156,
+      "duplicateConnectionsArbitrated": 78,
+      "androidPairsOnly": true
+    },
+    "B7": {
+      "reliableFramesTx": 130948,
+      "fragmentedSessions": 4550,
+      "retriesObserved": 1300,
+      "duplicatesObserved": 1656
+    },
+    "B8": {
+      "recoveredDurableMessages": 1,
+      "sessionHistoryCount": 18200,
+      "knownPeerCount": 182
+    },
+    "B9": {
+      "routeAdvertisementsPersisted": 14,
+      "multihopClaimsRejected": 1
+    },
+    "B10": {
+      "shadowDiagnosticsAccepted": 3,
+      "shadowDuplicatesSuppressed": 3,
+      "defaultOffRejections": 1,
+      "businessMessagesRejected": 1,
+      "businessMessagesForwarded": 0
+    }
+  },
+  "workload": {
+    "cyclesPerPair": 100,
+    "expectedConnectDisconnectCycles": 9100,
+    "completedConnectDisconnectCycles": 9100,
+    "framesTx": 130948,
+    "fragmentedSessions": 4550,
+    "maximumFragmentsPerMessage": 31
+  },
+  "businessPlane": {
+    "transport": "LAN_HTTP_SSE",
+    "bluetoothBusinessMessagesForwarded": 0
+  },
+  "businessWorkload": {
+    "actionsPerAndroid": 200,
+    "expectedActions": 2600,
+    "completedActions": 2600,
+    "handheldActions": 2000,
+    "stationActions": 600,
+    "handheldCommands": 800,
+    "coveredHandhelds": 10,
+    "coveredStations": 3,
+    "raspberryCount": 1,
+    "raspberryBrokeredActions": 2600,
+    "automaticCash": {
+      "expectedTransactions": 100,
+      "completedTransactions": 100,
+      "exactReplays": 100,
+      "mutatedReplaysRejected": 1,
+      "outageFaults": 1,
+      "recoveries": 1,
+      "totalCents": 688150,
+      "pendingTransactions": 0
+    },
+    "fiscalRt": {
+      "expectedTransactions": 100,
+      "completedTransactions": 100,
+      "exactReplays": 100,
+      "mutatedReplaysRejected": 1,
+      "outageFaults": 1,
+      "recoveries": 1,
+      "totalCents": 688150,
+      "pendingTransactions": 0
+    },
+    "businessTransport": "LAN_HTTP_SSE",
+    "bluetoothBusinessMessagesForwarded": 0,
+    "externalAccess": false,
+    "cleanupComplete": true
+  },
+  "virtualPeripherals": {
+    "automaticCashInstances": 1,
+    "fiscalRtInstances": 1,
+    "realInstances": 0
+  },
+  "faultModel": {
+    "retryFaults": 1300,
+    "retriesObserved": 1300,
+    "duplicateFaults": 828,
+    "duplicatesObserved": 1656,
+    "backgroundFaults": 700,
+    "backgroundTransitions": 1400,
+    "rebootCount": 1,
+    "recoveredDurableMessages": 1,
+    "invalidCertificateAttempts": 1,
+    "invalidCertificatesRejected": 1
+  },
+  "soak": {
+    "simulatedDurationMs": 7200000,
+    "requiredDurationMs": 7200000,
+    "ticks": 7200,
+    "samples": 121,
+    "wallClockSleeping": false,
+    "requiredProfileSatisfied": true
+  },
+  "persistence": {
+    "sessionHistoryCount": 18200,
+    "knownPeerCount": 182,
+    "serverAdvertisementCount": 14,
+    "inboxDedupDepthAfterSoak": 0,
+    "openSessionCount": 0,
+    "outboxDepth": 0
+  },
+  "teardown": {
+    "temporaryWorkspaceRemoved": true,
+    "persistentArtifactsRetained": 0
+  },
+  "checks": {
+    "exactVirtualActorInventory": true,
+    "allActorsVirtualized": true,
+    "authorizedBluetoothGraphComplete": true,
+    "b6AndroidRoleElectionComplete": true,
+    "b6AndroidDuplicateArbitrationComplete": true,
+    "connectDisconnectComplete": true,
+    "fragmentationExercised": true,
+    "retryExercised": true,
+    "dedupExercised": true,
+    "rebootRecoveryComplete": true,
+    "b8PersistenceComplete": true,
+    "b9RouteAdvertisementsComplete": true,
+    "b9MultihopForbidden": true,
+    "b10ShadowDiagnosticsComplete": true,
+    "b10BusinessRoutingForbidden": true,
+    "b10DefaultOff": true,
+    "invalidCertificateRejected": true,
+    "backgroundFaultRecovered": true,
+    "virtualBusinessWorkloadComplete": true,
+    "automaticCashVirtualCyclesComplete": true,
+    "fiscalRtVirtualCyclesComplete": true,
+    "virtualBusinessExternalAccessForbidden": true,
+    "virtualBusinessCleanupComplete": true,
+    "syntheticSoakComplete": true,
+    "zeroSessionLeak": true,
+    "zeroOutboxLeak": true,
+    "teardownComplete": true,
+    "antiPromotionLocked": true
+  },
+  "reportDigest": "6b527f1003329004628dc79abad1db2d2ca607a68551f7030e699abda7ef8f37"
+}

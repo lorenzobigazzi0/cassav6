@@ -1,0 +1,35 @@
+[Unit]
+Description=CASSAv4 HTTPS frontend and API proxy
+Wants=network-online.target cassav4-backend.service cassav4-realtime.service cassav4-api-worker@5283.service cassav4-api-worker@5284.service cassav4-table-lock-worker.service cassav4-battery.service
+After=network-online.target cassav4-backend.service cassav4-realtime.service cassav4-api-worker@5283.service cassav4-api-worker@5284.service cassav4-table-lock-worker.service cassav4-battery.service
+
+[Service]
+Type=simple
+User=cassav4
+Group=cassav4
+WorkingDirectory=/opt/cassav4/current/cassa-frontend
+EnvironmentFile=/etc/cassav4/cassav4.env
+EnvironmentFile=-/etc/cassav4/cassav4-table-lock-worker.env
+Environment=FRONTEND_HOST=0.0.0.0
+Environment=FRONTEND_PORT=5280
+Environment=FRONTEND_HTTPS=true
+Environment=FRONTEND_LAN_HTTPS=true
+Environment=FRONTEND_LAN_IP=192.168.1.79
+Environment=FRONTEND_HTTPS_CERT=/etc/cassav4/tls/192.168.1.79.pem
+Environment=FRONTEND_HTTPS_KEY=/etc/cassav4/tls/192.168.1.79-key.pem
+Environment=BACKEND_ORIGIN=http://127.0.0.1:5281
+Environment=BACKEND_REALTIME_ORIGIN=http://127.0.0.1:5282
+Environment=BACKEND_API_WORKER_ORIGIN=http://127.0.0.1:5283,http://127.0.0.1:5284
+Environment=BACKEND_TABLE_LOCK_WORKER_ORIGIN=http://127.0.0.1:5285
+Environment=BATTERY_ORIGIN=http://127.0.0.1:8765
+ExecStart=/usr/local/bin/node ../serve-frontends.mjs
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+CPUAffinity=0 1 2 3
+LimitNOFILE=65535
+MemoryMax=1200M
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

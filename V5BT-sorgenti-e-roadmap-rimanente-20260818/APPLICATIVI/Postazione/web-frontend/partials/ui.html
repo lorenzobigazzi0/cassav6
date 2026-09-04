@@ -1,0 +1,194 @@
+	<!-- MODAL: Station selection -->
+	<div class="modal-backdrop" id="stationModal" role="dialog" aria-modal="true" aria-label="Selezione postazione" aria-hidden="true">
+		<div class="modal-card modal-station">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-store"></i> Seleziona Postazione</div>
+				<button class="modal-close" onclick="closeStationModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-row">
+					<label class="modal-label" for="stationSelect">Postazione</label>
+					<div class="cselect" id="stationCSelect">
+					<div class="cselect-btn" role="button" tabindex="0"><span id="stationCSelectText">—</span><i class="fa-solid fa-caret-down"></i></div>
+					<div class="cselect-menu" id="stationCSelectMenu"></div>
+				</div>
+				<select id="stationSelect" class="modal-select native-hidden"></select>
+				</div>
+				<div class="modal-hint">Suggerimento: usa questa voce per cambiare postazione (es. Bar principale, Cocktail, Caffetteria).</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="closeStationModal()">Annulla</button>
+				<button class="modal-btn primary" onclick="applyStation()">Conferma</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: User profile -->
+	<div class="modal-backdrop" id="userModal" role="dialog" aria-modal="true" aria-label="Accesso postazione" aria-hidden="true">
+		<div id="loginReactRoot"></div>
+	</div>
+
+	<!-- MODAL: Transfer order -->
+	<div class="modal-backdrop" id="transferModal" role="dialog" aria-modal="true" aria-label="Trasferisci comanda" aria-hidden="true">
+		<div class="modal-card modal-transfer is-scroll">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> Trasferisci comanda</div>
+				<button class="modal-close" onclick="closeTransferModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-hint" style="margin-bottom:12px;">Scegli la postazione di destinazione. Le postazioni in <strong>PAUSA</strong> non sono selezionabili.</div>
+				<div id="transferStations" class="station-grid"></div>
+				<div class="modal-hint" id="transferSelectionHint" style="margin-top:10px; display:none;"></div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="closeTransferModal()">Annulla</button>
+				<button class="modal-btn primary" id="btnTransferApply" onclick="applyTransfer()" disabled>Trasferisci</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: Print choice -->
+	<div class="modal-backdrop" id="printModal" role="dialog" aria-modal="true" aria-label="Stampa" aria-hidden="true">
+		<div class="modal-card modal-print">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-print"></i> Stampa</div>
+				<button class="modal-close" onclick="closePrintModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-hint" style="margin-bottom:12px;">Scegli cosa stampare per la comanda selezionata.</div>
+				<div class="print-choice">
+					<button class="modal-btn primary" id="btnPrintOrder" type="button">Comanda</button>
+					<button class="modal-btn" id="btnPrintPreconto" type="button">Preconto</button>
+				</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="closePrintModal()">Chiudi</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: Catalog / disable items -->
+	<div class="modal-backdrop" id="catalogModal" role="dialog" aria-modal="true" aria-label="Gestione articoli" aria-hidden="true">
+		<div class="modal-card modal-catalog is-scroll">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-box"></i> Articoli disponibili</div>
+				<button class="modal-close" onclick="closeCatalogModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="catalog-tools">
+					<div class="catalog-tools-row">
+						<button class="mini-btn" id="btnAddTempItem" type="button"><i class="fa-solid fa-plus"></i> Aggiungi temporaneo</button>
+						<div class="search-wrap compact">
+							<i class="fa-solid fa-magnifying-glass"></i>
+							<input id="catalogSearch" class="search-input" placeholder="Cerca articolo…">
+						</div>
+					</div>
+					<div class="modal-hint" style="margin:0;">Disabilita un articolo per comunicare ai camerieri che non è ordinabile. Se l’articolo è disponibile su più postazioni puoi scegliere se terminarlo <strong>solo qui</strong> o <strong>ovunque</strong>.</div>
+				</div>
+				<div class="catalog-header">
+					<div>ARTICOLO</div>
+					<div>DISPONIBILITÀ</div>
+					<div>PREZZO</div>
+					<div>STATO</div>
+					<div>AZIONI</div>
+				</div>
+				<div id="catalogList" class="catalog-list"></div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="closeCatalogModal()">Chiudi</button>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- MODAL: Articolo temporaneo -->
+	<div class="modal-backdrop" id="tempItemModal" role="dialog" aria-modal="true" aria-label="Articolo temporaneo" aria-hidden="true">
+		<div class="modal-card modal-temp is-scroll">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-tags"></i> Articolo temporaneo</div>
+				<button class="modal-close" onclick="closeTempItemModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-row">
+					<label class="modal-label" for="tempItemName">Nome articolo</label>
+					<input id="tempItemName" class="modal-input" placeholder="Es: Negroni">
+				</div>
+				<div class="modal-row">
+					<label class="modal-label" for="tempItemPrice">Prezzo</label>
+					<div class="price-input">
+						<input id="tempItemPrice" class="modal-input" inputmode="decimal" placeholder="0.00">
+						<span class="price-euro">€</span>
+					</div>
+				</div>
+				<div class="modal-row">
+					<label class="modal-label" for="tempItemQty">Quantità (facoltativa)</label>
+					<input id="tempItemQty" class="modal-input" type="number" min="0" step="1" placeholder="Es: 12">
+				</div>
+
+				<div class="modal-row">
+					<label class="modal-label">Disponibile su</label>
+					<div class="stations-check" id="tempStations"></div>
+				</div>
+				<div class="modal-hint" id="tempItemHint">—</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="closeTempItemModal()">Annulla</button>
+				<button class="modal-btn danger" id="btnTempDelete" onclick="deleteTempItem()" style="display:none;">Rimuovi</button>
+				<button class="modal-btn primary" id="btnTempSave" onclick="saveTempItem()">Salva</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: Choose disable scope -->
+	<div class="modal-backdrop" id="scopeModal" role="dialog" aria-modal="true" aria-label="Disabilita articolo" aria-hidden="true">
+		<div class="modal-card" style="width:min(520px,94vw);">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-ban"></i> Disabilita articolo</div>
+				<button class="modal-close" onclick="closeScopeModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-hint" id="scopeText">—</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="disableItemScope('local')">Solo questa postazione</button>
+				<button class="modal-btn danger" onclick="disableItemScope('global')">Tutte le postazioni</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: Richiesta trasferimento (autorizzazione) -->
+	<div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-label="Autorizza trasferimento" aria-hidden="true">
+		<div class="modal-card" style="width:min(560px,94vw);">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-shield-halved"></i> Autorizzazione trasferimento</div>
+				<button class="modal-close" onclick="closeAuthModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-hint" id="authText">—</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn" onclick="denyAuth()">Nega</button>
+				<button class="modal-btn primary" onclick="approveAuth()">Autorizza</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL: Notifica post-pausa -->
+	<div class="modal-backdrop" id="notifyModal" role="dialog" aria-modal="true" aria-label="Notifica" aria-hidden="true">
+		<div class="modal-card" style="width:min(520px,94vw);">
+			<div class="modal-head">
+				<div class="modal-title"><i class="fa-solid fa-bell"></i> Notifica</div>
+				<button class="modal-close" onclick="closeNotifyModal()" aria-label="Chiudi"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-hint" id="notifyText">—</div>
+			</div>
+			<div class="modal-actions">
+				<button class="modal-btn primary" onclick="ackNotify()">OK</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+

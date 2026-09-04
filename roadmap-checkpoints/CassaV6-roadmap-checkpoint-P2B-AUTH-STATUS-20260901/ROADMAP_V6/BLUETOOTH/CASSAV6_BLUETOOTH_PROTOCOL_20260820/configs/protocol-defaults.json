@@ -1,0 +1,17 @@
+{
+  "protocolVersion": 1,
+  "maxMessageBytes": 65536,
+  "preferredMtu": 247,
+  "minimumAttPayload": 20,
+  "heartbeatMs": 3000,
+  "peerExpiryMs": 15000,
+  "ackTimeoutMs": 2500,
+  "maxRetries": 6,
+  "maxConcurrentPeerLinks": 3,
+  "advertisementEpochSeconds": 60,
+  "advertisementPayloadBytes": 10,
+  "rotatingAliasBits": 48,
+  "advertisementBootIdBits": 8,
+  "advertisementCapabilityBits": 7,
+  "advertisementSequenceBits": 8
+}

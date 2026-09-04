@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "source": "V5BT_B0_ANDROID_SUPPLEMENTAL",
+  "evidenceClass": "SUPPLEMENTAL",
+  "gateImpact": "NON_GATE_EVIDENCE",
+  "formalGate": "PENDING_UNCHANGED",
+  "formalGatePromoted": false,
+  "physicalAdbAccessed": true,
+  "captureDurationSeconds": 120,
+  "privateEvidenceSha256": "774df0150f51daa46272b826968723e20caa0c03830089e9853dbaef801b8088",
+  "result": "SUPPLEMENTAL_FAIL",
+  "devices": [
+    {
+      "ordinal": "handheld-1",
+      "evidenceClass": "SUPPLEMENTAL",
+      "gateImpact": "NON_GATE_EVIDENCE",
+      "androidApi": 36,
+      "versionName": "1.0.38",
+      "versionCode": 39,
+      "controls": {
+        "scan": {
+          "status": "PASS",
+          "code": "SCAN_MEASURED"
+        },
+        "advertise": {
+          "status": "PASS",
+          "code": "ADVERTISING_MEASURED"
+        },
+        "gattClient": {
+          "status": "FAIL",
+          "code": "GATT_CLIENT_NOT_PROVEN"
+        },
+        "gattServer": {
+          "status": "FAIL",
+          "code": "GATT_SERVER_NOT_PROVEN"
+        },
+        "scanAdvertiseConcurrent": {
+          "status": "FAIL",
+          "code": "SCAN_ADVERTISE_CONCURRENCY_NOT_PROVEN"
+        },
+        "wifiBleCoexistence": {
+          "status": "FAIL",
+          "code": "WIFI_BLE_COEXISTENCE_NOT_PROVEN"
+        },
+        "backgroundForeground": {
+          "status": "FAIL",
+          "code": "FOREGROUND_BACKGROUND_NOT_PROVEN"
+        }
+      },
+      "continuity": {
+        "packageVersion": {
+          "status": "PASS",
+          "code": "PACKAGE_VERSION_STABLE"
+        },
+        "operatingSystemUser": {
+          "status": "PASS",
+          "code": "ANDROID_USER_STABLE"
+        },
+        "process": {
+          "status": "PASS",
+          "code": "PROCESS_STABLE"
+        },
+        "reporters": {
+          "status": "PASS",
+          "code": "REPORTERS_STABLE"
+        },
+        "authenticatedContext": {
+          "status": "PASS",
+          "code": "SESSION_STABLE"
+        },
+        "crashOrAnr": {
+          "status": "PASS",
+          "code": "NO_CRASH_OR_ANR"
+        },
+        "clock": {
+          "status": "PASS",
+          "code": "CLOCK_MONOTONIC"
+        },
+        "polling": {
+          "status": "PASS",
+          "code": "POLLING_BOUNDED"
+        },
+        "service": {
+          "status": "PASS",
+          "code": "SERVICE_CONTINUOUS"
+        },
+        "runnerStopPolicy": {
+          "status": "PASS",
+          "code": "RUNNER_FORBIDS_FORCE_STOP"
+        }
+      },
+      "result": "SUPPLEMENTAL_FAIL",
+      "measurements": {
+        "foregroundSamples": 7,
+        "backgroundSamples": 19,
+        "scanWindowsDelta": 16,
+        "acceptedObservationsDelta": 26
+      }
+    },
+    {
+      "ordinal": "handheld-2",
+      "evidenceClass": "SUPPLEMENTAL",
+      "gateImpact": "NON_GATE_EVIDENCE",
+      "androidApi": 36,
+      "versionName": "1.0.38",
+      "versionCode": 39,
+      "controls": {
+        "scan": {
+          "status": "PASS",
+          "code": "SCAN_MEASURED"
+        },
+        "advertise": {
+          "status": "PASS",
+          "code": "ADVERTISING_MEASURED"
+        },
+        "gattClient": {
+          "status": "FAIL",
+          "code": "GATT_CLIENT_NOT_PROVEN"
+        },
+        "gattServer": {
+          "status": "FAIL",
+          "code": "GATT_SERVER_NOT_PROVEN"
+        },
+        "scanAdvertiseConcurrent": {
+          "status": "PASS",
+          "code": "SCAN_ADVERTISE_CONCURRENCY_MEASURED"
+        },
+        "wifiBleCoexistence": {
+          "status": "PASS",
+          "code": "WIFI_BLE_COEXISTENCE_MEASURED"
+        },
+        "backgroundForeground": {
+          "status": "PASS",
+          "code": "FOREGROUND_BACKGROUND_MEASURED"
+        }
+      },
+      "continuity": {
+        "packageVersion": {
+          "status": "PASS",
+          "code": "PACKAGE_VERSION_STABLE"
+        },
+        "operatingSystemUser": {
+          "status": "PASS",
+          "code": "ANDROID_USER_STABLE"
+        },
+        "process": {
+          "status": "PASS",
+          "code": "PROCESS_STABLE"
+        },
+        "reporters": {
+          "status": "PASS",
+          "code": "REPORTERS_STABLE"
+        },
+        "authenticatedContext": {
+          "status": "PASS",
+          "code": "SESSION_STABLE"
+        },
+        "crashOrAnr": {
+          "status": "PASS",
+          "code": "NO_CRASH_OR_ANR"
+        },
+        "clock": {
+          "status": "PASS",
+          "code": "CLOCK_MONOTONIC"
+        },
+        "polling": {
+          "status": "PASS",
+          "code": "POLLING_BOUNDED"
+        },
+        "service": {
+          "status": "PASS",
+          "code": "SERVICE_CONTINUOUS"
+        },
+        "runnerStopPolicy": {
+          "status": "PASS",
+          "code": "RUNNER_FORBIDS_FORCE_STOP"
+        }
+      },
+      "result": "SUPPLEMENTAL_FAIL",
+      "measurements": {
+        "foregroundSamples": 7,
+        "backgroundSamples": 19,
+        "scanWindowsDelta": 16,
+        "acceptedObservationsDelta": 24
+      }
+    }
+  ],
+  "privacy": {
+    "redacted": true,
+    "targetIdentifiersRedacted": true,
+    "provisioningDataRedacted": true,
+    "operatingSystemUserRedacted": true,
+    "processDataRedacted": true,
+    "authenticatedContextRedacted": true,
+    "rawDiagnosticsRedacted": true
+  }
+}

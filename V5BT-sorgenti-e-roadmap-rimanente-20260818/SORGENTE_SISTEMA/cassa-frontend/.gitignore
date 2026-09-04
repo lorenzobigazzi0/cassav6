@@ -1,0 +1,13 @@
+node_modules/
+dist/
+logs/
+*.log
+
+# Local MQTT/HTTPS certificates and private keys must never be committed.
+certs/
+certificates/
+*.key
+*.pem
+*.crt
+*.csr
+rootCA-key.pem

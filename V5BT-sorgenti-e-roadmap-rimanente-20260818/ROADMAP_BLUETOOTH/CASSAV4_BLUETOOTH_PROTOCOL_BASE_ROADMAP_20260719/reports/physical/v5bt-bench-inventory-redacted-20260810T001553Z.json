@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "certificationMatrixSha256": "45712f686dd521fc739929a985d7a56ccc44ef6264023db3014cf8dce2da66e7",
+  "mode": "REDACTED_READ_ONLY_BENCH_INVENTORY",
+  "generatedAt": "2026-08-10T00:15:53.709Z",
+  "status": "INCOMPLETE",
+  "readOnly": true,
+  "commandPolicy": {
+    "shell": false,
+    "mutationAllowed": false,
+    "upsMode": "DISCOVERY_ONLY",
+    "fixedAllowlist": true,
+    "sshAuthentication": "PASSWORD",
+    "sudoReadOnly": true,
+    "passwordRecorded": false
+  },
+  "limitations": [],
+  "redaction": {
+    "serialsExcluded": true,
+    "networkIdentifiersExcluded": true,
+    "registryIdentifiersExcluded": true,
+    "rawCommandOutputExcluded": true
+  },
+  "roleCoverage": {
+    "requiredRoles": [
+      "handheld",
+      "station"
+    ],
+    "configuredRoles": [
+      "handheld"
+    ],
+    "missingRequiredRoles": [
+      "station"
+    ],
+    "complete": false
+  },
+  "adb": {
+    "probeAvailable": false,
+    "expectedTargets": 2,
+    "connectedDevices": 0,
+    "unavailableDevices": 0,
+    "unexpectedConnectedDevices": 0
+  },
+  "android": [
+    {
+      "role": "handheld",
+      "connected": false,
+      "androidUserMatches": false,
+      "androidApi": null,
+      "packageInstalled": false,
+      "packageStopped": null,
+      "versionName": null,
+      "versionCode": null,
+      "versionNameMatches": false,
+      "versionCodeMatches": false,
+      "apkSha256Matches": false,
+      "expectedSigningCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+      "signingCertificatePinCoveredByCertifiedApk": false,
+      "permissionsGranted": false,
+      "authenticatedSession": false,
+      "sessionIdentityDistinct": false,
+      "enrollmentReady": false,
+      "enrollmentIdentityDistinct": false,
+      "registryBindingMatches": false,
+      "enrollmentAttempt": null
+    },
+    {
+      "role": "handheld",
+      "connected": false,
+      "androidUserMatches": false,
+      "androidApi": null,
+      "packageInstalled": false,
+      "packageStopped": null,
+      "versionName": null,
+      "versionCode": null,
+      "versionNameMatches": false,
+      "versionCodeMatches": false,
+      "apkSha256Matches": false,
+      "expectedSigningCertificateSha256": "32ef8a5166df6a63505a821ebf179a4a777993f99baf413d6831224dd308dcca",
+      "signingCertificatePinCoveredByCertifiedApk": false,
+      "permissionsGranted": false,
+      "authenticatedSession": false,
+      "sessionIdentityDistinct": false,
+      "enrollmentReady": false,
+      "enrollmentIdentityDistinct": false,
+      "registryBindingMatches": false,
+      "enrollmentAttempt": null
+    }
+  ],
+  "raspberry": {
+    "reachable": false,
+    "architecture": null,
+    "bluez": {
+      "available": false,
+      "version": null,
+      "powered": false,
+      "discovering": false
+    },
+    "ntpSynchronized": false,
+    "ups": {
+      "discoveryOnly": true,
+      "probeAvailable": false,
+      "discoveredDevices": 0,
+      "serviceProbeAvailable": false,
+      "serviceUnitsObserved": 0
+    },
+    "services": [
+      {
+        "service": "cassav5bt.service",
+        "requirement": "OPERATIONAL_REQUIRED",
+        "expectedState": "LOADED_ACTIVE_ENABLED",
+        "observed": false,
+        "expectationMet": false,
+        "loaded": null,
+        "active": null,
+        "subState": null,
+        "enabled": null
+      },
+      {
+        "service": "bluetooth.service",
+        "requirement": "OPERATIONAL_REQUIRED",
+        "expectedState": "LOADED_ACTIVE_ENABLED",
+        "observed": false,
+        "expectationMet": false,
+        "loaded": null,
+        "active": null,
+        "subState": null,
+        "enabled": null
+      },
+      {
+        "service": "cassav5bt-bluetooth-node.service",
+        "requirement": "OBSERVE_ONLY",
+        "expectedState": "ANY_OBSERVED_STATE",
+        "observed": false,
+        "expectationMet": false,
+        "loaded": null,
+        "active": null,
+        "subState": null,
+        "enabled": null
+      },
+      {
+        "service": "cassav5bt-bluetooth-enrollment.service",
+        "requirement": "OBSERVE_ONLY",
+        "expectedState": "ANY_OBSERVED_STATE",
+        "observed": false,
+        "expectationMet": false,
+        "loaded": null,
+        "active": null,
+        "subState": null,
+        "enabled": null
+      }
+    ],
+    "registry": null,
+    "enrollmentTransactions": {
+      "files": 0,
+      "allPrivate": true
+    },
+    "permissionsSecure": false
+  },
+  "errors": [
+    {
+      "probe": "adb.devices",
+      "code": "UNAVAILABLE"
+    },
+    {
+      "probe": "raspberry.identity",
+      "code": "UNAVAILABLE"
+    },
+    {
+      "probe": "android.roleCoverage",
+      "code": "REQUIRED_ROLE_MISSING"
+    }
+  ]
+}

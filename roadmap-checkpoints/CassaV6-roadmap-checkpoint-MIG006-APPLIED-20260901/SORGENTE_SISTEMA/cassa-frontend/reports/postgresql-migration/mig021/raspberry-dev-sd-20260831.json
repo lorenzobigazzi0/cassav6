@@ -1,0 +1,97 @@
+{
+  "ok": true,
+  "task": "MIG-021",
+  "scope": "DEV_ONLY_TEMPORARY_DATABASE",
+  "metadata": {
+    "database": "cassav6_mig021_20260831a",
+    "user": "cassav6_app",
+    "server_version": "17.11 (Debian 17.11-0+deb13u1)"
+  },
+  "concurrency": {
+    "barrierArrivals": 2,
+    "callbackRuns": {
+      "mig021-worker-a": 1,
+      "mig021-worker-b": 2
+    },
+    "durationMs": 19.29,
+    "finalValue": 2,
+    "results": [
+      {
+        "attempt": 1,
+        "label": "mig021-worker-a",
+        "nextValue": 1
+      },
+      {
+        "attempt": 2,
+        "label": "mig021-worker-b",
+        "nextValue": 2
+      }
+    ],
+    "retrySqlStates": [
+      "40001"
+    ]
+  },
+  "rollback": {
+    "finalValue": 2,
+    "originalErrorPreserved": true
+  },
+  "metrics": {
+    "counters": {
+      "postgresHealthChecks": 1,
+      "postgresPoolAcquires": 9,
+      "postgresQueryErrors": 2,
+      "postgresTransactionAttempts": 4,
+      "postgresTransactionCommits": 2,
+      "postgresTransactionFailures": 1,
+      "postgresTransactionRetries": 1,
+      "postgresTransactionRollbacks": 2,
+      "postgresTransactions": 3
+    },
+    "transactionOperations": [
+      {
+        "durationMs": 10.23,
+        "kind": "postgresTransactionAttempt",
+        "label": "mig021-worker-a"
+      },
+      {
+        "durationMs": 10.34,
+        "kind": "postgresTransaction",
+        "label": "mig021-worker-a"
+      },
+      {
+        "durationMs": 10.95,
+        "kind": "postgresTransactionAttempt",
+        "label": "mig021-worker-b"
+      },
+      {
+        "durationMs": 5,
+        "kind": "postgresTransactionRetryDelay",
+        "label": "40001"
+      },
+      {
+        "durationMs": 2.29,
+        "kind": "postgresTransactionAttempt",
+        "label": "mig021-worker-b"
+      },
+      {
+        "durationMs": 18.64,
+        "kind": "postgresTransaction",
+        "label": "mig021-worker-b"
+      },
+      {
+        "durationMs": 0.94,
+        "kind": "postgresTransactionAttempt",
+        "label": "mig021-rollback-probe"
+      },
+      {
+        "durationMs": 1.03,
+        "kind": "postgresTransaction",
+        "label": "mig021-rollback-probe"
+      }
+    ]
+  },
+  "warnings": [
+    "[postgresql] retry transazione mig021-worker-b (40001) tentativo 1/5 tra 5 ms."
+  ],
+  "totalDurationMs": 82.41
+}

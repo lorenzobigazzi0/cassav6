@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "task": "MIG-026 / RET-01",
+  "generatedForDate": "2026-09-02",
+  "summary": "Migration 007 applicata e idempotente sul PostgreSQL DEV del Raspberry: le otto finestre di retention risultano approvate e tutte disabilitate, le cinque legalmente protette intatte.",
+  "behaviorChanged": false,
+  "databaseChanged": true,
+  "productionCertified": false,
+  "host": {
+    "name": "raspberrypi",
+    "address": "192.168.0.67",
+    "arch": "aarch64",
+    "memoryTotalMiB": 4049,
+    "memoryAvailableMiB": 3072,
+    "diskTotal": "58G",
+    "diskUsed": "16G",
+    "diskFree": "41G",
+    "diskUsedPercent": 28
+  },
+  "backup": {
+    "path": "/var/backups/cassav6-postgresql/logical/logical-cassav6-20260902T092649Z.dump",
+    "sha256": "3f5ca42116b672727ef343bba8309588cfddb632c322ad559abfe03c4daebccf",
+    "bytes": 198388,
+    "durationMs": 399,
+    "restoreVerified": {
+      "database": "cassav6_restore_verify_20260902092714_12738",
+      "durationMs": 129,
+      "catalogObjects": 25,
+      "expectedTable": "app_meta.retention_policies",
+      "expectedRows": 13,
+      "temporaryDatabasesLeftBehind": 0
+    }
+  },
+  "apply": {
+    "stagingDirectory": "/home/admin/cassav6-ret01-20260902a",
+    "script": "scripts/postgresql-migration/apply-ret01-dev-sd.sh",
+    "optIn": "RET01_ALLOW_DEV_APPLY=1",
+    "firstRun": { "applied": 1, "alreadyPresent": 6, "result": "ok" },
+    "secondRun": { "applied": 0, "alreadyPresent": 7, "result": "ok" },
+    "migration": {
+      "version": "007",
+      "name": "ret01_retention_approval",
+      "checksum": "8027c86516047026595581c2760f6787519833600a8a099ad30db3b94f94ab2f"
+    }
+  },
+  "postconditions": {
+    "schemaMigrations": ["001", "002", "003", "004", "005", "006", "007"],
+    "policiesTotal": 13,
+    "policiesEnabled": 0,
+    "policiesApproved": 8,
+    "policiesStillTodo": 0,
+    "policiesLegallyProtected": 5,
+    "decisionRef": "RET-01:APPROVED-2026-09-02",
+    "windows": [
+      { "target": "audit.events", "retentionDays": 1095, "strategy": "drop_partition", "enabled": false },
+      { "target": "sales.order_events", "retentionDays": 730, "strategy": "drop_partition", "enabled": false },
+      { "target": "operations.order_fulfillment_events", "retentionDays": 365, "strategy": "drop_partition", "enabled": false },
+      { "target": "operations.print_attempts", "retentionDays": 180, "strategy": "delete_batched", "enabled": false },
+      { "target": "operations.device_status_events", "retentionDays": 90, "strategy": "drop_partition", "enabled": false },
+      { "target": "operations.print_jobs", "retentionDays": 90, "strategy": "delete_batched", "enabled": false },
+      { "target": "messaging.event_outbox", "retentionDays": 30, "strategy": "delete_batched", "enabled": false },
+      { "target": "messaging.idempotency_keys", "retentionDays": 30, "strategy": "delete_batched", "enabled": false }
+    ],
+    "protected": [
+      "fiscal.documents",
+      "fiscal.operations",
+      "payments.cash_movements",
+      "payments.payments",
+      "payments.provider_transactions"
+    ],
+    "runtimePrivileges": { "select": true, "update": false },
+    "auditEvents": { "relkind": "p", "partitions": 16 }
+  },
+  "healthAfterApply": {
+    "postgresql": "active",
+    "mariadb": "active",
+    "backendHttp": 200,
+    "frontendHttp": 302,
+    "backendDatabaseMode": "mysql"
+  },
+  "openItems": [
+    "Nessuna policy e attiva: l'abilitazione resta una UPDATE esplicita per policy, da fare quando la tabella esiste e c'e uno scheduler che invoca le purge fuori dagli orari di servizio.",
+    "Sei delle otto policy riguardano tabelle non ancora create; delle due esistenti, audit.events e vuota.",
+    "MIG-026 resta IN_PROGRESS fino all'attivazione controllata delle policy."
+  ]
+}

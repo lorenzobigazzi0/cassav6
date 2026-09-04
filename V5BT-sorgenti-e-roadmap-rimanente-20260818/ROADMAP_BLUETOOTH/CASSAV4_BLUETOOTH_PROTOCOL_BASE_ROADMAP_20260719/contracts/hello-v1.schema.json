@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav4.local/contracts/hello-v1.schema.json",
+  "title": "CASSAv4 Bluetooth HELLO v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "sessionId",
+    "nodeId",
+    "bootId",
+    "capabilities",
+    "nonce"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$"
+    },
+    "nodeId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "bootId": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 255
+    },
+    "capabilities": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 127
+    },
+    "nonce": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$",
+      "not": {
+        "const": "AAAAAAAAAAAAAAAAAAAAAA"
+      }
+    }
+  }
+}

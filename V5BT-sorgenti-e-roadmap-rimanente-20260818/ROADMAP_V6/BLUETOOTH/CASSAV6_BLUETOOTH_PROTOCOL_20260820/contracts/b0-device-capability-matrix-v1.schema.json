@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/v6/contracts/b0-device-capability-matrix-v1.schema.json",
+  "title": "V6 B0 device capability matrix v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "evidenceDate",
+    "minimumFullNodesRequired",
+    "devices"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "evidenceDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "minimumFullNodesRequired": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 100
+    },
+    "devices": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/device"
+      }
+    }
+  },
+  "$defs": {
+    "controlStatus": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN",
+        "NOT_TESTED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "vendor",
+        "model",
+        "androidApi",
+        "connectionStatus",
+        "evidenceClass",
+        "scan",
+        "advertise",
+        "gattClient",
+        "gattServer",
+        "scanAdvertiseConcurrent",
+        "wifiBleCoexistence",
+        "backgroundForeground",
+        "classification"
+      ],
+      "properties": {
+        "role": {
+          "enum": ["handheld", "station"]
+        },
+        "vendor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "androidApi": {
+          "type": ["integer", "null"],
+          "minimum": 21
+        },
+        "connectionStatus": {
+          "enum": ["CONNECTED", "NOT_CONNECTED", "UNKNOWN"]
+        },
+        "evidenceClass": {
+          "enum": ["FORMAL", "SUPPLEMENTAL", "NON_GATE_EVIDENCE"]
+        },
+        "scan": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "advertise": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "gattClient": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "gattServer": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "scanAdvertiseConcurrent": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "wifiBleCoexistence": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "backgroundForeground": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "classification": {
+          "enum": ["FULL_NODE", "CLIENT_ONLY", "UNSUPPORTED", "UNKNOWN"]
+        },
+        "privateEvidence": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

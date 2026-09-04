@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "product": "V5BT",
+  "mode": "REDACTED_PHYSICAL_RASPBERRY_CONTINUITY_ATTESTATION",
+  "evidenceClass": "SUPPLEMENTAL",
+  "verdict": "PASS",
+  "generatedAt": "2026-08-03T22:42:39.635Z",
+  "coverage": {
+    "startedAt": "2026-08-03T21:19:55.857Z",
+    "stoppedAt": "2026-08-03T22:42:39.634Z",
+    "durationMs": 4963777,
+    "pollMs": 2000,
+    "sampleCount": 2463,
+    "maximumObservedGapMs": 7187
+  },
+  "checks": {
+    "fixedBoot": "PASS",
+    "monotonicWallClock": "PASS",
+    "mainServiceContinuity": "PASS",
+    "bluetoothServiceContinuity": "PASS",
+    "noServiceRestarts": "PASS",
+    "completePollingCoverage": "PASS"
+  },
+  "privacy": {
+    "hostnameIncluded": false,
+    "networkIdentifiersIncluded": false,
+    "bootIdentifierIncluded": false,
+    "processIdentifiersIncluded": false,
+    "localPathsIncluded": false
+  },
+  "gate": {
+    "b0": "PENDING",
+    "b2": "PENDING",
+    "b5": "PENDING"
+  }
+}

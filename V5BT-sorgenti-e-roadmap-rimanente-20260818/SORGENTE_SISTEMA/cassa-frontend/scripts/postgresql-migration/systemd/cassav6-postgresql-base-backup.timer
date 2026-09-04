@@ -1,0 +1,12 @@
+[Unit]
+Description=Weekly CassaV6 PostgreSQL physical base backup
+
+[Timer]
+OnCalendar=Sun *-*-* 04:15:00
+Persistent=true
+RandomizedDelaySec=15m
+AccuracySec=1m
+Unit=cassav6-postgresql-base-backup.service
+
+[Install]
+WantedBy=timers.target

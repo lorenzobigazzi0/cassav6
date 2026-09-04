@@ -1,0 +1,38 @@
+{
+  "stableScanWindowMs": 3000,
+  "stableScanPeriodMs": 30000,
+  "failoverScanWindowMs": 8000,
+  "failoverScanPeriodMs": 10000,
+  "stableAdvertiseIntervalMode": "balanced",
+  "failoverAdvertiseIntervalMode": "low_latency",
+  "reciprocalDiscoveryAdvertiseGraceMs": 8000,
+  "stopScanAfterDirectServerConnect": false,
+  "rssiFloorDbm": -88,
+  "peerStreamKeyFields": ["rotatingAlias", "bootId"],
+  "peerFreshBeforeMs": 5000,
+  "peerAgingThroughMs": 15000,
+  "maxPeerStreams": 1024,
+  "peerPruneIntervalMs": 1000,
+  "newStreamAttemptWindowMs": 10000,
+  "maxNewStreamAttemptsPerWindow": 2048,
+  "capacityReplacementRssiMarginDb": 6,
+  "scanWindowsMustBeNonContinuous": true,
+  "advertisementEstablishesStableIdentity": false,
+  "advertisementEstablishesAuthentication": false,
+  "legacyAdvertising": {
+    "layout": "single-service-data-128",
+    "maxAdvertisementBytes": 31,
+    "flagsStructureBytes": 3,
+    "serviceData128OverheadBytes": 18,
+    "payloadBytes": 10,
+    "referenceEncoderStructureOrder": ["flags", "service-data-128"],
+    "acceptedDecoderStructureOrders": [
+      ["flags", "service-data-128"],
+      ["service-data-128", "flags"]
+    ],
+    "scanResponseRequired": false,
+    "includeLocalName": false,
+    "includeTxPower": false,
+    "includeSeparateServiceUuidList": false
+  }
+}

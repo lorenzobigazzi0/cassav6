@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    "raspberry",
+    "phone1"
+  ],
+  "repeat": 100,
+  "expect": [
+    "server_seen",
+    "connect_success"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+    "schemaVersion":  2,
+    "product":  "CASSA_V6",
+    "checkpoint":  "P2B_PREREQUISITES_AND_IDENTITY_PILOT",
+    "createdAt":  "2026-09-01T11:53:38.3698134+02:00",
+    "sourceRoot":  "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818",
+    "targetReleaseVersion":  "6.0.0.7",
+    "roadmapStatus":  "MIG-002 IN_PROGRESS; audit partition migration ready locally; P2b exact baseline gate green; P2b identity pilot IN_PROGRESS; Raspberry apply pending",
+    "developmentStorage":  "microSD; SSD not required for development",
+    "destructiveRetentionEnabled":  false,
+    "raspberryVerification":  "PENDING_HOST_UNREACHABLE_192.168.0.67",
+    "migrationStatusSha256":  "a1c578ab90693f18293fccd984351f36357af0448d2cf1b0b484f02d67b74322",
+    "goldenDatasetSha256":  "ac184311c9c96bb8b2d02ff23f71f284afaebfca94437e6435fd501b24edfa01",
+    "baselineEvidenceSha256":  "15f7ef2cad7c4210f35f992baec58e9710c75dca511696545a5e6792e1c70bf4",
+    "identityPilotSha256":  "e9f16929cbb2cc4918d731a78b974338afa1a7d3f534894050f0f2565d2aa947",
+    "exclusions":  [
+                       "node_modules",
+                       "build outputs including WEBAPP_COMPILATA/dist/build",
+                       "APK/AAB",
+                       "cache",
+                       "runtime state"
+                   ]
+}

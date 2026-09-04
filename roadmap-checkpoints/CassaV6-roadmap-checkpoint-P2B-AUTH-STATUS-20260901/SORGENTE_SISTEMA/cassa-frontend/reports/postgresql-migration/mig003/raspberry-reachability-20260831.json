@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "task": "MIG-003",
+  "capturedAt": "2026-08-31T10:39:50+02:00",
+  "target": {
+    "host": "192.168.0.67",
+    "sshUser": "admin"
+  },
+  "network": {
+    "pingSent": 4,
+    "pingReceived": 4,
+    "pingLossPercent": 0,
+    "tcp22Attempts": [true, true, true],
+    "tcp5380Attempts": [true, true, true]
+  },
+  "applicationHealth": {
+    "httpStatus": 200,
+    "ok": true,
+    "service": "cash-backend",
+    "version": "0.0.2",
+    "database": {
+      "ok": true,
+      "mode": "mysql"
+    },
+    "environment": "development",
+    "serverTimestamp": "2026-08-31T08:39:31.423Z"
+  },
+  "ssh": {
+    "transportReachable": true,
+    "batchPublicKeyAuthentication": false,
+    "result": "Permission denied (publickey,password)."
+  },
+  "gate": {
+    "validForMig003": false,
+    "status": "BLOCKED",
+    "reason": "SSH authentication is required to run the read-only resource collector on the Raspberry."
+  }
+}
+

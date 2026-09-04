@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "gate": "P2b-exact-known-failure-set",
+  "ok": true,
+  "capturedAt": "2026-09-01T11:51:03.499Z",
+  "durationMs": 51072,
+  "policy": "Exact-set baseline: no new failure, no missing known failure, no total-count drift.",
+  "suites": {
+    "cassa-frontend": {
+      "counts": {
+        "total": 92,
+        "passed": 72,
+        "failed": 20
+      },
+      "runnerExitStatus": 1,
+      "failures": [
+        {
+          "file": "frontend-tests/cash-bridges.test.mjs",
+          "name": "[FE][AUTH] guard Cassa e cache-buster sono allineati nelle copie runtime"
+        },
+        {
+          "file": "frontend-tests/listino-time-pricing.test.mjs",
+          "name": "[FE][LISTINO-07] ricerca ordine continua a includere sottocategoria, ingredienti e reparto"
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] statistiche pagamenti ricostruiscono pagamenti, storni, sostituzioni e ristampa"
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] varianti obbligatorie drink premium e dropdown custom non dipendono piu dal bridge"
+        },
+        {
+          "file": "frontend-tests/mobile-bridges.test.mjs",
+          "name": "[FE][BRIDGE->NATIVE] pulsante Libera e protezione anti flash sono nel codice nativo"
+        },
+        {
+          "file": "frontend-tests/mobile-frontendv2-static.test.mjs",
+          "name": "[FE][FRONTENDV2][P0] invio comanda preserva bozza finche il backend conferma"
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] amministrazione fondo cassa resta solo in /impostazioni"
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] pagina Pagamenti mostra statistiche realmente POS"
+        },
+        {
+          "file": "frontend-tests/settings-automatic-cash-native.test.mjs",
+          "name": "[FE][SETTINGS] artefatti /impostazioni espongono il cache-buster statistiche POS"
+        },
+        {
+          "file": "frontend-tests/settings-handhelds-native.test.mjs",
+          "name": "[FE][V3] impostazioni palmari sono native nel frontend impostazioni"
+        },
+        {
+          "file": "frontend-tests/settings-handhelds-native.test.mjs",
+          "name": "[FE][V3] palmari rilevati partono con fiscalita disattivata"
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] impostazioni radio sono native nel frontend impostazioni"
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] default canali radio propone Bar, Generale e Cassa"
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] canali radio non usano autosave generico delle impostazioni"
+        },
+        {
+          "file": "frontend-tests/settings-radio-native.test.mjs",
+          "name": "[FE][RADIO] stile canali radio presente nel frontend impostazioni"
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] copia pacchetto e copia runtime restano identiche"
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] enabledAppIds usa la allowlist canonica delle tre app"
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] dati legacy senza enabledAppIds restano abilitati su tutte le app"
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] tabella e modale utente espongono le applicazioni abilitate"
+        },
+        {
+          "file": "frontend-tests/settings-user-app-access.test.mjs",
+          "name": "[FE][SETTINGS] nuovi utenti e salvataggio modale normalizzano enabledAppIds"
+        }
+      ],
+      "comparison": {
+        "ok": true,
+        "duplicateExpected": [],
+        "duplicateActual": [],
+        "missingKnownFailures": [],
+        "unexpectedFailures": [],
+        "countDrift": []
+      }
+    },
+    "mobile-frontend": {
+      "counts": {
+        "total": 642,
+        "passed": 639,
+        "failed": 3
+      },
+      "runnerExitStatus": 1,
+      "failures": [
+        {
+          "file": "tests/static/architectureRules.test.ts",
+          "name": "static architecture rules keeps large files within their monotonically-decreasing LOC budgets"
+        },
+        {
+          "file": "tests/static/paymentsAutomaticCashUi.test.ts",
+          "name": "payments automatic-cash UI phase keeps automatic-cash administration and POS statistics in central settings"
+        },
+        {
+          "file": "tests/static/tableDetailReservationManager.test.ts",
+          "name": "table detail reservation manager mostra prenota con badge e gestione prenotazioni del giorno"
+        }
+      ],
+      "comparison": {
+        "ok": true,
+        "duplicateExpected": [],
+        "duplicateActual": [],
+        "missingKnownFailures": [],
+        "unexpectedFailures": [],
+        "countDrift": []
+      }
+    }
+  }
+}

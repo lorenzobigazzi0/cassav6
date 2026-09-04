@@ -1,0 +1,28 @@
+{
+    "schemaVersion":  2,
+    "product":  "CASSA_V6",
+    "checkpoint":  "MIG006_APPLIED_RASPBERRY_DEV_SD",
+    "createdAt":  "2026-09-01T12:27:26.2835564+02:00",
+    "sourceRoot":  "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818",
+    "targetReleaseVersion":  "6.0.0.7",
+    "roadmapStatus":  "MIG-002 IN_PROGRESS; MIG-006 applied and verified DEV_ONLY on Raspberry microSD; RET-01 TODO; P2b identity pilot IN_PROGRESS",
+    "developmentStorage":  "microSD; SSD not required for development",
+    "destructiveRetentionEnabled":  false,
+    "raspberryVerification":  "VERIFIED_DEV_ONLY_192.168.0.67_HEALTH_200_200",
+    "migrationStatusSha256":  "739b0642c9685322443f9f2ee450e0625a4f3000e66ef20cf412a2d073787303",
+    "mig006EvidenceSha256":  "91838c7cf3b84ad4d7c34f9b9464182f8ed0d7e0be85ead162b6d3f785f54096",
+    "migration006Checksum":  "62ef451f235fdba7c44cdc29f577a71e4234f4c6897f52fc5c15ec01c27218ad",
+    "goldenDatasetSha256":  "ac184311c9c96bb8b2d02ff23f71f284afaebfca94437e6435fd501b24edfa01",
+    "baselineEvidenceSha256":  "15f7ef2cad7c4210f35f992baec58e9710c75dca511696545a5e6792e1c70bf4",
+    "identityPilotSha256":  "e9f16929cbb2cc4918d731a78b974338afa1a7d3f534894050f0f2565d2aa947",
+    "rollbackClone":  "cassav6_rollback_mig006_20260901h",
+    "productionCertified":  false,
+    "exclusions":  [
+                       "node_modules",
+                       "build outputs including WEBAPP_COMPILATA/dist/build",
+                       "APK/AAB",
+                       "cache",
+                       "runtime state",
+                       "credentials and private logs"
+                   ]
+}

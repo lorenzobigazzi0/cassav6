@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "packageLabel": "v4.6",
+  "packageRoot": "sistema-cassa-v4.6-source",
+  "generatedAt": "2026-07-16T07:50:31.384Z",
+  "source": {
+    "snapshot": "sistema-cassa-p4.3-realtime-notifications-fix-20260714-source",
+    "gitAvailable": false,
+    "gitCommit": null,
+    "note": "La sorgente consegnata non contiene metadati Git; l'identita' verificabile e' contentTreeSha256."
+  },
+  "content": {
+    "payloadFileCount": 1751,
+    "payloadBytes": 48123360,
+    "contentTreeSha256": "b65eebeb7e9c90414b86909214512d2e55c86f3bd6ca9839be755147f6f12e4c"
+  },
+  "requiredRuntimeReports": [
+    "cassa-frontend/backend/modules/reports/index.js",
+    "cassa-frontend/backend/modules/reports/reports.routes.js",
+    "cassa-frontend/backend/modules/reports/reports.handlers.js",
+    "cassa-frontend/backend/modules/reports/handheld-session-report.js",
+    "cassa-frontend/backend/modules/reports/settlement-ledger.js"
+  ],
+  "hardwarePolicy": {
+    "apkIncluded": false,
+    "runtimeDatabasesIncluded": false,
+    "realPrintingUsedBySmoke": false,
+    "realFiscalUsedBySmoke": false,
+    "realAutomaticCashUsedBySmoke": false
+  }
+}

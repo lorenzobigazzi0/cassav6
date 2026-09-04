@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/peer-trust-directory-v1.schema.json",
+  "title": "CASSA V6 signed Android peer trust directory v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "issuerId",
+    "revision",
+    "issuedAt",
+    "expiresAt",
+    "aliasEpoch",
+    "authorityKeyId",
+    "signatureAlgorithm",
+    "devices",
+    "signatureBase64"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "const": "cassav6.bluetooth.peer-trust-directory" },
+    "issuerId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+    "issuedAt": { "$ref": "#/$defs/date" },
+    "expiresAt": { "$ref": "#/$defs/date" },
+    "aliasEpoch": { "type": "integer", "minimum": 0, "maximum": 9007199254740990 },
+    "authorityKeyId": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "signatureAlgorithm": { "const": "ECDSA-P256-SHA256-P1363" },
+    "devices": {
+      "type": "array",
+      "maxItems": 256,
+      "items": { "$ref": "#/$defs/device" }
+    },
+    "signatureBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{85}[AQgw]==$"
+    }
+  },
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "certificateId",
+        "publicKeyAlgorithm",
+        "publicKeySpkiDerBase64",
+        "status",
+        "currentAlias",
+        "nextAlias"
+      ],
+      "properties": {
+        "nodeId": { "$ref": "#/$defs/uuid" },
+        "certificateId": { "$ref": "#/$defs/uuid" },
+        "publicKeyAlgorithm": { "enum": ["Ed25519", "EC-P256"] },
+        "publicKeySpkiDerBase64": { "type": "string" },
+        "status": { "enum": ["ACTIVE", "REVOKED"] },
+        "currentAlias": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9a-f]{12}$" },
+            { "type": "null" }
+          ]
+        },
+        "nextAlias": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9a-f]{12}$" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "ACTIVE" } } },
+          "then": {
+            "properties": {
+              "currentAlias": { "type": "string", "pattern": "^[0-9a-f]{12}$" },
+              "nextAlias": { "type": "string", "pattern": "^[0-9a-f]{12}$" }
+            }
+          },
+          "else": {
+            "properties": {
+              "currentAlias": { "type": "null" },
+              "nextAlias": { "type": "null" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "publicKeyAlgorithm": { "const": "EC-P256" } } },
+          "then": {
+            "properties": {
+              "publicKeySpkiDerBase64": { "pattern": "^[A-Za-z0-9+/]{121}[AQgw]==$" }
+            }
+          },
+          "else": {
+            "properties": {
+              "publicKeySpkiDerBase64": { "pattern": "^[A-Za-z0-9+/]{58}[AEIMQUYcgkosw048]=$" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

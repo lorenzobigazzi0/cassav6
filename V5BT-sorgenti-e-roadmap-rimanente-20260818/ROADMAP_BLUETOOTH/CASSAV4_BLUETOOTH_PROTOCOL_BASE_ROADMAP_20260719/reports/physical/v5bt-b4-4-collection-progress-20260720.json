@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "harnessVersion": "1.0.0",
+  "product": "V5BT",
+  "phase": "B4",
+  "generatedAt": "2026-07-20T11:58:03.065Z",
+  "mode": "PHYSICAL_TEN_DEVICE_SEQUENCE",
+  "operation": "STATUS",
+  "verdict": "PENDING",
+  "gate": {
+    "requiredDistinctPhysicalDevices": 10,
+    "distinctPhysicalDevices": 1,
+    "remainingPhysicalDevices": 9,
+    "collectionStatus": "PENDING",
+    "authoritativeB4GateExecuted": false,
+    "b4TenDeviceGate": "PENDING"
+  },
+  "devices": [
+    {
+      "ordinal": 1,
+      "evidenceRecordId": "e8684eb5-36ea-44e9-ac4c-67ea7efe3964",
+      "nodeKind": "handheld",
+      "packageName": "com.sentrapa.palmare.advanced",
+      "model": "SM-A165F",
+      "androidApi": 36,
+      "recordedAt": "2026-07-20T11:57:09.792Z",
+      "androidSampledAt": "2026-07-20T11:57:09.809Z",
+      "raspberryGeneratedAt": "2026-07-20T11:55:45.565Z",
+      "raspberryReportSha256": "dcf0e14a10c4c7cee162a4d8e4d0a054673eb6a41e38a4e5a7f7027b66835ab9",
+      "raspberryLogSha256": "2212112f0ca8a892746685e250aa81d32c9b1150f3f228e973e2b46c5f9fd885",
+      "observationsAccepted": 255,
+      "lifecycleDurationMs": 89983.494227,
+      "wallClockDurationMs": 90119,
+      "rssiDbm": {
+        "minimum": -64,
+        "maximum": -64,
+        "samples": 1
+      }
+    }
+  ],
+  "privacy": {
+    "hardwareSerialsIncluded": false,
+    "adbTransportSerialsIncluded": false,
+    "bluetoothAddressesIncluded": false,
+    "rotatingAliasesIncluded": false,
+    "stableNodeIdsIncluded": false,
+    "deviceDigestsIncluded": false,
+    "identityHmacKeyIncluded": false
+  },
+  "activeV4Changes": false
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav5bt.local/contracts/enrollment-request-v1.schema.json",
+  "title": "CASSA V5BT Bluetooth Initial Enrollment Request v1",
+  "description": "One-time enrollment claim signed by the Android Ed25519 key over the domain-separated canonical request fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "enrollmentEndpointId",
+    "token",
+    "nodeId",
+    "publicKeyAlgorithm",
+    "publicKeySpkiDerBase64",
+    "proofAlgorithm",
+    "proofSignatureBase64"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "enrollmentEndpointId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "token": {
+      "type": "string",
+      "pattern": "^c5e1_[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    },
+    "nodeId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "publicKeyAlgorithm": {
+      "const": "Ed25519"
+    },
+    "publicKeySpkiDerBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{58}[AEIMQUYcgkosw048]=$"
+    },
+    "proofAlgorithm": {
+      "const": "Ed25519"
+    },
+    "proofSignatureBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{85}[AQgw]==$"
+    }
+  }
+}

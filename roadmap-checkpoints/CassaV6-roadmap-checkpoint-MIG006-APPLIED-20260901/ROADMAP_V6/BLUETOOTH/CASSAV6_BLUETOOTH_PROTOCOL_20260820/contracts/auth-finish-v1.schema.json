@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/auth-finish-v1.schema.json",
+  "title": "CASSA V6 Android auth-finish proof v1",
+  "description": "Logical JSON representation of the fixed 50-byte auth-finish GATT frame.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "sessionId",
+    "proofAlgorithm",
+    "proof"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "sessionId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{21}[AQgw]$"
+    },
+    "proofAlgorithm": {
+      "const": "HMAC-SHA256"
+    },
+    "proof": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{43}=$"
+    }
+  }
+}

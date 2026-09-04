@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Postazione Advanced</string>
+    <string name="default_notification_channel_id">notification_alert_silent_v5</string>
+</resources>

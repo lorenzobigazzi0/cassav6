@@ -1,0 +1,7 @@
+{
+  "payloadBytes": 65536,
+  "expect": [
+    "reassembled_hash_match",
+    "zero_duplicate_delivery"
+  ]
+}

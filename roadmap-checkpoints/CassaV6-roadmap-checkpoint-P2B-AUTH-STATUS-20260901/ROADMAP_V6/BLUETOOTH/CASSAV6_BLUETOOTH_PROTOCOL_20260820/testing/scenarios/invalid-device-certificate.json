@@ -1,0 +1,6 @@
+{
+  "expect": [
+    "auth_failed",
+    "no_data_channel"
+  ]
+}

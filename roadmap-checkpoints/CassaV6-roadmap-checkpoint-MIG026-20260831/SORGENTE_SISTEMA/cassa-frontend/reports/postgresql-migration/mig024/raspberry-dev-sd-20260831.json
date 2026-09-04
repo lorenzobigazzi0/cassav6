@@ -1,0 +1,105 @@
+{
+  "ok": true,
+  "task": "MIG-024",
+  "scope": "DEV_ONLY_MICROSD",
+  "hardware": {
+    "hostname": "raspberrypi",
+    "architecture": "aarch64",
+    "storageDevice": "/dev/mmcblk0p2",
+    "storageFilesystem": "ext4"
+  },
+  "postgresql": {
+    "serverVersion": "17.11 (Debian 17.11-0+deb13u1)",
+    "runtimeUser": "cassav6_app",
+    "temporaryDatabase": "cassav6_mig024_20260831a"
+  },
+  "privileges": {
+    "select": true,
+    "insert": true,
+    "update": false,
+    "delete": false,
+    "truncate": false
+  },
+  "atomicity": {
+    "commit": {
+      "businessRows": 1,
+      "auditRows": 1,
+      "durationMs": 6.87
+    },
+    "rollbackAfterAudit": {
+      "businessRows": 0,
+      "auditRows": 0,
+      "durationMs": 3.83
+    },
+    "auditFailureRollback": {
+      "businessRows": 0,
+      "sqlState": "23505",
+      "durationMs": 2.22
+    }
+  },
+  "appendOnly": {
+    "runtime": {
+      "updateSqlState": "42501",
+      "deleteSqlState": "42501",
+      "truncateSqlState": "42501"
+    },
+    "owner": {
+      "updateSqlState": "55000",
+      "deleteSqlState": "55000",
+      "truncateSqlState": "55000"
+    }
+  },
+  "constraints": {
+    "aggregatePairSqlState": "23514",
+    "payloadObjectSqlState": "23514"
+  },
+  "mainDevApply": {
+    "database": "cassav6",
+    "firstRun": {
+      "applied": ["003_audit_events_append_only"],
+      "skipped": ["001_foundation", "002_event_outbox_lease_contract"]
+    },
+    "secondRun": {
+      "applied": [],
+      "skipped": [
+        "001_foundation",
+        "002_event_outbox_lease_contract",
+        "003_audit_events_append_only"
+      ]
+    },
+    "registry": [
+      {
+        "version": "001",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+      },
+      {
+        "version": "002",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+      },
+      {
+        "version": "003",
+        "checksum": "dbd88d0c81555c0019cc8fa912768e0e1dde048a7c99654103331d9fadefd673"
+      }
+    ],
+    "constraintsValidated": [
+      "audit_events_aggregate_pair_coherent",
+      "audit_events_payload_object"
+    ],
+    "triggersEnabled": [
+      "audit_events_reject_truncate",
+      "audit_events_reject_update_delete"
+    ],
+    "foundationRowCounts": {
+      "auditEvents": 0,
+      "idempotencyKeys": 0,
+      "commandInbox": 0,
+      "eventOutbox": 0
+    }
+  },
+  "servicesAfter": {
+    "postgresql": "active",
+    "cassa": "active"
+  },
+  "temporaryArtifactsRemoved": true,
+  "smokeDurationMs": 63.23
+}

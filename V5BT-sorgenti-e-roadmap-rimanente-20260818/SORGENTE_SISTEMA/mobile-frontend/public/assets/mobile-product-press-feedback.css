@@ -1,0 +1,85 @@
+.menu-product-row {
+  transform-origin: center center;
+  will-change: transform, filter, box-shadow;
+}
+
+.menu-product-row::before {
+  content: "";
+  position: absolute;
+  left: var(--mobile-press-x, 50%);
+  top: var(--mobile-press-y, 50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.72) 0%, rgba(168, 223, 255, 0.38) 48%, rgba(115, 160, 255, 0) 76%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.24);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.menu-product-row.is-press-feedback {
+  animation: mobile-product-row-press 360ms cubic-bezier(0.2, 0.9, 0.24, 1);
+}
+
+.menu-product-row.is-press-feedback::before {
+  animation: mobile-product-row-ripple 360ms ease-out;
+}
+
+.menu-product-row.is-press-feedback .menu-product-preview,
+.menu-product-row.is-press-feedback .menu-product-main {
+  animation: mobile-product-preview-flash 360ms cubic-bezier(0.2, 0.9, 0.24, 1);
+}
+
+@keyframes mobile-product-row-press {
+  0% {
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+    box-shadow: inset 0 0 0 0 rgba(176, 226, 255, 0);
+  }
+  24% {
+    transform: scale(0.955);
+    filter: brightness(1.1) saturate(1.08);
+    box-shadow: inset 0 0 0 1px rgba(176, 226, 255, 0.42), 0 0 0 1px rgba(176, 226, 255, 0.14);
+  }
+  58% {
+    transform: scale(1.022);
+    filter: brightness(1.16) saturate(1.12);
+    box-shadow: inset 0 0 0 1px rgba(176, 226, 255, 0.34), 0 10px 26px rgba(107, 153, 255, 0.18);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1) saturate(1);
+    box-shadow: inset 0 0 0 0 rgba(176, 226, 255, 0);
+  }
+}
+
+@keyframes mobile-product-row-ripple {
+  0% {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(0.24);
+  }
+  36% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8.2);
+  }
+}
+
+@keyframes mobile-product-preview-flash {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  24% {
+    transform: translateY(1px) scale(0.985);
+  }
+  58% {
+    transform: translateY(-1px) scale(1.018);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}

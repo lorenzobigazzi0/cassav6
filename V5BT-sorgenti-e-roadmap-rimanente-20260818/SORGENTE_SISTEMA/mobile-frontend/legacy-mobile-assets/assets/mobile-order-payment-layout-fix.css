@@ -1,0 +1,571 @@
+.mobile-payment-inline-field {
+  display: grid;
+  gap: 6px;
+}
+
+.mobile-payment-inline-field > span:first-child {
+  display: block;
+}
+
+.mobile-payment-inline-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.mobile-payment-inline-controls > input {
+  width: 100%;
+  min-width: 0;
+}
+
+.mobile-payment-inline-controls > input.is-readonly {
+  opacity: 1;
+  cursor: default;
+}
+
+.mobile-payment-inline-controls > input.is-readonly:focus {
+  outline: none;
+}
+
+.table-payment-note-row[data-inline-hidden="1"] {
+  display: none !important;
+}
+
+.mobile-payment-lock-hint {
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 14px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #fef3c7;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+}
+
+.table-payment-panel[data-mobile-payment-lock="pending"] {
+  cursor: progress;
+}
+
+.table-payment-panel[data-mobile-payment-lock="pending"] button:not(.table-payment-close),
+.table-payment-panel[data-mobile-payment-lock="pending"] input,
+.table-payment-panel[data-mobile-payment-lock="pending"] select,
+.table-payment-panel[data-mobile-payment-lock="pending"] textarea {
+  opacity: 0.68;
+}
+
+.mobile-payment-inline-note {
+  min-width: 42px;
+  width: 42px;
+  min-height: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.table-payment-confirm,
+.table-payment-receipt-card {
+  transition: transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease;
+  will-change: transform;
+}
+
+.table-payment-confirm.is-mobile-pressing,
+.table-payment-receipt-card.is-mobile-pressing {
+  transform: scale(0.975);
+  filter: brightness(1.08);
+}
+
+.table-payment-confirm.is-mobile-confirm-pending {
+  position: relative;
+  cursor: progress;
+  opacity: 0.92;
+}
+
+.table-payment-confirm.is-mobile-confirm-pending::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 999px;
+  vertical-align: -2px;
+  animation: mobile-payment-confirm-spin 0.72s linear infinite;
+}
+
+.table-free-confirm-backdrop,
+.table-free-confirm-card {
+  animation: none !important;
+  transition: none !important;
+}
+
+.table-free-confirm-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  backface-visibility: hidden;
+  contain: layout paint style;
+  will-change: auto !important;
+}
+
+.table-free-confirm-card {
+  opacity: 1 !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden;
+  will-change: auto !important;
+}
+
+.table-detail-bottom-btn-free {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.mobile-free-confirm-opening .table-detail-bottom-btn-free {
+  pointer-events: auto;
+  filter: brightness(0.96);
+}
+
+.table-history-pay-action {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.table-history-pay-wallet-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: currentColor;
+}
+
+@keyframes mobile-payment-confirm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-payment-inline-controls {
+    gap: 8px;
+  }
+
+  .mobile-payment-inline-note {
+    min-width: 40px;
+    width: 40px;
+    min-height: 40px;
+    height: 40px;
+  }
+}
+
+.mobile-roman-split-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 14px;
+  padding-top: calc(22px + env(safe-area-inset-top));
+  padding-right: calc(14px + env(safe-area-inset-right));
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  padding-left: calc(14px + env(safe-area-inset-left));
+  background: rgba(4, 8, 18, 0.72);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+}
+
+.mobile-roman-split-modal {
+  width: min(430px, 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(18, 26, 46, 0.98), rgba(8, 13, 26, 0.98));
+  box-shadow: 0 26px 74px rgba(0, 0, 0, 0.56), inset 0 1px rgba(255, 255, 255, 0.16);
+  color: var(--text, rgba(235, 240, 255, 0.97));
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+}
+
+.mobile-roman-split-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobile-roman-split-modal-head > div {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.mobile-roman-split-kicker {
+  color: var(--muted, rgba(190, 198, 220, 0.72));
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.mobile-roman-split-modal-head strong {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.mobile-roman-split-close {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mobile-roman-split-field {
+  display: grid;
+  gap: 8px;
+  color: var(--muted, rgba(190, 198, 220, 0.72));
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.mobile-roman-split-stepper {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 8px;
+}
+
+.mobile-roman-split-stepper button,
+.mobile-roman-split-presets button,
+.mobile-roman-split-actions button {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+}
+
+.mobile-roman-split-stepper button {
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 22px;
+}
+
+.mobile-roman-split-stepper input {
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  border: 1px solid rgba(130, 180, 255, 0.34);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.11);
+  color: var(--text, rgba(235, 240, 255, 0.97));
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.mobile-roman-split-stepper input:focus {
+  outline: 2px solid rgba(126, 180, 255, 0.48);
+  outline-offset: 2px;
+}
+
+.mobile-roman-split-presets {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.mobile-roman-split-presets button {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-roman-split-error {
+  margin: 0;
+  color: #ffd5d5;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.mobile-roman-split-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 10px;
+}
+
+.mobile-roman-split-secondary {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-roman-split-primary {
+  border-color: rgba(74, 222, 128, 0.48) !important;
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.28), rgba(28, 128, 74, 0.34));
+  color: #eafff1;
+}
+
+:root[data-theme="light"] .mobile-roman-split-modal-backdrop,
+:root:not([data-theme]) .mobile-roman-split-modal-backdrop {
+  background: rgba(18, 32, 54, 0.36);
+}
+
+:root[data-theme="light"] .mobile-roman-split-modal,
+:root:not([data-theme]) .mobile-roman-split-modal {
+  border-color: rgba(20, 40, 80, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.98));
+  color: rgba(20, 30, 45, 0.94);
+  box-shadow: 0 22px 64px rgba(20, 32, 54, 0.28), inset 0 1px rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme="light"] .mobile-roman-split-kicker,
+:root[data-theme="light"] .mobile-roman-split-field,
+:root:not([data-theme]) .mobile-roman-split-kicker,
+:root:not([data-theme]) .mobile-roman-split-field {
+  color: rgba(20, 30, 45, 0.68);
+}
+
+:root[data-theme="light"] .mobile-roman-split-close,
+:root[data-theme="light"] .mobile-roman-split-stepper button,
+:root[data-theme="light"] .mobile-roman-split-presets button,
+:root[data-theme="light"] .mobile-roman-split-secondary,
+:root:not([data-theme]) .mobile-roman-split-close,
+:root:not([data-theme]) .mobile-roman-split-stepper button,
+:root:not([data-theme]) .mobile-roman-split-presets button,
+:root:not([data-theme]) .mobile-roman-split-secondary {
+  border-color: rgba(20, 40, 80, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+:root[data-theme="light"] .mobile-roman-split-stepper input,
+:root:not([data-theme]) .mobile-roman-split-stepper input {
+  border-color: rgba(50, 108, 205, 0.3);
+  background: rgba(255, 255, 255, 0.94);
+  color: rgba(20, 30, 45, 0.94);
+}
+
+:root[data-theme="light"] .mobile-roman-split-primary,
+:root:not([data-theme]) .mobile-roman-split-primary {
+  border-color: rgba(28, 128, 74, 0.4) !important;
+  background: linear-gradient(180deg, rgba(188, 242, 207, 0.96), rgba(142, 222, 174, 0.9));
+  color: rgba(12, 84, 48, 0.98);
+}
+
+.table-payment-note-row.has-roman-shares {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(84px, 0.38fr);
+  align-items: stretch;
+  gap: 8px;
+}
+
+.table-payment-roman-share-wrap {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.table-payment-roman-share-control {
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 42px minmax(48px, 1fr) 42px;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.table-payment-roman-share-btn,
+.table-payment-roman-share-control input,
+.table-payment-roman-share-preset {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--text, rgba(235, 240, 255, 0.97));
+  font: inherit;
+  font-weight: 900;
+}
+
+.table-payment-roman-share-btn {
+  border-radius: 12px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.table-payment-roman-share-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.table-payment-roman-share-control input {
+  width: 100%;
+  min-width: 0;
+  border-radius: 13px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.table-payment-roman-share-control input:focus {
+  outline: 2px solid rgba(126, 180, 255, 0.42);
+  outline-offset: 2px;
+}
+
+.table-payment-roman-share-caption {
+  color: var(--muted, rgba(190, 198, 220, 0.72));
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.table-payment-note-row.has-roman-shares .table-payment-note-btn {
+  width: 100%;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.table-payment-note-row.has-roman-shares .table-payment-note-btn svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+.table-payment-note-label {
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+}
+
+.table-payment-roman-share-presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
+  gap: 7px;
+  margin-top: -4px;
+}
+
+.table-payment-roman-share-preset {
+  min-height: 36px;
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+.table-payment-roman-share-preset.is-active {
+  border-color: rgba(74, 222, 128, 0.48);
+  background: linear-gradient(180deg, rgba(74, 222, 128, 0.28), rgba(28, 128, 74, 0.34));
+  color: #eafff1;
+}
+
+:root[data-theme="light"] .table-payment-roman-share-btn,
+:root[data-theme="light"] .table-payment-roman-share-control input,
+:root[data-theme="light"] .table-payment-roman-share-preset,
+:root:not([data-theme]) .table-payment-roman-share-btn,
+:root:not([data-theme]) .table-payment-roman-share-control input,
+:root:not([data-theme]) .table-payment-roman-share-preset {
+  border-color: rgba(20, 40, 80, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(20, 30, 45, 0.94);
+}
+
+:root[data-theme="light"] .table-payment-roman-share-caption,
+:root:not([data-theme]) .table-payment-roman-share-caption {
+  color: rgba(20, 30, 45, 0.68);
+}
+
+:root[data-theme="light"] .table-payment-roman-share-preset.is-active,
+:root:not([data-theme]) .table-payment-roman-share-preset.is-active {
+  border-color: rgba(28, 128, 74, 0.4);
+  background: linear-gradient(180deg, rgba(188, 242, 207, 0.96), rgba(142, 222, 174, 0.9));
+  color: rgba(12, 84, 48, 0.98);
+}
+
+.analytics-row-note {
+  margin-top: 7px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  border: 1px solid rgba(130, 180, 255, 0.24);
+  background: rgba(130, 180, 255, 0.1);
+  color: var(--text, rgba(235, 240, 255, 0.94));
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.32;
+  overflow-wrap: anywhere;
+}
+
+.analytics-row-note strong {
+  color: rgba(190, 218, 255, 0.96);
+}
+
+.table-payment-mode-card.is-disabled,
+.table-payment-mode-card:disabled {
+  cursor: not-allowed;
+  filter: grayscale(0.25);
+  opacity: 0.48;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.table-payment-mode-card.is-disabled .table-payment-mode-title,
+.table-payment-mode-card:disabled .table-payment-mode-title {
+  color: rgba(235, 240, 255, 0.78);
+}
+
+:root[data-theme="light"] .table-payment-mode-card.is-disabled .table-payment-mode-title,
+:root[data-theme="light"] .table-payment-mode-card:disabled .table-payment-mode-title,
+:root:not([data-theme]) .table-payment-mode-card.is-disabled .table-payment-mode-title,
+:root:not([data-theme]) .table-payment-mode-card:disabled .table-payment-mode-title {
+  color: rgba(20, 30, 45, 0.62);
+}
+
+:root[data-theme="light"] .analytics-row-note,
+:root:not([data-theme]) .analytics-row-note {
+  border-color: rgba(50, 108, 205, 0.22);
+  background: rgba(210, 228, 255, 0.72);
+  color: rgba(20, 30, 45, 0.9);
+}
+
+:root[data-theme="light"] .analytics-row-note strong,
+:root:not([data-theme]) .analytics-row-note strong {
+  color: rgba(20, 64, 128, 0.96);
+}
+
+@media (min-width: 700px) {
+  .mobile-roman-split-modal-backdrop {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .table-payment-note-row.has-roman-shares {
+    grid-template-columns: minmax(0, 1fr) 76px;
+  }
+
+  .table-payment-roman-share-control {
+    grid-template-columns: 38px minmax(42px, 1fr) 38px;
+    gap: 5px;
+  }
+
+  .table-payment-note-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-roman-split-modal {
+    padding: 14px;
+  }
+
+  .mobile-roman-split-presets {
+    grid-template-columns: repeat(5, minmax(38px, 1fr));
+    gap: 6px;
+  }
+
+  .mobile-roman-split-actions {
+    grid-template-columns: 1fr;
+  }
+}

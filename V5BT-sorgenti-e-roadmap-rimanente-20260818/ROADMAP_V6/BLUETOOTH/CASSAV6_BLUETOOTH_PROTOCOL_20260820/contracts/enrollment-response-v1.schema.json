@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cassav6.local/contracts/enrollment-response-v1.schema.json",
+  "title": "Cassa V6 Bluetooth Initial Enrollment Response v1",
+  "description": "Sensitive one-time response to import into Android Keystore over an authenticated TLS transport.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "nodeId",
+    "certificateId",
+    "publicKeyAlgorithm",
+    "publicKeySpkiDerBase64",
+    "aliasKeyAlgorithm",
+    "aliasKeyEncoding",
+    "aliasKeyBase64url",
+    "enrolledAt"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "nodeId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "certificateId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "publicKeyAlgorithm": {
+      "const": "Ed25519"
+    },
+    "publicKeySpkiDerBase64": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{58}[AEIMQUYcgkosw048]=$"
+    },
+    "aliasKeyAlgorithm": {
+      "const": "HMAC-SHA256"
+    },
+    "aliasKeyEncoding": {
+      "const": "base64url-unpadded"
+    },
+    "aliasKeyBase64url": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{42}[AEIMQUYcgkosw048]$"
+    },
+    "enrolledAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  }
+}

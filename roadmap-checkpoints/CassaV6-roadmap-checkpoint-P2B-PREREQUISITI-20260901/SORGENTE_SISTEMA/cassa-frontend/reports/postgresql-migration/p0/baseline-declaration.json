@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-01T09:27:25.177Z",
+  "source": {
+    "sourceArchive": {
+      "label": "V6.0.0.6.zip",
+      "sha256": "8FDC73B116FD1C697A127CC10E1104BCF7046121522F4C65FB8177F7F1506361"
+    },
+    "roadmapArchive": {
+      "label": "V6_POSTGRESQL_MIGRATION_ROADMAP_REV2.zip",
+      "sha256": "6AA37ACC12F423A9B021B9419F21D405C091D132C6304CDF47102D481AEDD992"
+    },
+    "gitRepositoryLineage": {
+      "head": null,
+      "branch": null
+    },
+    "packageVersion": "0.0.2"
+  },
+  "runtimeArtifacts": {
+    "repositoryRoot": "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818\\SORGENTE_SISTEMA",
+    "availability": {
+      "cassaCompiledEntry": {
+        "relativePath": "cassa-frontend/dist/index.html",
+        "present": true
+      },
+      "cassaBuildEntry": {
+        "relativePath": "cassa-frontend/index.html",
+        "present": false
+      },
+      "settingsCompiledEntry": {
+        "relativePath": "settings-frontend/dist/index.html",
+        "present": true
+      },
+      "mobileCompiledEntry": {
+        "relativePath": "mobile-frontend/dist/index.html",
+        "present": true
+      },
+      "workstationCompiledEntry": {
+        "relativePath": "postazione/dist/index.html",
+        "present": true
+      }
+    },
+    "cassaWebRuntimeAvailable": true,
+    "cassaWebRebuildPossible": false,
+    "sourcePackageOperationallyComplete": true
+  },
+  "hardware": {
+    "evidenceScope": "development-workstation-only",
+    "validForProductionHardwareGate": false,
+    "reason": "HW-GATE-01..05 require measurements on the production Raspberry or identical hardware.",
+    "capturedAt": "2026-09-01T09:27:25.238Z",
+    "host": "VECTORCAST-PC",
+    "platform": "win32",
+    "release": "10.0.19045",
+    "architecture": "x64",
+    "cpuModel": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "logicalCpuCount": 12,
+    "totalMemoryBytes": 17019662336,
+    "freeMemoryBytes": 8097112064,
+    "disk": {
+      "blockSize": 4096,
+      "blocks": 78180095,
+      "availableBlocks": 50291105
+    },
+    "nodeVersion": "v22.16.0"
+  },
+  "goldenDataset": {
+    "relativePath": "reports/postgresql-migration/p0/golden-dataset.json",
+    "sha256": "ac184311c9c96bb8b2d02ff23f71f284afaebfca94437e6435fd501b24edfa01",
+    "validation": {
+      "ok": true,
+      "errors": []
+    },
+    "expected": {
+      "catalog": {
+        "menuItemCount": 189,
+        "legacyPriceListCount": 2,
+        "inheritedPriceListCount": 2,
+        "priceScheduleCount": 2,
+        "menuScheduleCount": 1,
+        "areaMenuCount": 1,
+        "allergenProductCount": 2
+      },
+      "identity": {
+        "userCount": 2,
+        "userGroupCount": 1,
+        "sessionCount": 3,
+        "activeSessionCount": 1,
+        "revokedSessionCount": 1,
+        "expiredSessionCount": 1,
+        "referenceTime": "2026-08-31T00:00:00.000Z"
+      },
+      "order": {
+        "count": 1,
+        "lineCount": 3,
+        "variantLineCount": 1,
+        "grossCents": 850,
+        "discountCents": 50,
+        "totalCents": 800
+      },
+      "payment": {
+        "containerCount": 1,
+        "partCount": 2,
+        "transactionCount": 2,
+        "rowCount": 2,
+        "settledCents": 800,
+        "methods": [
+          "CARD",
+          "CASH"
+        ]
+      },
+      "reservation": {
+        "count": 1
+      },
+      "benefit": {
+        "redemptionCents": 300,
+        "remainingCents": 200,
+        "status": "partially_redeemed"
+      },
+      "pricing": {
+        "caseCount": 5,
+        "equivalencePercent": 100,
+        "includesOverlap": true,
+        "includesOvernight": true,
+        "includesWeekdayMiss": true
+      }
+    }
+  },
+  "legacyStorage": {
+    "readDb(": {
+      "allOccurrences": 334,
+      "allFiles": 44,
+      "runtimeOccurrences": 228,
+      "runtimeFiles": 35
+    },
+    "writeDb(": {
+      "allOccurrences": 153,
+      "allFiles": 31,
+      "runtimeOccurrences": 91,
+      "runtimeFiles": 20
+    },
+    "node:sqlite": {
+      "allOccurrences": 52,
+      "allFiles": 47,
+      "runtimeOccurrences": 12,
+      "runtimeFiles": 12
+    },
+    "mysql2": {
+      "allOccurrences": 6,
+      "allFiles": 5,
+      "runtimeOccurrences": 2,
+      "runtimeFiles": 1
+    },
+    "app_state": {
+      "allOccurrences": 578,
+      "allFiles": 37,
+      "runtimeOccurrences": 373,
+      "runtimeFiles": 21
+    },
+    "app_state_domain_records": {
+      "allOccurrences": 63,
+      "allFiles": 5,
+      "runtimeOccurrences": 5,
+      "runtimeFiles": 2
+    },
+    "BACKEND_RELATIONAL_DB_PATH": {
+      "allOccurrences": 112,
+      "allFiles": 63,
+      "runtimeOccurrences": 3,
+      "runtimeFiles": 3
+    }
+  },
+  "migrationGate": {
+    "phase": "P0",
+    "productionHardwareEvidenceComplete": false,
+    "nextBlockingDecision": "HW-01"
+  }
+}

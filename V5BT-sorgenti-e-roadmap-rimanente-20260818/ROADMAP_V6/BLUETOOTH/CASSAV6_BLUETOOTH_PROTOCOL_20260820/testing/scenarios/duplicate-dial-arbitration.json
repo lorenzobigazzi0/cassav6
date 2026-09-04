@@ -1,0 +1,7 @@
+{
+  "fault": "both_nodes_connect",
+  "expect": [
+    "one_session_retained",
+    "no_crash"
+  ]
+}

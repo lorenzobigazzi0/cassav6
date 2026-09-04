@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 2,
+  "harnessVersion": "2.0.0",
+  "source": "V5BT_API31_COMPAT_NON_GATE_REPORT",
+  "product": "V5BT",
+  "phase": "API31_COMPAT_PHYSICAL_DIAGNOSTIC",
+  "mode": "PHYSICAL_DIAGNOSTIC",
+  "evidenceClass": "NON_GATE_EVIDENCE",
+  "verdict": "NON_GATE_FAIL",
+  "gateImpact": "NONE",
+  "officialProgressPercent": 49,
+  "profile": {
+    "applicationId": "com.sentrapa.postazione.advanced.partial",
+    "versionName": "2.0.23-api31compat",
+    "versionCode": 25,
+    "androidApi": 31,
+    "partialNonGateBuild": true,
+    "api31CompatNonGateBuild": true,
+    "discoveryProfile": "API31_COMPAT_NON_GATE",
+    "discoveryMinimumAndroidApi": 31,
+    "formalGateEligible": false
+  },
+  "enrollment": {
+    "protocolVersion": 2,
+    "state": "READY",
+    "publicKeyAlgorithm": "EC-P256",
+    "proofAlgorithm": "ECDSA-P256-SHA256-P1363",
+    "transport": "HTTPS_PINNED_V2",
+    "evidence": "PHYSICAL_STAGING_V2_ACCEPTED",
+    "stagingRegistryAccepted": true
+  },
+  "evidence": {
+    "bluetooth": {
+      "rawCallbacks": 2471,
+      "uuidMatches": 9,
+      "validObservations": 9,
+      "invalidPayloads": 0,
+      "scanFailures": 0,
+      "advertisementStarts": 1,
+      "advertisementFailures": 0,
+      "capabilities": {
+        "scan": true,
+        "advertise": true,
+        "gattClient": true,
+        "gattServer": true
+      },
+      "runtime": {
+        "scannerActiveObserved": true,
+        "advertiserActiveObserved": true,
+        "gattClientEnabled": true,
+        "gattClientAttempts": 9,
+        "gattClientConnections": 6,
+        "gattClientErrors": 9,
+        "gattServerEnabled": false,
+        "gattServerActiveObserved": false,
+        "gattServerConnections": 0,
+        "gattServerErrors": 0
+      }
+    },
+    "concurrency": {
+      "scanAdvertiseWindows": 36,
+      "validObservationsDuringWindows": 9
+    },
+    "wifiBleCoexistence": {
+      "healthProbeCount": 5,
+      "successfulHealthProbeCount": 5,
+      "bluetoothActiveProbeCount": 5
+    },
+    "foregroundBackground": {
+      "backgroundDurationMs": 31253,
+      "reporterSamplesBefore": 15,
+      "reporterSamplesAfter": 31,
+      "scannerActiveThroughout": true,
+      "advertiserActiveThroughout": true,
+      "foregroundRestored": true
+    },
+    "continuity": {
+      "android": {
+        "sampleCount": 7,
+        "durationMs": 31253,
+        "expectedPollingIntervalMs": 2000,
+        "maxAllowedGapMs": 10000,
+        "maxObservedGapMs": 5228,
+        "processRestarts": 0,
+        "crashes": 0,
+        "anrs": 0,
+        "logouts": 0,
+        "reporterRestarts": 0,
+        "identityChanges": 0,
+        "versionChanges": 0
+      },
+      "raspberry": {
+        "sampleCount": 227,
+        "durationMs": 464501,
+        "expectedPollingIntervalMs": 2000,
+        "maxAllowedGapMs": 10000,
+        "maxObservedGapMs": 5992,
+        "bootChanges": 0,
+        "clockRegressions": 0,
+        "mainServiceRestarts": 0,
+        "bluetoothServiceRestarts": 0,
+        "mainServiceFailures": 0,
+        "bluetoothServiceFailures": 0
+      },
+      "staging": {
+        "sampleCount": 20,
+        "durationMs": 33660,
+        "expectedPollingIntervalMs": 2000,
+        "maxAllowedGapMs": 10000,
+        "maxObservedGapMs": 3019,
+        "serviceRestarts": 0,
+        "healthFailures": 0,
+        "protocolV2UnavailableSamples": 0,
+        "registryIntegrityFailures": 0
+      }
+    },
+    "battery": {
+      "configuredIntervalMs": 120000,
+      "observationDurationMs": 270090,
+      "observedNotificationCount": 3,
+      "minimumObservedIntervalMs": 120074,
+      "maximumObservedIntervalMs": 121517
+    }
+  },
+  "assessments": {
+    "androidContinuityResult": "PASS",
+    "raspberryContinuityResult": "PASS",
+    "stagingContinuityResult": "PASS",
+    "batteryObservationClaim": "INTERVAL_OBSERVED"
+  },
+  "controls": {
+    "enrollmentV2": "PASS",
+    "scanCapability": "PASS",
+    "scanRuntime": "PASS",
+    "advertiseCapability": "PASS",
+    "advertiseRuntime": "PASS",
+    "gattClientCapability": "PASS",
+    "gattClientRuntime": "FAIL",
+    "gattServerCapability": "PASS",
+    "gattServerRuntime": "NOT_RUN",
+    "scanAdvertiseConcurrent": "PASS",
+    "wifiBleCoexistence": "PASS",
+    "backgroundForeground": "PASS",
+    "androidContinuity": "PASS",
+    "raspberryContinuity": "PASS",
+    "stagingContinuity": "PASS",
+    "batteryCadence": "PASS"
+  },
+  "gates": {
+    "b0DeviceCapabilityGate": "PENDING",
+    "b1EnrollmentGate": "PENDING",
+    "b2DiscoveryGate": "PENDING",
+    "b3SoakGate": "PENDING",
+    "b4TenPhysicalDeviceGate": "PENDING",
+    "b5HundredSessionGate": "PENDING",
+    "b6AndroidPairGate": "BLOCKED"
+  },
+  "authorization": {
+    "acceptedAsFormalEvidence": false,
+    "officialCampaignAuthorized": false,
+    "reasonCode": "API31_COMPAT_PHYSICAL_DIAGNOSTIC_NON_PROMOTABLE"
+  },
+  "effects": {
+    "authoritativeGateExecuted": false,
+    "gatePromoted": false,
+    "roadmapStatusChanged": false
+  },
+  "privacy": {
+    "aggregateOnly": true,
+    "privateIdentifiersIncluded": false,
+    "redactionValidated": true
+  }
+}

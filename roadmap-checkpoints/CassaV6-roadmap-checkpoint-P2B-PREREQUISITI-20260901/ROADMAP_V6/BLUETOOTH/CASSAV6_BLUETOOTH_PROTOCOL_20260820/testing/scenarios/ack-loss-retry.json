@@ -1,0 +1,7 @@
+{
+  "dropAckCount": 3,
+  "expect": [
+    "retry",
+    "single_delivery"
+  ]
+}

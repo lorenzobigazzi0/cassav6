@@ -1,0 +1,401 @@
+/*
+  Restyle della sezione Menu del Palmare (2026-08-24).
+
+  Tutte le regole sono annidate sotto `.menu-browser`, che esiste solo nella
+  scheda Menu: nessun altro schermo viene toccato. Le icone restano invariate:
+  nessuna regola agisce su dimensioni o tratto degli SVG di ricerca, filtro e
+  freccia indietro.
+
+  Rollback: rimuovere l'import da `src/main.tsx` (dettagli in
+  `.rollback/menu-restyle-20260824/LEGGIMI_ROLLBACK.md`).
+*/
+
+.menu-browser {
+  --menu-surface: rgba(255, 255, 255, 0.05);
+  --menu-surface-strong: rgba(255, 255, 255, 0.075);
+  --menu-border: rgba(255, 255, 255, 0.12);
+  --menu-field-border: rgba(255, 255, 255, 0.14);
+  --menu-focus-border: rgba(200, 160, 255, 0.62);
+  --menu-focus-ring: rgba(160, 120, 255, 0.2);
+}
+
+/* ---------- Testata: titolo, ricerca, filtro, indietro ---------- */
+
+.menu-browser .menu-stage-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menu-browser .menu-search,
+.menu-browser .menu-filter-btn,
+.menu-browser .menu-back-btn {
+  height: 44px;
+  border-radius: 14px;
+  border-color: var(--menu-field-border);
+  background: var(--menu-surface);
+}
+
+.menu-browser .menu-search {
+  padding: 0 14px;
+  gap: 10px;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.menu-browser .menu-search:focus-within {
+  background: var(--menu-surface-strong);
+  border-color: var(--menu-focus-border);
+  box-shadow: 0 0 0 3px var(--menu-focus-ring);
+}
+
+.menu-browser .menu-search input {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.menu-browser .menu-filter-btn {
+  min-width: 44px;
+  justify-content: center;
+}
+
+.menu-browser .menu-back-btn {
+  font-size: 12.5px;
+}
+
+/* ---------- Categorie: nome a sinistra, conteggio a destra ---------- */
+
+.menu-browser .menu-level-card {
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* Centrato: con `baseline` la riga restava incollata al bordo alto. */
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  min-height: 62px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border-color: var(--menu-border);
+  background: var(--menu-surface);
+}
+
+.menu-browser .menu-level-name {
+  flex: 1 1 auto;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.menu-browser .menu-level-count {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Prodotti ---------- */
+
+.menu-browser .menu-product-list,
+.menu-browser .menu-level-list {
+  gap: 10px;
+}
+
+.menu-browser .menu-product-row {
+  min-height: 64px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border-color: var(--menu-border);
+  background: var(--menu-surface);
+}
+
+.menu-browser .menu-product-main {
+  gap: 8px;
+}
+
+.menu-browser .menu-product-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.menu-browser .menu-product-price {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-browser .menu-availability {
+  height: 21px;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Tema chiaro ---------- */
+
+:root[data-theme="light"] .menu-browser {
+  --menu-surface: rgba(255, 255, 255, 0.74);
+  --menu-surface-strong: rgba(255, 255, 255, 0.9);
+  --menu-border: rgba(16, 28, 56, 0.1);
+  --menu-field-border: rgba(16, 28, 56, 0.14);
+  --menu-focus-border: rgba(90, 120, 230, 0.6);
+  --menu-focus-ring: rgba(90, 140, 240, 0.18);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .menu-browser {
+    --menu-surface: rgba(255, 255, 255, 0.74);
+    --menu-surface-strong: rgba(255, 255, 255, 0.9);
+    --menu-border: rgba(16, 28, 56, 0.1);
+    --menu-field-border: rgba(16, 28, 56, 0.14);
+    --menu-focus-border: rgba(90, 120, 230, 0.6);
+    --menu-focus-ring: rgba(90, 140, 240, 0.18);
+  }
+}
+
+/* ---------- Disponibilita': tinta leggera sulla riga prodotto ---------- */
+/*
+  verde = disponibile, giallo = quasi esaurito (finito su una o piu'
+  postazioni), rosso = esaurito ovunque. I prodotti disattivati in anagrafica
+  non arrivano nemmeno alla lista, quindi qui non hanno uno stato.
+*/
+
+.menu-browser .menu-product-row.availability-available {
+  border-color: var(--menu-av-available-border);
+  background: var(--menu-av-available-bg);
+}
+
+.menu-browser .menu-product-row.availability-low {
+  border-color: var(--menu-av-low-border);
+  background: var(--menu-av-low-bg);
+}
+
+.menu-browser .menu-product-row.availability-out {
+  border-color: var(--menu-av-out-border);
+  background: var(--menu-av-out-bg);
+  /* La tinta e l'etichetta bastano: niente riga slavata. */
+  opacity: 1;
+  filter: none;
+}
+
+/* La fascia diagonale "TERMINATO" copriva la riga e ripeteva l'etichetta. */
+.menu-browser .menu-product-row.is-global-terminated::after {
+  display: none;
+}
+
+.menu-browser .menu-product-row.is-station-limited {
+  box-shadow: none;
+}
+
+.menu-browser .menu-availability.availability-available {
+  border-color: var(--menu-av-available-border);
+  background: var(--menu-av-available-bg);
+  color: var(--menu-av-available-text);
+}
+
+.menu-browser .menu-availability.availability-low {
+  border-color: var(--menu-av-low-border);
+  background: var(--menu-av-low-bg);
+  color: var(--menu-av-low-text);
+}
+
+.menu-browser .menu-availability.availability-out {
+  border-color: var(--menu-av-out-border);
+  background: var(--menu-av-out-bg);
+  color: var(--menu-av-out-text);
+}
+
+.menu-browser .mobile-menu-availability-note {
+  color: var(--menu-av-low-text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- Pannello filtri ---------- */
+
+.menu-browser .menu-filter-panel {
+  border-radius: 18px;
+  border-color: var(--menu-field-border);
+  padding: 14px;
+  gap: 14px;
+}
+
+.menu-browser .menu-filter-panel-head {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.menu-browser .menu-filter-panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menu-browser .menu-summary-pill {
+  min-height: 26px;
+  border-radius: 999px;
+  border-color: var(--menu-field-border);
+  background: var(--menu-surface);
+  font-size: 11.5px;
+}
+
+.menu-browser .menu-filter-title {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+}
+
+.menu-browser .menu-filter-toggle-row {
+  border-radius: 14px;
+  border-color: var(--menu-field-border);
+  background: var(--menu-surface);
+  min-height: 48px;
+  padding: 8px 14px;
+}
+
+.menu-browser .menu-filter-toggle-label {
+  font-size: 13px;
+}
+
+.menu-browser .menu-filter-chip {
+  min-height: 38px;
+  border-radius: 12px;
+  border-color: var(--menu-field-border);
+  background: var(--menu-surface);
+  font-size: 12.5px;
+}
+
+/* Una per riga: a tre colonne le etichette venivano troncate. */
+.menu-browser .menu-filter-grid-availability {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.menu-browser .menu-availability-chip .menu-filter-chip-count {
+  margin-left: auto;
+}
+
+/* Chip disponibilita': il pallino porta il colore dello stato, lo spento
+   resta leggibile ma chiaramente escluso. */
+.menu-browser .menu-availability-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.menu-browser .menu-availability-chip .menu-filter-chip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 10px;
+}
+
+.menu-browser .menu-availability-chip.availability-available .menu-filter-chip-dot {
+  background: var(--menu-av-available-dot);
+}
+
+.menu-browser .menu-availability-chip.availability-low .menu-filter-chip-dot {
+  background: var(--menu-av-low-dot);
+}
+
+.menu-browser .menu-availability-chip.availability-out .menu-filter-chip-dot {
+  background: var(--menu-av-out-dot);
+}
+
+.menu-browser .menu-availability-chip.is-shown.availability-available {
+  border-color: var(--menu-av-available-border);
+  background: var(--menu-av-available-bg);
+}
+
+.menu-browser .menu-availability-chip.is-shown.availability-low {
+  border-color: var(--menu-av-low-border);
+  background: var(--menu-av-low-bg);
+}
+
+.menu-browser .menu-availability-chip.is-shown.availability-out {
+  border-color: var(--menu-av-out-border);
+  background: var(--menu-av-out-bg);
+}
+
+.menu-browser .menu-availability-chip.is-off {
+  opacity: 0.5;
+}
+
+.menu-browser .menu-availability-chip.is-off .menu-filter-chip-label {
+  text-decoration: line-through;
+}
+
+.menu-browser .menu-filter-footer {
+  gap: 8px;
+}
+
+.menu-browser .menu-apply-btn,
+.menu-browser .menu-reset-btn {
+  min-height: 42px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+/* ---------- Colori disponibilita' ---------- */
+
+.menu-browser {
+  --menu-av-available-bg: linear-gradient(
+    160deg,
+    rgba(47, 220, 134, 0.16),
+    rgba(47, 220, 134, 0.05) 70%
+  );
+  --menu-av-available-border: rgba(64, 226, 148, 0.42);
+  --menu-av-available-text: rgba(120, 255, 190, 1);
+  --menu-av-available-dot: rgba(64, 236, 150, 1);
+  --menu-av-low-bg: linear-gradient(
+    160deg,
+    rgba(255, 190, 60, 0.18),
+    rgba(255, 190, 60, 0.05) 70%
+  );
+  --menu-av-low-border: rgba(255, 200, 80, 0.46);
+  --menu-av-low-text: rgba(255, 214, 110, 1);
+  --menu-av-low-dot: rgba(255, 200, 70, 1);
+  --menu-av-out-bg: linear-gradient(
+    160deg,
+    rgba(255, 84, 84, 0.18),
+    rgba(255, 84, 84, 0.05) 70%
+  );
+  --menu-av-out-border: rgba(255, 110, 110, 0.48);
+  --menu-av-out-text: rgba(255, 146, 146, 1);
+  --menu-av-out-dot: rgba(255, 96, 96, 1);
+}
+
+:root[data-theme="light"] .menu-browser {
+  --menu-av-available-bg: linear-gradient(
+    160deg,
+    rgba(28, 190, 116, 0.18),
+    rgba(28, 190, 116, 0.06) 70%
+  );
+  --menu-av-available-border: rgba(20, 150, 92, 0.44);
+  --menu-av-available-text: rgba(6, 104, 62, 1);
+  --menu-av-available-dot: rgba(20, 160, 98, 1);
+  --menu-av-low-bg: linear-gradient(
+    160deg,
+    rgba(240, 170, 20, 0.2),
+    rgba(240, 170, 20, 0.06) 70%
+  );
+  --menu-av-low-border: rgba(196, 136, 12, 0.46);
+  --menu-av-low-text: rgba(126, 82, 0, 1);
+  --menu-av-low-dot: rgba(226, 158, 12, 1);
+  --menu-av-out-bg: linear-gradient(
+    160deg,
+    rgba(238, 70, 70, 0.18),
+    rgba(238, 70, 70, 0.06) 70%
+  );
+  --menu-av-out-border: rgba(196, 44, 44, 0.46);
+  --menu-av-out-text: rgba(150, 16, 16, 1);
+  --menu-av-out-dot: rgba(212, 52, 52, 1);
+}

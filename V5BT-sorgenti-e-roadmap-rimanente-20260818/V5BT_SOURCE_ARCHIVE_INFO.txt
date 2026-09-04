@@ -1,0 +1,10 @@
+V5BT source handoff
+Schema: 1
+Snapshot date: 2026-08-18
+Generated outputs: excluded
+Private runtime, registry, credentials and raw logs: excluded
+Packaged roadmap reports and historical public evidence: included
+Compressed SQL source dumps under database/: included
+Certified SQLite provisioning baselines: included
+Sensitivity: contains database provisioning data; handle as private
+Remaining roadmap: DOCUMENTAZIONE/ROADMAP_RIMANENTE_V5BT_20260817.md

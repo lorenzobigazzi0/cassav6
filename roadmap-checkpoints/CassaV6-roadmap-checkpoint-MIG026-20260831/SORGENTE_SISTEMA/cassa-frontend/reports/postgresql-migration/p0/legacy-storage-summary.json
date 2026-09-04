@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-31T08:29:20.853Z",
+  "appRoot": "D:\\sistemacassav6\\V5BT-sorgenti-e-roadmap-rimanente-20260818\\SORGENTE_SISTEMA\\cassa-frontend",
+  "patterns": {
+    "readDb(": {
+      "allOccurrences": 334,
+      "allFiles": 44,
+      "runtimeOccurrences": 228,
+      "runtimeFiles": 35
+    },
+    "writeDb(": {
+      "allOccurrences": 153,
+      "allFiles": 31,
+      "runtimeOccurrences": 91,
+      "runtimeFiles": 20
+    },
+    "node:sqlite": {
+      "allOccurrences": 52,
+      "allFiles": 47,
+      "runtimeOccurrences": 12,
+      "runtimeFiles": 12
+    },
+    "mysql2": {
+      "allOccurrences": 6,
+      "allFiles": 5,
+      "runtimeOccurrences": 2,
+      "runtimeFiles": 1
+    },
+    "app_state": {
+      "allOccurrences": 578,
+      "allFiles": 37,
+      "runtimeOccurrences": 373,
+      "runtimeFiles": 21
+    },
+    "app_state_domain_records": {
+      "allOccurrences": 63,
+      "allFiles": 5,
+      "runtimeOccurrences": 5,
+      "runtimeFiles": 2
+    },
+    "BACKEND_RELATIONAL_DB_PATH": {
+      "allOccurrences": 112,
+      "allFiles": 63,
+      "runtimeOccurrences": 3,
+      "runtimeFiles": 3
+    }
+  }
+}

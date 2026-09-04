@@ -1,0 +1,79 @@
+{
+  "ok": true,
+  "task": "MIG-023",
+  "scope": "DEV_ONLY_MICROSD",
+  "hardware": {
+    "hostname": "raspberrypi",
+    "architecture": "aarch64",
+    "storageDevice": "/dev/mmcblk0p2",
+    "storageFilesystem": "ext4"
+  },
+  "postgresql": {
+    "serverVersion": "17.11 (Debian 17.11-0+deb13u1)",
+    "runtimeUser": "cassav6_app",
+    "temporaryDatabase": "cassav6_mig023_20260831a"
+  },
+  "concurrentClaim": {
+    "events": 12,
+    "workerA": 6,
+    "workerB": 6,
+    "duplicateClaims": 0,
+    "durationMs": 19.19
+  },
+  "leaseRecovery": {
+    "eventId": "mig023-expired-lease",
+    "attempts": 2,
+    "staleCompletionRejected": true,
+    "recoveryDurationMs": 355.04
+  },
+  "idempotentRedelivery": {
+    "deliveries": 2,
+    "stableIdempotencyKey": "mig023-idempotent-redelivery",
+    "durableSideEffects": 1,
+    "attempts": 2,
+    "processed": true
+  },
+  "constraints": [
+    {
+      "name": "event_outbox_lease_pair_coherent",
+      "validated": true
+    },
+    {
+      "name": "event_outbox_processed_without_lease",
+      "validated": true
+    }
+  ],
+  "mainDevApply": {
+    "database": "cassav6",
+    "firstRun": {
+      "applied": ["002_event_outbox_lease_contract"],
+      "skipped": ["001_foundation"]
+    },
+    "secondRun": {
+      "applied": [],
+      "skipped": ["001_foundation", "002_event_outbox_lease_contract"]
+    },
+    "registry": [
+      {
+        "version": "001",
+        "checksum": "f4dfc85778f84394cbe21eb313abd0d55932ac899200bb5448fb6b99c1271de7"
+      },
+      {
+        "version": "002",
+        "checksum": "e283b29d80ec34d7ff5a16fa3ae35260be623f0b902bf4909476b3675bf69e4d"
+      }
+    ],
+    "foundationRowCounts": {
+      "auditEvents": 0,
+      "idempotencyKeys": 0,
+      "commandInbox": 0,
+      "eventOutbox": 0
+    }
+  },
+  "servicesAfter": {
+    "postgresql": "active",
+    "cassa": "active"
+  },
+  "temporaryArtifactsRemoved": true,
+  "smokeDurationMs": 484.53
+}

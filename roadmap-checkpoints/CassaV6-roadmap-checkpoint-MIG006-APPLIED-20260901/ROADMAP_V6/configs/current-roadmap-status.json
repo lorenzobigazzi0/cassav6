@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "mode": "CURRENT_ROADMAP_STATUS",
+  "product": "CASSA_V6",
+  "targetReleaseVersion": "6.0.0",
+  "roadmapId": "CASSA_V6_ROADMAP",
+  "roadmapRevision": "1.0.0",
+  "statusAsOf": "2026-08-20",
+  "baselineIdentityState": "V6_IDENTIFIERS_APPLIED_NOT_VERIFIED",
+  "officialProgressPercent": 0,
+  "progressPolicy": {
+    "formula": "SUM_WEIGHTS_OF_VERIFIED_COMPLETE_PHASES",
+    "phaseWeightsTotalPercent": 100,
+    "candidateImportedCountsTowardProgress": false,
+    "legacyEvidenceCountsTowardProgress": false,
+    "requiredEvidenceScope": "V6_ONLY"
+  },
+  "sourceBaselines": [
+    {
+      "id": "v6-bootstrap-20260820",
+      "kind": "V6_BOOTSTRAP",
+      "artifact": "V6_BOOTSTRAP_MANIFEST.tsv",
+      "sha256": "5deb910c9341b5660f669b0bc7229fc136ad79b1f5dcc64223d4cb2175c3a86e",
+      "classification": "BOOTSTRAP_INPUT_NOT_RELEASE_EVIDENCE",
+      "countsTowardOfficialProgress": false,
+      "requiresV6Reverification": true
+    },
+    {
+      "id": "commercial-v2-candidate-20260819",
+      "kind": "COMMERCIAL_V2_CANDIDATE",
+      "artifact": "V5BT_IMPLEMENTAZIONE_COMMERCIALE_V2_20260819.zip",
+      "sha256": "9a6c12c9f24f6f4884c99c46894363ab3f7d619e018c242feb4fd4f5b7d1a4b9",
+      "classification": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "countsTowardOfficialProgress": false,
+      "requiresV6Reverification": true
+    },
+    {
+      "id": "legacy-v5bt-status-20260810",
+      "kind": "LEGACY_V5BT",
+      "artifact": "ROADMAP_BLUETOOTH/CASSAV4_BLUETOOTH_PROTOCOL_BASE_ROADMAP_20260719/configs/current-roadmap-status.json",
+      "sha256": "144682667a9f237d21d18e7bd9883b1260dcb56413a3745d603a99eea93cd90c",
+      "classification": "HISTORICAL_REFERENCE_ONLY",
+      "countsTowardOfficialProgress": false,
+      "requiresV6Reverification": true
+    },
+    {
+      "id": "legacy-v5bt-remaining-roadmap-20260818",
+      "kind": "LEGACY_V5BT",
+      "artifact": "DOCUMENTAZIONE/ROADMAP_RIMANENTE_V5BT_20260817.md",
+      "sha256": "68fed6e34eac117487fad05292b32cbe85886c6b5ef30d492e269af0e3d91e0a",
+      "classification": "HISTORICAL_REFERENCE_ONLY",
+      "countsTowardOfficialProgress": false,
+      "requiresV6Reverification": true
+    }
+  ],
+  "phases": [
+    {
+      "id": "V6-P0",
+      "sequence": 0,
+      "name": "Baseline V6, sorgente Impostazioni e contratti",
+      "weightPercent": 10,
+      "status": "IN_PROGRESS",
+      "creditedPercent": 0,
+      "candidateSourceRefs": [
+        "v6-bootstrap-20260820",
+        "commercial-v2-candidate-20260819",
+        "legacy-v5bt-status-20260810",
+        "legacy-v5bt-remaining-roadmap-20260818"
+      ],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P1",
+      "sequence": 1,
+      "name": "Schema relazionale e repository Commerciale V2",
+      "weightPercent": 12,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P2",
+      "sequence": 2,
+      "name": "Compilatore e motore prezzi autorevole",
+      "weightPercent": 15,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P3",
+      "sequence": 3,
+      "name": "Impostazioni: articoli e cataloghi",
+      "weightPercent": 10,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P4",
+      "sequence": 4,
+      "name": "Impostazioni: listini, assegnazioni e simulatore",
+      "weightPercent": 12,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P5",
+      "sequence": 5,
+      "name": "Impostazioni: menu e offerte composte",
+      "weightPercent": 10,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P6",
+      "sequence": 6,
+      "name": "Integrazione runtime completa",
+      "weightPercent": 15,
+      "status": "CANDIDATE_IMPORTED_NOT_VERIFIED",
+      "creditedPercent": 0,
+      "candidateSourceRefs": ["commercial-v2-candidate-20260819"],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P7",
+      "sequence": 7,
+      "name": "Migrazione dati e rimozione delle eccezioni",
+      "weightPercent": 8,
+      "status": "PENDING",
+      "creditedPercent": 0,
+      "candidateSourceRefs": [],
+      "verifiedEvidenceRefs": []
+    },
+    {
+      "id": "V6-P8",
+      "sequence": 8,
+      "name": "Collaudo, canary e rilascio",
+      "weightPercent": 8,
+      "status": "PENDING",
+      "creditedPercent": 0,
+      "candidateSourceRefs": [],
+      "verifiedEvidenceRefs": []
+    }
+  ],
+  "promotion": {
+    "allowed": false,
+    "requiresAllPhasesVerifiedComplete": true,
+    "authorizationEvidenceRefs": [],
+    "blockers": [
+      "PHASE_0_IN_PROGRESS",
+      "PHASES_1_TO_6_NOT_V6_VERIFIED",
+      "PHASES_7_TO_8_NOT_RUN",
+      "NO_V6_RELEASE_EVIDENCE"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    "phone1",
+    "phone2"
+  ],
+  "repeat": 100,
+  "expect": [
+    "mutual_discovery",
+    "single_session"
+  ]
+}

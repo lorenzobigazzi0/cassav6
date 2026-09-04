@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "source": "V5BT_B2_ANDROID_HANDHELD_PAIR_DIAGNOSTIC",
+  "scope": "DIAGNOSTIC_TWO_HANDHELDS_DISCOVERY_ONLY",
+  "mode": "DIAGNOSTIC_HANDHELD_PAIR",
+  "evidenceClass": "NON_GATE_EVIDENCE",
+  "generatedAt": "2026-08-03T21:42:38.251Z",
+  "gate": "PENDING",
+  "gateReason": "DIAGNOSTIC_TARGET_PAIR_NOT_CERTIFICATION_ELIGIBLE",
+  "b2PromotionAllowed": false,
+  "certificationEligible": false,
+  "formalTargetMappingPreserved": true,
+  "localMeasurementVerdict": "PENDING",
+  "measurement": "TWO_HANDHELDS_ANONYMOUS_PEER_PRESENCE",
+  "requestedCycles": 100,
+  "executedCycles": 1,
+  "passedCycles": 0,
+  "failedCycles": 1,
+  "exactCycleSequence": false,
+  "liveCycleEvidenceComplete": false,
+  "stoppedEarly": true,
+  "anonymousPeerPresenceP95Ms": null,
+  "requiredMaximumP95Ms": 8000,
+  "formalCertificationCyclesUnaffected": 100,
+  "formalCertificationRolesUnaffected": [
+    "handheld",
+    "station"
+  ],
+  "requiresPreEnrolledIdentity": true,
+  "stagesEnrollmentQr": false,
+  "externalEvidenceAcceptedForPromotion": false,
+  "arbitraryEvidenceFilesAccepted": false,
+  "evidenceCollection": {
+    "source": "LIVE_ADB_PRIVATE_STATUS",
+    "freshnessCheckedPerCycle": true,
+    "reporterRestartPolicy": "EXPECTED_AT_CYCLE_BOUNDARY_ONLY",
+    "withinCycleReporterRestart": "INVALIDATES_CYCLE",
+    "intentionalBoundaryForceStopRequired": true,
+    "continuousReporterPidRequiredAcrossCycles": false
+  },
+  "physicalCertificationPassEmittedByHarness": false,
+  "physicalAdbAccessed": true,
+  "resultContainsDeviceSerials": false,
+  "raspberryCommands": false,
+  "devices": [
+    {
+      "role": "handheld_a",
+      "androidApi": 36,
+      "currentAndroidUserVerified": true,
+      "expectedSerialVerified": false,
+      "expectedModelVerified": true,
+      "expectedPackageVerified": true,
+      "expectedAppVersionVerified": true,
+      "expectedApkSha256Verified": true,
+      "expectedNodeKindBinding": "NON_GATE_ANONYMOUS_ONLY",
+      "bluetoothLeFeature": true,
+      "bluetoothEnabled": true,
+      "currentUserBluetoothPermissionsGranted": true,
+      "appInstalled": true,
+      "appPrivateStatusReadableWithRunAs": true,
+      "fullNodeCapabilityGate": "VERIFIED_DURING_EACH_CYCLE",
+      "certificationRole": "handheld",
+      "formalCertificationEligible": false
+    },
+    {
+      "role": "handheld_b",
+      "androidApi": 36,
+      "currentAndroidUserVerified": true,
+      "expectedSerialVerified": false,
+      "expectedModelVerified": true,
+      "expectedPackageVerified": true,
+      "expectedAppVersionVerified": true,
+      "expectedApkSha256Verified": true,
+      "expectedNodeKindBinding": "NON_GATE_ANONYMOUS_ONLY",
+      "bluetoothLeFeature": true,
+      "bluetoothEnabled": true,
+      "currentUserBluetoothPermissionsGranted": true,
+      "appInstalled": true,
+      "appPrivateStatusReadableWithRunAs": true,
+      "fullNodeCapabilityGate": "VERIFIED_DURING_EACH_CYCLE",
+      "certificationRole": "handheld",
+      "formalCertificationEligible": false
+    }
+  ],
+  "cycles": [
+    {
+      "cycle": 1,
+      "outcome": "PENDING",
+      "evidenceOrigin": "LIVE_ADB_PRIVATE_STATUS",
+      "reasonCode": "STATUS_INVALID",
+      "intentionalBoundaryForceStopVerified": true,
+      "devices": [
+        {
+          "role": "handheld_a",
+          "readiness": "NO_STATUS",
+          "radioActive": false,
+          "activePeerCount": 0,
+          "acceptedObservations": 0,
+          "scanFailures": 0,
+          "advertisementFailures": 0
+        },
+        {
+          "role": "handheld_b",
+          "readiness": "NO_STATUS",
+          "radioActive": false,
+          "activePeerCount": 0,
+          "acceptedObservations": 0,
+          "scanFailures": 0,
+          "advertisementFailures": 0
+        }
+      ]
+    }
+  ]
+}

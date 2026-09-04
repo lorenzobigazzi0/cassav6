@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "required": [
+    "nodeId",
+    "canReachServer",
+    "routeKind",
+    "routeAgeMs"
+  ],
+  "properties": {
+    "nodeId": {
+      "type": "string"
+    },
+    "canReachServer": {
+      "type": "boolean"
+    },
+    "routeKind": {
+      "enum": [
+        "WIFI",
+        "LAN",
+        "BLE_DIRECT",
+        "NONE"
+      ]
+    },
+    "routeAgeMs": {
+      "type": "integer"
+    },
+    "serverRttBucket": {
+      "type": "integer"
+    },
+    "queueDepthBucket": {
+      "type": "integer"
+    }
+  }
+}

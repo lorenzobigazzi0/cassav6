@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentrapa.local/contracts/current-roadmap-status-v1.schema.json",
+  "title": "V6 Current Roadmap Status V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "product",
+    "mode",
+    "statusAsOf",
+    "officialProgressPercent",
+    "certificationMatrix",
+    "b4",
+    "b5",
+    "b6",
+    "applicationLoad",
+    "promotion"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "product": { "const": "V6" },
+    "mode": { "const": "CURRENT_ROADMAP_STATUS" },
+    "statusAsOf": { "const": "2026-08-10" },
+    "officialProgressPercent": { "const": 49 },
+    "certificationMatrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "canonicalization",
+        "digestAlgorithm",
+        "matrixSha256"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "canonicalization": {
+          "const": "V6_ADVANCED_CERTIFICATION_TARGETS_CANONICAL_JSON_V1"
+        },
+        "digestAlgorithm": { "const": "SHA-256" },
+        "matrixSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "b4": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gateStatus",
+        "evidenceClass",
+        "requiredPhysicalDevices",
+        "recordedPhysicalDevices",
+        "remainingPhysicalDevices",
+        "simulatedDevices",
+        "simulatedDevicesCountedTowardGate"
+      ],
+      "properties": {
+        "gateStatus": { "const": "PENDING" },
+        "evidenceClass": { "const": "NON_GATE_EVIDENCE" },
+        "requiredPhysicalDevices": { "const": 10 },
+        "recordedPhysicalDevices": { "const": 2 },
+        "remainingPhysicalDevices": { "const": 8 },
+        "simulatedDevices": { "const": 8 },
+        "simulatedDevicesCountedTowardGate": { "const": 0 }
+      }
+    },
+    "b5": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gateStatus",
+        "diagnosticPilotAuthorized",
+        "officialCampaignAuthorized",
+        "requiredOfficialSessions",
+        "recordedOfficialSessions"
+      ],
+      "properties": {
+        "gateStatus": { "const": "PENDING" },
+        "diagnosticPilotAuthorized": { "const": false },
+        "officialCampaignAuthorized": { "const": false },
+        "requiredOfficialSessions": { "const": 100 },
+        "recordedOfficialSessions": { "const": 0 }
+      }
+    },
+    "b6": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gateStatus", "startAuthorization"],
+      "properties": {
+        "gateStatus": { "const": "PENDING" },
+        "startAuthorization": { "const": "BLOCKED" }
+      }
+    },
+    "applicationLoad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["micro", "smoke", "full"],
+      "properties": {
+        "micro": { "const": "PASS" },
+        "smoke": { "const": "FAIL" },
+        "full": { "const": "NOT_RUN" }
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "physicalGatePromotionAllowed",
+        "officialProgressIncreaseAllowed"
+      ],
+      "properties": {
+        "physicalGatePromotionAllowed": { "const": false },
+        "officialProgressIncreaseAllowed": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
