@@ -9,8 +9,31 @@ function createPrimaryError(domain, reason = "") {
   return new Error(`DB relazionale primary non disponibile per ${domain}${suffix}`);
 }
 
+function createIdentityUnavailableError(status) {
+  const error = new Error("Store identity PostgreSQL non disponibile.");
+  error.code = "IDENTITY_STORE_UNAVAILABLE";
+  error.status = 503;
+  error.details = {
+    reason: status?.reason ?? "never_loaded",
+    ageMs: status?.ageMs ?? null,
+    maxStalenessMs: status?.maxStalenessMs ?? null,
+  };
+  return error;
+}
+
+function requireSynchronousIdentityResult(value, operation) {
+  if (value && typeof value.then === "function") {
+    const error = new Error(`Contratto store identity non valido per ${operation}: atteso risultato sincrono.`);
+    error.code = "IDENTITY_STORE_CONTRACT_VIOLATION";
+    error.status = 500;
+    throw error;
+  }
+  return value;
+}
+
 export function createAuthRepository(options = {}) {
   const relationalRuntime = options.relationalRuntime ?? null;
+  const identityStore = options.identityStore ?? null;
   const normalizeUsername =
     typeof options.normalizeUsername === "function"
       ? options.normalizeUsername
@@ -18,6 +41,27 @@ export function createAuthRepository(options = {}) {
 
   function isPrimaryDomain(domain) {
     return Boolean(relationalRuntime?.isPrimaryDomain?.(domain));
+  }
+
+  function isIdentityPrimary(collection) {
+    return Boolean(identityStore?.isPrimaryDomain?.(collection));
+  }
+
+  if (isIdentityPrimary("users") && isPrimaryDomain("users")) {
+    throw new Error(
+      "Conflitto di source of truth su 'users': BACKEND_POSTGRES_PRIMARY_DOMAINS " +
+        "e BACKEND_RELATIONAL_PRIMARY_DOMAINS non possono essere attivi insieme.",
+    );
+  }
+
+  function requireFreshIdentitySnapshot() {
+    const status = identityStore?.snapshotStatus?.() ?? {
+      ok: false,
+      reason: "never_loaded",
+      ageMs: null,
+      maxStalenessMs: null,
+    };
+    if (!status.ok) throw createIdentityUnavailableError(status);
   }
 
   function requireRelationalDb(domain) {
@@ -37,6 +81,10 @@ export function createAuthRepository(options = {}) {
   }
 
   function listUsers(appState) {
+    if (isIdentityPrimary("users")) {
+      requireFreshIdentitySnapshot();
+      return requireSynchronousIdentityResult(identityStore.listUsers(), "listUsers");
+    }
     if (isPrimaryDomain("users")) {
       return usersRepo().list();
     }
@@ -46,6 +94,10 @@ export function createAuthRepository(options = {}) {
   function getUserById(appState, id) {
     const safeId = asTrimmedString(id);
     if (!safeId) return null;
+    if (isIdentityPrimary("users")) {
+      requireFreshIdentitySnapshot();
+      return requireSynchronousIdentityResult(identityStore.getUserById(safeId), "getUserById");
+    }
     if (isPrimaryDomain("users")) {
       return usersRepo().getById(safeId);
     }
@@ -98,6 +150,7 @@ export function createAuthRepository(options = {}) {
     findSessionByTokenHash,
     getUserById,
     getUserByUsername,
+    isIdentityPrimary,
     isPrimaryDomain,
     listUsers,
   };

@@ -13,6 +13,8 @@ Sono stati completati e verificati i primi anelli additivi:
 - interruttore per dominio `off/shadow/primary/exclusive`, spento per default;
 - store di lettura con snapshot sincrono, copie isolate, controllo di freschezza,
   latch per username duplicati e assenza di amministratori.
+- innesto opzionale nello `AuthRepository`, con precedenza PostgreSQL esplicita,
+  rifiuto del doppio source of truth e risposta 503 sugli snapshot non affidabili.
 
 Il limite dimensionale storico di `server.js` non e piu un gate, per decisione
 del responsabile del prodotto. Restano obbligatori i confini repository, le
