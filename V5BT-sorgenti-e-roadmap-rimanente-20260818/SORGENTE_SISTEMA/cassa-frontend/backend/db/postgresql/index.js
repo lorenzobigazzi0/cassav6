@@ -35,3 +35,7 @@ export {
   createPostgresqlRetentionRepository,
   POSTGRESQL_RETENTION_REPOSITORY_CONTRACT,
 } from "./retention.repository.js";
+export {
+  createPostgresqlIdentityDirectoryRepository,
+  POSTGRESQL_IDENTITY_DIRECTORY_REPOSITORY_CONTRACT,
+} from "./identity-directory.repository.js";
