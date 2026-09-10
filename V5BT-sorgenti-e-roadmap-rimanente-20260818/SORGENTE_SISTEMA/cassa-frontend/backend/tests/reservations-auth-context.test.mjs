@@ -11,7 +11,9 @@ test("reservations.list inoltra il contesto auth del router al resolver sala", a
   let response = null;
   const handlers = createReservationsHandlers({
     clonePosReservation: (entry) => entry,
-    readDb: async () => ({ sessions: [], posReservationStates: [] }),
+    reservationsAppStateRepository: {
+      read: async () => ({ sessions: [], posReservationStates: [] }),
+    },
     readJsonBody: async () => ({
       token: "valid-shared-token",
       userId: "u_live",

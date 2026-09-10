@@ -1028,7 +1028,7 @@ test("order workflow fast path exposes per-step runtime metrics", () => {
   }
   assert.match(
     serverSource,
-    /writeTableRoomMoveRequestAppStateFastDb\(db, \{ requestId: request\.requestId, notificationIds: notification\?\.id \? \[notification\.id\] : \[\]/,
+    /reservationsAppStateRepository\.writeTableRoomMoveRequest\(db, \{ requestId: request\.requestId, notificationIds: notification\?\.id \? \[notification\.id\] : \[\]/,
     "tableRoomMove request deve provare il writer puntuale prima del fallback precedente"
   );
   assert.match(
@@ -1555,11 +1555,11 @@ test("P4.3 table sync usa write puntuale con fallback completo e rollback flag",
   );
   assert.match(
     serverSource,
-    /writeTableSyncAppStateFastDb\(db, \{ tableId, auditEventIds: collectAuditEventIdsSince\(db, auditEventStartIndex\), requiresFullFallback: reservationSplit\.changed \}\)/,
+    /reservationsAppStateRepository\.writeTableSync\(db, \{ tableId, auditEventIds: collectAuditEventIdsSince\(db, auditEventStartIndex\), requiresFullFallback: reservationSplit\.changed \}\)/,
   );
   assert.match(
     serverSource,
-    /if \(!fastAppStateWritten\) await writeRoomDb\(db, \{ metricLabel: "rooms\.table\.sync\.appStateWrite", splitDomains:/,
+    /if \(!fastAppStateWritten\) await reservationsAppStateRepository\.writeRoom\(db, \{ metricLabel: "rooms\.table\.sync\.appStateWrite", splitDomains:/,
   );
   assert.match(fastPathSource, /syncObjectArrayEntriesFromAppState/);
   assert.match(fastPathSource, /syncEntriesFromAppState\(syncState, tableIds\)/);
@@ -1587,7 +1587,7 @@ test("P4.3 table-room-move request usa write puntuale con prune guard e rollback
   );
   assert.match(
     serverSource,
-    /tableRoomMoveRequestsPruned = pruneExpiredPosTableRoomMoveRequests\(db\)[\s\S]+writeTableRoomMoveRequestAppStateFastDb\(db, \{ requestId: request\.requestId[\s\S]+requiresFullFallback: tableRoomMoveRequestsPruned \}\)/,
+    /tableRoomMoveRequestsPruned = pruneExpiredPosTableRoomMoveRequests\(db\)[\s\S]+reservationsAppStateRepository\.writeTableRoomMoveRequest\(db, \{ requestId: request\.requestId[\s\S]+requiresFullFallback: tableRoomMoveRequestsPruned \}\)/,
   );
   assert.match(
     serverSource,

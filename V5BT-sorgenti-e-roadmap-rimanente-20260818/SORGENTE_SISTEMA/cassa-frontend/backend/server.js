@@ -350,7 +350,7 @@ import { buildPaymentRealtimeBoundary, createPaymentFreeSplitDurableMirrorRuntim
 import { createPosRoomsHandlers } from "./modules/pos-rooms/index.js";
 import { createPostazioneActionHandlers } from "./modules/postazione-actions/index.js";
 import { createOperationsAppStateRepository } from "./modules/operations/index.js";
-import { createReservationsHandlers } from "./modules/reservations/index.js";
+import { createReservationsAppStateRepository, createReservationsHandlers } from "./modules/reservations/index.js";
 import { createAuditReadModel } from "./modules/audit/audit-read-model.js";
 import { createAuditWriteModel } from "./modules/audit/audit-write-model.js";
 import { createReportsHandlers } from "./modules/reports/index.js";
@@ -16985,6 +16985,14 @@ const operationsAppStateRepository = createOperationsAppStateRepository({
   writeStationStatesDb: writeIntegrationStationStatesDb,
 });
 
+const reservationsAppStateRepository = createReservationsAppStateRepository({
+  readDb,
+  writeDb: writeReservationDb,
+  writeRoomDb,
+  writeTableRoomMoveRequestAppStateFastDb,
+  writeTableSyncAppStateFastDb,
+});
+
 const writePostazioneLogoutFastDb = createPostazioneLogoutWriter({
   resolveStationStateId: integrationStationStateMysqlRecordId,
   runtimeMetrics,
@@ -28865,7 +28873,7 @@ const reservationsHandlers = createReservationsHandlers({
   normalizePosReservationSaveInput,
   nowIso,
   pruneExpiredPosReservationLocks,
-  readDb,
+  reservationsAppStateRepository,
   readHeaderValue,
   readJsonBody, relationalReservationsCreateWritePrimary: RELATIONAL_RESERVATIONS_CREATE_WRITE_PRIMARY, relationalReservationsDeleteWritePrimary: RELATIONAL_RESERVATIONS_DELETE_WRITE_PRIMARY, relationalReservationsLockAcquireWritePrimary: RELATIONAL_RESERVATIONS_LOCK_ACQUIRE_WRITE_PRIMARY, relationalReservationsLockReleaseWritePrimary: RELATIONAL_RESERVATIONS_LOCK_RELEASE_WRITE_PRIMARY, relationalReservationsStatusWritePrimary: RELATIONAL_RESERVATIONS_STATUS_WRITE_PRIMARY, relationalReservationsUpdateWritePrimary: RELATIONAL_RESERVATIONS_UPDATE_WRITE_PRIMARY, relationalReservationsReadEnabled: RELATIONAL_RESERVATIONS_READS, relationalRuntime,
   requirePosReservationWritableLock,
@@ -28876,7 +28884,6 @@ const reservationsHandlers = createReservationsHandlers({
   toPosReservationId,
   toPosReservationLockId,
   validateSessionContext,
-  writeDb: writeReservationDb,
 });
 
 const {
@@ -30535,7 +30542,7 @@ const {
   pruneExpiredPosRoomChangeRequests,
   publishIntegrationNotificationStreamRefresh,
   randomUUID,
-  readDb,
+  reservationsAppStateRepository,
   readJsonBody,
   relationalRuntime,
   releaseActivatedPosReservationTableGroup,
@@ -30548,8 +30555,6 @@ const {
   updatePosSessionRoom,
   validateSessionContext,
   verifyPin,
-  writeRoomDb,
-  writeTableSyncAppStateFastDb,
 });
 
 const {
@@ -30578,7 +30583,7 @@ const {
   queuePosTableRoomMoveNotification,
   queuePosTableRoomMovePausedWaiterNotifications,
   randomUUID,
-  readDb,
+  reservationsAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolvePendingPosTableRoomMoveRequest,
@@ -30586,8 +30591,6 @@ const {
   sendJson,
   syncOrderNotificationsFastPath,
   validateSessionContext,
-  writeTableRoomMoveRequestAppStateFastDb,
-  writeRoomDb,
 });
 
 const {

@@ -37,7 +37,7 @@ export function createRoomChangeHandlers({
   pruneExpiredPosRoomChangeRequests,
   publishIntegrationNotificationStreamRefresh,
   randomUUID,
-  readDb,
+  reservationsAppStateRepository,
   readJsonBody,
   relationalRuntime,
   releaseActivatedPosReservationTableGroup,
@@ -50,12 +50,10 @@ export function createRoomChangeHandlers({
   updatePosSessionRoom,
   validateSessionContext,
   verifyPin,
-  writeRoomDb,
-  writeTableSyncAppStateFastDb,
 }) {
   async function handlePosRoomChangeRequest(req, res) {
     const payload = await readJsonBody(req), requestTelemetry = posRoomChangeRequestTelemetry.start();
-    const db = await requestTelemetry.measure("readDb.handler", () => readDb());
+    const db = await requestTelemetry.measure("readDb.handler", () => reservationsAppStateRepository.read());
     const { user, session, room } = requestTelemetry.measureSync("authorization", () => {
       const context = validateSessionContext(db, payload);
       const targetRoomId = String(payload.targetRoomId ?? "").trim();
@@ -73,7 +71,7 @@ export function createRoomChangeHandlers({
       }));
       if (changed) {
         db.meta.lastWriteAt = nowIso();
-        await requestTelemetry.measure("direct.appStateWrite", async () => { if (!await operationalPunctualWriters.roomSession(db, { userIds: [user.id], sessionIds: [session.id] })) await writeRoomDb(db, { metricLabel: "rooms.session.appStateWrite", splitDomains: ["sessions", "users"] }); });
+        await requestTelemetry.measure("direct.appStateWrite", async () => { if (!await operationalPunctualWriters.roomSession(db, { userIds: [user.id], sessionIds: [session.id] })) await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.session.appStateWrite", splitDomains: ["sessions", "users"] }); });
       } else requestTelemetry.record("direct.appStateWriteSkipped", 0);
       requestTelemetry.finish("direct");
       sendJson(res, 200, {
@@ -100,7 +98,7 @@ export function createRoomChangeHandlers({
     });
     if (RELATIONAL_ROOM_CHANGE_REQUEST_WRITE_PRIMARY) await requestTelemetry.measure("pending.relationalWrite", async () => { await relationalRuntime.initialize(); if (!relationalRuntime?.db) throw new HttpError(503, "DB relazionale prenotazioni non disponibile."); const persistedRequest = new ReservationsRelationalRepository(relationalRuntime.db).createRoomChangeRequest(request); if (!persistedRequest?.ok) throw new HttpError(persistedRequest?.reason === "exists" ? 409 : 400, "Richiesta cambio sala relazionale non valida."); });
     else requestTelemetry.record("pending.relationalWriteSkipped", 0);
-    await requestTelemetry.measure("pending.appStateWrite", () => writeRoomDb(db, { metricLabel: "rooms.change.request.appStateWrite", splitDomains: ["posRoomChangeRequests"] }));
+    await requestTelemetry.measure("pending.appStateWrite", () => reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.change.request.appStateWrite", splitDomains: ["posRoomChangeRequests"] }));
     requestTelemetry.finish("pending");
     sendJson(res, 200, {
       ok: true,
@@ -113,7 +111,7 @@ export function createRoomChangeHandlers({
   async function handlePosRoomChangeApprove(req, res) {
     const payload = await readJsonBody(req), approveTelemetry = posRoomChangeApproveTelemetry.start();
     try {
-      const db = await approveTelemetry.measure("readDb.handler", () => readDb());
+      const db = await approveTelemetry.measure("readDb.handler", () => reservationsAppStateRepository.read());
       approveTelemetry.measureSync("prepare.prune", () => { ensurePosDataCollections(db); pruneExpiredPosRoomChangeRequests(db); });
       const requestId = String(payload.requestId ?? "").trim();
       if (!requestId) { approveTelemetry.finish("not_found"); sendJson(res, 200, { ok: false, error: "Richiesta non trovata o scaduta." }); return; }
@@ -143,7 +141,7 @@ export function createRoomChangeHandlers({
       const sessionChanged = approveTelemetry.measureSync("state.sessionMutation", () => updatePosSessionRoom(db, { userId: pending.userId, sessionId: pending.sessionId, deviceUuid: pending.deviceUuid, room }));
       approveTelemetry.record(sessionChanged ? "state.sessionChanged" : "state.sessionUnchanged", 0);
       db.meta.lastWriteAt = nowIso();
-      await approveTelemetry.measure("state.appStateWrite", () => writeRoomDb(db, { metricLabel: "rooms.change.approve.appStateWrite", splitDomains: ["posRoomChangeRequests", "sessions", "users"] }));
+      await approveTelemetry.measure("state.appStateWrite", () => reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.change.approve.appStateWrite", splitDomains: ["posRoomChangeRequests", "sessions", "users"] }));
       approveTelemetry.finish("approved");
       sendJson(res, 200, { ok: true, room, lastSelectedRoomId: room.id, approver: { username: approver.username, role: toPosRole(approver.role) } });
     } catch (error) {
@@ -164,7 +162,7 @@ export function createRoomChangeHandlers({
       });
       return;
     }
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     ensurePosDataCollections(db);
     const requestToCancel = db.posRoomChangeRequests.find((entry) => entry.requestId === requestId);
     const cancelled = Boolean(requestToCancel);
@@ -172,7 +170,7 @@ export function createRoomChangeHandlers({
       if (RELATIONAL_ROOM_CHANGE_REQUEST_WRITE_PRIMARY) { await relationalRuntime.initialize(); if (!relationalRuntime?.db) throw new HttpError(503, "DB relazionale prenotazioni non disponibile."); const deletedRequest = new ReservationsRelationalRepository(relationalRuntime.db).deleteRoomChangeRequest({ requestId, expectedRevision: requestToCancel.revision }); if (!deletedRequest?.ok) throw new HttpError(deletedRequest?.reason === "missing" ? 404 : deletedRequest?.reason === "revision_conflict" ? 409 : 400, "Richiesta cambio sala relazionale non valida.", { code: "ROOM_CHANGE_REQUEST_CONFLICT" }); }
       db.posRoomChangeRequests = db.posRoomChangeRequests.filter((entry) => entry.requestId !== requestId);
       db.meta.lastWriteAt = nowIso();
-      await writeRoomDb(db, { metricLabel: "rooms.change.cancel.appStateWrite", splitDomains: ["posRoomChangeRequests"] });
+      await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.change.cancel.appStateWrite", splitDomains: ["posRoomChangeRequests"] });
     }
     sendJson(res, 200, {
       ok: true,
@@ -187,7 +185,7 @@ export function createRoomChangeHandlers({
       throw new HttpError(400, "Tavolo non valido.");
     }
   
-    const db = await readDb(), auditEventStartIndex = Array.isArray(db.auditEvents) ? db.auditEvents.length : 0;
+    const db = await reservationsAppStateRepository.read(), auditEventStartIndex = Array.isArray(db.auditEvents) ? db.auditEvents.length : 0;
     const { user, session } = validateSessionContext(db, payload);
     const settings = sanitizePosSettings(db.posSettings, {
       menuItems: db.menuItems,
@@ -424,8 +422,8 @@ export function createRoomChangeHandlers({
         });
       }
     }
-    const fastAppStateWritten = await writeTableSyncAppStateFastDb(db, { tableId, auditEventIds: collectAuditEventIdsSince(db, auditEventStartIndex), requiresFullFallback: reservationSplit.changed });
-    if (!fastAppStateWritten) await writeRoomDb(db, { metricLabel: "rooms.table.sync.appStateWrite", splitDomains: ["posSettings", "posReservationStates", "posReservationLocks", "auditEvents"] });
+    const fastAppStateWritten = await reservationsAppStateRepository.writeTableSync(db, { tableId, auditEventIds: collectAuditEventIdsSince(db, auditEventStartIndex), requiresFullFallback: reservationSplit.changed });
+    if (!fastAppStateWritten) await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.table.sync.appStateWrite", splitDomains: ["posSettings", "posReservationStates", "posReservationLocks", "auditEvents"] });
   
     sendJson(res, 200, {
       ok: true,

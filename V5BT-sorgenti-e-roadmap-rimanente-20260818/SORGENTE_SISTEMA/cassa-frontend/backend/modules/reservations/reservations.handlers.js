@@ -13,7 +13,7 @@ export function createReservationsHandlers({
   normalizePosReservationSaveInput,
   nowIso,
   pruneExpiredPosReservationLocks,
-  readDb,
+  reservationsAppStateRepository,
   readHeaderValue,
   readJsonBody,
   relationalReservationsCreateWritePrimary = false,
@@ -32,7 +32,6 @@ export function createReservationsHandlers({
   toPosReservationId,
   toPosReservationLockId,
   validateSessionContext,
-  writeDb,
 }) {
   const RESERVATION_STATE_SPLIT_DOMAINS = [
     "posReservationStates",
@@ -647,7 +646,7 @@ export function createReservationsHandlers({
         relationalState?.reservations ?? [],
       );
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.create.appStateWrite",
@@ -663,7 +662,7 @@ export function createReservationsHandlers({
     state.reservations.push(reservation);
     state.version += 1;
     db.meta.lastWriteAt = nowIso();
-    await writeDb(
+    await reservationsAppStateRepository.write(
       db,
       reservationWriteOptions(
         "reservations.create.appStateWrite",
@@ -714,7 +713,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsList(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -742,7 +741,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsCreate(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -835,7 +834,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsLockAcquire(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session, roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -866,7 +865,7 @@ export function createReservationsHandlers({
     if (relationalLock) {
       mirrorReservationLockToAppState(db, reservationId, relationalLock, now);
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.lock.appStateWrite",
@@ -912,7 +911,7 @@ export function createReservationsHandlers({
     }
 
     db.meta.lastWriteAt = nowIso();
-    await writeDb(
+    await reservationsAppStateRepository.write(
       db,
       reservationWriteOptions(
         "reservations.lock.appStateWrite",
@@ -928,7 +927,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsLockRelease(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     const reservationId = String(payload.reservationId ?? "").trim();
     const lockId = String(payload.lockId ?? "").trim();
@@ -949,7 +948,7 @@ export function createReservationsHandlers({
       );
       if (relationalRelease.released || relationalRelease.expired) {
         db.meta.lastWriteAt = nowIso();
-        await writeDb(
+        await reservationsAppStateRepository.write(
           db,
           reservationWriteOptions(
             "reservations.lock.appStateWrite",
@@ -976,7 +975,7 @@ export function createReservationsHandlers({
     const released = db.posReservationLocks.length !== before;
     if (lockPruned || released) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.lock.appStateWrite",
@@ -992,7 +991,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsUpdate(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session, roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -1101,7 +1100,7 @@ export function createReservationsHandlers({
         relationalState?.reservations ?? [],
       );
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.update.appStateWrite",
@@ -1121,7 +1120,7 @@ export function createReservationsHandlers({
     state.version += 1;
 
     db.meta.lastWriteAt = nowIso();
-    await writeDb(
+    await reservationsAppStateRepository.write(
       db,
       reservationWriteOptions(
         "reservations.update.appStateWrite",
@@ -1138,7 +1137,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsStatus(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session, roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -1274,7 +1273,7 @@ export function createReservationsHandlers({
             )
           : { changed: false, tableIds: [] };
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.status.appStateWrite",
@@ -1310,7 +1309,7 @@ export function createReservationsHandlers({
         ? applyPosReservationStatusToAssignedTables(db, updated, status, now)
         : { changed: false, tableIds: [] };
     db.meta.lastWriteAt = nowIso();
-    await writeDb(
+    await reservationsAppStateRepository.write(
       db,
       reservationWriteOptions(
         "reservations.status.appStateWrite",
@@ -1337,7 +1336,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsDelete(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session, roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -1419,7 +1418,7 @@ export function createReservationsHandlers({
         (entry) => entry.reservationId !== reservationId,
       );
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.delete.appStateWrite",
@@ -1440,7 +1439,7 @@ export function createReservationsHandlers({
       (entry) => entry.reservationId !== reservationId,
     );
     db.meta.lastWriteAt = nowIso();
-    await writeDb(
+    await reservationsAppStateRepository.write(
       db,
       reservationWriteOptions(
         "reservations.delete.appStateWrite",
@@ -1457,7 +1456,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsAvailability(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePosRoomSessionContext(
       db,
       payload,
@@ -1516,7 +1515,7 @@ export function createReservationsHandlers({
 
   async function handlePosReservationsLockState(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     const reservationId = resolvePosReservationId(payload);
     const relationalLock = readRelationalReservationLock(reservationId);
@@ -1532,7 +1531,7 @@ export function createReservationsHandlers({
     }
     if (lockPruned) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(
+      await reservationsAppStateRepository.write(
         db,
         reservationWriteOptions(
           "reservations.lockState.appStateWrite",
@@ -1561,7 +1560,7 @@ export function createReservationsHandlers({
 
   async function handlePublicReservationsList(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePublicReservationRoom(db, payload);
     const serviceDate = resolvePosReservationServiceDate(payload);
     const state =
@@ -1576,7 +1575,7 @@ export function createReservationsHandlers({
 
   async function handlePublicReservationsAvailability(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePublicReservationRoom(db, payload);
     const serviceDate = resolvePosReservationServiceDate(payload);
     const reservationAtRaw = Number(payload.reservationAt);
@@ -1611,7 +1610,7 @@ export function createReservationsHandlers({
 
   async function handlePublicReservationsCreate(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { roomId } = resolvePublicReservationRoom(db, payload);
     const serviceDate = resolvePosReservationServiceDate(payload);
     const { state } = getOrCreatePosReservationState(db, roomId, serviceDate);

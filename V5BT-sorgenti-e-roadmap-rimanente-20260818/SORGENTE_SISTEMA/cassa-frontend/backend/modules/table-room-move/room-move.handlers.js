@@ -26,7 +26,7 @@ export function createRoomMoveHandlers({
   queuePosTableRoomMoveNotification,
   queuePosTableRoomMovePausedWaiterNotifications,
   randomUUID,
-  readDb,
+  reservationsAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolvePendingPosTableRoomMoveRequest,
@@ -34,12 +34,10 @@ export function createRoomMoveHandlers({
   sendJson,
   syncOrderNotificationsFastPath,
   validateSessionContext,
-  writeTableRoomMoveRequestAppStateFastDb,
-  writeRoomDb,
 }) {
   async function handleIntegrationLayoutTableRoomMoveRequest(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     ensurePosDataCollections(db);
     const tableRoomMoveRequestsPruned = pruneExpiredPosTableRoomMoveRequests(db);
@@ -122,7 +120,7 @@ export function createRoomMoveHandlers({
       if (deferredCount > 0) {
         db.integration.lastWriteAt = nowIso();
         db.meta.lastWriteAt = nowIso();
-        await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.deferred.appStateWrite", splitDomains: ["integration"] });
+        await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.deferred.appStateWrite", splitDomains: ["integration"] });
         publishIntegrationNotificationStreamRefresh(
           "table_room_move_paused_waiters_queued",
           {
@@ -193,7 +191,7 @@ export function createRoomMoveHandlers({
       pausedWaitersInTargetRoom,
     );
     db.meta.lastWriteAt = nowIso();
-    const fastAppStateWritten = await writeTableRoomMoveRequestAppStateFastDb(db, { requestId: request.requestId, notificationIds: notification?.id ? [notification.id] : [], deferredCallsChanged: deferredCount > 0, requiresFullFallback: tableRoomMoveRequestsPruned }); if (!fastAppStateWritten) { if (DB_MODE === "mysql" && mysqlAppStateDomainsSplitRepository?.enabled === true && typeof mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState === "function") { await syncOrderNotificationsFastPath(db, notification?.id ? [notification.id] : []); if (deferredCount > 0) await mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState(db, "integration", "waiterDeferredCalls"); await mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState(db, "integration", "lastWriteAt"); await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.request.appStateWrite", splitDomains: ["posTableRoomMoveRequests"] }); } else await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.request.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] }); }
+    const fastAppStateWritten = await reservationsAppStateRepository.writeTableRoomMoveRequest(db, { requestId: request.requestId, notificationIds: notification?.id ? [notification.id] : [], deferredCallsChanged: deferredCount > 0, requiresFullFallback: tableRoomMoveRequestsPruned }); if (!fastAppStateWritten) { if (DB_MODE === "mysql" && mysqlAppStateDomainsSplitRepository?.enabled === true && typeof mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState === "function") { await syncOrderNotificationsFastPath(db, notification?.id ? [notification.id] : []); if (deferredCount > 0) await mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState(db, "integration", "waiterDeferredCalls"); await mysqlAppStateDomainsSplitRepository.syncObjectEntryFromAppState(db, "integration", "lastWriteAt"); await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.request.appStateWrite", splitDomains: ["posTableRoomMoveRequests"] }); } else await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.request.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] }); }
     publishIntegrationNotificationStreamRefresh("table_room_move_request", {
       requestId: request.requestId,
       targetRoomId: request.targetRoomId,
@@ -209,7 +207,7 @@ export function createRoomMoveHandlers({
   
   async function handleIntegrationLayoutTableRoomMoveStatus(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user } = validateSessionContext(db, payload);
     ensurePosDataCollections(db);
     pruneExpiredPosTableRoomMoveRequests(db);
@@ -250,7 +248,7 @@ export function createRoomMoveHandlers({
     }
     if (changed) {
       db.meta.lastWriteAt = nowIso();
-      await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.status.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] });
+      await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.status.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] });
       publishIntegrationNotificationStreamRefresh("table_room_move_timeout", { requestId });
     }
     sendJson(res, 200, { ok: true, status: request.status, request: buildPosTableRoomMoveResponse(request) });
@@ -258,7 +256,7 @@ export function createRoomMoveHandlers({
   
   async function handleIntegrationLayoutTableRoomMovePending(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user } = validateSessionContext(db, payload);
     ensurePosDataCollections(db);
     const changed = pruneExpiredPosTableRoomMoveRequests(db);
@@ -276,14 +274,14 @@ export function createRoomMoveHandlers({
       .filter(Boolean);
     if (changed) {
       db.meta.lastWriteAt = nowIso();
-      await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.pending.appStateWrite", splitDomains: ["posTableRoomMoveRequests"] });
+      await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.pending.appStateWrite", splitDomains: ["posTableRoomMoveRequests"] });
     }
     sendJson(res, 200, { ok: true, requests: items });
   }
   
   async function handleIntegrationLayoutTableRoomMoveResolve(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await reservationsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     ensurePosDataCollections(db);
     pruneExpiredPosTableRoomMoveRequests(db);
@@ -331,7 +329,7 @@ export function createRoomMoveHandlers({
     }
     queuePosTableRoomMoveNotification(db, resolved.request, "resolved");
     db.meta.lastWriteAt = nowIso();
-    await writeRoomDb(db, { metricLabel: "rooms.tableRoomMove.resolve.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] });
+    await reservationsAppStateRepository.writeRoom(db, { metricLabel: "rooms.tableRoomMove.resolve.appStateWrite", splitDomains: ["posTableRoomMoveRequests", "integration"] });
     publishIntegrationNotificationStreamRefresh("table_room_move_resolved", { requestId, status: resolved.request?.status ?? "" });
     sendJson(res, 200, { ok: true, status: resolved.request?.status ?? "", request: buildPosTableRoomMoveResponse(resolved.request) });
   }
