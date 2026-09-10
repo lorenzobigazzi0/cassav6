@@ -55,6 +55,9 @@ mirror sorgente del Raspberry. Sul target ARM64:
   proprieta `root`, richiamato da un drop-in systemd;
 - `BACKEND_POSTGRES_SHADOW_DOMAINS=identity`, mentre `PRIMARY_DOMAINS` e
   `LEGACY_WRITE_GUARD_DOMAINS` sono vuote;
+- un login canary con utente inesistente ha restituito il 401 atteso e ha
+  attraversato il normale `writeDb` di audit; non sono comparsi errori o
+  divergenze dal write-through shadow;
 - la riconciliazione post-avvio ha confermato 5 utenti invariati, 2
   amministratori, 0 gruppi, nessun insert/update/delete e digest identici.
 
