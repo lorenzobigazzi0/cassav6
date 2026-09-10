@@ -37,3 +37,5 @@ export {
 } from "./retention.repository.js";
 export * from "./identity.repository.js";
 export * from "./identity-canonical.js";
+export * from "./identity-mode.js";
+export * from "./identity-store.js";
