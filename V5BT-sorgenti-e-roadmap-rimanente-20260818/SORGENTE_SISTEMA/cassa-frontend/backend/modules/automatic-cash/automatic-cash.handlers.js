@@ -364,7 +364,7 @@ export function createAutomaticCashHandlers({
   hasPermission,
   isPosPrivilegedRole,
   nowIso,
-  readDb,
+  paymentsAppStateRepository,
   readJsonBody,
   resolveSettingsLastWriteAt,
   resolveSettingsVersion,
@@ -372,8 +372,6 @@ export function createAutomaticCashHandlers({
   sendJson,
   touchSettingsMetadata,
   validateSessionContext,
-  writeAutomaticCashDb = null,
-  writeDb,
 }) {
   const helpers = {
     resolveSettingsLastWriteAt,
@@ -792,23 +790,19 @@ export function createAutomaticCashHandlers({
       },
     );
     touchSettingsMetadata(db, updatedAt);
-    const persist =
-      typeof writeAutomaticCashDb === "function"
-        ? writeAutomaticCashDb
-        : writeDb;
-    await persist(db);
+    await paymentsAppStateRepository.writeAutomaticCash(db);
     return db.posSettings.automaticCash;
   }
 
   async function handleSettings(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const settings = sanitizeDbSettings(db);
     sendJson(res, 200, buildResponse(db, settings.automaticCash, helpers));
   }
 
   async function handleSaveSettings(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const { user } = requestContext(req, db, payload);
     requireManager(user);
 
@@ -877,7 +871,7 @@ export function createAutomaticCashHandlers({
 
   async function handleUploadConfigSet(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const { user } = requestContext(req, db, payload);
     requireManager(user);
 
@@ -927,7 +921,7 @@ export function createAutomaticCashHandlers({
 
   async function handleUploadDefaultConfigSet(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const { user } = requestContext(req, db, payload);
     requireManager(user);
 
@@ -992,7 +986,7 @@ export function createAutomaticCashHandlers({
 
   async function handleUploadReserveConfig(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const { user } = requestContext(req, db, payload);
     requireManager(user);
 
@@ -1041,7 +1035,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleStatus(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, req.__authPayload ?? {});
     const settings = withRuntimeGateway(sanitizeDbSettings(db).automaticCash);
     const activeWorkflow = getActiveAutomaticCashWorkflow(settings);
@@ -1078,7 +1072,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleGatewayState(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, req.__authPayload ?? {});
     const baseSettings = sanitizeDbSettings(db).automaticCash;
     const gatewayState = await readGatewayState(baseSettings);
@@ -1124,7 +1118,7 @@ export function createAutomaticCashHandlers({
 
   async function handleGatewayCommand(req, res, command) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     requireManager(context.user);
     const current = sanitizeAutomaticCashSettings(
@@ -1215,7 +1209,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleCashFloatPreflight(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, req.__authPayload ?? {});
     const baseSettings = sanitizeDbSettings(db).automaticCash;
     const gatewayInventory = await refreshGatewayInventory(baseSettings);
@@ -1234,7 +1228,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleActiveCashFloatWorkflow(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, req.__authPayload ?? {});
     const settings = sanitizeDbSettings(db).automaticCash;
     const activeWorkflow = getActiveAutomaticCashWorkflow(settings);
@@ -1255,7 +1249,7 @@ export function createAutomaticCashHandlers({
 
   async function handleGenerateCashFloatInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const currentSettings = sanitizeDbSettings(db);
     const baseCurrent = sanitizeAutomaticCashSettings(
@@ -1513,7 +1507,7 @@ export function createAutomaticCashHandlers({
     patch = {},
     okBody = {},
   }) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1579,7 +1573,7 @@ export function createAutomaticCashHandlers({
 
   async function handleConfirmCashFloatRemovedInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1691,7 +1685,7 @@ export function createAutomaticCashHandlers({
 
   async function handleConfirmCashFloatTicketInPouchInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1798,7 +1792,7 @@ export function createAutomaticCashHandlers({
 
   async function handleLoadCashFloatFromQr(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1887,7 +1881,7 @@ export function createAutomaticCashHandlers({
 
   async function handleSaveSettlementRecord(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1941,7 +1935,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleListSettlementRecords(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, {});
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -1959,7 +1953,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleLatestSettlementRecord(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, {});
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2254,7 +2248,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleActiveCashExchange(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, req.__authPayload ?? {});
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2277,7 +2271,7 @@ export function createAutomaticCashHandlers({
 
   async function handleStartCashPaymentInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2367,7 +2361,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleCashPaymentState(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, req.__authPayload ?? {});
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2414,7 +2408,7 @@ export function createAutomaticCashHandlers({
 
   async function handleCompleteCashPayment(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2506,7 +2500,7 @@ export function createAutomaticCashHandlers({
 
   async function handleCancelCashPayment(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2564,7 +2558,7 @@ export function createAutomaticCashHandlers({
 
   async function handleStartCashExchangeInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const baseCurrent = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2773,7 +2767,7 @@ export function createAutomaticCashHandlers({
   }
 
   async function handleCashExchangeState(req, res) {
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, req.__authPayload ?? {});
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2853,7 +2847,7 @@ export function createAutomaticCashHandlers({
 
   async function handleCancelCashExchangeInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -2925,7 +2919,7 @@ export function createAutomaticCashHandlers({
 
   async function handleConfirmCashExchangeDepositInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3046,7 +3040,7 @@ export function createAutomaticCashHandlers({
 
   async function handleExecuteCashExchangeInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const baseCurrent = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3206,7 +3200,7 @@ export function createAutomaticCashHandlers({
 
   async function handleConfirmCashExchangeRemovedInner(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3341,7 +3335,7 @@ export function createAutomaticCashHandlers({
 
   async function handleStartDeposit(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     const context = requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3421,7 +3415,7 @@ export function createAutomaticCashHandlers({
 
   async function handleCloseDeposit(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3503,7 +3497,7 @@ export function createAutomaticCashHandlers({
 
   async function handleCancelDeposit(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.readAutomaticCash();
     requestContext(req, db, payload);
     const current = sanitizeAutomaticCashSettings(
       sanitizeDbSettings(db).automaticCash,
@@ -3555,7 +3549,7 @@ export function createAutomaticCashHandlers({
     hasPermission,
     nowIso,
     persistAutomaticCash,
-    readDb,
+    paymentsAppStateRepository,
     readDepositedTotalCents,
     readJsonBody,
     refreshGatewayInventory,

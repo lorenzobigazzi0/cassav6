@@ -1534,7 +1534,7 @@ test("P5.4 high-volume writes declare only their owned app-state domains", () =>
   );
   assert.match(
     counterSource,
-    /const counterMutation = \{[\s\S]+paymentIds:[\s\S]+auditEventIds:[\s\S]+writeCounterCollectionDb\(db, counterMutation\)/,
+    /const counterMutation = \{[\s\S]+paymentIds:[\s\S]+auditEventIds:[\s\S]+paymentsAppStateRepository\.writeCounterCollection\(\s*db,\s*counterMutation/,
   );
   assert.match(
     reportsSource,

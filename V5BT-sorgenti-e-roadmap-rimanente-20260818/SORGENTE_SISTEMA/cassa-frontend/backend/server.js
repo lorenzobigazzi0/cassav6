@@ -346,7 +346,7 @@ import { isTransientMysqlRouteError, retryTransientMysqlNotificationAckRequest, 
 import { createMenuSettingsRepository } from "./modules/menu-settings/index.js";
 import { createMenuPriceListResolver } from "./modules/price-lists/index.js";
 import { createMobileBatteryHandlers } from "./modules/mobile-battery/index.js";
-import { buildPaymentRealtimeBoundary, createPaymentFreeSplitDurableMirrorRuntime, createPaymentHandlers, createPaymentsFiscalModel, createRelationalPaymentOrderStateSync, enqueuePaymentFreeSplitMirror, isFiscalReceiptIssued } from "./modules/payments/index.js";
+import { buildPaymentRealtimeBoundary, createPaymentFreeSplitDurableMirrorRuntime, createPaymentHandlers, createPaymentsAppStateRepository, createPaymentsFiscalModel, createRelationalPaymentOrderStateSync, enqueuePaymentFreeSplitMirror, isFiscalReceiptIssued } from "./modules/payments/index.js";
 import { createPosRoomsHandlers } from "./modules/pos-rooms/index.js";
 import { createPostazioneActionHandlers } from "./modules/postazione-actions/index.js";
 import { createOperationsAppStateRepository } from "./modules/operations/index.js";
@@ -16993,6 +16993,20 @@ const reservationsAppStateRepository = createReservationsAppStateRepository({
   writeTableSyncAppStateFastDb,
 });
 
+const paymentsAppStateRepository = createPaymentsAppStateRepository({
+  readDb,
+  readAutomaticCashDb: async (options) =>
+    automaticCashSplitGuard.refreshState(await readDb(options)),
+  writeDb,
+  writeAutomaticCashDb: (db) =>
+    automaticCashSplitGuard.writeEntry(db, {
+      dbMode: DB_MODE,
+      writeDb,
+      refreshHealthSnapshot: refreshHealthSnapshotFromDb,
+    }),
+  writeCounterCollectionDb,
+});
+
 const writePostazioneLogoutFastDb = createPostazioneLogoutWriter({
   resolveStationStateId: integrationStationStateMysqlRecordId,
   runtimeMetrics,
@@ -28811,6 +28825,7 @@ const reportsHandlers = createReportsHandlers({
   normalizePaymentOrderIdList,
   nowIso,
   parseTimestampMs,
+  paymentsAppStateRepository,
   readDb,
   readJsonBody,
   roundMoney,
@@ -28827,7 +28842,6 @@ const reportsHandlers = createReportsHandlers({
   sanitizeSmartNonFiscalEntry,
   sendJson,
   validateSessionContext,
-  writeDb,
   relationalPaymentsReportsReadEnabled: RELATIONAL_PAYMENTS_REPORTS_READS,
   buildRelationalPaymentsReportDb,
 });
@@ -29181,7 +29195,7 @@ const automaticCashHandlers = createAutomaticCashHandlers({
   hasPermission,
   isPosPrivilegedRole,
   nowIso,
-  readDb: async (...args) => automaticCashSplitGuard.refreshState(await readDb(...args)),
+  paymentsAppStateRepository,
   readJsonBody,
   resolveSettingsLastWriteAt,
   resolveSettingsVersion,
@@ -29189,8 +29203,6 @@ const automaticCashHandlers = createAutomaticCashHandlers({
   sendJson,
   touchSettingsMetadata,
   validateSessionContext,
-  writeAutomaticCashDb: (db) => automaticCashSplitGuard.writeEntry(db, { dbMode: DB_MODE, writeDb, refreshHealthSnapshot: refreshHealthSnapshotFromDb }),
-  writeDb,
 });
 
 const radioHub = createRadioHub({
@@ -29236,7 +29248,7 @@ const counterHandlers = createCounterHandlers({
   normalizePaymentCommercialBenefitApplicationRefs,
   normalizeIdempotencyKey,
   nowIso,
-  readDb,
+  paymentsAppStateRepository,
   readJsonBody,
   roundMoney,
   sanitizePaymentContainerRecord,
@@ -29248,8 +29260,6 @@ const counterHandlers = createCounterHandlers({
   summarizePaymentCommercialBenefitApplications,
   redeemCommercialBenefitApplications,
   validateSessionContext,
-  writeCounterCollectionDb,
-  writeDb,
 });
 
 const {
@@ -29405,7 +29415,7 @@ const paymentHandlers = createPaymentHandlers({
   applyAmountPaymentToPosBills,
   applyLineSelectionsToPosBills,
   paymentIdempotencyCoordinator,
-  readDb,
+  paymentsAppStateRepository,
   writePaymentDb,
   writePaymentFreeSplitDb,
   paymentFreeSplitTelemetry,
@@ -30275,7 +30285,7 @@ const {
   persistPaymentProviderTransaction,
   publishIntegrationNotificationStreamRefresh,
   randomUUID,
-  readDb,
+  paymentsAppStateRepository,
   readJsonBody,
   realtimeEventOutboxCoordinator,
   recordRelationalTicketPayment,

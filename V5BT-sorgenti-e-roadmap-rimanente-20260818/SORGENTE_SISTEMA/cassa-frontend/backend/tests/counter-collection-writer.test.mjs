@@ -107,7 +107,11 @@ test("server inietta il writer atomico nel factory del Banco", () => {
   assert.ok(usersFactoryStart >= 0 && usersFactoryEnd > usersFactoryStart);
   assert.match(
     source,
-    /const counterHandlers = createCounterHandlers\(\{[\s\S]*?validateSessionContext,\s*writeCounterCollectionDb,\s*writeDb,\s*\}\);/,
+    /const paymentsAppStateRepository = createPaymentsAppStateRepository\(\{[\s\S]*?writeCounterCollectionDb,\s*\}\);/,
+  );
+  assert.match(
+    source,
+    /const counterHandlers = createCounterHandlers\(\{[\s\S]*?paymentsAppStateRepository,[\s\S]*?validateSessionContext,\s*\}\);/,
   );
   assert.doesNotMatch(
     source.slice(usersFactoryStart, usersFactoryEnd),

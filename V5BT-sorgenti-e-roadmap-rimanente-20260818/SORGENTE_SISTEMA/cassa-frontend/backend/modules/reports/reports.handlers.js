@@ -39,6 +39,7 @@ export function createReportsHandlers({
   nowIso,
   parseTimestampMs,
   readDb,
+  paymentsAppStateRepository,
   readAuditEventsView,
   readJsonBody,
   roundMoney,
@@ -55,7 +56,6 @@ export function createReportsHandlers({
   sanitizeSmartNonFiscalEntry,
   sendJson,
   validateSessionContext,
-  writeDb,
   relationalPaymentsReportsReadEnabled = false,
   buildRelationalPaymentsReportDb = null,
 }) {
@@ -862,7 +862,7 @@ export function createReportsHandlers({
 
   async function handleReceivablesReport(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     const canViewAll = isAdminUser(user) || hasPermission(user, "view_analytics");
     const rows = (Array.isArray(db.integration?.orders) ? db.integration.orders : [])
@@ -905,7 +905,7 @@ export function createReportsHandlers({
 
   async function handleHandheldCashSessionOpen(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user, session } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     if (!hasPermission(user, "collect_payments") && !canViewFullReports(user)) {
       throw new HttpError(403, "Utente non autorizzato all'apertura fondo cassa palmare.");
@@ -944,7 +944,7 @@ export function createReportsHandlers({
       },
     });
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db, {
+    await paymentsAppStateRepository.write(db, {
       metricLabel: "reports.handheldCashSessionOpen.appStateWrite",
       splitDomains: HANDHELD_CASH_SESSION_WRITE_DOMAINS,
     });
@@ -953,7 +953,7 @@ export function createReportsHandlers({
 
   async function handleHandheldCashSessionClose(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user, session } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     if (!hasPermission(user, "collect_payments") && !canViewFullReports(user)) {
       throw new HttpError(403, "Utente non autorizzato alla chiusura fondo cassa palmare.");
@@ -988,7 +988,7 @@ export function createReportsHandlers({
       },
     });
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db, {
+    await paymentsAppStateRepository.write(db, {
       metricLabel: "reports.handheldCashSessionClose.appStateWrite",
       splitDomains: HANDHELD_CASH_SESSION_WRITE_DOMAINS,
     });
@@ -997,7 +997,7 @@ export function createReportsHandlers({
 
   async function handleHandheldSessionReport(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     if (!canViewFullReports(user)) {
       throw new HttpError(403, "Utente non autorizzato alla consultazione riepilogo palmari.");
@@ -1011,7 +1011,7 @@ export function createReportsHandlers({
 
   async function handleHandheldSessionReportPrint(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user, session } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     if (!canViewFullReports(user)) {
       throw new HttpError(403, "Utente non autorizzato alla stampa riepilogo palmari.");
@@ -1044,7 +1044,7 @@ export function createReportsHandlers({
       },
     });
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await paymentsAppStateRepository.write(db);
 
     const printJob = await enqueuePrintSpoolJob({
       kind: "handheld_session_report",

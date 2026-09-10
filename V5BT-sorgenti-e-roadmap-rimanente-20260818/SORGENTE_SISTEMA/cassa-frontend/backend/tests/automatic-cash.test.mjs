@@ -157,8 +157,14 @@ function createHarness({
     nowIso() {
       return "2026-06-26T10:00:00.000Z";
     },
-    async readDb() {
-      return db;
+    paymentsAppStateRepository: {
+      async readAutomaticCash() {
+        return db;
+      },
+      async writeAutomaticCash(nextDb) {
+        db = nextDb;
+        writeCount += 1;
+      },
     },
     async readJsonBody() {
       return currentPayload;
@@ -189,10 +195,6 @@ function createHarness({
           deviceUuid: currentPayload.deviceUuid,
         },
       };
-    },
-    async writeDb(nextDb) {
-      db = nextDb;
-      writeCount += 1;
     },
   });
   return {

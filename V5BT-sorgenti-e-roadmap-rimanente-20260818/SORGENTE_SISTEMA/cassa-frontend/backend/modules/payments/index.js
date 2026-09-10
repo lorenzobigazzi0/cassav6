@@ -1,5 +1,6 @@
 export { createPaymentsFiscalModel } from "./payments-fiscal-model.js";
 export { createPaymentHandlers } from "./payments.handlers.js";
+export { createPaymentsAppStateRepository } from "./payments-app-state-repository.js";
 export { createPaymentMirrorWorkerRuntime } from "./payment-mirror-worker.js";
 export {
   createPaymentFreeSplitDurableMirrorRuntime,

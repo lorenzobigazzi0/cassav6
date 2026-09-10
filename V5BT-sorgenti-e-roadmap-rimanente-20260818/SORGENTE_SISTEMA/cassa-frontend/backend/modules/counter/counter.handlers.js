@@ -330,7 +330,7 @@ export function createCounterHandlers(context) {
     normalizePaymentCommercialBenefitApplicationRefs,
     normalizeIdempotencyKey,
     nowIso,
-    readDb,
+    paymentsAppStateRepository,
     readJsonBody,
     roundMoney,
     sanitizePaymentContainerRecord,
@@ -342,8 +342,6 @@ export function createCounterHandlers(context) {
     summarizePaymentCommercialBenefitApplications,
     redeemCommercialBenefitApplications,
     validateSessionContext,
-    writeCounterCollectionDb,
-    writeDb,
   } = context;
 
   async function handleCounterCollect(req, res) {
@@ -359,7 +357,7 @@ export function createCounterHandlers(context) {
       });
     }
 
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     ensurePaymentTrackingArrays(db);
     ensureCommercialBenefitCollections?.(db);
@@ -786,14 +784,14 @@ export function createCounterHandlers(context) {
           : []
       ).map((event) => event?.id),
     };
-    if (typeof writeCounterCollectionDb === "function") {
-      await writeCounterCollectionDb(db, counterMutation);
-    } else {
-      await writeDb(db, {
+    await paymentsAppStateRepository.writeCounterCollection(
+      db,
+      counterMutation,
+      {
         metricLabel: "counter.collect.appStateWrite",
         splitDomains: COUNTER_COLLECTION_WRITE_DOMAINS,
-      });
-    }
+      },
+    );
 
     const operatorLabel = buildOperatorReceiptName({
       fullName: user.fullName ?? payload.fullName,

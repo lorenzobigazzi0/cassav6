@@ -135,5 +135,6 @@ test("payment item, transaction e tracking arrays applicano gli invarianti", () 
     paymentParts: [],
     paymentTransactions: [],
     cashTxDenoms: [],
+    paymentOperatorInterventions: [],
   });
 });

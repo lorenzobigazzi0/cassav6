@@ -150,7 +150,7 @@ export function createPaymentHandlers({
   applyAmountPaymentToPosBills,
   applyLineSelectionsToPosBills,
   paymentIdempotencyCoordinator,
-  readDb,
+  paymentsAppStateRepository,
   writePaymentDb,
   writePaymentFreeSplitDb = writePaymentDb,
   paymentFreeSplitTelemetry = null,
@@ -297,7 +297,7 @@ async function handlePayTable(req, res) {
     throw new HttpError(400, "Metodo di pagamento non valido.");
   }
 
-  const db = await readDb({
+  const db = await paymentsAppStateRepository.read({
     refreshExternalizedSessions: !req.__authContext,
     refreshExternalizedTableLocks: true,
     refreshExternalizedTableLockId: tableId,
@@ -1409,7 +1409,7 @@ async function handlePayTable(req, res) {
   const tableId =
     typeof payload.tableId === "string" ? payload.tableId.trim() : "";
   const db = await telemetry.measure("readDb", () =>
-    readDb({
+    paymentsAppStateRepository.read({
       refreshExternalizedSessions: !req.__authContext,
       refreshExternalizedTableLocks: true,
       refreshExternalizedTableLockId: tableId,
@@ -3076,7 +3076,7 @@ async function handlePaymentMovementReprint(req, res) {
       throw new HttpError(400, "Movimento pagamento non valido.");
     }
 
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     ensurePaymentTrackingArrays(db);
     ensureIntegrationOrderComps(db);
     const { user, session } = validateSessionContext(db, payload);

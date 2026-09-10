@@ -37,7 +37,7 @@ export function createPayTicketHandlers({
   persistPaymentProviderTransaction,
   publishIntegrationNotificationStreamRefresh,
   randomUUID,
-  readDb,
+  paymentsAppStateRepository,
   readJsonBody,
   realtimeEventOutboxCoordinator,
   recordRelationalTicketPayment,
@@ -88,7 +88,7 @@ export function createPayTicketHandlers({
     }
     validatePaymentLinesAndAmount(lines, amount);
   
-    const db = await readDb();
+    const db = await paymentsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     ensurePaymentTrackingArrays(db);
     const idempotencyKey = ensureServerIdempotencyKey(payload, "ticket");
