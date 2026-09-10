@@ -21,6 +21,7 @@ export type CashFloatTicketRecordStatus =
 
 export type CashFloatTicketRecord = CashFloatTicket & {
   status: CashFloatTicketRecordStatus;
+  demo?: boolean;
 };
 
 export type CashFloatTicketPrintAuth = {

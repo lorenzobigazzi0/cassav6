@@ -1,12 +1,70 @@
 import { describe, expect, it } from "vitest";
 import {
+  analyticsPaymentMethodKind,
   buildAnalyticsMovementRecordsFromReport,
   buildLocalAnalyticsMovementRecords,
+  isAnalyticsMovementVisibleForUser,
   normalizeAnalyticsFiscalReceipt,
 } from "../src/api/analyticsPaymentMovementModel";
 import type { AnalyticsTransactionRecord } from "../src/utils/analyticsTransactions";
 
 describe("analytics payment movement model", () => {
+  it.each([
+    ["cash", "Contanti", "cash"],
+    ["card", "Carta", "card"],
+    ["satispay", "Satispay", "satispay"],
+    ["voucher", "Buono pasto", "voucher"],
+    ["suspended", "Conto sospeso", "suspended"],
+    ["check", "Assegno", "check"],
+    ["wire", "Bonifico", "wire"],
+    ["cash, card", "Contanti + Carta", "other"],
+    ["custom", "Altro", "other"],
+  ])("classifica il metodo %s nel pill %s", (method, methodLabel, expected) => {
+    expect(analyticsPaymentMethodKind({ method, methodLabel })).toBe(expected);
+  });
+
+  it("mantiene la cronologia fra login e device e applica solo il cutoff di scarico", () => {
+    const record = {
+      id: "payment:pay_1",
+      type: "payment" as const,
+      typeLabel: "Pagamento",
+      paymentId: "pay_1",
+      amount: 25,
+      method: "cash",
+      methodLabel: "Contanti",
+      createdAt: Date.parse("2026-09-10T08:00:00Z"),
+      operatorId: "user_1",
+      operatorName: "Giada Imperato",
+      transactionIds: [],
+      orderIds: [],
+      orderReference: "",
+      note: "",
+      raw: {},
+    };
+
+    expect(
+      isAnalyticsMovementVisibleForUser(record, {
+        userId: "user_1",
+        userName: "Giada Imperato",
+        settlementCutoffAt: 0,
+      })
+    ).toBe(true);
+    expect(
+      isAnalyticsMovementVisibleForUser(record, {
+        userId: "user_1",
+        userName: "Giada Imperato",
+        settlementCutoffAt: Date.parse("2026-09-10T09:00:00Z"),
+      })
+    ).toBe(false);
+    expect(
+      isAnalyticsMovementVisibleForUser(record, {
+        userId: "user_2",
+        userName: "Altro operatore",
+        settlementCutoffAt: 0,
+      })
+    ).toBe(false);
+  });
+
   it("converte solo i pagamenti locali e li ordina senza mutare la sorgente", () => {
     const records: AnalyticsTransactionRecord[] = [
       {

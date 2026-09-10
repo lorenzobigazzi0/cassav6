@@ -128,6 +128,7 @@ export function buildInitialAppState(options = {}) {
     paymentParts: [],
     paymentTransactions: [],
     paymentProviderTransactions: [],
+    paymentOperatorInterventions: [],
     cashTxDenoms: [],
     handheldCashSessions: [],
     commercialBenefitCampaigns: [],

@@ -10,3 +10,7 @@ file deve prima essere convertito, revisionato e coperto da test.
 Il proprietario DDL e `cassav6_migrator`. I privilegi DML applicativi vengono
 concessi al ruolo tecnico senza login `cassav6_runtime`, ereditato dal login
 configurato per il backend; non vengono concessi privilegi DDL al runtime.
+
+`008_payment_operator_interventions.sql` introduce il journal append-only per
+gli interventi amministrativi su pagamenti altrui e il modello normalizzato
+notifica/target/ricevuta. Il journal non e soggetto a retention.

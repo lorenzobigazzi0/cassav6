@@ -390,6 +390,49 @@ POST /api/settings/pos/users
 
 Con `clientApp: "cassa-frontend"` la stessa rotta risponde **401**.
 
+### 5.7 Attesa, riepilogo del tavolo, azioni di sala
+
+Tre interventi sull'interfaccia, tutti verificati a video in **entrambi i temi**.
+
+**La schermata di attesa** (login e ricarico) era in alto a sinistra: riusava il
+guscio della home, che allinea con `flex-start` su entrambi gli assi. Ora ha una
+pagina sua (`.app-loading-page`), che non sovrascrive il centraggio gia' fornito
+da `.page`: misurata, lo scarto dal centro dello schermo e' **0 su entrambi gli
+assi**. Dentro, un anello che gira dello stesso idioma degli altri indicatori
+(`cash-movement-spinner`), a 56px, e l'etichetta CARICAMENTO. Con
+`prefers-reduced-motion` l'anello respira invece di girare.
+
+> Il riquadro dell'anello misurato con `getBoundingClientRect` risulta ~70px
+> invece di 56: e' il **riquadro del quadrato mentre ruota**, non un errore di
+> misura. Gli stili calcolati dicono 56px.
+
+**Il riepilogo sotto l'anagrafica** (`TableDetailStats.tsx`, componente nuovo)
+segue il mockup: pastiglia dell'icona a sinistra, etichetta piccola e valore
+grande a destra, una tinta per grandezza. Vive in un file suo perche'
+`TableDetailPanel.tsx` era a quattro righe dal suo tetto e le icone in linea lo
+avrebbero sfondato; con l'estrazione e' **rientrato**.
+
+Le misure sono strette per necessita': la scheda e' un terzo di un pannello da
+430px e "Ordini in corso" e' l'etichetta piu' lunga. Alla prima prova veniva
+**troncata**, e si e' recuperato spazio dalla pastiglia (32 a 30px), dal margine
+interno e dall'etichetta (9,5 a 9px). Verificato a video: nessuna delle tre
+tronca.
+
+**L'avviso "Pagamenti disabilitati"** e' diventato un **pulsante** che porta a
+`/payments`, dove si inserisce il POS o si conferma il fondo cassa: un chevron
+che non porta da nessuna parte prometterebbe un tocco che non succede. Usa una
+classe nuova, `.table-payment-setup-hint`, perche' `.table-payment-lock-hint` e'
+usata anche dal wizard dei pagamenti e non andava riciclata.
+
+**La pressione prolungata sulla sala** ora vale **anche sulla sala attuale**:
+c'era un `if (isCurrent && !isVirtualWaiting) return;` che la sopprimeva proprio
+li', dove serve di piu'. Il tocco di uscita non scatta lo stesso, perche'
+`onClick` si ferma quando la pressione lunga e' gia' partita.
+
+> Da sapere per pilotare l'interfaccia: **l'elenco delle sale si apre con una
+> pressione prolungata sul titolo**, non con un tocco. Cercare le sale dopo un
+> `click()` non trova niente, e sembra che l'utente non abbia sale disponibili.
+
 ## 6. La rete di test
 
 ### Aggiunta in questi due giorni

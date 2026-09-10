@@ -342,6 +342,7 @@ export function createPaymentRecordNormalization(dependencies = {}) {
     if (!Array.isArray(db.paymentParts)) db.paymentParts = [];
     if (!Array.isArray(db.paymentTransactions)) db.paymentTransactions = [];
     if (!Array.isArray(db.cashTxDenoms)) db.cashTxDenoms = [];
+    if (!Array.isArray(db.paymentOperatorInterventions)) db.paymentOperatorInterventions = [];
   }
 
   function sanitizePaymentItem(item) {

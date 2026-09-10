@@ -72,6 +72,62 @@ export const analyticsTokenPart = (value: unknown, fallback: string) => {
 export const maxAnalyticsTimestamp = (values: unknown[]) =>
   values.reduce<number>((latest, value) => Math.max(latest, parseAnalyticsTimestamp(value)), 0);
 
+export type AnalyticsMovementVisibilityContext = {
+  userId?: string | null;
+  userName?: string | null;
+  settlementCutoffAt?: number | null;
+  includeOtherOperators?: boolean;
+};
+
+export type AnalyticsPaymentMethodKind =
+  | "cash"
+  | "card"
+  | "satispay"
+  | "voucher"
+  | "suspended"
+  | "check"
+  | "wire"
+  | "other";
+
+export const analyticsPaymentMethodKind = (
+  record: Pick<AnalyticsMovementRecord, "method" | "methodLabel">
+): AnalyticsPaymentMethodKind => {
+  const method = lower(`${record.method} ${record.methodLabel}`);
+  if (/[+,]/.test(method)) return "other";
+  if (/satispay/.test(method)) return "satispay";
+  if (/(buono|voucher|ticket)/.test(method)) return "voucher";
+  if (/(sospeso|suspended)/.test(method)) return "suspended";
+  if (/(assegno|check)/.test(method)) return "check";
+  if (/(bonifico|wire|bank transfer)/.test(method)) return "wire";
+  if (/(contant|cash)/.test(method)) return "cash";
+  if (/(carta|card|pos|bancomat|visa|mastercard)/.test(method)) return "card";
+  return "other";
+};
+
+/**
+ * La cronologia pagamenti appartiene al profilo operatore, non alla singola
+ * sessione di login o al device. Il backend e' la fonte durevole condivisa;
+ * soltanto uno scarico esplicito stabilisce il limite temporale da mostrare.
+ */
+export const isAnalyticsMovementVisibleForUser = (
+  record: AnalyticsMovementRecord,
+  context: AnalyticsMovementVisibilityContext
+) => {
+  const userId = normalizeAnalyticsValue(context.userId);
+  const userName = lower(context.userName);
+  const recordUserId = normalizeAnalyticsValue(record.operatorId);
+  const recordUserName = lower(record.operatorName);
+
+  if (!context.includeOtherOperators && userId && recordUserId && recordUserId !== userId) return false;
+  if (!context.includeOtherOperators && userId && !recordUserId && userName && recordUserName && recordUserName !== userName) {
+    return false;
+  }
+
+  const cutoff = parseAnalyticsTimestamp(context.settlementCutoffAt);
+  const recordTime = toAnalyticsMovementTime(record.createdAt);
+  return !(cutoff && recordTime && recordTime < cutoff);
+};
+
 const firstPositiveInt = (values: unknown[]) => {
   for (const value of values) {
     const parsed = Math.trunc(Number(value));

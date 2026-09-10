@@ -101,6 +101,33 @@ function originalFiscalDocumentFromReceipt(receipt) {
   };
 }
 
+function assertCrossOperatorMutationAllowed({ container, user, payload }) {
+  const ownerUserId = String(
+    container?.createdByUserId ?? container?.collectedByUserId ?? "",
+  ).trim();
+  const actorUserId = String(user?.id ?? "").trim();
+  if (!ownerUserId || !actorUserId || ownerUserId === actorUserId) {
+    return { crossOperator: false, ownerUserId };
+  }
+  if (String(user?.role ?? "").trim().toLowerCase() !== "admin") {
+    throw new HttpError(403, "Solo un amministratore può modificare il pagamento di un altro operatore.");
+  }
+  const reason = String(payload?.crossOperatorReason ?? payload?.reason ?? "").trim();
+  if (reason.length < 3) {
+    throw new HttpError(400, "Il motivo dell'intervento amministrativo è obbligatorio.");
+  }
+  const expectedRevision = String(payload?.expectedRevision ?? "").trim();
+  const actualRevision = String(
+    container?.revision ?? container?.currentRevision ?? container?.aggregateVersion ?? "",
+  ).trim();
+  if (expectedRevision && actualRevision && expectedRevision !== actualRevision) {
+    throw new HttpError(409, "Il pagamento è stato modificato: aggiorna il dettaglio e riprova.", {
+      code: "PAYMENT_REVISION_CONFLICT",
+    });
+  }
+  return { crossOperator: true, ownerUserId, reason: reason.slice(0, 240) };
+}
+
 async function persistMovementFiscalState(db, metricLabel) {
   db.meta.lastWriteAt = nowIso();
   await writePaymentDb(db, {
@@ -246,6 +273,7 @@ async function issueMovementFiscal(payload) {
   const { user, session } = validateSessionContext(db, payload);
   const actor = buildAuditActor(user, payload);
   const context = await resolveMovementFiscalActionContext(db, movementId);
+  assertCrossOperatorMutationAllowed({ container: context.container, user, payload });
   const candidateIds = [
     ...context.fiscalTransactions.map((transaction) => String(transaction.id ?? "").trim()),
     String(context.container.clientPaymentId ?? "").trim(),
@@ -524,6 +552,7 @@ async function voidMovementFiscal(payload) {
   const { user } = validateSessionContext(db, payload);
   const actor = buildAuditActor(user, payload);
   const context = await resolveMovementFiscalActionContext(db, movementId);
+  assertCrossOperatorMutationAllowed({ container: context.container, user, payload });
   const jobs = buildPosFiscalReprintJobsForPaymentContainer(context.paymentsReadDb, {
     container: context.container,
     transactions: context.fiscalTransactions,

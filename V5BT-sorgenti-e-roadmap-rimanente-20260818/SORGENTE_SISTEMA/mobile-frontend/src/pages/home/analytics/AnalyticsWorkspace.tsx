@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import * as QRCode from "qrcode";
 import { apiFetch } from "../../../api/baseUrl";
+import { getAutomaticCashSettings } from "../../../api/automaticCash";
 import { SETTLEMENT_PRINT_PATH } from "../../../api/paymentSettlementEndpoints";
 import {
   applyFiscalReceiptToAnalyticsMovement,
+  analyticsPaymentMethodKind,
+  type AnalyticsPaymentMethodKind,
   type AnalyticsMovementRecord,
   analyticsSplitModeLabel,
   analyticsTableLabel,
   canPrintAnalyticsMovement,
   fetchAnalyticsPaymentMovements,
+  isAnalyticsMovementVisibleForUser,
   issueAnalyticsFiscalMovement,
   printAnalyticsPaymentMovement,
   readLocalAnalyticsMovements,
@@ -24,7 +28,7 @@ import { useAuthStore } from "../../../store/authStore";
 import { getOrCreateDeviceUuid } from "../../../utils/device";
 import { triggerLongPressHaptic } from "../../../utils/haptics";
 import { readAutomaticCashTicketRecords } from "../../../utils/automaticCashTicketRegistry";
-import type { CashFloatTicketRecord } from "../../payments/cashFloatTicket";
+import { buildAutomaticCashFloatTicketText, type CashFloatTicketRecord } from "../../payments/cashFloatTicket";
 import {
   buildAnalyticsAdvancedPrintDetails,
   fiscalOutcomeLabel,
@@ -40,14 +44,25 @@ import {
   resolveAnalyticsFiscalAction,
   type AnalyticsPrintMode,
 } from "./analyticsPrintState";
-import { CashMovementsView } from "./CashMovementsView";
+import { CashMovementsView, type CashMovementDisplayKind } from "./CashMovementsView";
 import { FiscalVoidConfirmDialog } from "./FiscalVoidConfirmDialog";
+import { CrossOperatorInterventionDialog } from "./CrossOperatorInterventionDialog";
+import { ReceivablesView } from "./ReceivablesView";
 
 const ANALYTICS_STORAGE_KEY = "pos_analytics_transactions_v1";
 const REFRESH_MS = 12000;
 const CASH_FLOAT_AMOUNT_MASK = "€***,**";
 
-export type AnalyticsViewMode = "payments" | "cash_movements" | "cash_floats";
+const buildDemoCashFloatTickets = (): CashFloatTicketRecord[] => {
+  const now = Date.now();
+  const records: Omit<CashFloatTicketRecord, "printText">[] = [
+    { cashFloatId: "DEMO-FC-001", assignmentId: "DEMO-A01", combinationId: "SIM-20", businessEveningKey: "DEMO", createdAtMs: now - 12 * 60_000, operatorName: "Mario Rossi", totalCents: 20000, qrPayload: '{"demo":true,"cashFloatId":"DEMO-FC-001"}', status: "generated", demo: true },
+    { cashFloatId: "DEMO-FC-002", assignmentId: "DEMO-A02", combinationId: "SIM-35", businessEveningKey: "DEMO", createdAtMs: now - 47 * 60_000, operatorName: "Laura Bianchi", totalCents: 35000, qrPayload: '{"demo":true,"cashFloatId":"DEMO-FC-002"}', status: "loaded", demo: true },
+  ];
+  return records.map((record) => ({ ...record, printText: buildAutomaticCashFloatTicketText(record) }));
+};
+
+export type AnalyticsViewMode = "payments" | "cash_movements" | "cash_floats" | "receivables";
 
 const formatRecordDateTime = (value: number) => {
   if (!Number.isFinite(value) || value <= 0) return "-";
@@ -71,6 +86,17 @@ const normalize = (value: unknown) =>
 
 const lower = (value: unknown) => normalize(value).toLowerCase();
 
+const operatorInitials = (value: unknown) =>
+  normalize(value)
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("") || "OP";
+
+const operatorAvatarHue = (value: unknown) =>
+  Array.from(normalize(value)).reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) % 360, 211);
+
 const formatDetailValue = (value: unknown): string => {
   if (Array.isArray(value)) {
     return value.map(formatDetailValue).filter(Boolean).join(", ");
@@ -93,15 +119,30 @@ const movementPillLabel = (record: AnalyticsMovementRecord) => {
 
 const paymentMethodKind = (record: AnalyticsMovementRecord) => {
   if (record.type !== "payment") return "";
-  const method = lower(record.methodLabel);
-  if (/(contant|cash)/.test(method)) return "method-cash";
-  if (/(carta|card|pos|bancomat|visa|mastercard)/.test(method)) return "method-card";
-  return "";
+  return `method-${analyticsPaymentMethodKind(record)}`;
 };
 
+const PAYMENT_METHOD_FILTERS: { id: AnalyticsPaymentMethodKind; label: string }[] = [
+  { id: "cash", label: "Contanti" },
+  { id: "card", label: "Carta / POS" },
+  { id: "satispay", label: "Satispay" },
+  { id: "voucher", label: "Buoni pasto" },
+  { id: "suspended", label: "Conto sospeso" },
+  { id: "check", label: "Assegno" },
+  { id: "wire", label: "Bonifico" },
+  { id: "other", label: "Altro" },
+];
+
+const CASH_MOVEMENT_FILTERS: { id: CashMovementDisplayKind; label: string }[] = [
+  { id: "refill", label: "Rifornimento" },
+  { id: "exchange", label: "Cambio" },
+  { id: "withdrawal", label: "Prelievo" },
+  { id: "extraction", label: "Estrazione" },
+];
+
 const PaymentMethodIcon = ({ record }: { record: AnalyticsMovementRecord }) => {
-  const kind = paymentMethodKind(record);
-  if (kind === "method-cash") {
+  const kind = analyticsPaymentMethodKind(record);
+  if (kind === "cash") {
     return (
       <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3" y="6" width="18" height="12" rx="2" />
@@ -110,7 +151,7 @@ const PaymentMethodIcon = ({ record }: { record: AnalyticsMovementRecord }) => {
       </svg>
     );
   }
-  if (kind === "method-card") {
+  if (kind === "card") {
     return (
       <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -118,7 +159,52 @@ const PaymentMethodIcon = ({ record }: { record: AnalyticsMovementRecord }) => {
       </svg>
     );
   }
-  return null;
+  if (kind === "voucher") {
+    return (
+      <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7h16v4a2 2 0 0 0 0 4v4H4v-4a2 2 0 0 0 0-4z" />
+        <path d="M12 8v8" />
+      </svg>
+    );
+  }
+  if (kind === "wire") {
+    return (
+      <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9h16M6 9V7l6-3 6 3v2M6 18h12M8 9v9M12 9v9M16 9v9" />
+      </svg>
+    );
+  }
+  if (kind === "check") {
+    return (
+      <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="6" width="18" height="12" rx="2" />
+        <path d="m7 12 2 2 4-4M15 14h3" />
+      </svg>
+    );
+  }
+  if (kind === "suspended") {
+    return (
+      <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 8v5l3 2" />
+      </svg>
+    );
+  }
+  if (kind === "satispay") {
+    return (
+      <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M15 8.5c-.7-.5-1.7-.8-2.8-.8-1.7 0-3 .8-3 2s1 1.8 3 2.2 3 1 3 2.3-1.4 2.2-3.2 2.2c-1.2 0-2.4-.4-3.2-1" />
+      </svg>
+    );
+  }
+  return (
+    <svg className="analytics-kind-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="7" cy="12" r="1" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="17" cy="12" r="1" />
+    </svg>
+  );
 };
 
 const movementAmountClass = (record: AnalyticsMovementRecord) => {
@@ -242,6 +328,11 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     permissions,
   } = useAuthStore();
   const [search, setSearch] = useState("");
+  const [methodFilterOpen, setMethodFilterOpen] = useState(false);
+  const [selectedMethods, setSelectedMethods] = useState<AnalyticsPaymentMethodKind[]>([]);
+  const [showOperatorPayments, setShowOperatorPayments] = useState(false);
+  const [movementFilterOpen, setMovementFilterOpen] = useState(false);
+  const [selectedMovementKinds, setSelectedMovementKinds] = useState<CashMovementDisplayKind[]>([]);
   const [records, setRecords] = useState<AnalyticsMovementRecord[]>(() =>
     readLocalAnalyticsMovements()
   );
@@ -263,10 +354,17 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     "idle" | "running" | "success" | "error"
   >("idle");
   const [fiscalActionError, setFiscalActionError] = useState("");
+  const [crossOperatorAction, setCrossOperatorAction] = useState<"issue" | "void" | null>(null);
+  const [crossOperatorReason, setCrossOperatorReason] = useState("");
   const [cashFloatAmountVisible, setCashFloatAmountVisible] = useState(false);
   const [sessionRefreshKey, setSessionRefreshKey] = useState(0);
   const printHoldTimer = useRef<number | null>(null);
   const printLongPressTriggered = useRef(false);
+  const isAdmin = lower(role) === "admin";
+
+  useEffect(() => {
+    setShowOperatorPayments(false);
+  }, [token, userId]);
 
   const effectiveDeviceUuid = useMemo(
     () => (deviceUuid && deviceUuid.trim() ? deviceUuid : getOrCreateDeviceUuid()),
@@ -312,7 +410,11 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
       const nextController = new AbortController();
       controller = nextController;
       try {
-        const nextRecords = await fetchAnalyticsPaymentMovements(session, nextController.signal);
+        const nextRecords = await fetchAnalyticsPaymentMovements(
+          session,
+          nextController.signal,
+          isAdmin && showOperatorPayments ? "all" : "self"
+        );
         if (alive) {
           setRecords((current) =>
             JSON.stringify(current) === JSON.stringify(nextRecords) ? current : nextRecords
@@ -360,11 +462,23 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
       window.removeEventListener("mobile:payment-config-reset", onRefresh);
       window.removeEventListener("mobile:payments:settlement-completed", onRefresh);
     };
-  }, [session, viewMode]);
+  }, [isAdmin, session, showOperatorPayments, viewMode]);
 
   useEffect(() => {
     if (viewMode !== "cash_floats") return;
-    const refreshCashFloatTickets = () => setCashFloatTickets(readAutomaticCashTicketRecords());
+    let alive = true;
+    const refreshCashFloatTickets = async () => {
+      const actual = readAutomaticCashTicketRecords();
+      try {
+        const settings = await getAutomaticCashSettings();
+        const simulatorDeclared = [settings.configSet, settings.reserveConfig]
+          .some((entry) => /simulat|demo/i.test(`${entry?.id || ""} ${entry?.name || ""}`));
+        if (alive) setCashFloatTickets(actual.length || !simulatorDeclared ? actual : buildDemoCashFloatTickets());
+      } catch {
+        if (alive) setCashFloatTickets(actual);
+      }
+    };
+    void refreshCashFloatTickets();
     window.addEventListener("focus", refreshCashFloatTickets);
     window.addEventListener("storage", refreshCashFloatTickets);
     window.addEventListener(
@@ -376,6 +490,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
       refreshCashFloatTickets
     );
     return () => {
+      alive = false;
       window.removeEventListener("focus", refreshCashFloatTickets);
       window.removeEventListener("storage", refreshCashFloatTickets);
       window.removeEventListener(
@@ -440,25 +555,21 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     };
   }, []);
 
-  const filteredMovements = useMemo(() => {
+  const searchableMovements = useMemo(() => {
     const query = search.trim().toLowerCase();
     const userName = lower(session.fullName || session.username);
-    const cutoff = Math.max(session.sessionStartedAt || 0, session.settlementCutoffAt || 0);
 
     return records.filter((record) => {
-      const recordUserId = normalize(record.operatorId);
-      const recordUserName = lower(record.operatorName);
-      if (session.userId && recordUserId && recordUserId !== session.userId) return false;
       if (
-        session.userId &&
-        !recordUserId &&
-        userName &&
-        recordUserName &&
-        recordUserName !== userName
-      )
+        !isAnalyticsMovementVisibleForUser(record, {
+          userId: session.userId,
+          userName,
+          settlementCutoffAt: session.settlementCutoffAt,
+          includeOtherOperators: isAdmin && showOperatorPayments,
+        })
+      ) {
         return false;
-      const recordTime = toAnalyticsMovementTime(record.createdAt);
-      if (cutoff && recordTime && recordTime < cutoff) return false;
+      }
       if (!query) return true;
 
       return [
@@ -471,6 +582,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
         record.transactionIds.join(" "),
         record.orderIds.join(" "),
         record.orderReference,
+        record.operatorName,
         formatDetailValue(record.articleReference),
       ].some((value) => lower(value).includes(query));
     });
@@ -478,11 +590,41 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     records,
     search,
     session.fullName,
-    session.sessionStartedAt,
     session.settlementCutoffAt,
     session.userId,
     session.username,
+    isAdmin,
+    showOperatorPayments,
   ]);
+
+  const methodCounts = useMemo(() => {
+    const counts = new Map<AnalyticsPaymentMethodKind, number>();
+    searchableMovements.forEach((record) => {
+      const method = analyticsPaymentMethodKind(record);
+      counts.set(method, (counts.get(method) || 0) + 1);
+    });
+    return counts;
+  }, [searchableMovements]);
+
+  const filteredMovements = useMemo(() => {
+    if (selectedMethods.length === 0) return searchableMovements;
+    const selected = new Set(selectedMethods);
+    return searchableMovements.filter((record) => selected.has(analyticsPaymentMethodKind(record)));
+  }, [searchableMovements, selectedMethods]);
+
+  const toggleMethodFilter = (method: AnalyticsPaymentMethodKind) => {
+    setSelectedMethods((current) =>
+      current.includes(method)
+        ? current.filter((entry) => entry !== method)
+        : [...current, method]
+    );
+  };
+
+  const toggleMovementFilter = (kind: CashMovementDisplayKind) => {
+    setSelectedMovementKinds((current) =>
+      current.includes(kind) ? current.filter((entry) => entry !== kind) : [...current, kind]
+    );
+  };
 
   const filteredCashFloatTickets = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -519,7 +661,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
 
   const cashFloatTotals = useMemo(() => {
     const byStatus = new Map<string, { label: string; count: number }>();
-    filteredCashFloatTickets.forEach((record) => {
+    filteredCashFloatTickets.filter((record) => !record.demo).forEach((record) => {
       const label = cashFloatStatusLabel(record.status);
       const current = byStatus.get(label) || { label, count: 0 };
       current.count += 1;
@@ -553,6 +695,9 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
   const fiscalActionBusy = fiscalActionStatus === "running";
   const fiscalActionVisible = selectedFiscalAction !== "hidden";
   const fiscalActionEnabled = canRunAnalyticsFiscalAction(selectedFiscalAction);
+  const selectedBelongsToOtherOperator = Boolean(
+    selectedRecord && normalize(selectedRecord.operatorId) && normalize(selectedRecord.operatorId) !== normalize(session.userId)
+  );
 
   const updateSelectedFiscalReceipt = (
     receipt: Awaited<ReturnType<typeof issueAnalyticsFiscalMovement>>
@@ -591,7 +736,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     }
   };
 
-  const handleFiscalIssue = async () => {
+  const handleFiscalIssue = async (crossReason = "") => {
     if (
       !selectedRecord ||
       printStatus === "printing" ||
@@ -602,9 +747,14 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     setFiscalActionStatus("running");
     setFiscalActionError("");
     try {
-      const receipt = await issueAnalyticsFiscalMovement(session, selectedRecord);
+      const receipt = await issueAnalyticsFiscalMovement(session, selectedRecord, {
+        crossOperatorReason: crossReason || undefined,
+        expectedRevision: normalize(selectedRecord.raw?.revision) || undefined,
+      });
       updateSelectedFiscalReceipt(receipt);
       setFiscalActionStatus("success");
+      setCrossOperatorAction(null);
+      setCrossOperatorReason("");
       window.setTimeout(() => setFiscalActionStatus("idle"), 1400);
     } catch (error) {
       setFiscalActionStatus("error");
@@ -614,14 +764,19 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
     }
   };
 
-  const handleFiscalVoidConfirm = async () => {
+  const handleFiscalVoidConfirm = async (crossReason = "") => {
     if (!selectedRecord || fiscalActionBusy || selectedFiscalAction !== "void") return;
     setFiscalActionStatus("running");
     setFiscalActionError("");
     try {
-      const receipt = await voidAnalyticsFiscalMovement(session, selectedRecord);
+      const receipt = await voidAnalyticsFiscalMovement(session, selectedRecord, {
+        crossOperatorReason: crossReason || undefined,
+        expectedRevision: normalize(selectedRecord.raw?.revision) || undefined,
+      });
       updateSelectedFiscalReceipt(receipt);
       setFiscalVoidOpen(false);
+      setCrossOperatorAction(null);
+      setCrossOperatorReason("");
       setFiscalActionStatus("success");
       window.setTimeout(() => setFiscalActionStatus("idle"), 1400);
     } catch (error) {
@@ -720,16 +875,26 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
   const handleFiscalActionClick = () => {
     if (!fiscalActionEnabled || fiscalActionBusy || printStatus === "printing") return;
     if (selectedFiscalAction === "issue") {
+      if (selectedBelongsToOtherOperator) {
+        setCrossOperatorReason("");
+        setCrossOperatorAction("issue");
+        return;
+      }
       void handleFiscalIssue();
       return;
     }
     if (selectedFiscalAction === "void") {
       setFiscalActionError("");
+      if (selectedBelongsToOtherOperator) {
+        setCrossOperatorReason("");
+        setCrossOperatorAction("void");
+        return;
+      }
       setFiscalVoidOpen(true);
     }
   };
 
-  const printLabel = "STAMPA";
+  const printLabel = printMode === "advanced" ? "DETTAGLIO" : "STAMPA";
   const fiscalActionLabel =
     fiscalActionBusy && selectedFiscalAction === "issue"
       ? "EMISSIONE..."
@@ -740,24 +905,57 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
   return (
     <GlassCard className="home-card workspace-card analytics-workspace-card mobile-analytics-clean">
       <div className="card-body analytics-body">
-        <label className="analytics-search">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="11" cy="11" r="6" />
-            <path d="M20 20l-3.5-3.5" />
-          </svg>
-          <input
-            type="search"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder={
-              viewMode === "cash_movements"
-                ? "Cerca per tipo, operatore, motivo..."
-                : viewMode === "cash_floats"
-                  ? "Cerca fondo cassa, operatore, ID..."
-                  : "Cerca per tavolo, metodo, ID..."
-            }
-          />
-        </label>
+        {viewMode !== "receivables" ? <div className="analytics-toolbar">
+          <label className="analytics-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6" />
+              <path d="M20 20l-3.5-3.5" />
+            </svg>
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={
+                viewMode === "cash_movements"
+                  ? "Cerca per tipo, operatore, motivo..."
+                  : viewMode === "cash_floats"
+                    ? "Cerca fondo cassa, operatore, ID..."
+                    : "Cerca per tavolo, metodo, ID..."
+              }
+            />
+          </label>
+          {viewMode === "payments" ? (
+            <button
+              type="button"
+              className={`analytics-filter-btn ${methodFilterOpen ? "is-open" : ""} ${selectedMethods.length > 0 ? "is-active" : ""}`}
+              onClick={() => setMethodFilterOpen(true)}
+              aria-label="Filtra per metodo di pagamento"
+              aria-haspopup="dialog"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16M7 12h10M10 18h4" />
+              </svg>
+              {selectedMethods.length > 0 ? (
+                <span className="analytics-filter-count">{selectedMethods.length}</span>
+              ) : null}
+            </button>
+          ) : viewMode === "cash_movements" ? (
+            <button
+              type="button"
+              className={`analytics-filter-btn ${movementFilterOpen ? "is-open" : ""} ${selectedMovementKinds.length > 0 ? "is-active" : ""}`}
+              onClick={() => setMovementFilterOpen(true)}
+              aria-label="Filtra per tipo di movimento"
+              aria-haspopup="dialog"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16M7 12h10M10 18h4" />
+              </svg>
+              {selectedMovementKinds.length > 0 ? (
+                <span className="analytics-filter-count">{selectedMovementKinds.length}</span>
+              ) : null}
+            </button>
+          ) : null}
+        </div> : null}
 
         {viewMode === "payments" ? (
           <>
@@ -780,11 +978,16 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
               )}
             </div>
 
-            <div className="analytics-list">
+            <div className="analytics-list payments-list">
               {filteredMovements.length === 0 ? (
                 <div className="analytics-empty">Nessun pagamento trovato per questo turno.</div>
               ) : (
-                filteredMovements.map((record) => (
+                filteredMovements.map((record) => {
+                  const isOtherOperator = Boolean(
+                    normalize(record.operatorId) && normalize(record.operatorId) !== normalize(session.userId)
+                  );
+                  const operatorLabel = record.operatorName || record.operatorId || "Operatore";
+                  return (
                   <article
                     key={record.id}
                     className={`analytics-row ${movementKindClass(record)} mobile-analytics-payment-row-native`}
@@ -812,16 +1015,18 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
                       <strong className={movementAmountClass(record)}>
                         {formatCurrency(record.amount)}
                       </strong>
-                      <span>{analyticsTableLabel(record)}</span>
-                    </div>
-                    <div className="analytics-row-meta">
-                      {[
-                        record.methodLabel,
-                        record.productName ? `Prodotto: ${record.productName}` : "",
-                        record.paymentId ? `ID: ${record.paymentId}` : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" - ") || "-"}
+                      <span className="analytics-row-context">
+                        {isOtherOperator ? (
+                          <span
+                            className="analytics-operator-avatar"
+                            style={{ "--operator-hue": operatorAvatarHue(operatorLabel) } as CSSProperties}
+                            aria-label={`Operatore ${operatorLabel}`}
+                          >
+                            {operatorInitials(operatorLabel)}
+                          </span>
+                        ) : null}
+                        <span>{isOtherOperator ? operatorLabel : analyticsTableLabel(record)}</span>
+                      </span>
                     </div>
                     {record.note ? (
                       <div className="analytics-row-note">
@@ -830,12 +1035,15 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
                       </div>
                     ) : null}
                   </article>
-                ))
+                  );
+                })
               )}
             </div>
           </>
         ) : viewMode === "cash_movements" ? (
-          <CashMovementsView search={search} />
+          <CashMovementsView search={search} selectedKinds={selectedMovementKinds} />
+        ) : viewMode === "receivables" ? (
+          <ReceivablesView session={session} />
         ) : (
           <>
             <div className="analytics-methods">
@@ -857,7 +1065,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
               )}
             </div>
 
-            <div className="analytics-list">
+            <div className="analytics-list cash-floats-list">
               {filteredCashFloatTickets.length === 0 ? (
                 <div className="analytics-empty">Nessun fondo cassa trovato.</div>
               ) : (
@@ -875,7 +1083,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
                     }}
                   >
                     <div className="analytics-row-top">
-                      <span className="analytics-kind-pill kind-payment">
+                      <span className="analytics-kind-pill kind-payment method-cash">
                         {cashFloatStatusLabel(record.status)}
                       </span>
                       <span className="analytics-time">
@@ -884,16 +1092,7 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
                     </div>
                     <div className="analytics-row-main">
                       <strong>{record.cashFloatId}</strong>
-                      <span>{record.operatorName}</span>
-                    </div>
-                    <div className="analytics-row-meta">
-                      {[
-                        record.businessEveningKey ? `Serata: ${record.businessEveningKey}` : "",
-                        record.assignmentId ? `Assegnazione: ${record.assignmentId}` : "",
-                        record.combinationId ? `Config: ${record.combinationId}` : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" - ") || "-"}
+                      <span>{record.demo ? `DEMO · ${record.operatorName}` : record.operatorName}</span>
                     </div>
                   </article>
                 ))
@@ -902,6 +1101,121 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
           </>
         )}
       </div>
+
+      {methodFilterOpen ? (
+        <div
+          className="analytics-filter-backdrop"
+          onPointerDown={() => setMethodFilterOpen(false)}
+        >
+          <section
+            className="analytics-filter-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="analytics-filter-title"
+            onPointerDown={(event) => event.stopPropagation()}
+          >
+            <header>
+              <div>
+                <strong id="analytics-filter-title">Metodi di pagamento</strong>
+              </div>
+              <button
+                type="button"
+                className="analytics-filter-close"
+                onClick={() => setMethodFilterOpen(false)}
+                aria-label="Chiudi filtri"
+              >
+                ×
+              </button>
+            </header>
+            <div className="analytics-filter-options">
+              {isAdmin ? (
+                <label className="analytics-operator-scope-toggle">
+                  <span>PAGAMENTI OPERATORI</span>
+                  <input
+                    type="checkbox"
+                    checked={showOperatorPayments}
+                    onChange={(event) => setShowOperatorPayments(event.target.checked)}
+                  />
+                  <span className="analytics-toggle-track" aria-hidden="true"><span /></span>
+                </label>
+              ) : null}
+              {PAYMENT_METHOD_FILTERS.map((option) => {
+                const selected = selectedMethods.includes(option.id);
+                const count = methodCounts.get(option.id) || 0;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={`analytics-filter-option method-${option.id} ${selected ? "is-selected" : ""}`}
+                    onClick={() => toggleMethodFilter(option.id)}
+                    aria-pressed={selected}
+                    disabled={count === 0 && !selected}
+                  >
+                    <span className="analytics-filter-option-dot" aria-hidden="true" />
+                    <span>{option.label}</span>
+                    <strong>{count}</strong>
+                  </button>
+                );
+              })}
+            </div>
+            <footer>
+              <button
+                type="button"
+                className="analytics-filter-reset"
+                onClick={() => setSelectedMethods([])}
+                disabled={selectedMethods.length === 0}
+              >
+                Azzera
+              </button>
+              <button
+                type="button"
+                className="analytics-filter-apply"
+                onClick={() => setMethodFilterOpen(false)}
+              >
+                Mostra {filteredMovements.length}
+              </button>
+            </footer>
+          </section>
+        </div>
+      ) : null}
+
+      {movementFilterOpen ? (
+        <div className="analytics-filter-backdrop" onPointerDown={() => setMovementFilterOpen(false)}>
+          <section
+            className="analytics-filter-modal analytics-movement-filter-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="analytics-movement-filter-title"
+            onPointerDown={(event) => event.stopPropagation()}
+          >
+            <header>
+              <div><strong id="analytics-movement-filter-title">Tipi di movimento</strong></div>
+              <button type="button" className="analytics-filter-close" onClick={() => setMovementFilterOpen(false)} aria-label="Chiudi filtri">×</button>
+            </header>
+            <div className="analytics-filter-options">
+              {CASH_MOVEMENT_FILTERS.map((option) => {
+                const selected = selectedMovementKinds.includes(option.id);
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={`analytics-filter-option movement-${option.id} ${selected ? "is-selected" : ""}`}
+                    onClick={() => toggleMovementFilter(option.id)}
+                    aria-pressed={selected}
+                  >
+                    <span className="analytics-filter-option-dot" aria-hidden="true" />
+                    <span>{option.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <footer>
+              <button type="button" className="analytics-filter-reset" onClick={() => setSelectedMovementKinds([])} disabled={selectedMovementKinds.length === 0}>Azzera</button>
+              <button type="button" className="analytics-filter-apply" onClick={() => setMovementFilterOpen(false)}>Applica</button>
+            </footer>
+          </section>
+        </div>
+      ) : null}
 
       {selectedRecord ? (
         <div
@@ -1021,6 +1335,22 @@ export function AnalyticsWorkspace({ viewMode = "payments" }: AnalyticsWorkspace
               if (!fiscalActionBusy) setFiscalVoidOpen(false);
             }}
             onConfirm={() => void handleFiscalVoidConfirm()}
+          />
+          <CrossOperatorInterventionDialog
+            open={crossOperatorAction !== null}
+            actionLabel={crossOperatorAction === "void" ? "ANNULLAMENTO FISCALE" : "EMISSIONE FISCALE"}
+            ownerLabel={selectedRecord.operatorName || selectedRecord.operatorId || "Altro operatore"}
+            reason={crossOperatorReason}
+            busy={fiscalActionBusy}
+            error={fiscalActionError}
+            onReasonChange={setCrossOperatorReason}
+            onClose={() => {
+              if (!fiscalActionBusy) setCrossOperatorAction(null);
+            }}
+            onConfirm={() => {
+              if (crossOperatorAction === "issue") void handleFiscalIssue(crossOperatorReason);
+              if (crossOperatorAction === "void") void handleFiscalVoidConfirm(crossOperatorReason);
+            }}
           />
         </div>
       ) : null}

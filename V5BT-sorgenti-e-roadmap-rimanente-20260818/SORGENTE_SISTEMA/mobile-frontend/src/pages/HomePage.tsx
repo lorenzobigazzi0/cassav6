@@ -126,6 +126,13 @@ const PAGE_TITLES: Record<BottomTabKey, string> = {
   analytics: "STATISTICHE",
 };
 
+const ANALYTICS_VIEW_TITLES: Record<AnalyticsViewMode, string> = {
+  payments: "PAGAMENTI",
+  cash_movements: "MOVIMENTI",
+  cash_floats: "FONDI CASSA",
+  receivables: "NON RISCOSSO",
+};
+
 const HOME_ACTIVE_TAB_KEY = "home_active_tab";
 const HOME_TABLES_MODE_KEY = "home_tables_workspace_mode";
 const DASHBOARD_QUICK_FILTER_EVENT = "mobile:dashboard:quick-filter";
@@ -207,7 +214,12 @@ export function HomePage() {
   const canPickCounterMode = canUseCounterMode({ role, permissions });
   const showPaymentAlert = canCollectPayments && !paymentMethodsConfigured;
   const counterModeActive = activeTab === "tavoli" && tablesWorkspaceMode === "counter";
-  const effectivePageTitle = counterModeActive ? "BANCO" : PAGE_TITLES[activeTab];
+  const effectivePageTitle =
+    counterModeActive
+      ? "BANCO"
+      : activeTab === "analytics"
+        ? ANALYTICS_VIEW_TITLES[analyticsViewMode]
+        : PAGE_TITLES[activeTab];
 
   const homeTabs = useMemo<BottomTabItem[]>(
     () =>
@@ -523,7 +535,6 @@ export function HomePage() {
           >
             <header className="mobile-analytics-detail-head">
               <div>
-                <span>Statistiche</span>
                 <strong>Seleziona vista</strong>
               </div>
               <div className="mobile-analytics-detail-actions">
@@ -545,7 +556,7 @@ export function HomePage() {
                 }`}
                 onClick={() => selectAnalyticsMode("payments")}
               >
-                PAGAMENTI
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>PAGAMENTI</span>
               </button>
               <button
                 type="button"
@@ -554,7 +565,7 @@ export function HomePage() {
                 }`}
                 onClick={() => selectAnalyticsMode("cash_movements")}
               >
-                MOVIMENTI
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M15 4l4 4-4 4M19 16H5M9 12l-4 4 4 4"/></svg><span>MOVIMENTI</span>
               </button>
               <button
                 type="button"
@@ -563,7 +574,10 @@ export function HomePage() {
                 }`}
                 onClick={() => selectAnalyticsMode("cash_floats")}
               >
-                FONDI CASSA
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v11H4zM7 8V5h10v3M8 13h8M8 16h5"/></svg><span>FONDI CASSA</span>
+              </button>
+              <button type="button" className={`smallbtn analytics-mode-picker-btn is-receivables ${analyticsViewMode === "receivables" ? "is-active" : ""}`} onClick={() => selectAnalyticsMode("receivables")}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h4"/><circle cx="17" cy="16" r="3"/></svg><span>NON RISCOSSO</span>
               </button>
             </div>
           </section>

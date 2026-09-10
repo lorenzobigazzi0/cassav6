@@ -1,3 +1,6 @@
+import { createSmartReadModel } from "./smart-read-model.js";
+import { createSmartCustomerWriteModel } from "./smart-customer-write-model.js";
+
 export function createSmartHandlers(deps = {}) {
   const {
     HttpError,
@@ -31,6 +34,29 @@ export function createSmartHandlers(deps = {}) {
     writeDb,
   } = deps;
 
+  const smartReadModel = createSmartReadModel({
+    HttpError,
+    SMART_CARD_ALLOW_MOCK_FALLBACK,
+    SMART_CARD_READ_TIMEOUT_MS,
+    clampSmartCardReadTimeout,
+    nowIso,
+    readDb,
+    sanitizeSmartCustomerForResponse,
+    sanitizeSmartNonFiscalEntry,
+    validateSessionContext,
+    waitForSmartCardDetection,
+  });
+  const smartCustomerWriteModel = createSmartCustomerWriteModel({
+    HttpError,
+    nowIso,
+    randomUUID,
+    readDb,
+    sanitizeSmartCustomer,
+    sanitizeSmartCustomerForResponse,
+    validateSessionContext,
+    writeDb,
+  });
+
   function ensureSmartCollections(db) {
     if (!Array.isArray(db.smartCustomers)) db.smartCustomers = [];
     if (!Array.isArray(db.smartNonFiscal)) db.smartNonFiscal = [];
@@ -40,127 +66,22 @@ export function createSmartHandlers(deps = {}) {
 
   async function handleSmartCustomers(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
-    ensureSmartCollections(db);
-    validateSessionContext(db, payload);
-    sendJson(res, 200, {
-      ok: true,
-      customers: [...db.smartCustomers]
-        .map((customer) => sanitizeSmartCustomerForResponse(customer))
-        .sort((a, b) =>
-          `${a.lastName} ${a.firstName}`.trim().localeCompare(
-            `${b.lastName} ${b.firstName}`.trim(),
-            "it-IT",
-          ),
-        ),
-    });
+    sendJson(res, 200, await smartReadModel.listCustomers(payload));
   }
 
   async function handleSmartCustomerUpsert(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
-    ensureSmartCollections(db);
-    const { user } = validateSessionContext(db, payload);
-    const input = payload.customer;
-    if (!input || typeof input !== "object") {
-      throw new HttpError(400, "Cliente smart non valido.");
-    }
-    const firstName = String(input.firstName ?? "").trim();
-    const lastName = String(input.lastName ?? "").trim();
-    const phone = String(input.phone ?? "").trim();
-    if (!firstName || !lastName) {
-      throw new HttpError(400, "Nome e cognome sono obbligatori.");
-    }
-    if (!phone) throw new HttpError(400, "Numero di telefono obbligatorio.");
-
-    const candidateId =
-      typeof input.id === "string" && input.id.trim().length > 0
-        ? input.id.trim()
-        : `smart_cli_${randomUUID().replace(/-/g, "").slice(0, 10)}`;
-    const existingIndex = db.smartCustomers.findIndex(
-      (item) => item.id === candidateId,
-    );
-    const existing = existingIndex >= 0 ? db.smartCustomers[existingIndex] : null;
-    const normalized = sanitizeSmartCustomer(
-      {
-        ...existing,
-        ...input,
-        id: candidateId,
-        firstName,
-        lastName,
-        phone,
-        updatedAt: nowIso(),
-        createdAt: existing?.createdAt ?? nowIso(),
-      },
-      candidateId,
-    );
-
-    if (existingIndex >= 0) db.smartCustomers[existingIndex] = normalized;
-    else db.smartCustomers.push(normalized);
-    db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
-    sendJson(res, 200, {
-      ok: true,
-      customer: sanitizeSmartCustomerForResponse(normalized),
-      updatedBy: user.username,
-    });
+    sendJson(res, 200, await smartCustomerWriteModel.upsertCustomer(payload));
   }
 
   async function handleSmartCustomerDelete(req, res) {
     const payload = await readJsonBody(req);
-    const customerId = String(payload.customerId ?? "").trim();
-    if (!customerId) throw new HttpError(400, "Cliente non valido.");
-    const db = await readDb();
-    ensureSmartCollections(db);
-    validateSessionContext(db, payload);
-    const next = db.smartCustomers.filter((customer) => customer.id !== customerId);
-    if (next.length === db.smartCustomers.length) {
-      throw new HttpError(404, "Cliente non trovato.");
-    }
-    db.smartCustomers = next;
-    db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
-    sendJson(res, 200, { ok: true, customerId });
+    sendJson(res, 200, await smartCustomerWriteModel.deleteCustomer(payload));
   }
 
   async function handleSmartCardRead(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
-    validateSessionContext(db, payload);
-    const requestedWaitMs = Number(payload.waitMs);
-    const waitMs = clampSmartCardReadTimeout(
-      Number.isFinite(requestedWaitMs)
-        ? Math.trunc(requestedWaitMs)
-        : SMART_CARD_READ_TIMEOUT_MS,
-    );
-    try {
-      const detection = await waitForSmartCardDetection(waitMs);
-      if (!detection) {
-        throw new HttpError(
-          408,
-          `Nessun chip rilevato entro ${Math.round(waitMs / 1000)} secondi.`,
-        );
-      }
-      sendJson(res, 200, {
-        ok: true,
-        chipCode: detection.chipCode,
-        detectedAt: detection.detectedAt,
-      });
-    } catch (error) {
-      if (error instanceof HttpError) throw error;
-      if (SMART_CARD_ALLOW_MOCK_FALLBACK) {
-        sendJson(res, 200, {
-          ok: true,
-          chipCode: `SMART-${Date.now().toString().slice(-6)}`,
-          detectedAt: nowIso(),
-        });
-        return;
-      }
-      throw new HttpError(
-        503,
-        error instanceof Error ? error.message : "Lettore smart card non disponibile.",
-      );
-    }
+    sendJson(res, 200, await smartReadModel.readCard(payload));
   }
 
   async function handleSmartCashBeachEntryConsume(req, res) {
@@ -536,19 +457,7 @@ export function createSmartHandlers(deps = {}) {
 
   async function handleSmartNonFiscal(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
-    ensureSmartCollections(db);
-    validateSessionContext(db, payload);
-    sendJson(res, 200, {
-      ok: true,
-      entries: [...db.smartNonFiscal]
-        .map((entry) =>
-          sanitizeSmartNonFiscalEntry(entry, `smart_nf_${entry?.id ?? Date.now()}`),
-        )
-        .filter((entry) => entry !== null)
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        .slice(0, 200),
-    });
+    sendJson(res, 200, await smartReadModel.listNonFiscalEntries(payload));
   }
 
   return {

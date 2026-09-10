@@ -39,15 +39,20 @@ function preloadProtectedRouteModules() {
   void loadRadioPage();
 }
 
+/**
+ * Schermata di attesa: si vede subito dopo il login, mentre si verifica la
+ * sessione, e a ogni ricarico prima che la rotta sia pronta.
+ *
+ * Sta **fuori** dal guscio della home: quello allinea in alto a sinistra
+ * (`.home-page` usa `flex-start` su entrambi gli assi), e l'attesa finiva in un
+ * angolo. Qui il contenuto e' al centro dello schermo, dove l'occhio lo cerca.
+ */
 function RouteFallback() {
   return (
-    <div className="page home-page">
-      <div className="home-shell">
-        <div className="home-card workspace-card glass-card">
-          <div className="card-body">
-            <div className="tables-empty-state">Caricamento...</div>
-          </div>
-        </div>
+    <div className="page app-loading-page">
+      <div className="app-loading-card" role="status" aria-live="polite">
+        <span className="app-loading-ring" aria-hidden="true" />
+        <span className="app-loading-label">Caricamento</span>
       </div>
     </div>
   );

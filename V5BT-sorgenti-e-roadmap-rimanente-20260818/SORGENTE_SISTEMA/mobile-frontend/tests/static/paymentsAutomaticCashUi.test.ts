@@ -216,7 +216,10 @@ describe("payments automatic-cash UI phase", () => {
     expect(tablesCss).toContain(".analytics-kind-pill.method-cash");
     expect(tablesCss).toContain(".analytics-kind-pill.method-card");
     expect(cashMovements).toContain("getAutomaticCashMovements");
-    expect(cashMovements).toContain("CAMBIO MONETE");
+    expect(cashMovements).toContain("RIFORNIMENTO");
+    expect(cashMovements).toContain("CAMBIO");
+    expect(cashMovements).toContain("PRELIEVO");
+    expect(cashMovements).toContain("ESTRAZIONE");
     expect(cashMovements).toContain("Giustificazione");
     expect(analytics).toContain("selectedCashFloatTicket.printText");
     expect(analytics).toContain("selectedCashFloatTicket.qrPayload");

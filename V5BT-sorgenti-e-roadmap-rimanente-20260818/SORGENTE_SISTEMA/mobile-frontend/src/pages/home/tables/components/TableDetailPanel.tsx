@@ -26,6 +26,7 @@ import {
   TableReservationsManageButton,
 } from "./TableReservationQuickManager";
 import { formatClockTime, formatCurrency, tableDraftValidity } from "../utils";
+import { TableDetailStats, TablePaymentSetupHint } from "./TableDetailStats";
 import { shouldReserveTableForReservation } from "../../../../api/tableReservationWindow";
 import { getOrderPayableAmount, getTablePayableAmount } from "../payment/paymentArticleUnits";
 import { HistoryOrderLine } from "./HistoryOrderLine";
@@ -68,6 +69,7 @@ interface TableDetailPanelProps {
   menuCatalogLoading: boolean;
   menuCatalogError: string | null;
   showAnagraphicUpdate: boolean;
+  onOpenPaymentSettings: () => void;
   canCollectPayments: boolean;
   /** A false la consegna e automatica dopo il Pronta: il pulsante non deve comparire. */
   deliveryConfirmationEnabled: boolean;
@@ -298,6 +300,7 @@ export function TableDetailPanel({
   menuCatalogLoading,
   menuCatalogError,
   showAnagraphicUpdate,
+  onOpenPaymentSettings,
   canCollectPayments,
   deliveryConfirmationEnabled,
   busy,
@@ -1006,20 +1009,11 @@ export function TableDetailPanel({
               )}
 
               {!isFree && showStats && (
-                <div className="table-detail-stats">
-                  <div className="table-detail-stat">
-                    <span>Ordini presi</span>
-                    <strong>{table.ordersTaken}</strong>
-                  </div>
-                  <div className="table-detail-stat">
-                    <span>Ordini in corso</span>
-                    <strong>{table.ordersInProgress}</strong>
-                  </div>
-                  <div className="table-detail-stat">
-                    <span>Da riscuotere</span>
-                    <strong>{formatCurrency(table.amountDue)}</strong>
-                  </div>
-                </div>
+                <TableDetailStats
+                  ordersTaken={table.ordersTaken}
+                  ordersInProgress={table.ordersInProgress}
+                  amountDue={table.amountDue}
+                />
               )}
 
               <div className="table-detail-actions table-detail-actions-top">
@@ -1031,9 +1025,7 @@ export function TableDetailPanel({
                 </div>
               )}
               {isSeated && canCollectPayments && !paymentConfigured && (
-                <div className="table-payment-lock-hint">
-                  Pagamenti disabilitati: inserisci un POS o conferma il fondo cassa.
-                </div>
+                <TablePaymentSetupHint onOpen={onOpenPaymentSettings} />
               )}
             </div>
 
@@ -1183,7 +1175,20 @@ export function TableDetailPanel({
                     }}
                     disabled={busy || !canOrder || menuCatalogLoading || !orderMenuReady}
                   >
-                    {menuCatalogLoading ? "Menu..." : "Ordina"}
+                    <svg
+                      className="table-detail-bottom-btn-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.9}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 4.5h8M8 4.5A1.5 1.5 0 0 0 6.5 6v13h11V6A1.5 1.5 0 0 0 16 4.5" />
+                      <path d="M9 9h6M9 12.5h6M9 16h3.5" />
+                    </svg>
+                    <span>{menuCatalogLoading ? "MENU..." : "ORDINA"}</span>
                   </button>
                 )}
                 {canPay && (

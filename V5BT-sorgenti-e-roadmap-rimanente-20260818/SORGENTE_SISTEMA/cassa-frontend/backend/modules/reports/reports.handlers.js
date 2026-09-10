@@ -842,12 +842,61 @@ export function createReportsHandlers({
       throw new HttpError(403, "Utente non autorizzato alla consultazione pagamenti.");
     }
     const paymentsReadDb = await resolvePaymentsReportReadDb(db);
-    const reportDb = canViewFullReport ? paymentsReadDb : buildUserScopedSalesReportDb(paymentsReadDb, user);
+    const requestedScope = String(req.body?.operatorScope ?? "self").trim().toLowerCase();
+    if (requestedScope !== "self" && requestedScope !== "all") {
+      throw new HttpError(400, "Ambito operatori non valido.");
+    }
+    if (requestedScope === "all" && !canViewFullReport) {
+      throw new HttpError(403, "Report di altri operatori non autorizzato.");
+    }
+    const effectiveScope = requestedScope === "all" ? "all" : "self";
+    const reportDb = effectiveScope === "all"
+      ? paymentsReadDb
+      : buildUserScopedSalesReportDb(paymentsReadDb, user);
     sendJson(res, 200, {
       ok: true,
       report: buildSalesReport(reportDb),
-      scope: canViewFullReport ? "full" : "user",
+      scope: effectiveScope,
     });
+  }
+
+  async function handleReceivablesReport(req, res) {
+    const payload = await readJsonBody(req);
+    const db = await readDb();
+    const { user } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
+    const canViewAll = isAdminUser(user) || hasPermission(user, "view_analytics");
+    const rows = (Array.isArray(db.integration?.orders) ? db.integration.orders : [])
+      .filter((order) => ["unpaid", "partial"].includes(String(order?.paymentStatus ?? "unpaid").toLowerCase()))
+      .filter((order) => canViewAll || String(order?.createdByUserId ?? order?.ownerUserId ?? "") === String(user.id))
+      .map((order) => {
+        const total = roundMoney(Math.max(Number(order?.total) || 0, 0));
+        const paid = roundMoney(Math.max(Number(order?.paidAmount) || 0, 0));
+        const due = roundMoney(Math.max(Number(order?.dueAmount) || total - paid, 0));
+        return {
+          id: String(order?.receivableId ?? `REC-${order?.id ?? ""}`),
+          orderId: String(order?.id ?? ""),
+          type: String(order?.receivableType ?? "GOODS").toUpperCase() === "SERVICES" ? "SERVICES" : "GOODS",
+          status: String(order?.paymentStatus ?? "unpaid").toUpperCase(),
+          amount: due,
+          originalAmount: total,
+          operatorId: String(order?.createdByUserId ?? order?.ownerUserId ?? ""),
+          operatorName: String(order?.createdByUsername ?? order?.ownerFullName ?? ""),
+          tableId: String(order?.tableId ?? ""),
+          tableLabel: String(order?.tableLabel ?? order?.tableNumber ?? ""),
+          fiscal: Boolean(order?.fiscalDocumentId ?? order?.fiscalDocumentNumber),
+          originalDocument: order?.fiscalDocumentId ? {
+            id: String(order.fiscalDocumentId),
+            number: String(order?.fiscalDocumentNumber ?? ""),
+            date: String(order?.fiscalDocumentDate ?? ""),
+            rtSerialNumber: String(order?.rtSerialNumber ?? ""),
+          } : null,
+          createdAt: order?.createdAt ?? order?.createdAtMs ?? null,
+          revision: Number(order?.revision ?? order?.currentRevision ?? 0),
+        };
+      })
+      .filter((entry) => entry.orderId && entry.amount > 0)
+      .sort((a, b) => Date.parse(String(b.createdAt ?? "")) - Date.parse(String(a.createdAt ?? "")));
+    sendJson(res, 200, { ok: true, receivables: rows, scope: canViewAll ? "all" : "self" });
   }
 
   function canViewFullReports(user) {
@@ -1026,5 +1075,6 @@ export function createReportsHandlers({
     "reports.handheldSession": handleHandheldSessionReport,
     "reports.handheldSessionPrint": handleHandheldSessionReportPrint,
     "reports.sales": handleSalesReport,
+    "reports.receivables": handleReceivablesReport,
   };
 }

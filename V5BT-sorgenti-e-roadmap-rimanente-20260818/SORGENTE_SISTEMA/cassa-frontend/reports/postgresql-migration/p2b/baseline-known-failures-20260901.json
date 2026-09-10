@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "gate": "P2b-exact-known-failure-set",
-  "ok": true,
-  "capturedAt": "2026-09-04T10:13:14.439Z",
-  "durationMs": 55348,
+  "ok": false,
+  "capturedAt": "2026-09-10T12:08:55.470Z",
+  "durationMs": 61342,
   "policy": "Exact-set baseline: no new failure, no missing known failure, no total-count drift.",
   "suites": {
     "cassa-frontend": {
@@ -106,8 +106,8 @@
     },
     "mobile-frontend": {
       "counts": {
-        "total": 647,
-        "passed": 644,
+        "total": 682,
+        "passed": 679,
         "failed": 3
       },
       "runnerExitStatus": 1,
@@ -126,12 +126,23 @@
         }
       ],
       "comparison": {
-        "ok": true,
+        "ok": false,
         "duplicateExpected": [],
         "duplicateActual": [],
         "missingKnownFailures": [],
         "unexpectedFailures": [],
-        "countDrift": []
+        "countDrift": [
+          {
+            "metric": "total",
+            "expected": 647,
+            "actual": 682
+          },
+          {
+            "metric": "passed",
+            "expected": 644,
+            "actual": 679
+          }
+        ]
       }
     }
   }

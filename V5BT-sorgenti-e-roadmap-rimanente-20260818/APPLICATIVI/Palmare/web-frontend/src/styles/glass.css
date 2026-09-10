@@ -1031,6 +1031,79 @@ button.mobile-dashboard-widget:active {
   pointer-events: none;
 }
 
+/* Attesa dell'applicazione: login e ricarico.
+   Non riusa il guscio della home, che allinea in alto a sinistra: qui il
+   contenuto sta al centro dello schermo. `.page` centra gia' su entrambi gli
+   assi, quindi basta non sovrascriverlo. */
+.app-loading-page {
+  align-items: center;
+  justify-content: center;
+}
+
+.app-loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 34px 44px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rim);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.09) 55%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat))
+    brightness(var(--glass-bright));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat))
+    brightness(var(--glass-bright));
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* Stesso idioma degli altri indicatori dell'app (`cash-movement-spinner`): un
+   anello che gira, qui piu' grande perche' riempie una schermata intera invece
+   di un angolo di modale. Due lati colorati invece di uno danno all'arco una
+   coda, e il giro si legge anche quando e' breve. */
+.app-loading-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 4px solid var(--stroke);
+  border-top-color: var(--accent0);
+  border-right-color: var(--accent1);
+  animation: app-loading-spin 0.9s linear infinite;
+}
+
+.app-loading-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes app-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chi ha chiesto meno animazioni vede un respiro, non una giostra. */
+@media (prefers-reduced-motion: reduce) {
+  .app-loading-ring {
+    animation: app-loading-breath 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes app-loading-breath {
+  50% {
+    opacity: 0.45;
+  }
+}
+
 .home-page {
   align-items: flex-start;
   justify-content: flex-start;

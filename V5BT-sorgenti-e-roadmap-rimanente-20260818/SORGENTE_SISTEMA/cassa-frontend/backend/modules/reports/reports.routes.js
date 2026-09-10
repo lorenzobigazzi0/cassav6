@@ -28,6 +28,15 @@ export function buildReportsRoutes() {
     },
     {
       method: "POST",
+      path: "/api/reports/receivables",
+      handlerKey: "reports.receivables",
+      mutation: false,
+      readOnly: true,
+      readOnlyReason: "Proiezione dei crediti non riscossi senza mutazioni finanziarie o fiscali.",
+      authRequired: true,
+    },
+    {
+      method: "POST",
       path: "/api/reports/handheld-session",
       handlerKey: "reports.handheldSession",
       mutation: false,

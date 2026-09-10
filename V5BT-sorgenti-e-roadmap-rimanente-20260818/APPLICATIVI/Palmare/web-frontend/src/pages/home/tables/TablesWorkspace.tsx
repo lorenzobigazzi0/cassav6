@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { fetchAvailableRooms, requestRoomChange, type Room } from "../../../api/locations";
 import { fetchMenuCatalogForSession } from "../../../api/menu";
 import {
@@ -183,6 +184,7 @@ export function TablesWorkspace({
   roomPickerRequest?: { nonce: number } | null;
 }) {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const {
     token,
     userId,
@@ -2749,7 +2751,11 @@ export function TablesWorkspace({
                         disabled={roomPickerBusy}
                         aria-current={isCurrent ? "true" : undefined}
                         onPointerDown={() => {
-                          if (isCurrent && !isVirtualWaiting) return;
+                          // La pressione prolungata vale **anche sulla sala
+                          // attuale**: e' li' che serve di piu', perche' e' la
+                          // sala che si sta lavorando. Il click di uscita non
+                          // scatta lo stesso, perche' `onClick` si ferma quando
+                          // la pressione lunga e' gia' partita.
                           startRoomLongPress(room);
                         }}
                         onPointerUp={clearRoomLongPress}
@@ -3125,6 +3131,7 @@ export function TablesWorkspace({
               );
             }}
             showAnagraphicUpdate={tableMetaHasChanges}
+          onOpenPaymentSettings={() => navigate("/payments")}
             canCollectPayments={canCollectPayments}
           />
         </div>

@@ -1031,6 +1031,116 @@ button.mobile-dashboard-widget:active {
   pointer-events: none;
 }
 
+/* Attesa dell'applicazione: login e ricarico.
+   Non riusa il guscio della home, che allinea in alto a sinistra: qui il
+   contenuto sta al centro dello schermo. `.page` centra gia' su entrambi gli
+   assi, quindi basta non sovrascriverlo. */
+.app-loading-page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  padding: max(20px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+}
+
+.app-loading-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(280px, calc(100vw - 40px));
+  min-height: 188px;
+  gap: 20px;
+  padding: 32px 40px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(255, 255, 255, 0.13) 52%,
+    rgba(255, 255, 255, 0.07) 100%
+  );
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat))
+    brightness(var(--glass-bright));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat))
+    brightness(var(--glass-bright));
+  box-shadow:
+    0 24px 70px rgba(20, 29, 55, 0.2),
+    0 8px 24px rgba(67, 111, 238, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.app-loading-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 150px;
+  height: 150px;
+  top: -88px;
+  right: -54px;
+  border-radius: 50%;
+  background: var(--accent0);
+  filter: blur(38px);
+  opacity: 0.2;
+}
+
+/* Stesso idioma degli altri indicatori dell'app (`cash-movement-spinner`): un
+   anello che gira, qui piu' grande perche' riempie una schermata intera invece
+   di un angolo di modale. Due lati colorati invece di uno danno all'arco una
+   coda, e il giro si legge anche quando e' breve. */
+.app-loading-ring {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 20deg,
+    transparent 0 12%,
+    var(--accent0) 38%,
+    var(--accent1) 72%,
+    transparent 96%
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 0);
+  filter: drop-shadow(0 5px 10px rgba(76, 110, 245, 0.28));
+  animation: app-loading-spin 0.85s linear infinite;
+}
+
+.app-loading-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 68%, transparent);
+}
+
+@keyframes app-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chi ha chiesto meno animazioni vede un respiro, non una giostra. */
+@media (prefers-reduced-motion: reduce) {
+  .app-loading-ring {
+    animation: app-loading-breath 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes app-loading-breath {
+  50% {
+    opacity: 0.45;
+  }
+}
+
 .home-page {
   align-items: flex-start;
   justify-content: flex-start;

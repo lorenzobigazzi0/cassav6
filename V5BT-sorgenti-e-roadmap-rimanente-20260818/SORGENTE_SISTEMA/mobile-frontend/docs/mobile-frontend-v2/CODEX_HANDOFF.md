@@ -9,6 +9,32 @@ The frontend has strong visual-parity progress, but it is currently a source-fir
 migration rather than a clean greenfield frontend. This handoff establishes permanent project
 rules, bridge retirement tracking, runtime config, and quality gates.
 
+2026-09-10 analytics payment-method update: the payment history now classifies the configured
+collection methods through `src/api/analyticsPaymentMovementModel.ts`, renders a method-specific
+pill, and exposes a React-owned multi-select filter modal beside search. The backend report remains
+the canonical transaction source. Filter controls now use explicit high-contrast light and dark
+palettes, while payment, storno, and replacement pills share a fixed 132 x 28 px footprint so row
+alignment does not depend on label length.
+
+2026-09-10 table-detail summary update: `TableDetailStats` keeps the existing table counters as its
+single presentation owner, but each of the three cards now uses a two-row hierarchy. The uppercase
+label sits on top and the larger icon/value pair sits below, preserving the three-column mobile
+layout while making every heading readable at the 384 px Palmare width.
+
+2026-09-10 table anagraphic toggle stability fix: the collapsed preview owns a second grid row that
+is removed while the anagraphic card is expanded. The toggle header now reserves the same 48 px
+height in both states and vertically centers its existing chevron control, preventing the icon from
+jumping when pressed without changing the expand/collapse state owner.
+
+2026-09-10 analytics payment-pill alignment update: method pills retain their shared 132 x 28 px
+footprint, but their icon-and-label group is now left-aligned with fixed internal spacing. Storno
+and replacement pills keep their existing centered presentation.
+
+2026-09-10 compact table-stat and analytics-filter update: the three table summary icons are now
+low-opacity, theme-aware watermarks behind the card content, leaving the full card width to the
+right-aligned numeric value (including larger amounts due). The payment-method filter keeps touch
+scrolling but hides native scrollbars, and its redundant `Statistiche` eyebrow was removed.
+
 Second stabilization pass completed: the backend connection bridge and hot fetch cache were
 removed from source and replaced by a runtime-configured API client.
 

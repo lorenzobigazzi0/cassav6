@@ -28,6 +28,8 @@ test("le migration foundation PostgreSQL restano ordinate per responsabilita", a
       { version: "005", name: "retention_control_plane" },
       { version: "006", name: "audit_events_partitioned_retention" },
       { version: "007", name: "ret01_retention_approval" },
+      { version: "008", name: "payment_operator_interventions" },
+      { version: "009", name: "receivables_fiscal_operations" },
     ],
   );
   assert.equal(migrations.every(({ checksum }) => /^[a-f0-9]{64}$/.test(checksum)), true);

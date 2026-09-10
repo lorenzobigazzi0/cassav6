@@ -6,6 +6,7 @@ import {
   buildAnalyticsMovementRecordsFromReport,
   buildLocalAnalyticsMovementRecords,
   canPrintAnalyticsMovement,
+  isAnalyticsMovementVisibleForUser,
   maxAnalyticsTimestamp,
   normalizeAnalyticsFiscalReceipt,
   normalizeAnalyticsValue,
@@ -19,12 +20,15 @@ import { apiFetch } from "./baseUrl";
 
 export {
   analyticsMethodLabel,
+  analyticsPaymentMethodKind,
   analyticsSplitModeLabel,
   analyticsTableLabel,
   applyFiscalReceiptToAnalyticsMovement,
   canPrintAnalyticsMovement,
+  isAnalyticsMovementVisibleForUser,
   toAnalyticsMovementTime,
 } from "./analyticsPaymentMovementModel";
+export type { AnalyticsPaymentMethodKind } from "./analyticsPaymentMovementModel";
 export type {
   AnalyticsFiscalReceipt,
   AnalyticsMovementRecord,
@@ -133,7 +137,8 @@ const errorMessageFromPayload = (payload: SalesReportResponse | null, fallback: 
 
 export async function fetchAnalyticsPaymentMovements(
   auth: AnalyticsSessionContext,
-  signal?: AbortSignal
+  signal?: AbortSignal,
+  operatorScope: "self" | "all" = "self"
 ): Promise<AnalyticsMovementRecord[]> {
   if (!auth.token || !auth.userId || !auth.deviceUuid) return readLocalAnalyticsMovements();
 
@@ -152,6 +157,7 @@ export async function fetchAnalyticsPaymentMovements(
       token: auth.token,
       userId: auth.userId,
       deviceUuid: auth.deviceUuid,
+      operatorScope,
     }),
   });
 
@@ -244,13 +250,16 @@ async function requestAnalyticsFiscalAction(
 
 export const issueAnalyticsFiscalMovement = (
   auth: AnalyticsSessionContext,
-  record: AnalyticsMovementRecord
-) => requestAnalyticsFiscalAction(auth, record, FISCAL_ISSUE_PATH);
+  record: AnalyticsMovementRecord,
+  options: { crossOperatorReason?: string; expectedRevision?: string | number } = {}
+) => requestAnalyticsFiscalAction(auth, record, FISCAL_ISSUE_PATH, options);
 
 export const voidAnalyticsFiscalMovement = (
   auth: AnalyticsSessionContext,
-  record: AnalyticsMovementRecord
+  record: AnalyticsMovementRecord,
+  options: { crossOperatorReason?: string; expectedRevision?: string | number } = {}
 ) =>
   requestAnalyticsFiscalAction(auth, record, FISCAL_VOID_PATH, {
-    reason: "Annullamento da dettaglio pagamento",
+    reason: options.crossOperatorReason || "Annullamento da dettaglio pagamento",
+    ...options,
   });
