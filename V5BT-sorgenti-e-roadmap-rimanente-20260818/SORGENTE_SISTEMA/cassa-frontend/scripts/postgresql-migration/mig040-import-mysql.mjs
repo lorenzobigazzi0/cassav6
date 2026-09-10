@@ -77,6 +77,13 @@ export function reconcileIdentityImport(source, target) {
   };
 }
 
+export function recordsFromIdentityRows(users, userGroups) {
+  return {
+    users: (Array.isArray(users) ? users : []).map((row) => row.record),
+    userGroups: (Array.isArray(userGroups) ? userGroups : []).map((row) => row.record),
+  };
+}
+
 export async function importMysqlIdentity(env = process.env, options = {}) {
   const mysqlConnection = options.mysqlConnection ?? await mysql.createConnection({
     host: requiredEnv(env, "BACKEND_MYSQL_HOST"),
@@ -107,10 +114,10 @@ export async function importMysqlIdentity(env = process.env, options = {}) {
       }),
       { isolationLevel: "SERIALIZABLE", maxAttempts: 3 },
     );
-    const target = {
-      users: await repository.listUsers(),
-      userGroups: await repository.listUserGroups(),
-    };
+    const target = recordsFromIdentityRows(
+      await repository.listUsers(),
+      await repository.listUserGroups(),
+    );
     const reconciliation = reconcileIdentityImport(plan, target);
     assert.equal(reconciliation.ok, true, "Riconciliazione identity MariaDB/PostgreSQL fallita.");
     const administratorCount = await repository.countAdministrators();
@@ -152,4 +159,3 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
     process.exitCode = 1;
   }
 }
-

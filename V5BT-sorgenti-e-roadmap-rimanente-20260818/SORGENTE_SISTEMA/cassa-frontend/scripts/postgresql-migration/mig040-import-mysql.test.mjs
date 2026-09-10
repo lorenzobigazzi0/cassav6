@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   buildIdentityImportPlan,
+  recordsFromIdentityRows,
   reconcileIdentityImport,
 } from "./mig040-import-mysql.mjs";
 
@@ -36,3 +37,12 @@ test("la riconciliazione confronta i row hash e rileva una variazione di permess
   }).ok, false);
 });
 
+test("il risultato repository viene riconciliato sul record app-state e non sul wrapper PG", () => {
+  const target = recordsFromIdentityRows(
+    [{ id: "wrapper-user", record: admin, revision: 4, rowHash: "x" }],
+    [{ id: "wrapper-group", record: { id: "g-1", name: "Sala" }, revision: 2 }],
+  );
+  assert.equal(target.users[0].id, "u-admin");
+  assert.equal(Object.hasOwn(target.users[0], "revision"), false);
+  assert.equal(target.userGroups[0].id, "g-1");
+});
