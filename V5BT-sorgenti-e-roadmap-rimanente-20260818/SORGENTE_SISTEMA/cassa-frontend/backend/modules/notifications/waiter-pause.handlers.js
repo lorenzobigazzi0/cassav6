@@ -23,6 +23,7 @@ export function createWaiterPauseHandlers({
   integrationTableGroupsFastResponseCache,
   normalizeWaiterPauseCollections,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
   readDb,
@@ -51,7 +52,7 @@ export function createWaiterPauseHandlers({
     const telemetry = waiterPauseTelemetry.start("start");
     try {
       const payload = await readJsonBody(req);
-      const db = await telemetry.measure("readDb.handler", () => readDb({
+      const db = await telemetry.measure("readDb.handler", () => operationsAppStateRepository.read({
         refreshExternalizedSessions: true,
         refreshExternalizedTableLocks: true,
       }));
@@ -133,7 +134,7 @@ export function createWaiterPauseHandlers({
     const telemetry = waiterPauseTelemetry.start("stop");
     try {
       const payload = await readJsonBody(req);
-      const db = await telemetry.measure("readDb.handler", () => readDb());
+      const db = await telemetry.measure("readDb.handler", () => operationsAppStateRepository.read());
       const { user, session } = telemetry.measureSync("auth.resolve", () =>
         validateSessionContext(db, payload));
       if (!db.integration || typeof db.integration !== "object") {
@@ -210,7 +211,7 @@ export function createWaiterPauseHandlers({
   
   async function handleIntegrationWaiterPauseDeferredCall(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await operationsAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }
@@ -281,7 +282,7 @@ export function createWaiterPauseHandlers({
     });
     db.integration.lastWriteAt = nowIso();
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await operationsAppStateRepository.write(db);
     publishIntegrationNotificationStreamRefresh("waiter_call_deferred", {
       userId: user.id,
       station,

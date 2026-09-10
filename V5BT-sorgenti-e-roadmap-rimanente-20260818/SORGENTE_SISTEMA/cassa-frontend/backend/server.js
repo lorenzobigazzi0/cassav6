@@ -349,6 +349,7 @@ import { createMobileBatteryHandlers } from "./modules/mobile-battery/index.js";
 import { buildPaymentRealtimeBoundary, createPaymentFreeSplitDurableMirrorRuntime, createPaymentHandlers, createPaymentsFiscalModel, createRelationalPaymentOrderStateSync, enqueuePaymentFreeSplitMirror, isFiscalReceiptIssued } from "./modules/payments/index.js";
 import { createPosRoomsHandlers } from "./modules/pos-rooms/index.js";
 import { createPostazioneActionHandlers } from "./modules/postazione-actions/index.js";
+import { createOperationsAppStateRepository } from "./modules/operations/index.js";
 import { createReservationsHandlers } from "./modules/reservations/index.js";
 import { createAuditReadModel } from "./modules/audit/audit-read-model.js";
 import { createAuditWriteModel } from "./modules/audit/audit-write-model.js";
@@ -16977,6 +16978,13 @@ async function writeIntegrationStationStatesDb(db, options = {}) {
 
 async function writeIntegrationStationPresenceDb(db, options = {}) { const stationStateIds = normalizeIntegrationOrderWriteIds(options.stationStateIds), notificationIds = normalizeIntegrationOrderWriteIds(options.notificationIds); const canSync = DB_MODE === "mysql" && mysqlAppStateDomainsSplitRepository?.enabled === true && typeof mysqlAppStateDomainsSplitRepository.syncObjectArrayEntriesAndObjectEntriesFromAppState === "function" && stationStateIds.length > 0; if (!canSync) { runtimeMetrics.incrementCounter("stationStatePresenceFastFallbacks"); return false; } const objectFields = normalizeIntegrationObjectFieldNames("lastWriteAt", "stationAvailabilityNotificationState", options.syncNoActiveStationsAlert === true ? "noActiveStationsAlert" : "", notificationIds.length > 0 ? "sequence" : ""); await mysqlAppStateDomainsSplitRepository.syncObjectArrayEntriesAndObjectEntriesFromAppState(db, "integration", { objectArrayEntries: [{ fieldName: "stationStates", entryIds: stationStateIds }, notificationIds.length > 0 ? { fieldName: "notifications", entryIds: notificationIds } : null].filter(Boolean), objectFields }); runtimeMetrics.incrementCounter("stationStatePresenceFastWrites"); refreshHealthSnapshotFromDb(db); return true; }
 
+const operationsAppStateRepository = createOperationsAppStateRepository({
+  readDb,
+  writeDb,
+  writeStationPresenceDb: writeIntegrationStationPresenceDb,
+  writeStationStatesDb: writeIntegrationStationStatesDb,
+});
+
 const writePostazioneLogoutFastDb = createPostazioneLogoutWriter({
   resolveStationStateId: integrationStationStateMysqlRecordId,
   runtimeMetrics,
@@ -23877,7 +23885,7 @@ async function handleMobileWaiterPauseStatus(req, res) {
   const telemetry = waiterPauseTelemetry.start("status");
   try {
     const payload = await readJsonBody(req);
-    const db = await telemetry.measure("readDb.handler", () => readDb({
+    const db = await telemetry.measure("readDb.handler", () => operationsAppStateRepository.read({
       refreshExternalizedSessions: true,
       refreshExternalizedTableLocks: true,
     }));
@@ -29513,15 +29521,14 @@ const postazioneActionHandlers = createPostazioneActionHandlers({
   normalizeIntegrationStationName,
   normalizeIntegrationStationScope,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
   readJsonBody,
   resolveIntegrationItemAvailabilityInfo,
   sanitizeIntegrationItemAvailabilityMap,
   sendJson,
   validateSessionContext,
-  writeDb,
 });
 
 // Step 4 — Command Inbox: repository condiviso (lazy) legato alla connessione
@@ -30320,11 +30327,11 @@ const {
   normalizeStationPauseTransferMode,
   normalizeUsername,
   nowIso,
+  operationsAppStateRepository,
   parkPausedStationOperatorQueueOrders,
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueStationAvailabilityNotification,
-  readDb,
   readJsonBody,
   refreshHealthSnapshotFromDb,
   rerouteOrderOperationalStation,
@@ -30340,9 +30347,6 @@ const {
   touchSessionHeartbeat,
   transferPausedStationOperatorQueueOrders,
   validateSessionContext,
-  writeDb,
-  writeIntegrationStationPresenceDb,
-  writeIntegrationStationStatesDb,
 });
 
 const {
@@ -30423,7 +30427,7 @@ const {
   findRelationalOrderById,
   hasOperationalPrintRouting,
   normalizeTablePrecontoMode,
-  readDb,
+  operationsAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_CREATE_WRITE_PRIMARY,
   RELATIONAL_ORDERS_SYNC_WRITE_PRIMARY,
@@ -30468,6 +30472,7 @@ const {
   integrationTableGroupsFastResponseCache,
   normalizeWaiterPauseCollections,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
   readDb,
@@ -30659,8 +30664,8 @@ const {
   integrationWaitersFastResponseCache,
   normalizeClientApp,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
-  readDb,
   readFastJsonCache,
   readHeaderValue,
   readJsonBody,
@@ -30672,7 +30677,6 @@ const {
   sendJsonString,
   sendNetworkDrawerKick,
   toRealtimeEventEnvelope,
-  writeDb,
   writeFastJsonCache,
 });
 

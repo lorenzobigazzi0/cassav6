@@ -18,8 +18,8 @@ export function createIntegrationMiscHandlers({
   integrationWaitersFastResponseCache,
   normalizeClientApp,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
-  readDb,
   readFastJsonCache,
   readHeaderValue,
   readJsonBody,
@@ -31,7 +31,6 @@ export function createIntegrationMiscHandlers({
   sendJsonString,
   sendNetworkDrawerKick,
   toRealtimeEventEnvelope,
-  writeDb,
   writeFastJsonCache,
 }) {
   async function handleRealtimeReplay(req, res, requestUrl) {
@@ -85,7 +84,7 @@ export function createIntegrationMiscHandlers({
   
   async function handleIntegrationDrawerOpen(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await operationsAppStateRepository.read();
     const settings = sanitizePosSettings(db.posSettings, {
       menuItems: db.menuItems,
       users: db.users,
@@ -130,13 +129,13 @@ export function createIntegrationMiscHandlers({
       sendJsonString(res, 200, cachedWaiters.json);
       return;
     }
-    const db = await readDb();
+    const db = await operationsAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") db.integration = createDefaultIntegrationState();
     const deferredChanged = flushDueWaiterDeferredCalls(db);
     if (deferredChanged) {
       db.integration.lastWriteAt = nowIso();
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await operationsAppStateRepository.write(db);
       publishIntegrationNotificationStreamRefresh(
         "waiter_deferred_calls_flushed",
         {},

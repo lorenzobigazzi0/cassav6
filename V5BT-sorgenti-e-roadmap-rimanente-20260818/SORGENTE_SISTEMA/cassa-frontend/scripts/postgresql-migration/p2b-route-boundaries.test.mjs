@@ -13,8 +13,8 @@ import { ROUTE_BOUNDARY_DECLARATIONS } from "./route-domain-map.mjs";
 const report = await buildRouteBoundariesReport();
 
 test("MIG-030 copre tutte le route del registry con un dominio del vocabolario target", () => {
-  assert.equal(report.metrics.routeCount, 198);
-  assert.equal(report.metrics.handlerKeyCount, 193);
+  assert.equal(report.metrics.routeCount, 199);
+  assert.equal(report.metrics.handlerKeyCount, 194);
   assert.equal(report.behaviorChanged, false);
   assert.equal(report.databaseChanged, false);
   for (const row of report.routes) {

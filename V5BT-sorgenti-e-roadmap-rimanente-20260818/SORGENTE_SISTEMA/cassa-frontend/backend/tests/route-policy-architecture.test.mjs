@@ -611,8 +611,8 @@ test("station state fast path syncs one station entry and labels slow writes", (
   assert.match(serverSource, /stationStateHeartbeatPersistenceWrites/);
   assert.match(
     serverSource,
-    /writeIntegrationStationStatesDb\(db,\s*\{[\s\S]+stationStateIds:\s*\[integrationStationStateMysqlRecordId\(nextEntry\)\]/,
-    "l'heartbeat persistente deve passare l'ID puntuale della postazione"
+    /operationsAppStateRepository\.writeStationStates\(db,\s*\{[\s\S]+stationStateIds:\s*\[integrationStationStateMysqlRecordId\(nextEntry\)\]/,
+    "l'heartbeat persistente deve passare l'ID puntuale tramite il repository operations"
   );
   assert.match(
     serverSource,
@@ -631,7 +631,7 @@ test("station state fast path syncs one station entry and labels slow writes", (
   );
   assert.match(
     serverSource,
-    /canUsePresenceFastWrite = !sessionHeartbeatTouched[\s\S]+rebalancedOrders\.length === 0[\s\S]+writeIntegrationStationPresenceDb\(db,\s*\{[\s\S]+notificationIds: stationStateNotificationIds[\s\S]+syncNoActiveStationsAlert: noActiveStationsAlertChanged/,
+    /canUsePresenceFastWrite = !sessionHeartbeatTouched[\s\S]+rebalancedOrders\.length === 0[\s\S]+operationsAppStateRepository\.writeStationPresence\(db,\s*\{[\s\S]+notificationIds: stationStateNotificationIds[\s\S]+syncNoActiveStationsAlert: noActiveStationsAlertChanged/,
     "il fast write presenza deve restare disattivato quando ci sono sessioni o ordini da ribilanciare"
   );
   assert.match(

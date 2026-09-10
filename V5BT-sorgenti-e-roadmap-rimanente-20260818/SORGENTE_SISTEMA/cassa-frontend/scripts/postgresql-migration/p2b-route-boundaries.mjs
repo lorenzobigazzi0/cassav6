@@ -1,7 +1,7 @@
 /**
  * MIG-030 — inventario dei confini route -> dominio su tutte le route.
  *
- * Il pilot identity (`p2b-identity-boundaries.mjs`) copre sette route su 198.
+ * Il pilot identity (`p2b-identity-boundaries.mjs`) copre sette route su 199.
  * Qui il perimetro e l'intero registry: ogni route deve avere un dominio del
  * vocabolario target e, quando ne tocca altri, la marcatura cross-domain.
  *

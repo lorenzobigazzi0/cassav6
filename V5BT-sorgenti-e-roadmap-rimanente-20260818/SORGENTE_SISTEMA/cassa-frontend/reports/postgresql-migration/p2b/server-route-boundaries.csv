@@ -189,6 +189,7 @@
 "POST /api/audit/events","audit.events","audit","","","auditEvents|sessions","meta|sessions","false","true","","resolved","backend/modules/reports/reports.handlers.js",""
 "POST /api/audit/events/delete","audit.eventDelete","audit","","","auditEvents|sessions","auditEvents|meta|sessions","true","true","manage_users","resolved","backend/modules/reports/reports.handlers.js",""
 "POST /api/reports/sales","reports.sales","sales","","","sessions","meta|sessions","false","true","","resolved","backend/modules/reports/reports.handlers.js",""
+"POST /api/reports/receivables","reports.receivables","payments","sales","integration","integration|sessions","meta|sessions","false","true","","resolved","backend/modules/reports/reports.handlers.js","Proietta i crediti da ordini sales non saldati; l aggiornamento sessione deriva dalla validazione autenticata condivisa."
 "POST /api/reports/handheld-session","reports.handheldSession","payments","","","sessions","meta|sessions","false","true","","resolved","backend/modules/reports/reports.handlers.js",""
 "POST /api/reports/handheld-session/cash/open","reports.handheldCashSessionOpen","payments","","","auditEvents|sessions","auditEvents|meta|sessions","true","true","","resolved","backend/modules/reports/reports.handlers.js",""
 "POST /api/reports/handheld-session/cash/close","reports.handheldCashSessionClose","payments","","","auditEvents|sessions","auditEvents|meta|sessions","true","true","","resolved","backend/modules/reports/reports.handlers.js",""

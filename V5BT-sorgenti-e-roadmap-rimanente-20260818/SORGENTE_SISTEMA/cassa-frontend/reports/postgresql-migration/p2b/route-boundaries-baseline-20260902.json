@@ -5653,6 +5653,35 @@
     },
     {
       "method": "POST",
+      "path": "/api/reports/receivables",
+      "handlerKey": "reports.receivables",
+      "domain": "payments",
+      "crossDomain": [
+        "sales"
+      ],
+      "legacyStores": [
+        "integration"
+      ],
+      "reads": [
+        "integration",
+        "sessions"
+      ],
+      "writes": [
+        "meta",
+        "sessions"
+      ],
+      "mutation": false,
+      "authRequired": true,
+      "permission": "",
+      "admin": false,
+      "public": false,
+      "service": "",
+      "resolution": "resolved",
+      "sourceFile": "backend/modules/reports/reports.handlers.js",
+      "note": "Proietta i crediti da ordini sales non saldati; l aggiornamento sessione deriva dalla validazione autenticata condivisa."
+    },
+    {
+      "method": "POST",
       "path": "/api/reports/handheld-session",
       "handlerKey": "reports.handheldSession",
       "domain": "payments",
@@ -5884,8 +5913,8 @@
     }
   ],
   "metrics": {
-    "routeCount": 198,
-    "handlerKeyCount": 193,
+    "routeCount": 199,
+    "handlerKeyCount": 194,
     "domainCount": 13,
     "routesPerDomain": {
       "app_meta": 15,
@@ -5896,17 +5925,17 @@
       "sales": 35,
       "reservations": 19,
       "messaging": 6,
-      "payments": 51,
+      "payments": 52,
       "commerce": 7,
       "fiscal": 5,
       "crm": 8,
       "audit": 2
     },
-    "crossDomainRouteCount": 89,
-    "legacyStoreRouteCount": 124,
+    "crossDomainRouteCount": 90,
+    "legacyStoreRouteCount": 125,
     "unresolvedRouteCount": 0,
     "mutationRouteCount": 134,
-    "appStateWritingRouteCount": 144
+    "appStateWritingRouteCount": 145
   },
   "nextGate": "MIG-031: estrazione delle route senza logica da server.js, sotto 25.000 righe"
 }

@@ -27,7 +27,7 @@ export function createIntegrationPrintHandlers({
   findRelationalOrderById,
   hasOperationalPrintRouting,
   normalizeTablePrecontoMode,
-  readDb,
+  operationsAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_CREATE_WRITE_PRIMARY,
   RELATIONAL_ORDERS_SYNC_WRITE_PRIMARY,
@@ -49,7 +49,7 @@ export function createIntegrationPrintHandlers({
   async function handleIntegrationPrint(req, res) {
     req.__preserveIntegrationHotCaches = true;
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await operationsAppStateRepository.read();
     const settings = sanitizePosSettings(db.posSettings, {
       menuItems: db.menuItems,
       users: db.users,

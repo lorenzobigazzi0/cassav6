@@ -81,15 +81,14 @@ export function createPostazioneActionHandlers({
   normalizeIntegrationStationName,
   normalizeIntegrationStationScope,
   nowIso,
+  operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
   readJsonBody,
   resolveIntegrationItemAvailabilityInfo,
   sanitizeIntegrationItemAvailabilityMap,
   sendJson,
   validateSessionContext,
-  writeDb,
 }) {
   async function handlePostazioneFlags(_req, res) {
     sendJson(res, 200, {
@@ -108,7 +107,7 @@ export function createPostazioneActionHandlers({
       return;
     }
 
-    const db = await readDb();
+    const db = await operationsAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
@@ -222,7 +221,7 @@ export function createPostazioneActionHandlers({
 
     const notification = queueIntegrationNotification(db, summary);
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await operationsAppStateRepository.write(db);
     publishIntegrationNotificationStreamRefresh(
       actionType === "item_enable"
         ? "item_enable"

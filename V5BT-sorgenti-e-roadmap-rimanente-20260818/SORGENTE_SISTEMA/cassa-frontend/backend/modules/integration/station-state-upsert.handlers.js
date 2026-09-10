@@ -39,11 +39,11 @@ export function createStationStateUpsertHandlers({
   normalizeStationPauseTransferMode,
   normalizeUsername,
   nowIso,
+  operationsAppStateRepository,
   parkPausedStationOperatorQueueOrders,
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueStationAvailabilityNotification,
-  readDb,
   readJsonBody,
   refreshHealthSnapshotFromDb,
   rerouteOrderOperationalStation,
@@ -59,9 +59,6 @@ export function createStationStateUpsertHandlers({
   touchSessionHeartbeat,
   transferPausedStationOperatorQueueOrders,
   validateSessionContext,
-  writeDb,
-  writeIntegrationStationPresenceDb,
-  writeIntegrationStationStatesDb,
 }) {
   async function handleIntegrationStationStateUpsert(req, res) {
     const payload = await readJsonBody(req);
@@ -91,7 +88,7 @@ export function createStationStateUpsertHandlers({
     const updatedAtMs = Date.now();
     let sessionHeartbeatTouched = false;
   
-    const sourceDb = await readDb(
+    const sourceDb = await operationsAppStateRepository.read(
       req.__stationStateFastPath === true ? { preferCache: true } : {},
     );
     const db = createStationStateFastPathWorkingDb(sourceDb, req.__stationStateFastPath === true);
@@ -357,7 +354,7 @@ export function createStationStateUpsertHandlers({
         await deviceStatusSplitRepository.upsertStationState(nextEntry);
         refreshHealthSnapshotFromDb(db);
       } else {
-        await writeIntegrationStationStatesDb(db, {
+        await operationsAppStateRepository.writeStationStates(db, {
           stationStateIds: [integrationStationStateMysqlRecordId(nextEntry)],
         });
       }
@@ -543,7 +540,7 @@ export function createStationStateUpsertHandlers({
       );
       const stationStateNotificationIds = (Array.isArray(db.integration?.notifications) ? db.integration.notifications : []).map((entry) => String(entry?.id ?? "").trim()).filter((id) => id && !stationStateNotificationIdsBefore.has(id));
       const canUsePresenceFastWrite = !sessionHeartbeatTouched && rebalancedOrders.length === 0 && parkedOrders.length === 0 && restoredOrders.length === 0 && assignedPendingOrders.length === 0 && assignedOperatorOrders.length === 0;
-      if (!(canUsePresenceFastWrite && await writeIntegrationStationPresenceDb(db, { stationStateIds: [integrationStationStateMysqlRecordId(nextEntry)], notificationIds: stationStateNotificationIds, syncNoActiveStationsAlert: noActiveStationsAlertChanged }))) await writeDb(db, {
+      if (!(canUsePresenceFastWrite && await operationsAppStateRepository.writeStationPresence(db, { stationStateIds: [integrationStationStateMysqlRecordId(nextEntry)], notificationIds: stationStateNotificationIds, syncNoActiveStationsAlert: noActiveStationsAlertChanged }))) await operationsAppStateRepository.write(db, {
         metricLabel: "stationState.upsert.appStateWrite",
         splitDomains: ["integration", "sessions", "auditEvents"],
         sessionsSync: { deleteMissing: false },
