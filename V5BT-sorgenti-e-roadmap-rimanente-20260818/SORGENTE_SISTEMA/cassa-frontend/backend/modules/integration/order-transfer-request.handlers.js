@@ -20,7 +20,7 @@ export function createIntegrationOrderTransferRequestHandlers({
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_TRANSFER_REQUEST_WRITE_PRIMARY,
   relationalRuntime,
@@ -72,7 +72,7 @@ export function createIntegrationOrderTransferRequestHandlers({
           )
         : requesterStation;
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }

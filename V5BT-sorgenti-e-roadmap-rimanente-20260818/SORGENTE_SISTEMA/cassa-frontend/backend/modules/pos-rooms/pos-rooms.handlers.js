@@ -2,7 +2,7 @@ export function createPosRoomsHandlers({
   buildMobileRoomSettings,
   buildPosRoomListFromSettings,
   menuSettingsRepository,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   resolveMobileInitialRoom,
   sendJson,
@@ -27,7 +27,7 @@ export function createPosRoomsHandlers({
 
   async function handlePosRooms(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user } = req?.__authContext?.user
       ? req.__authContext
       : validateSessionContext(db, payload);

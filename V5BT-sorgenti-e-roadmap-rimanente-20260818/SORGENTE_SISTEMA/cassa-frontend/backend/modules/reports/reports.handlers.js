@@ -38,7 +38,7 @@ export function createReportsHandlers({
   normalizePaymentOrderIdList,
   nowIso,
   parseTimestampMs,
-  readDb,
+  salesAppStateRepository,
   paymentsAppStateRepository,
   readAuditEventsView,
   readJsonBody,
@@ -833,7 +833,7 @@ export function createReportsHandlers({
 
   async function handleSalesReport(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user } = resolveReportsAuthContext(req, db, payload, validateSessionContext);
     const canViewFullReport =
       isAdminUser(user) || hasPermission(user, "view_analytics") || hasPermission(user, "manage_users");
@@ -842,7 +842,7 @@ export function createReportsHandlers({
       throw new HttpError(403, "Utente non autorizzato alla consultazione pagamenti.");
     }
     const paymentsReadDb = await resolvePaymentsReportReadDb(db);
-    const requestedScope = String(req.body?.operatorScope ?? "self").trim().toLowerCase();
+    const requestedScope = String(payload.operatorScope ?? "self").trim().toLowerCase();
     if (requestedScope !== "self" && requestedScope !== "all") {
       throw new HttpError(400, "Ambito operatori non valido.");
     }

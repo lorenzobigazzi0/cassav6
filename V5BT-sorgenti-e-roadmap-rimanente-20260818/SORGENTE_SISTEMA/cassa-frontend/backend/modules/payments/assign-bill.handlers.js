@@ -19,13 +19,12 @@ export function createAssignBillHandlers({
   nowIso,
   queueIntegrationOrdersFromPosBill,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   roundMoney,
   sanitizePosSettings,
   sendJson,
   validateSessionContext,
-  writeDb,
 }) {
   async function handleAssignBillToTable(req, res) {
     const payload = await readJsonBody(req);
@@ -53,7 +52,7 @@ export function createAssignBillHandlers({
       throw new HttpError(400, "Importo conto non valido.");
     }
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     ensurePaymentTrackingArrays(db);
   
@@ -213,7 +212,7 @@ export function createAssignBillHandlers({
     });
     db.posSettings = settings;
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await salesAppStateRepository.write(db);
   
     sendJson(res, 200, {
       ...buildPosSettingsPayload(settings),

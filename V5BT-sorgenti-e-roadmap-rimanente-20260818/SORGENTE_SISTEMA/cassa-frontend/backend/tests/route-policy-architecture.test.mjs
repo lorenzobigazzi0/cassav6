@@ -363,7 +363,7 @@ test("multiprocess order sync refreshes externalized fast-lane state only where 
   );
   assert.match(
     serverSource,
-    /async function handleIntegrationOrderCreate\(req, res\)[\s\S]+const orderCreateTableId[\s\S]+const db = await readDb\(\{\s*operationMetricKind:\s*["']orderCreateRead["'],\s*parallelExternalizedTableLocksAndStationStates:\s*ORDER_CREATE_PARALLEL_EXTERNAL_REFRESH,\s*refreshExternalizedSessions:\s*!req\.__authContext,\s*refreshExternalizedIntegrationStationStates:\s*true,\s*refreshExternalizedTableLocks:\s*!ORDER_CREATE_TARGETED_LOCK_REFRESH \|\| Boolean\(orderCreateTableId\),\s*refreshExternalizedTableLockId:\s*ORDER_CREATE_TARGETED_LOCK_REFRESH \? orderCreateTableId : ["']["'],?\s*\}\);/,
+    /async function handleIntegrationOrderCreate\(req, res\)[\s\S]+const orderCreateTableId[\s\S]+const db = await salesAppStateRepository\.read\(\{\s*operationMetricKind:\s*["']orderCreateRead["'],\s*parallelExternalizedTableLocksAndStationStates:\s*ORDER_CREATE_PARALLEL_EXTERNAL_REFRESH,\s*refreshExternalizedSessions:\s*!req\.__authContext,\s*refreshExternalizedIntegrationStationStates:\s*true,\s*refreshExternalizedTableLocks:\s*!ORDER_CREATE_TARGETED_LOCK_REFRESH \|\| Boolean\(orderCreateTableId\),\s*refreshExternalizedTableLockId:\s*ORDER_CREATE_TARGETED_LOCK_REFRESH \? orderCreateTableId : ["']["'],?\s*\}\);/,
     "la creazione comanda deve riusare l'auth gia validata e vedere postazioni e lock target freschi sui worker"
   );
   assert.match(
@@ -2697,7 +2697,7 @@ test("P3.35 il flush async viene inoltrato all'owner prima del lock con fallback
   );
   assert.match(
     serverSource,
-    /handleInternalOrderAsyncAppStateFlush[\s\S]+SHOULD_RUN_BACKEND_OWNER_JOBS[\s\S]+const options = buildRemoteOwnerFlushOptions\(payload\?\.options\)[\s\S]+ordersAsyncFlushRemoteOwnerHandled[\s\S]+orderAsyncAppStateFlushQueue\.tryDefer\(options\)[\s\S]+ordersAsyncFlushRemoteOwnerDeferred[\s\S]+sendJson\(res,\s*202[\s\S]+ordersAsyncFlushRemoteOwnerSyncFallbacks[\s\S]+readDb\(\{ forceReload: true \}\)[\s\S]+writeIntegrationOrderSyncDb\(db,\s*options\)/,
+    /handleInternalOrderAsyncAppStateFlush[\s\S]+SHOULD_RUN_BACKEND_OWNER_JOBS[\s\S]+const options = buildRemoteOwnerFlushOptions\(payload\?\.options\)[\s\S]+ordersAsyncFlushRemoteOwnerHandled[\s\S]+orderAsyncAppStateFlushQueue\.tryDefer\(options\)[\s\S]+ordersAsyncFlushRemoteOwnerDeferred[\s\S]+sendJson\(res,\s*202[\s\S]+ordersAsyncFlushRemoteOwnerSyncFallbacks[\s\S]+salesAppStateRepository\.read\(\{ forceReload: true \}\)[\s\S]+writeIntegrationOrderSyncDb\(db,\s*options\)/,
     "l'endpoint interno deve girare solo sull'owner, accodare il flush remoto e usare il writer sincrono solo in backpressure"
   );
   assert.match(
@@ -2982,7 +2982,7 @@ test("P3.54 orders/sync separa bootstrap, auth e lettura snapshot relazionale", 
 
   assert.match(
     syncSource,
-    /const db = await readDb\([\s\S]+recordOrderSyncStage\(["']readDbBootstrap["']\)[\s\S]+validateSessionContext\(db,\s*payload\)[\s\S]+buildIntegrationOrderWorkflowSnapshotSource\(db[\s\S]+recordOrderSyncStage\(["']authWorkflowSetup["']\)[\s\S]+listRelationalOrderWorkflowSnapshot[\s\S]+recordOrderSyncStage\(["']relationalSnapshotRead["']\)/,
+    /const db = await salesAppStateRepository\.read\([\s\S]+recordOrderSyncStage\(["']readDbBootstrap["']\)[\s\S]+validateSessionContext\(db,\s*payload\)[\s\S]+buildIntegrationOrderWorkflowSnapshotSource\(db[\s\S]+recordOrderSyncStage\(["']authWorkflowSetup["']\)[\s\S]+listRelationalOrderWorkflowSnapshot[\s\S]+recordOrderSyncStage\(["']relationalSnapshotRead["']\)/,
     "orders/sync deve misurare separatamente bootstrap readDb, setup auth/workflow e query snapshot"
   );
 });
@@ -3228,7 +3228,7 @@ test("MP-4au orders/line/split usa write-primary relazionale con CAS", () => {
   );
   assert.ok(
     splitSource.indexOf("findRelationalOrderById({ enabled: RELATIONAL_ORDERS_LINE_SPLIT_WRITE_PRIMARY") <
-      splitSource.indexOf("const db = await readDb("),
+      splitSource.indexOf("const db = await salesAppStateRepository.read("),
     "orders/line/split deve acquisire il read-model relazionale prima di leggere app-state/dbCache"
   );
   assert.match(

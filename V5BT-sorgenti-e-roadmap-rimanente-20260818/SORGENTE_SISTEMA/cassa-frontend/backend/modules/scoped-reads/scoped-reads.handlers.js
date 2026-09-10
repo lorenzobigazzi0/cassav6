@@ -46,6 +46,7 @@ export function createScopedReadsHandlers(options = {}) {
     relationalOrderReader = null,
     relationalTableReader = null,
     runtimeMetrics = null,
+    salesAppStateRepository,
     sanitizePrintJob = (job) => job,
     sanitizePrintJobs = (jobs) => jobs,
     sanitizeNotification,
@@ -279,7 +280,7 @@ export function createScopedReadsHandlers(options = {}) {
     let orders = scopedOrders;
     if (!Array.isArray(orders)) {
       runtimeMetrics?.incrementCounter?.("scopedReadsFullStateFallback");
-      const db = await readDb();
+      const db = await salesAppStateRepository.read();
       orders = Array.isArray(db?.integration?.orders) ? db.integration.orders : [];
       source = "legacy";
     }

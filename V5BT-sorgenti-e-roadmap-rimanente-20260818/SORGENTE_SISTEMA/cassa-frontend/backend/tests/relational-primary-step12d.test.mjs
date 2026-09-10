@@ -86,6 +86,11 @@ function createHandlers(options = {}) {
     readDb: async () => {
       throw new Error("legacy app-state read should not be used");
     },
+    salesAppStateRepository: {
+      read: async () => {
+        throw new Error("sales app-state read should not be used");
+      },
+    },
     sanitizeNotification: (notification) => notification,
     scopedReadsEnabled: true,
     sendJson,

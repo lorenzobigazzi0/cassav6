@@ -33,7 +33,7 @@ export function createIntegrationOrderListHandlers({
   normalizeIntegrationStationName,
   nowIso,
   pruneIntegrationState,
-  readDb,
+  salesAppStateRepository,
   readFastJsonCache,
   readScopedIntegrationOrdersDb,
   relationalRuntime,
@@ -82,7 +82,7 @@ export function createIntegrationOrderListHandlers({
       relationalOrdersHistoryReadEnabled: RELATIONAL_ORDERS_HISTORY_READS, relationalOrdersLookupReadEnabled: RELATIONAL_ORDERS_WRITE_PRIMARY,
       relationalRuntime,
     });
-    let db = scopedOrdersDb ?? (await readDb());
+    let db = scopedOrdersDb ?? (await salesAppStateRepository.read());
     const scopedOrdersReadOnly = scopedOrdersDb !== null;
     const station = stationRaw ? normalizeIntegrationStationName(stationRaw) : "";
     const operatorFilter = {

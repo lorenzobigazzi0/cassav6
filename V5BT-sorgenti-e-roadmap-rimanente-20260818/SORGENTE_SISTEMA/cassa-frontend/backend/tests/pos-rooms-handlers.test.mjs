@@ -30,8 +30,10 @@ test("pos.rooms usa il runtime db quando le static settings restituiscono zero s
         return { areas: [] };
       },
     },
-    async readDb() {
-      return db;
+    salesAppStateRepository: {
+      async read() {
+        return db;
+      },
     },
     async readJsonBody() {
       return {};
@@ -69,7 +71,9 @@ test("pos.rooms riusa il contesto autenticato dal router multiprocesso", async (
       return [];
     },
     menuSettingsRepository: { getStaticPosSettings: () => ({ areas: [] }) },
-    readDb: async () => ({ posSettings: { areas: [] }, sessions: [] }),
+    salesAppStateRepository: {
+      read: async () => ({ posSettings: { areas: [] }, sessions: [] }),
+    },
     readJsonBody: async () => ({ token: "valid-shared-token", deviceUuid: "mobile-1" }),
     resolveMobileInitialRoom: () => null,
     sendJson: () => undefined,
@@ -123,7 +127,9 @@ test("pos.rooms non espone sale disabilitate al refresh operativo", async () => 
       return [{ roomId: "room_enabled", roomName: "Abilitata" }];
     },
     menuSettingsRepository: { getStaticPosSettings: () => null },
-    readDb: async () => ({ posSettings: { areas: [] }, sessions: [] }),
+    salesAppStateRepository: {
+      read: async () => ({ posSettings: { areas: [] }, sessions: [] }),
+    },
     readJsonBody: async () => ({}),
     resolveMobileInitialRoom(_user, roomSettings) {
       return roomSettings.rooms[0] ?? null;

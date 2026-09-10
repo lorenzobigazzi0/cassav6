@@ -72,7 +72,7 @@ export function createIntegrationOrderSyncHandlers({
   persistRelationalOrderFinancialTables,
   publishIntegrationNotificationStreamRefresh,
   queueBellNotification,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   reconcileIntegrationPreparationQueue,
   relationalRuntime,
@@ -105,7 +105,7 @@ export function createIntegrationOrderSyncHandlers({
       throw new HttpError(400, "Payload ordine non valido.");
     }
     let orderSyncStageAt = Date.now(); const recordOrderSyncStage = (label) => { const now = Date.now(); runtimeMetrics.recordOperation("orderSyncInternal", label, now - orderSyncStageAt); orderSyncStageAt = now; };
-    const db = await readDb({
+    const db = await salesAppStateRepository.read({
       ...(req.__orderWorkflowFastLane === true ? { preferCache: true } : {}),
       refreshExternalizedSessions: !req.__authContext,
     }); recordOrderSyncStage("readDbBootstrap");
@@ -694,7 +694,7 @@ export function createIntegrationOrderSyncHandlers({
     }
   
     const relationalLineSplitCurrentOrder = await findRelationalOrderById({ enabled: RELATIONAL_ORDERS_LINE_SPLIT_WRITE_PRIMARY, orderId, relationalRuntime, runtimeMetrics });
-    const db = await readDb({
+    const db = await salesAppStateRepository.read({
       refreshExternalizedSessions: true,
       refreshExternalizedTableLocks: true,
     });
@@ -911,7 +911,7 @@ export function createIntegrationOrderSyncHandlers({
       throw new HttpError(400, "Dati override prezzo non validi.");
     }
   
-    const db = await readDb({
+    const db = await salesAppStateRepository.read({
       refreshExternalizedSessions: true,
       refreshExternalizedTableLocks: true,
     });

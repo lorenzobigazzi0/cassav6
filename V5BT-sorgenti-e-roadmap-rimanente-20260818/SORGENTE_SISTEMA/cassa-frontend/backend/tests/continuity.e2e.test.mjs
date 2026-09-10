@@ -1879,7 +1879,9 @@ test("continuity e2e battery across table, order, apericena, split payment and p
     assert.match(replacementTagJob.textPreview, /ARTICOLO SOSTITUITO/);
     assert.match(replacementOrderJob.textPreview, /COMANDA/);
     assert.match(replacementOrderJob.textPreview, /BLOODY MARY/);
-    const report = await api(baseUrl, admin, "admin-device", "POST", "/api/reports/sales", {});
+    const report = await api(baseUrl, admin, "admin-device", "POST", "/api/reports/sales", {
+      operatorScope: "all",
+    });
     assert.ok(report.report.serviceRecovery.comps.some((entry) => entry.id === comped.comp.id));
     assert.ok(report.report.serviceRecovery.replacements.some((entry) => entry.id === comped.replacement.id));
     assert.ok(report.report.serviceRecovery.comps.some((entry) => entry.paidAmount > 0 && entry.refundPlan));

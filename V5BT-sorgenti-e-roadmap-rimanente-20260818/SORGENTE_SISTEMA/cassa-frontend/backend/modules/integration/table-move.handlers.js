@@ -42,7 +42,7 @@ export function createTableMoveHandlers({
   persistRelationalTableMoveWithRuntime,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   resolveIntegrationOrderPrintStation,
   resolveRemovedSourceTableMoveContext,
@@ -71,7 +71,7 @@ export function createTableMoveHandlers({
       throw new HttpError(400, "Seleziona un tavolo destinazione diverso.");
     }
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     const initialSettings = sanitizePosSettings(db.posSettings, {
       menuItems: db.menuItems,

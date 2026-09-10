@@ -351,6 +351,7 @@ import { createPosRoomsHandlers } from "./modules/pos-rooms/index.js";
 import { createPostazioneActionHandlers } from "./modules/postazione-actions/index.js";
 import { createOperationsAppStateRepository } from "./modules/operations/index.js";
 import { createReservationsAppStateRepository, createReservationsHandlers } from "./modules/reservations/index.js";
+import { createSalesAppStateRepository } from "./modules/sales/index.js";
 import { createAuditReadModel } from "./modules/audit/audit-read-model.js";
 import { createAuditWriteModel } from "./modules/audit/audit-write-model.js";
 import { createReportsHandlers } from "./modules/reports/index.js";
@@ -16950,7 +16951,7 @@ async function writeIntegrationOrderSyncDb(db, options = {}) {
   refreshHealthSnapshotFromDb(db);
 }
 
-async function handleInternalOrderAsyncAppStateFlush(req, res) { if (!SHOULD_RUN_BACKEND_OWNER_JOBS) { sendJson(res, 409, { ok: false, code: "ORDER_ASYNC_FLUSH_OWNER_REQUIRED", error: "Flush remoto disponibile solo sull'owner." }); return; } const payload = await readJsonBody(req); const options = buildRemoteOwnerFlushOptions(payload?.options); runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerHandled"); if (orderAsyncAppStateFlushQueue.tryDefer(options)) { runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerDeferred"); sendJson(res, 202, { ok: true, deferred: true, pendingDepth: orderAsyncAppStateFlushQueue.pendingDepth() }); return; } runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerSyncFallbacks"); const db = await readDb({ forceReload: true }); await writeIntegrationOrderSyncDb(db, options); sendJson(res, 200, { ok: true, deferred: false }); }
+async function handleInternalOrderAsyncAppStateFlush(req, res) { if (!SHOULD_RUN_BACKEND_OWNER_JOBS) { sendJson(res, 409, { ok: false, code: "ORDER_ASYNC_FLUSH_OWNER_REQUIRED", error: "Flush remoto disponibile solo sull'owner." }); return; } const payload = await readJsonBody(req); const options = buildRemoteOwnerFlushOptions(payload?.options); runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerHandled"); if (orderAsyncAppStateFlushQueue.tryDefer(options)) { runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerDeferred"); sendJson(res, 202, { ok: true, deferred: true, pendingDepth: orderAsyncAppStateFlushQueue.pendingDepth() }); return; } runtimeMetrics.incrementCounter("ordersAsyncFlushRemoteOwnerSyncFallbacks"); const db = await salesAppStateRepository.read({ forceReload: true }); await writeIntegrationOrderSyncDb(db, options); sendJson(res, 200, { ok: true, deferred: false }); }
 
 async function writeIntegrationStationStatesDb(db, options = {}) {
   const startedAt = Date.now();
@@ -17005,6 +17006,11 @@ const paymentsAppStateRepository = createPaymentsAppStateRepository({
       refreshHealthSnapshot: refreshHealthSnapshotFromDb,
     }),
   writeCounterCollectionDb,
+});
+
+const salesAppStateRepository = createSalesAppStateRepository({
+  readDb,
+  writeDb,
 });
 
 const writePostazioneLogoutFastDb = createPostazioneLogoutWriter({
@@ -28826,7 +28832,7 @@ const reportsHandlers = createReportsHandlers({
   nowIso,
   parseTimestampMs,
   paymentsAppStateRepository,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   roundMoney,
   sanitizeAuditEvent,
@@ -28854,20 +28860,19 @@ const salesSessionsHandlers = createSalesSessionsHandlers({
   hasPermission,
   nowIso,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   runAutomaticSaleLifecycle,
   saleSessionsRepository,
   sendJson,
   validateSessionContext,
-  writeDb,
 });
 
 const posRoomsHandlers = createPosRoomsHandlers({
   buildMobileRoomSettings,
   buildPosRoomListFromSettings,
   menuSettingsRepository,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   resolveMobileInitialRoom,
   sendJson,
@@ -29626,6 +29631,7 @@ const scopedReadsHandlers = createScopedReadsHandlers({
     relationalRuntime,
   }),
   runtimeMetrics,
+  salesAppStateRepository,
   sanitizeNotification: sanitizeIntegrationNotification,
   sanitizePrintJob: sanitizePrintSpoolJob,
   sanitizePrintJobs: sanitizePrintSpoolJobs,
@@ -29845,7 +29851,7 @@ const {
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
+  salesAppStateRepository,
   readIntegrationMoneyValue,
   readJsonBody,
   reconcileIntegrationPreparationQueue,
@@ -29957,7 +29963,7 @@ const {
   persistRelationalOrderFinancialTables,
   publishIntegrationNotificationStreamRefresh,
   queueBellNotification,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   reconcileIntegrationPreparationQueue,
   relationalRuntime,
@@ -30029,7 +30035,7 @@ const {
   persistRelationalOrderFinancialTables,
   queuePrintSpoolWorker,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolveIntegrationLogicalTableLabel,
@@ -30101,7 +30107,7 @@ const {
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolveOrderFinancialSnapshotTableIds,
@@ -30152,7 +30158,7 @@ const {
   persistRelationalOrderFinancialTables,
   queuePrintSpoolWorker,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_BAR_REPLACEMENT_WRITE_PRIMARY,
   relationalRuntime,
@@ -30204,7 +30210,7 @@ const {
   normalizeIntegrationStationName,
   nowIso,
   pruneIntegrationState,
-  readDb,
+  salesAppStateRepository,
   readFastJsonCache,
   readScopedIntegrationOrdersDb,
   relationalRuntime,
@@ -30240,7 +30246,7 @@ const {
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_TRANSFER_REQUEST_WRITE_PRIMARY,
   relationalRuntime,
@@ -30405,7 +30411,7 @@ const {
   persistRelationalTableMoveWithRuntime,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   resolveIntegrationOrderPrintStation,
   resolveRemovedSourceTableMoveContext,
@@ -30492,7 +30498,7 @@ const {
   operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readFastJsonCache,
   readJsonBody,
   reconcileWaiterPauseSideEffects,
@@ -30509,7 +30515,6 @@ const {
   touchSessionHeartbeat,
   validateSessionContext,
   waiterPauseTelemetry,
-  writeDb,
   writeFastJsonCache,
   writeTableGroupsFastDb,
   writeWaiterPauseDb,
@@ -30632,7 +30637,7 @@ const {
   sendJson,
   tableLockWorkerRequestFastPath,
   validateSessionContext,
-  writeDb,
+  salesAppStateRepository,
 });
 
 const {
@@ -30651,13 +30656,12 @@ const {
   nowIso,
   queueIntegrationOrdersFromPosBill,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   roundMoney,
   sanitizePosSettings,
   sendJson,
   validateSessionContext,
-  writeDb,
 });
 
 const {

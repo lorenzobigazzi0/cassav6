@@ -38,7 +38,7 @@ export function createBarChargeHandlers({
   persistRelationalOrderFinancialTables,
   queuePrintSpoolWorker,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   RELATIONAL_ORDERS_BAR_REPLACEMENT_WRITE_PRIMARY,
   relationalRuntime,
@@ -70,7 +70,7 @@ export function createBarChargeHandlers({
       throw new HttpError(400, "tableId, orderId e productId sono obbligatori.");
     }
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();

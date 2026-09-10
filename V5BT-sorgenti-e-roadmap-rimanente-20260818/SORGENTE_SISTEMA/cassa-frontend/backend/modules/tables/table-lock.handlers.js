@@ -29,7 +29,7 @@ export function createTableLockHandlers({
   sendJson,
   tableLockWorkerRequestFastPath,
   validateSessionContext,
-  writeDb,
+  salesAppStateRepository,
 }) {
   async function handleTableLockAcquire(req, res) {
     const payload = await readJsonBody(req);
@@ -72,7 +72,7 @@ export function createTableLockHandlers({
         },
       );
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db, { splitDomains: ["tableLocks", "auditEvents"] });
+      await salesAppStateRepository.write(db, { splitDomains: ["tableLocks", "auditEvents"] });
       sendJson(res, 200, {
         ok: true,
         lock: lockResult.lock,
@@ -100,7 +100,7 @@ export function createTableLockHandlers({
         });
     if (RELATIONAL_TABLE_LOCKS_WRITE_PRIMARY || !isTableWorkLockFastPathEnabled()) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
     sendJson(res, 200, {
       ok: true,
@@ -151,7 +151,7 @@ export function createTableLockHandlers({
         },
       );
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db, { splitDomains: ["tableLocks", "auditEvents"] });
+      await salesAppStateRepository.write(db, { splitDomains: ["tableLocks", "auditEvents"] });
       sendJson(res, 200, {
         ok: true,
         lock: lockResult.lock,
@@ -187,7 +187,7 @@ export function createTableLockHandlers({
         })();
     if (RELATIONAL_TABLE_LOCKS_WRITE_PRIMARY || !isTableWorkLockFastPathEnabled()) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
     sendJson(res, 200, {
       ok: true,
@@ -228,7 +228,7 @@ export function createTableLockHandlers({
         payload,
       });
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db, { splitDomains: ["tableLocks", "auditEvents"] });
+      await salesAppStateRepository.write(db, { splitDomains: ["tableLocks", "auditEvents"] });
       sendJson(res, 200, {
         ok: true,
         released: result.released,
@@ -245,7 +245,7 @@ export function createTableLockHandlers({
     const embeddedLockCleared = tableLockWorkerRequestFastPath.isEnabled() ? false : clearEmbeddedTableWorkLock(db, tableId);
     if (RELATIONAL_TABLE_LOCKS_WRITE_PRIMARY || !isTableWorkLockFastPathEnabled() || embeddedLockCleared) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
     sendJson(res, 200, {
       ok: true,
@@ -287,7 +287,7 @@ export function createTableLockHandlers({
         force: true,
       });
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db, { splitDomains: ["tableLocks", "auditEvents"] });
+      await salesAppStateRepository.write(db, { splitDomains: ["tableLocks", "auditEvents"] });
       sendJson(res, 200, {
         ok: true,
         released: result.released,
@@ -314,7 +314,7 @@ export function createTableLockHandlers({
     const embeddedLockCleared = tableLockWorkerRequestFastPath.isEnabled() ? false : clearEmbeddedTableWorkLock(db, tableId);
     if (RELATIONAL_TABLE_LOCKS_WRITE_PRIMARY || !isTableWorkLockFastPathEnabled() || embeddedLockCleared) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
     sendJson(res, 200, {
       ok: true,

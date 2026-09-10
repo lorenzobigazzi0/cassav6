@@ -13,13 +13,12 @@ export function createSalesSessionsHandlers({
   hasPermission,
   nowIso,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   runAutomaticSaleLifecycle,
   saleSessionsRepository,
   sendJson,
   validateSessionContext,
-  writeDb,
 }) {
   const buildSaleSessionStatus = createSaleSessionStatusBuilder({
     hasPermission,
@@ -27,11 +26,11 @@ export function createSalesSessionsHandlers({
 
   async function handleSaleSessionStatus(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user } = validateSessionContext(db, payload);
     if (runAutomaticSaleLifecycle(db)) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
     const statusSource = saleSessionsRepository?.buildStatusSource?.(db) ?? db;
     sendJson(res, 200, buildSaleSessionStatus(statusSource, user));
@@ -45,11 +44,11 @@ export function createSalesSessionsHandlers({
       throw new HttpError(400, "Template sessione non valido.");
     }
 
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user } = validateSessionContext(db, payload);
     if (runAutomaticSaleLifecycle(db)) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
 
     if (!hasPermission(user, "manage_sale_sessions")) {
@@ -92,7 +91,7 @@ export function createSalesSessionsHandlers({
       after: sanitizeSaleSession(saleSession),
     });
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await salesAppStateRepository.write(db);
 
     const statusSource = saleSessionsRepository?.buildStatusSource?.(db) ?? db;
     sendJson(res, 200, buildSaleSessionStatus(statusSource, user));
@@ -100,11 +99,11 @@ export function createSalesSessionsHandlers({
 
   async function handleSaleSessionClose(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user } = validateSessionContext(db, payload);
     if (runAutomaticSaleLifecycle(db)) {
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db);
+      await salesAppStateRepository.write(db);
     }
 
     if (!hasPermission(user, "manage_sale_sessions")) {
@@ -136,7 +135,7 @@ export function createSalesSessionsHandlers({
     });
 
     db.meta.lastWriteAt = nowIso();
-    await writeDb(db);
+    await salesAppStateRepository.write(db);
 
     const statusSource = saleSessionsRepository?.buildStatusSource?.(db) ?? db;
     sendJson(res, 200, buildSaleSessionStatus(statusSource, user));

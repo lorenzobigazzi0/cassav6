@@ -94,7 +94,7 @@ export function createIntegrationOrderCreateHandlers({
   pruneIntegrationState,
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
-  readDb,
+  salesAppStateRepository,
   readIntegrationMoneyValue,
   readJsonBody,
   reconcileIntegrationPreparationQueue,
@@ -144,7 +144,7 @@ export function createIntegrationOrderCreateHandlers({
   
     if (!orderId) throw new HttpError(400, "ID comanda non valido.");
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }
@@ -274,7 +274,7 @@ export function createIntegrationOrderCreateHandlers({
       throw new HttpError(400, "ID comanda non valido.");
     }
   
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }
@@ -367,7 +367,7 @@ export function createIntegrationOrderCreateHandlers({
     let orderCreateStageAt = Date.now(); const recordOrderCreateStage = (label) => { const stageNow = Date.now(); runtimeMetrics.recordOperation("orderCreateInternal", label, stageNow - orderCreateStageAt); orderCreateStageAt = stageNow; };
     const sendOrderCreateResponse = (status, body) => { const startedAt = Date.now(); try { sendJson(res, status, body); } finally { runtimeMetrics.recordOperation("orderCreateInternal", "response", Date.now() - startedAt); } };
     const payload = await readJsonBody(req); recordOrderCreateStage("readBody"); const orderCreateTableId = typeof payload.tableId === "string" ? payload.tableId.trim() : "";
-    const db = await readDb({ operationMetricKind: "orderCreateRead", parallelExternalizedTableLocksAndStationStates: ORDER_CREATE_PARALLEL_EXTERNAL_REFRESH, refreshExternalizedSessions: !req.__authContext, refreshExternalizedIntegrationStationStates: true, refreshExternalizedTableLocks: !ORDER_CREATE_TARGETED_LOCK_REFRESH || Boolean(orderCreateTableId), refreshExternalizedTableLockId: ORDER_CREATE_TARGETED_LOCK_REFRESH ? orderCreateTableId : "" }); recordOrderCreateStage("readDb");
+    const db = await salesAppStateRepository.read({ operationMetricKind: "orderCreateRead", parallelExternalizedTableLocksAndStationStates: ORDER_CREATE_PARALLEL_EXTERNAL_REFRESH, refreshExternalizedSessions: !req.__authContext, refreshExternalizedIntegrationStationStates: true, refreshExternalizedTableLocks: !ORDER_CREATE_TARGETED_LOCK_REFRESH || Boolean(orderCreateTableId), refreshExternalizedTableLockId: ORDER_CREATE_TARGETED_LOCK_REFRESH ? orderCreateTableId : "" }); recordOrderCreateStage("readDb");
     const authContext = req.__authContext && typeof req.__authContext === "object" ? req.__authContext : validateSessionContext(db, payload);
     const { user, session } = authContext; recordOrderCreateStage("auth");
   
@@ -1147,7 +1147,7 @@ export function createIntegrationOrderCreateHandlers({
         await withPrintLaneMutation(
           `async auto-print ${nextOrder.id}`,
           [`order:${nextOrder.id}`], async () => {
-            const latestDb = await readDb();
+            const latestDb = await salesAppStateRepository.read();
             const latestOrder =
               (Array.isArray(latestDb.integration?.orders)
                 ? latestDb.integration.orders

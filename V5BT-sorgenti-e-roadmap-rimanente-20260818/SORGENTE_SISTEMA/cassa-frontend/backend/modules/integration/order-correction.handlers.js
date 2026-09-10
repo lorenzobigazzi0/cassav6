@@ -49,7 +49,7 @@ export function createIntegrationOrderCorrectionHandlers({
   publishIntegrationNotificationStreamRefresh,
   queueIntegrationNotification,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolveOrderFinancialSnapshotTableIds,
@@ -76,7 +76,7 @@ export function createIntegrationOrderCorrectionHandlers({
       );
     }
   
-    const db = await readDb({
+    const db = await salesAppStateRepository.read({
       refreshExternalizedSessions: true,
       refreshExternalizedTableLocks: true,
     });
@@ -341,7 +341,7 @@ export function createIntegrationOrderCorrectionHandlers({
       });
     }
   
-    const db = await readDb({ refreshExternalizedSessions: true, refreshExternalizedTableLocks: true }); recordOrderCancelStage("readDb");
+    const db = await salesAppStateRepository.read({ refreshExternalizedSessions: true, refreshExternalizedTableLocks: true }); recordOrderCancelStage("readDb");
     const authContext = req.__authContext && typeof req.__authContext === "object" ? req.__authContext : validateSessionContext(db, payload);
     const { user, session } = authContext;
     if (!db.integration || typeof db.integration !== "object") db.integration = createDefaultIntegrationState();
@@ -595,7 +595,7 @@ export function createIntegrationOrderCorrectionHandlers({
       throw new HttpError(400, "Richiesta o decisione non valida.");
     }
     const approve = decision === "approve" || decision === "approved";
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     const { user, session } = validateSessionContext(db, payload);
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();

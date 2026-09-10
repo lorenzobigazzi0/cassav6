@@ -26,7 +26,7 @@ export function createWaiterPauseHandlers({
   operationsAppStateRepository,
   publishIntegrationNotificationStreamRefresh,
   queuePrintSpoolWorker,
-  readDb,
+  salesAppStateRepository,
   readFastJsonCache,
   readJsonBody,
   reconcileWaiterPauseSideEffects,
@@ -43,7 +43,6 @@ export function createWaiterPauseHandlers({
   touchSessionHeartbeat,
   validateSessionContext,
   waiterPauseTelemetry,
-  writeDb,
   writeFastJsonCache,
   writeTableGroupsFastDb,
   writeWaiterPauseDb,
@@ -304,7 +303,7 @@ export function createWaiterPauseHandlers({
       sendJsonString(res, 200, cachedGroups.json);
       return;
     }
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }
@@ -323,7 +322,7 @@ export function createWaiterPauseHandlers({
       db.integration.tableGroups = groups;
       db.integration.lastWriteAt = nowIso();
       db.meta.lastWriteAt = nowIso();
-      await writeDb(db, {
+      await salesAppStateRepository.write(db, {
         metricLabel: "integration.tableGroups.normalize.appStateWrite",
         splitDomains: ["integration"],
       });
@@ -345,7 +344,7 @@ export function createWaiterPauseHandlers({
   
   async function handleIntegrationTableGroupsSave(req, res) {
     const payload = await readJsonBody(req);
-    const db = await readDb();
+    const db = await salesAppStateRepository.read();
     if (!db.integration || typeof db.integration !== "object") {
       db.integration = createDefaultIntegrationState();
     }
@@ -383,7 +382,7 @@ export function createWaiterPauseHandlers({
       printJobIds: printJobs.map((job) => job?.id),
       tableIds: financialSync.tableIds ?? [],
     });
-    if (!fastWritten) await writeDb(db, {
+    if (!fastWritten) await salesAppStateRepository.write(db, {
       metricLabel: "integration.tableGroups.save.appStateWrite",
       splitDomains: ["integration", "posSettings", ...(printJobs.length > 0 ? ["printSpoolJobs"] : [])],
     });

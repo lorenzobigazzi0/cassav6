@@ -53,7 +53,7 @@ export function createIntegrationOrderCompHandlers({
   persistRelationalOrderFinancialTables,
   queuePrintSpoolWorker,
   randomUUID,
-  readDb,
+  salesAppStateRepository,
   readJsonBody,
   relationalRuntime,
   resolveIntegrationLogicalTableLabel,
@@ -102,7 +102,7 @@ export function createIntegrationOrderCompHandlers({
       throw new HttpError(400, "Comanda e articolo sono obbligatori.");
     }
   
-    const db = await readDb({
+    const db = await salesAppStateRepository.read({
       refreshExternalizedSessions: true,
       refreshExternalizedTableLocks: true,
     });
