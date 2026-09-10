@@ -2,8 +2,9 @@
 
 ## Stato
 
-MIG-040 e `IN_PROGRESS`. MariaDB resta la source of truth del runtime: nessuna
-lista PostgreSQL e stata attivata e nessun cutover e autorizzato.
+MIG-040 e `IN_PROGRESS`. MariaDB resta la source of truth del runtime. Sul solo
+Raspberry DEV e attivo il canary `identity=shadow`; nessuna lista `primary` o
+`legacy-write-guard` e attiva e nessun cutover di produzione e autorizzato.
 
 Sono stati completati e verificati i primi anelli additivi:
 
@@ -44,6 +45,22 @@ Il report macchina e in
 Al termine della verifica PostgreSQL e `cassav6.service` erano `active` e il
 frontend rispondeva HTTP 200.
 
+Il commit `9324d0a` e stato quindi distribuito sia nell'albero V6 attivo sia nel
+mirror sorgente del Raspberry. Sul target ARM64:
+
+- la suite MIG-040 e passata 196/196;
+- il servizio e ripartito in shadow con `database.mode=mysql` e
+  `postgresql.enabled=true/ok=true`;
+- le credenziali PostgreSQL sono in un file locale non versionato `0600`, di
+  proprieta `root`, richiamato da un drop-in systemd;
+- `BACKEND_POSTGRES_SHADOW_DOMAINS=identity`, mentre `PRIMARY_DOMAINS` e
+  `LEGACY_WRITE_GUARD_DOMAINS` sono vuote;
+- la riconciliazione post-avvio ha confermato 5 utenti invariati, 2
+  amministratori, 0 gruppi, nessun insert/update/delete e digest identici.
+
+L'evidenza post-canary e in
+`SORGENTE_SISTEMA/cassa-frontend/reports/postgresql-migration/mig040/raspberry-shadow-20260910.json`.
+
 ## Invarianti preservate
 
 - Nessun PIN in chiaro, nei log o nei payload diagnostici.
@@ -55,13 +72,11 @@ frontend rispondeva HTTP 200.
 
 ## Prossimi anelli
 
-1. Distribuire il nuovo runtime sul Raspberry mantenendo `identity=off` e ripetere
-   la suite MIG-040 sul target ARM64.
-2. Attivare un canary `identity=shadow`, verificare write-through, confronto e
-   metriche senza cambiare la source of truth MariaDB.
-3. Eseguire una prova controllata `primary` e il rollback a `shadow`, con backup,
+1. Osservare il canary shadow e verificare le metriche dopo scritture identity
+   reali, senza cambiare la source of truth MariaDB.
+2. Eseguire una prova controllata `primary` e il rollback a `shadow`, con backup,
    riconciliazione a zero differenze e smoke di login/salvataggio utenti.
-4. Chiudere MIG-040; solo dopo potra iniziare MIG-041 sulle sessioni.
+3. Chiudere MIG-040; solo dopo potra iniziare MIG-041 sulle sessioni.
 
 ## Evidenza automatizzata locale
 

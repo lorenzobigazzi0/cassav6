@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "importedAt": "2026-09-10T20:53:29.860Z",
+  "administrators": 2,
+  "reconciliation": {
+    "ok": true,
+    "source": {
+      "users": 5,
+      "userGroups": 0,
+      "digest": "2a1f1acd26676fdea195f658ef7dffbb6af34c66cc7c3350ab58854a619ce84d"
+    },
+    "target": {
+      "users": 5,
+      "userGroups": 0,
+      "digest": "2a1f1acd26676fdea195f658ef7dffbb6af34c66cc7c3350ab58854a619ce84d"
+    }
+  },
+  "sync": {
+    "users": {
+      "inserted": 0,
+      "updated": 0,
+      "unchanged": 5,
+      "deleted": 0,
+      "deletedIds": [],
+      "pruned": false,
+      "prunableIds": 0
+    },
+    "userGroups": {
+      "inserted": 0,
+      "updated": 0,
+      "unchanged": 0,
+      "deleted": 0,
+      "deletedIds": [],
+      "pruned": false,
+      "prunableIds": 0
+    },
+    "identityPruneSkipped": {
+      "noIntent": 2,
+      "emptyDeclared": 0,
+      "users": {
+        "noIntent": 1,
+        "emptyDeclared": 0
+      },
+      "userGroups": {
+        "noIntent": 1,
+        "emptyDeclared": 0
+      }
+    }
+  }
+}
