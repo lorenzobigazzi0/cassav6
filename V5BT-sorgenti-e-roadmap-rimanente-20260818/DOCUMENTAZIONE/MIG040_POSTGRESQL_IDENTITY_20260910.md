@@ -15,6 +15,15 @@ Sono stati completati e verificati i primi anelli additivi:
   latch per username duplicati e assenza di amministratori.
 - innesto opzionale nello `AuthRepository`, con precedenza PostgreSQL esplicita,
   rifiuto del doppio source of truth e risposta 503 sugli snapshot non affidabili.
+- composition root completo ma inerte con liste di dominio vuote;
+- write-through transazionale, refresh dello snapshot dopo commit e confronto
+  shadow riletto da PostgreSQL, con diagnostiche che espongono solo ID e nomi
+  dei campi divergenti;
+- guardie di commutazione `primary`: idratazione autorevole, esclusione dal blob
+  legacy, disarmo degli scrittori puntuali incompatibili e health 503 quando
+  PostgreSQL e autorevole;
+- intenti distruttivi espliciti per `users.save`: sostituzione completa di utenti
+  e gruppi e revoca sessioni nominata per ID, senza prune implicito per omissione.
 
 Il limite dimensionale storico di `server.js` non e piu un gate, per decisione
 del responsabile del prodotto. Restano obbligatori i confini repository, le
@@ -46,8 +55,16 @@ frontend rispondeva HTTP 200.
 
 ## Prossimi anelli
 
-1. Cablaggio dello store nel composition root mantenendo `identity=off`.
-2. Shadow-read con confronto campionato e diagnostiche prive di dati sensibili.
-3. Write-through transazionale e refresh dello snapshot dopo commit riuscito.
-4. Prove di primary/rollback e guardia degli scrittori legacy.
-5. Chiusura MIG-040; solo dopo potra iniziare MIG-041 sulle sessioni.
+1. Distribuire il nuovo runtime sul Raspberry mantenendo `identity=off` e ripetere
+   la suite MIG-040 sul target ARM64.
+2. Attivare un canary `identity=shadow`, verificare write-through, confronto e
+   metriche senza cambiare la source of truth MariaDB.
+3. Eseguire una prova controllata `primary` e il rollback a `shadow`, con backup,
+   riconciliazione a zero differenze e smoke di login/salvataggio utenti.
+4. Chiudere MIG-040; solo dopo potra iniziare MIG-041 sulle sessioni.
+
+## Evidenza automatizzata locale
+
+- suite MIG-040: 196/196;
+- regressione auth, app-state e salvataggio utenti: 166/166;
+- `app-meta` e health end-to-end: 6/6.

@@ -16,6 +16,7 @@ export function createStatusHandlers({
   buildIntegrationStationStatesWithSessionRecovery,
   checkPersistenceHealth,
   checkPostgresqlHealth,
+  isPostgresqlAuthoritative = false,
   fetchWithTimeout,
   menuSettingsRepository,
   nowIso,
@@ -77,7 +78,7 @@ export function createStatusHandlers({
     const publicPostgresqlHealth = postgresqlHealth?.enabled === true
       ? { enabled: true, ok: postgresqlHealth?.ok === true }
       : { enabled: false, ok: true };
-    if (publicPostgresqlHealth.enabled && !publicPostgresqlHealth.ok) {
+    if (isPostgresqlAuthoritative && publicPostgresqlHealth.enabled && !publicPostgresqlHealth.ok) {
       sendJson(res, 503, {
         ok: false,
         service: "cash-backend",

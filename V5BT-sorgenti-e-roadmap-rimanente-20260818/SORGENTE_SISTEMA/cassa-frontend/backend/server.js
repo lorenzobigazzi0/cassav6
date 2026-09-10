@@ -188,7 +188,15 @@ import {
   syncTablesBillsFromAppState,
   TablesBillsRelationalRepository,
   withTransactionalOutboxEvent,
-} from "./db/relational/index.js"; import { createPostgresqlRuntime } from "./db/postgresql/index.js";
+} from "./db/relational/index.js";
+import {
+  createPostgresqlIdentityRepository,
+  createPostgresqlIdentityStore,
+  createPostgresqlIdentityWriteThrough,
+  createPostgresqlRuntime,
+  isIdentityStoreRequired,
+  normalizeIdentityMode,
+} from "./db/postgresql/index.js";
 import { shouldEngageIntegrationPrintCommand } from "./modules/command-inbox/print-command-policy.js";
 import { createCommandInboxPilot } from "./modules/command-inbox/pilot-endpoint.js";
 import { createPrinterCircuitBreaker } from "./modules/print-spool/printer-circuit-breaker.js";
@@ -801,6 +809,7 @@ const MYSQL_APP_STATE_DOMAIN_DEFAULTS = Object.freeze([
   "paymentContainers",
   "paymentParts",
   "paymentTransactions",
+  "paymentOperatorInterventions",
   "cashTxDenoms",
   "fiscalReceipts",
   "fiscalEvents",
@@ -14930,7 +14939,32 @@ const relationalRuntime = createRelationalRuntime({
   logger: console,
   nowIso,
   runtimeMetrics,
-}); const postgresqlRuntime = createPostgresqlRuntime({ env: process.env, logger: console, runtimeMetrics });
+});
+const postgresqlRuntime = createPostgresqlRuntime({ env: process.env, logger: console, runtimeMetrics });
+const identityPostgresMode = normalizeIdentityMode({ env: process.env });
+const identityPostgresRepository = isIdentityStoreRequired(identityPostgresMode)
+  ? createPostgresqlIdentityRepository({ runtime: postgresqlRuntime })
+  : null;
+const identityPostgresStore = identityPostgresRepository
+  ? createPostgresqlIdentityStore({
+      mode: identityPostgresMode,
+      repository: identityPostgresRepository,
+      logger: console,
+    })
+  : null;
+const identityPostgresWriteThrough = identityPostgresRepository
+  ? createPostgresqlIdentityWriteThrough({
+      mode: identityPostgresMode,
+      repository: identityPostgresRepository,
+      runtime: postgresqlRuntime,
+      store: identityPostgresStore,
+      logger: console,
+      runtimeMetrics,
+      userView: (record) => sanitizeUser(record, null),
+      // `userGroupView` resta ASSENTE: non esiste ancora una vista secondaria
+      // canonica dei gruppi che sia indipendente dal mapping PostgreSQL.
+    })
+  : createPostgresqlIdentityWriteThrough({ mode: identityPostgresMode });
 async function syncMonitorResetExternalStores(appState) {
   if (!["shadow", "primary"].includes(relationalRuntime.mode)) {
     return {
@@ -15808,6 +15842,7 @@ const mysqlAppStateRepository =
       })
     : null;
 const authRepository = createAuthRepository({
+  identityStore: identityPostgresStore,
   relationalRuntime,
   normalizeUsername,
 });
@@ -15938,6 +15973,7 @@ const mysqlAtomicSelectionWriter = createMysqlAtomicSelectionWriter({
 });
 const automaticCashSplitGuard = createAutomaticCashSplitGuard({ repository: mysqlAppStateDomainsSplitRepository, cloneJson });
 const appStateSplitRequiresStrictRead =
+  identityPostgresStore?.isPrimaryDomain?.("users") === true ||
   mysqlSessionsSplitRepository.enabled ||
   mysqlAuditEventsSplitRepository.enabled ||
   mysqlTableLocksRepository.enabled ||
@@ -15962,6 +15998,9 @@ async function hydrateAppStateSplitDomains(appState) {
   hydrated = await tableStateSplitRepository.hydrateAppState(hydrated);
   hydrated = await ordersSplitRepository.hydrateAppState(hydrated);
   hydrated = await paymentsFiscalSplitRepository.hydrateAppState(hydrated);
+  if (identityPostgresStore?.isPrimaryDomain?.("users")) {
+    hydrated = await identityPostgresStore.hydrateAppState(hydrated);
+  }
   if (ORDERS_ANY_ASYNC_ACK) {
     const reconcile = await mergeRelationalOrdersIntoHydratedState({ enabled: true, relationalRuntime, state: hydrated, findIntegrationOrderIndexByLookup, sanitizeIntegrationOrder, syncPosTableFinancials: syncPosTableFinancialsFromIntegrationOrders, logger: console, marginMs: ORDERS_STARTUP_RECONCILE_MARGIN_MS, fallbackWindowMs: ORDERS_STARTUP_RECONCILE_FALLBACK_WINDOW_MS });
     if (!pendingOrdersStartupReconcile) pendingOrdersStartupReconcile = reconcile;
@@ -16079,6 +16118,10 @@ async function syncAppStateSplitDomains(appState, options = {}) {
       appStateWithoutMysqlTableLocks,
     );
   }
+  await identityPostgresWriteThrough.syncFromAppState(
+    appStateWithoutMysqlTableLocks,
+    options,
+  );
 }
 async function prepareAppStateSplitPrimaryWrite(appState) {
   let prepared =
@@ -16111,6 +16154,12 @@ async function prepareAppStateSplitPrimaryWrite(appState) {
     await paymentsFiscalSplitRepository.prepareAppStateForPrimaryWrite(
       prepared,
     );
+  // Questo strip chiude META' di §7.6 punto 1: rimuove identity dal blob e
+  // corregge il marcatore. Le righe app_state_domain_records restano come piano
+  // di rollback; la loro eliminazione auditabile appartiene a MIG-150.
+  if (identityPostgresStore?.isPrimaryDomain?.("users")) {
+    prepared = identityPostgresStore.stripIdentityForPrimaryWrite(prepared);
+  }
   return prepared;
 }
 async function prepareAppStateSplitPersistenceComparison(appState) {
@@ -16163,6 +16212,8 @@ async function prepareAppStateSplitPersistenceComparison(appState) {
 
 function buildFullyExternalizedAppStateDomains() {
   const domains = new Set();
+  if (identityPostgresStore?.isPrimaryDomain?.("users")) domains.add("users");
+  if (identityPostgresStore?.isPrimaryDomain?.("userGroups")) domains.add("userGroups");
   if (mysqlSessionsSplitRepository.enabled) domains.add("sessions");
   if (mysqlAuditEventsSplitRepository.enabled) domains.add("auditEvents");
   if (mysqlAppStateDomainsSplitRepository.enabled) {
@@ -16693,7 +16744,7 @@ async function syncPosSettingsTablesFastPath(db, tableIds = []) { const ids = no
 const writeTableSyncAppStateFastDb = createTableSyncAppStateFastPath({ enabled: TABLE_SYNC_APP_STATE_FASTPATH, dbMode: DB_MODE, mysqlDomainsRepository: mysqlAppStateDomainsSplitRepository, tableStateRepository: tableStateSplitRepository, mysqlAuditEventsRepository: mysqlAuditEventsSplitRepository, auditEventsRepository: auditEventsSplitRepository, prepareTableSyncState: buildPosSettingsTablesSyncState, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics }); const writeTableRoomMoveRequestAppStateFastDb = createTableRoomMoveRequestAppStateFastPath({ enabled: TABLE_ROOM_MOVE_REQUEST_APP_STATE_FASTPATH, dbMode: DB_MODE, mysqlDomainsRepository: mysqlAppStateDomainsSplitRepository, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics }); const posRoomChangeRequestTelemetry = createPosRoomChangeRequestTelemetry({ runtimeMetrics, getRequestContext: () => requestMetricsStorage.getStore() }); const posRoomChangeApproveTelemetry = createPosRoomChangeApproveTelemetry({ runtimeMetrics, getRequestContext: () => requestMetricsStorage.getStore() });
 const waiterPauseTelemetry = createWaiterPauseTelemetry({ runtimeMetrics, getRequestContext: () => requestMetricsStorage.getStore() }); const writeWaiterPauseFastDb = createWaiterPauseWriter({ enabled: process.env.BACKEND_WAITER_PAUSE_SESSION_AUDIT_FASTPATH === "1", dbMode: DB_MODE, mysqlDomainsRepository: mysqlAppStateDomainsSplitRepository, syncIntegrationObjectFields: syncIntegrationObjectFieldsFastPath, writeSessionAuditFastDb: writeAuthSessionFastDb, writeNotificationDb, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics });
 const writeNotificationPunctualDb = createNotificationPersistenceWriter({ enabled: NOTIFICATION_PUNCTUAL_WRITER_ENABLED, dbMode: DB_MODE, mysqlDomainsRepository: mysqlAppStateDomainsSplitRepository, writeSessionAuditFastDb: writeAuthSessionFastDb, writeNotificationDb, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics });
-const writeTableGroupsFastDb = createTableGroupsFastWriter({ dbMode: DB_MODE, repository: mysqlAppStateDomainsSplitRepository, syncIntegrationObjectFields: syncIntegrationObjectFieldsFastPath, syncPosSettingsTables: syncPosSettingsTablesFastPath, writePrintSpool: writePrintSpoolDb, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics }); const operationalPunctualWriters = createOperationalPunctualWriters({ dbMode: DB_MODE, repository: mysqlAppStateDomainsSplitRepository, syncSessionEntries: (db, ids) => mysqlSessionsSplitRepository.syncEntriesFromAppState(db, ids), syncPosSettingsTables: syncPosSettingsTablesFastPath, syncIntegrationObjectFields: syncIntegrationObjectFieldsFastPath, syncAuditEvents: syncOrderAuditEventsFastPath, syncPrintSpoolEntries: (db, ids) => writePrintSpoolDb(db, ids), refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics });
+const writeTableGroupsFastDb = createTableGroupsFastWriter({ dbMode: DB_MODE, repository: mysqlAppStateDomainsSplitRepository, syncIntegrationObjectFields: syncIntegrationObjectFieldsFastPath, syncPosSettingsTables: syncPosSettingsTablesFastPath, writePrintSpool: writePrintSpoolDb, refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics }); const operationalPunctualWriters = createOperationalPunctualWriters({ dbMode: identityPostgresStore?.isPrimaryDomain?.("users") ? "identity-primary" : DB_MODE, repository: mysqlAppStateDomainsSplitRepository, syncSessionEntries: (db, ids) => mysqlSessionsSplitRepository.syncEntriesFromAppState(db, ids), syncPosSettingsTables: syncPosSettingsTablesFastPath, syncIntegrationObjectFields: syncIntegrationObjectFieldsFastPath, syncAuditEvents: syncOrderAuditEventsFastPath, syncPrintSpoolEntries: (db, ids) => writePrintSpoolDb(db, ids), refreshHealthSnapshot: refreshHealthSnapshotFromDb, runtimeMetrics });
 const writeCounterCollectionDb = createCounterCollectionWriter({
   enabled: COUNTER_COLLECTION_ATOMIC_FASTPATH,
   atomicSelectionWriter: mysqlAtomicSelectionWriter,
@@ -28984,6 +29035,7 @@ const statusHandlers = createStatusHandlers({
   buildAuditActor,
   buildIntegrationStationStatesWithSessionRecovery,
   checkPersistenceHealth: appStateRepository.checkHealth, checkPostgresqlHealth: postgresqlRuntime.checkHealth,
+  isPostgresqlAuthoritative: identityPostgresStore?.isPrimaryDomain?.("users") === true,
   clearIntegrationHotResponseCaches,
   backendProcessRole: process.env.BACKEND_PROCESS_ROLE, fetchWithTimeout,
   menuSettingsRepository,
@@ -31193,6 +31245,10 @@ async function reconcileRelationalTablesAtStartup(appState) {
 }
 
 await relationalRuntime.initialize();
+if (identityPostgresMode.isIdentityPrimary) {
+  await identityPostgresStore?.refresh();
+}
+identityPostgresStore?.start();
 const initialAppState = await readDb();
 refreshHealthSnapshotFromDb(initialAppState);
 await reconcileRelationalTablesAtStartup(initialAppState);
@@ -31421,6 +31477,7 @@ process.on("exit", () => {
   appStateRepository.close();
   mysqlAppStateRepository?.close?.();
   relationalRuntime.close(); void postgresqlRuntime.close().catch(() => {});
+  identityPostgresStore?.stop();
   auditEventsSplitRepository.close();
   printSpoolJobsSplitRepository.close();
   deviceStatusSplitRepository.close();
@@ -31441,6 +31498,7 @@ async function closeBackendResourcesAndExit() {
   appStateRepository.close();
   mysqlAppStateRepository?.close?.();
   relationalRuntime.close(); await postgresqlRuntime.close().catch((error) => { console.warn("[postgresql] chiusura pool fallita:", error instanceof Error ? error.message : String(error)); });
+  identityPostgresStore?.stop();
   auditEventsSplitRepository.close();
   printSpoolJobsSplitRepository.close();
   deviceStatusSplitRepository.close();

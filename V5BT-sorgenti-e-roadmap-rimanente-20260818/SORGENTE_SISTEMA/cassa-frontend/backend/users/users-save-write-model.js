@@ -249,7 +249,12 @@ export function createUsersSaveWriteModel({
         });
       }),
     );
-    return retainedSessions;
+    return {
+      retainedSessions,
+      revokedSessionIds: revokedSessions
+        .map((session) => String(session?.id ?? "").trim())
+        .filter(Boolean),
+    };
   }
 
   function appendUsersAudit(db, { auditActor, currentUsers, currentUsersById, nextUsersById, nextUsers, payload }) {
@@ -318,7 +323,7 @@ export function createUsersSaveWriteModel({
     assertSelfProtectionInvariants(user, nextUsers);
 
     const nextUsersById = new Map(nextUsers.map((entry) => [entry.id, entry]));
-    const retainedSessions = await revokeSessions(db, nextUsersById);
+    const { retainedSessions, revokedSessionIds } = await revokeSessions(db, nextUsersById);
 
     appendUsersAudit(db, {
       auditActor: buildAuditActor(user, payload),
@@ -334,7 +339,8 @@ export function createUsersSaveWriteModel({
     db.sessions = retainedSessions;
     touchSettingsMetadata(db);
     await writeDb(db, {
-      sessionsSync: { deleteMissing: true },
+      identityReplace: ["users", "userGroups"],
+      sessionsSync: { deleteMissing: false, deleteSessionIds: revokedSessionIds },
     });
 
     return buildPosSettingsUsersPayload(db);

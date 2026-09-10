@@ -39,3 +39,5 @@ export * from "./identity.repository.js";
 export * from "./identity-canonical.js";
 export * from "./identity-mode.js";
 export * from "./identity-store.js";
+export * from "./identity-shadow.js";
+export * from "./identity-write-through.js";

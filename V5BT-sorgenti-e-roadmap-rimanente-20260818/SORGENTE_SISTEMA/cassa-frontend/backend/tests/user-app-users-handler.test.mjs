@@ -554,7 +554,10 @@ test("[BE][P0] users.save scrive una sola volta con la sincronizzazione sessioni
   await modello.saveUsersList({ users: [ADMIN_PAYLOAD] });
 
   assert.equal(modello.scritture.length, 1);
-  assert.deepEqual(modello.scritture[0], { sessionsSync: { deleteMissing: true } });
+  assert.deepEqual(modello.scritture[0], {
+    identityReplace: ["users", "userGroups"],
+    sessionsSync: { deleteMissing: false, deleteSessionIds: [] },
+  });
   assert.equal("metricLabel" in modello.scritture[0], false);
 });
 
