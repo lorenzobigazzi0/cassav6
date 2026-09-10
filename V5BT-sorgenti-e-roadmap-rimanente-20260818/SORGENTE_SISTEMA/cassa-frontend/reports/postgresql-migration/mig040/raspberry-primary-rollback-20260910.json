@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "recordedAt": "2026-09-10T23:11:16+02:00",
+  "target": "raspberry-dev",
+  "deployedCommit": "9324d0a",
+  "backup": {
+    "directory": "/home/admin/cassav6-backups/20260910-mig040-primary-trial",
+    "mariadb": {
+      "bytes": 236187633,
+      "sha256": "1655d65c8c2c0ceff00b2b4c17937d9ce5d949935e19a6ef4648078dd0062e18"
+    },
+    "postgresql": {
+      "bytes": 285191,
+      "sha256": "e3c78bb19bc46a094dfea26c590e8385a9e13dec6eac2036e3c77e74e4cf0466"
+    },
+    "permissions": "0600 root:root"
+  },
+  "primaryTrial": {
+    "postgresqlEnabled": true,
+    "primaryDomains": ["identity"],
+    "shadowDomains": [],
+    "legacyWriteGuardDomains": [],
+    "serviceActive": true,
+    "healthHttpStatus": 200,
+    "databaseMode": "mysql",
+    "postgresqlHealthOk": true,
+    "existingUserWrongPinHttpStatus": 401,
+    "reconciliationReport": "raspberry-primary-trial-20260910.json",
+    "reconciliationOk": true,
+    "users": 5,
+    "administrators": 2,
+    "userGroups": 0,
+    "unchangedUsers": 5,
+    "inserted": 0,
+    "updated": 0,
+    "deleted": 0,
+    "digest": "2a1f1acd26676fdea195f658ef7dffbb6af34c66cc7c3350ab58854a619ce84d"
+  },
+  "rollback": {
+    "postgresqlEnabled": true,
+    "primaryDomains": [],
+    "shadowDomains": ["identity"],
+    "legacyWriteGuardDomains": [],
+    "serviceActive": true,
+    "postgresqlServiceActive": true,
+    "healthHttpStatus": 200,
+    "databaseMode": "mysql",
+    "postgresqlHealthOk": true,
+    "reconciliationReport": "raspberry-shadow-20260910.json",
+    "reconciliationOk": true,
+    "users": 5,
+    "administrators": 2,
+    "userGroups": 0,
+    "unchangedUsers": 5,
+    "inserted": 0,
+    "updated": 0,
+    "deleted": 0,
+    "digest": "2a1f1acd26676fdea195f658ef7dffbb6af34c66cc7c3350ab58854a619ce84d"
+  }
+}

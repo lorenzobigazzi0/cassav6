@@ -64,6 +64,29 @@ mirror sorgente del Raspberry. Sul target ARM64:
 L'evidenza post-canary e in
 `SORGENTE_SISTEMA/cassa-frontend/reports/postgresql-migration/mig040/raspberry-shadow-20260910.json`.
 
+## Prova primary e rollback DEV
+
+Il 2026-09-10 e stata completata anche una commutazione controllata e
+reversibile sul Raspberry DEV:
+
+- prima della commutazione sono stati creati un dump MariaDB da 236.187.633
+  byte e un dump PostgreSQL da 285.191 byte, entrambi `0600 root:root`, con
+  checksum SHA-256 archiviati nella stessa directory protetta;
+- il servizio e partito con `PRIMARY_DOMAINS=identity`, health HTTP 200 e
+  PostgreSQL autorevole e sano;
+- la lookup di un utente realmente presente in PostgreSQL, con PIN valido per
+  formato ma verificato in anticipo come errato, ha restituito il 401 atteso e
+  ha completato la scrittura audit;
+- la riconciliazione in primary e rimasta verde: 5 utenti, 2 amministratori,
+  0 gruppi, 5 record invariati e zero insert/update/delete;
+- ripristinato il file ambiente shadow, il servizio e ripartito con MariaDB
+  autorevole; health HTTP 200 e riconciliazione finale sono rimasti verdi con
+  lo stesso digest.
+
+Le evidenze sono in `raspberry-primary-trial-20260910.json` e
+`raspberry-primary-rollback-20260910.json` nella stessa directory report. Il
+Raspberry e stato lasciato intenzionalmente in `identity=shadow`.
+
 ## Invarianti preservate
 
 - Nessun PIN in chiaro, nei log o nei payload diagnostici.
@@ -75,10 +98,10 @@ L'evidenza post-canary e in
 
 ## Prossimi anelli
 
-1. Osservare il canary shadow e verificare le metriche dopo scritture identity
-   reali, senza cambiare la source of truth MariaDB.
-2. Eseguire una prova controllata `primary` e il rollback a `shadow`, con backup,
-   riconciliazione a zero differenze e smoke di login/salvataggio utenti.
+1. Osservare il canary shadow per una finestra operativa piu lunga e ripetere la
+   riconciliazione dopo un vero salvataggio utenti amministrativo.
+2. Autorizzare il cutover DEV permanente a `primary`, mantenendo disponibile il
+   rollback gia provato.
 3. Chiudere MIG-040; solo dopo potra iniziare MIG-041 sulle sessioni.
 
 ## Evidenza automatizzata locale
